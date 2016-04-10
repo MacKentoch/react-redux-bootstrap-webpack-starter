@@ -5,14 +5,14 @@ Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-d
 
 A simple `full ES2015` (*previously named ES6*).
 
-*Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpfull `redux-devtools`.**
+*Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
 
 ## Detailed Content
 
 **Front:**
 - React JS (0.14.x - [github :link:](https://github.com/facebook/react))
-- Redux
-- React-Redux
+- Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
+- React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - Redux-devtools (*want to time travel your application State?*)
 - React-Router-Redux (*previously named react-simple-router*)
 - react-router (2.x- [github :link:](https://github.com/reactjs/react-router))
@@ -52,11 +52,19 @@ npm install
 npm run dev
 ```
 
+##### Note : redux-devtools shortcuts
+- `ctrl+h`: to toggle devtools panel
+- `ctrl+q`: to change devtools panel position (*by default: on the right*)
+
 ### dev : hot reload mode (*+ redux-devtools*)
 
 ```bash
 npm run start
 ```
+
+##### Note : redux-devtools shortcuts
+- `ctrl+h`: to toggle devtools panel
+- `ctrl+q`: to change devtools panel position (*by default: on the right*)
 
 ### bundle production mode
 
