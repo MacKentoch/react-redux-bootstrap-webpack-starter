@@ -1,13 +1,11 @@
-Full ES2015 React + Redux Bootstrap with Hot Reload starter
+Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-devtools starter
 ==========
-
-### ReactJS + Redux +  Bootstrap starter with hot reload
 
 #### full client and server side in ES6-ES2015
 
 A simple `full ES2015` (*previously named ES6*).
 
-*Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux`.**
+*Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpfull `redux-devtools`.**
 
 ## Detailed Content
 
@@ -15,6 +13,7 @@ A simple `full ES2015` (*previously named ES6*).
 - React JS (0.14.x - [github :link:](https://github.com/facebook/react))
 - Redux
 - React-Redux
+- Redux-devtools (*want to time travel your application State?*)
 - React-Router-Redux (*previously named react-simple-router*)
 - react-router (2.x- [github :link:](https://github.com/reactjs/react-router))
 - Bootstrap (3.x - [github :link:](https://github.com/twbs/bootstrap))
@@ -47,13 +46,13 @@ A simple `full ES2015` (*previously named ES6*).
 ```bash
 npm install
 ```
-### bundle dev mode
+### bundle dev mode (*+ redux-devtools*)
 
 ```bash
 npm run dev
 ```
 
-### dev : hot reload mode
+### dev : hot reload mode (*+ redux-devtools*)
 
 ```bash
 npm run start
@@ -65,12 +64,6 @@ npm run start
 npm run prod
 ```
 
-
-
-## To add
-
-- [x] hot reload
-- [ ] ~~Redux~~ (*won't be added "HERE" since new repo `react-redux-bootstrap-webpack-starter` coming soon*)
 
 ## License
 
