@@ -11,13 +11,15 @@
   "keywords": [
     "react",
     "redux",
+    "react-redux",
     "ES6",
     "ES2015",
     "bootstrap",
     "starter",
     "webpack",
     "hot-reload",
-    "hot reload"
+    "redux-devtools",
+    "devtools"
   ],
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
