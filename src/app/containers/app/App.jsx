@@ -80,7 +80,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-// "bindActionCreators" use-case is to pass dispatch to store non aware children components (but I feel like it is a good habbit to use it everytime)
+// "bindActionCreators" use-case is to pass dispatch to "store non aware children components" (but I feel like it is a good habbit to use it everytime)
 const mapDispatchToProps = (dispatch) => {
   return {
     actions : bindActionCreators(
