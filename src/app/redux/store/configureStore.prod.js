@@ -15,16 +15,17 @@ const loggerMiddleware = createLogger({
   collapsed : true
 });
 
+// createStore : enhancer
+const enhancer = compose(
+  applyMiddleware(loggerMiddleware)
+);
+
 // combine reducers
 const reducer = combineReducers({
   ...reducers,
   routing: routerReducer
 });
 
-const finalCreateStore = compose(
-  applyMiddleware(loggerMiddleware)
-)(createStore);
-
 export default function configureStore(initialState) {
-  return finalCreateStore(reducer, initialState);
+  return createStore(reducer, initialState, enhancer);
 }
