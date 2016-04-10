@@ -16,27 +16,11 @@ class App extends React.Component {
   }
 
   handleLeftNavItemClick(event, viewName) {
-    if (viewName === 'home') {
-      const now = new Date();
-      this.props.actions.enterHome(now);
-    }
-
-    if (viewName === 'about') {
-      const now = new Date();
-      this.props.actions.enterAbout(now);
-    }
+    // something to do here?
   }
 
   handleRightNavItemClick(event, viewName) {
-    if (viewName === 'home') {
-      const now = new Date();
-      this.props.actions.enterHome(now);
-    }
-
-    if (viewName === 'about') {
-      const now = new Date();
-      this.props.actions.enterAbout(now);
-    }
+    // something to do here?
   }
 
   render() {
@@ -68,8 +52,6 @@ App.propTypes = {
   children:   React.PropTypes.node,
   history:    React.PropTypes.object,
   location:   React.PropTypes.object,
-
-  dispatch:   React.PropTypes.func,
   actions:    React.PropTypes.object
 };
 

@@ -11,7 +11,7 @@ import {
  }                              from 'react-router';
 import { Provider }             from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
-import { App }                  from '../containers';
+import { App, ViewsContainer }  from '../containers';
 import { Home, About }          from '../views';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
@@ -25,8 +25,8 @@ export const Routes = () => {
       <div>
         <Router history={syncedHistory}>
           <Route path="/" component={App} >
-            <IndexRoute component={Home} />
-            <Route path="/about" component={About} />
+            <IndexRoute component={ViewsContainer(Home)} />
+            <Route path="/about" component={ViewsContainer(About)} />
           </Route>
         </Router>
         { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }

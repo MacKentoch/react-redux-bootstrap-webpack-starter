@@ -19,9 +19,15 @@ class Home extends React.Component {
   }
 
   componentWillMount() {
+    this.props.actions.enterHome();
+
     this.state = {
       viewEnters  : true
     };
+  }
+
+  componentWillUnmount() {
+    this.props.actions.leaveHome();
   }
 
   processViewAnimationClasses() {
@@ -65,5 +71,9 @@ class Home extends React.Component {
     );
   }
 }
+
+Home.propTypes= {
+  actions: React.PropTypes.object
+};
 
 export default Home;

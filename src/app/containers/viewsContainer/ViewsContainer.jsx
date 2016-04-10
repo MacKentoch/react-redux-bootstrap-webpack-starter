@@ -1,19 +1,45 @@
 'use strict';
 
-import React from 'react';
+import React                  from 'react';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
+import * as viewsActions      from '../../redux/actions';
 
-class ViewsContainer extends React.Component {
-  constructor(props) {
-    super(props);
+const ViewsContainer = (Component) => {
+  class ViewsContainerComponent extends React.Component {
+    constructor(props) {
+      super(props);
+    }
+
+    render() {
+      return (
+        <div>
+          <Component {...this.props} />
+        </div>
+      );
+    }
   }
 
-  render() {
-    return (
-      <div>
+  const mapStateToProps = (state) => {
+    return {
+      currentView:  state
+    };
+  };
 
-      </div>
-    );
-  }
-}
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      actions : bindActionCreators(
+        {
+          ...viewsActions
+        },
+        dispatch)
+    };
+  };
+
+  return connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ViewsContainerComponent);
+};
 
 export default ViewsContainer;
