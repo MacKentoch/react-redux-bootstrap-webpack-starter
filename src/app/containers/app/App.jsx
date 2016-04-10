@@ -1,15 +1,11 @@
 'use strict';
 
-import React            from 'react';
-import NavigationBar    from '../../components/navigation/NavigationBar.jsx';
-import navigationModel  from '../../models/navigation.model.json';
-import { connect }      from 'react-redux';
-import {
-  enterHome,
-  // leaveHome,
-  enterAbout // ,
-  // leaveAbout
-}                       from '../../redux/actions';
+import React                  from 'react';
+import NavigationBar          from '../../components/navigation/NavigationBar.jsx';
+import navigationModel        from '../../models/navigation.model.json';
+import { bindActionCreators } from 'redux';
+import { connect }            from 'react-redux';
+import * as viewsActions      from '../../redux/actions';
 
 class App extends React.Component {
   constructor(props) {
@@ -22,24 +18,24 @@ class App extends React.Component {
   handleLeftNavItemClick(event, viewName) {
     if (viewName === 'home') {
       const now = new Date();
-      this.props.dispatch(enterHome(now));
+      this.props.actions.enterHome(now);
     }
 
     if (viewName === 'about') {
       const now = new Date();
-      this.props.dispatch(enterAbout(now));
+      this.props.actions.enterAbout(now);
     }
   }
 
   handleRightNavItemClick(event, viewName) {
     if (viewName === 'home') {
       const now = new Date();
-      this.props.dispatch(enterHome(now));
+      this.props.actions.enterHome(now);
     }
 
     if (viewName === 'about') {
       const now = new Date();
-      this.props.dispatch(enterAbout(now));
+      this.props.actions.enterAbout(now);
     }
   }
 
@@ -67,23 +63,35 @@ class App extends React.Component {
 }
 
 
-const mapStateToProps = (state) => {
-  return {
-    currentView:  state
-  };
-};
-
 // statics :
 App.propTypes = {
   children:   React.PropTypes.node,
   history:    React.PropTypes.object,
   location:   React.PropTypes.object,
 
-  dispatch:     React.PropTypes.func
-  // appState:     React.PropTypes.object,
-  // currentView:  React.PropTypes.object
+  dispatch:   React.PropTypes.func,
+  actions:    React.PropTypes.object
+};
+
+
+const mapStateToProps = (state) => {
+  return {
+    currentView:  state
+  };
+};
+
+// "bindActionCreators" use-case is to pass dispatch to store non aware children components (but I feel like it is a good habbit to use it everytime)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions : bindActionCreators(
+      {
+        ...viewsActions
+      },
+      dispatch)
+  };
 };
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(App);
