@@ -4,6 +4,7 @@ import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { persistState }         from 'redux-devtools';
 import { routerReducer }        from 'react-router-redux';
 import createLogger             from 'redux-logger';
+import thunkMiddleware          from 'redux-thunk';
 import * as reducers            from '../reducers';
 import DevTools                 from '../devTools/DevTools.jsx';
 
@@ -16,7 +17,7 @@ const loggerMiddleware = createLogger({
 // createStore : enhancer
 const enhancer = compose(
   DevTools.instrument(),
-  applyMiddleware(loggerMiddleware),
+  applyMiddleware(loggerMiddleware, thunkMiddleware),
   persistState(
     window.location.href.match(
       /[?&]debug_session=([^&#]+\b)/
