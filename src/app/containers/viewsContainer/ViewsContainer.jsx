@@ -22,7 +22,7 @@ const ViewsContainer = (Component) => {
 
   const mapStateToProps = (state) => {
     return {
-      currentView:  state
+      currentView:  state.views
     };
   };
 
