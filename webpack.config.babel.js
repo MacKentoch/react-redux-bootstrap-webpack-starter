@@ -4,6 +4,7 @@ import autoprefixer from 'autoprefixer';
 import precss       from 'precss';
 
 const assetsDir       = path.resolve(__dirname, 'public/assets');
+const nodeModulesDir  = path.resolve(__dirname, 'node_modules');
 
 let config = {
   entry: [
@@ -16,7 +17,8 @@ let config = {
   module: {
     loaders: [{
       test: /\.jsx?$/,
-      loader: 'babel'
+      loader: 'babel',
+      exclude: [nodeModulesDir]
     }, {
       test: /\.scss$/,
       loader: 'style!css!postcss!sass'
