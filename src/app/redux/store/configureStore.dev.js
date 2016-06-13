@@ -16,14 +16,15 @@ const loggerMiddleware = createLogger({
 
 // createStore : enhancer
 const enhancer = compose(
-  DevTools.instrument(),
   applyMiddleware(loggerMiddleware, thunkMiddleware),
-  persistState(
-    window.location.href.match(
-      /[?&]debug_session=([^&#]+\b)/
-    )
-  )
+  persistState(getDebugSessionKey()),
+  DevTools.instrument()
 );
+
+function getDebugSessionKey() {
+  const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
+  return (matches && matches.length > 0)? matches[1] : null;
+}
 
 // combine reducers -> createStore reducer
 const reducer = combineReducers({
