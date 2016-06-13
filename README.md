@@ -48,8 +48,14 @@ npm install
 ```
 ### bundle dev mode (*+ redux-devtools*)
 
+*General case:*
 ```bash
 npm run dev
+```
+
+*Windows - particular - case:*
+```bash
+npm run dev-win
 ```
 
 ##### Note : redux-devtools shortcuts
@@ -58,8 +64,15 @@ npm run dev
 
 ### dev : hot reload mode (*+ redux-devtools*)
 
+*General case:*
+
 ```bash
 npm run start
+```
+
+*Windows - particular - case:*
+```bash
+npm run start-win
 ```
 
 ##### Note : redux-devtools shortcuts
@@ -68,10 +81,15 @@ npm run start
 
 ### bundle production mode
 
+*General case:*
 ```bash
 npm run prod
 ```
 
+*Windows - particular - case:*
+```bash
+npm run prod-win
+```
 
 ## License
 
