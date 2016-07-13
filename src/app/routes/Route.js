@@ -15,7 +15,6 @@ import {
   ConnectedHome,
   ConnectedAbout
 }                               from '../containers';
-// import { Home, About }          from '../views';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
 

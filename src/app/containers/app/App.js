@@ -2,7 +2,10 @@ import React, {
   Component,
   PropTypes
 }                             from 'react';
-import {NavigationBar}        from '../../components';
+import {
+  NavigationBar,
+  BackToTop
+}                             from '../../components';
 import navigationModel        from '../../models/navigation.json';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
@@ -23,7 +26,7 @@ class App extends Component {
     const { navModel } = this.state;
     const { children } = this.props;
     return (
-      <div>
+      <div id="appContainer">
         <NavigationBar
           brand={navModel.brand}
           navModel={navModel}
@@ -35,6 +38,10 @@ class App extends Component {
         <div className="container-fluid">
           {children}
         </div>
+        <BackToTop
+          minScrollY={40}
+          scrollTo={'appContainer'}
+        />
       </div>
     );
   }

@@ -1,11 +1,13 @@
-Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-devtools starter
+Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-devtools STARTER
 ==========
 
-#### full client and server side in ES6-ES2015
+#### full ES6-ES2015
 
-A simple `full ES2015` (*previously named ES6*).
+> My best React + redux project starter.
 
->Written with optimization tricks (stateless, pure render...).
+- *webpack is as simple as possible*
+- *ReactJS is written with `optimization tricks` (stateless, pure render...).*
+- *`pure front-end` = server independant (use whatever you want as server: NodeJS, Rails, .NET...)*
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
 
@@ -23,9 +25,11 @@ A simple `full ES2015` (*previously named ES6*).
 - font-awesome ([github :link:](https://github.com/FortAwesome/Font-Awesome))
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
+- react-motion ([github :link:](https://github.com/chenglou/react-motion))
 - Webpack ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
 - react-addons-shallow-compare (*pure render mixin equivalent for ES6*)
+- whatwg-fetch (*Why: because it is a fetch `Web API` polyfill*)
 
 **Tool chain:**
 - babel 6+
