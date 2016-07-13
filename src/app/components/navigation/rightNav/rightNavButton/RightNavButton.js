@@ -5,10 +5,10 @@ import React, {
 import { Link }       from 'react-router';
 import shallowCompare from 'react-addons-shallow-compare';
 
-class LeftNavButton extends Component {
+class RightNavButton extends Component {
   constructor(props) {
     super(props);
-    this.handleLeftNavItemClick = this.handleLeftNavItemClick.bind(this);
+    this.handleRightNavItemClick = this.handleRightNavItemClick.bind(this);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -21,24 +21,24 @@ class LeftNavButton extends Component {
       <li>
         <Link
           to={link}
-          onClick={this.handleLeftNavItemClick}>
+          onClick={this.handleRightNavItemClick}>
           {label}
         </Link>
       </li>
     );
   }
 
-  handleLeftNavItemClick(event) {
+  handleRightNavItemClick(event) {
     const { onClick, viewName } = this.props;
     onClick(event, viewName);
   }
 }
 
-LeftNavButton.propTypes = {
+RightNavButton.propTypes = {
   link: PropTypes.string,
   label: PropTypes.string,
   viewName: PropTypes.string,
   onClick: PropTypes.func
 };
 
-export default LeftNavButton;
+export default RightNavButton;

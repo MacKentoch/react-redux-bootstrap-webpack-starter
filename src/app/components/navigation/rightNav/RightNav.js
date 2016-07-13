@@ -1,19 +1,19 @@
 import React, { PropTypes } from 'react';
-import LeftNavButton        from './leftNavButton/leftNavButton';
+import RightNavButton       from './rightNavButton/RightNavButton';
 
-const LeftNav = ({ leftLinks, onLeftNavButtonClick }) => {
+const RightNav = ({ rightLinks, onRightNavButtonClick }) => {
   return (
-    <ul className="nav navbar-nav">
+    <ul className="nav navbar-nav navbar-right">
       {
-        leftLinks.map(
+        rightLinks.map(
           (aLinkBtn, index) => {
             return (
-              <LeftNavButton
+              <RightNavButton
                 key={index}
                 link={aLinkBtn.link}
                 label={aLinkBtn.label}
                 viewName={aLinkBtn.view}
-                onClick={onLeftNavButtonClick}
+                onClick={onRightNavButtonClick}
               />
             );
           }
@@ -23,15 +23,15 @@ const LeftNav = ({ leftLinks, onLeftNavButtonClick }) => {
   );
 };
 
-LeftNav.propTypes = {
-  leftLinks: PropTypes.arrayOf(
+RightNav.propTypes = {
+  rightLinks: PropTypes.arrayOf(
     PropTypes.shape({
       link: PropTypes.string,
       label: PropTypes.string,
       viewName: PropTypes.string
     })
   ),
-  onLeftNavButtonClick: PropTypes.func
+  onRightNavButtonClick: PropTypes.func
 };
 
-export default LeftNav;
+export default RightNav;
