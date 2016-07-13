@@ -5,6 +5,8 @@ Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-d
 
 A simple `full ES2015` (*previously named ES6*).
 
+>Written with optimization tricks (stateless, pure render...).
+
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
 
 ## Detailed Content
@@ -23,6 +25,7 @@ A simple `full ES2015` (*previously named ES6*).
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - Webpack ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
+- react-addons-shallow-compare (*pure render mixin equivalent for ES6*)
 
 **Tool chain:**
 - babel 6+
@@ -36,6 +39,13 @@ A simple `full ES2015` (*previously named ES6*).
   - images formats
   - svg and fonts formats
 - autoprefixer (css and sass)
+
+*tests:*
+- Mocha
+- Chai (*+ dirty-chai*)
+- enzyme
+- Sinon
+
 
 
 
@@ -78,6 +88,18 @@ npm run start-win
 ##### Note : redux-devtools shortcuts
 - `ctrl+h`: to toggle devtools panel
 - `ctrl+q`: to change devtools panel position (*by default: on the right*)
+
+### tests
+
+*General case:*
+```bash
+npm run test
+```
+
+*Windows - particular - case:*
+```bash
+npm run test-win
+```
 
 ### bundle production mode
 

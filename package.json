@@ -9,6 +9,7 @@
     "prod": "NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
     "start": "NODE_ENV=dev babel-node --presets es2015 ./server.hot.reload.js",
     "dev-win": "env NODE_ENV=dev webpack",
+    "test-win": "NODE_ENV=test mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
     "prod-win": "env NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
     "start-win": "env NODE_ENV=dev babel-node --presets es2015 ./server.hot.reload.js"
   },
