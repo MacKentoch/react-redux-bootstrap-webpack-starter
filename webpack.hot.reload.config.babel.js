@@ -5,7 +5,7 @@ import precss       from 'precss';
 
 const assetsDir = path.resolve(__dirname, 'public/assets');
 
-let config = {
+const config = {
   devtool: 'eval',
   entry: [
     'webpack-dev-server/client?http://localhost:3000',

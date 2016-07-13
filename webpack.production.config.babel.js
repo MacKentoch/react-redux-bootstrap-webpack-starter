@@ -6,7 +6,7 @@ import precss       from 'precss';
 const assetsDir       = path.resolve(__dirname, 'public/assets');
 const nodeModulesDir  = path.resolve(__dirname, 'node_modules');
 
-let config = {
+const config = {
   entry: [
     path.resolve(__dirname, 'src/app/index.js')
   ],

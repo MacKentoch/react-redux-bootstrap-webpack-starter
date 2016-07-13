@@ -1,5 +1,5 @@
-import App            from './app/App.jsx';
-import ViewsContainer from './viewsContainer/ViewsContainer.jsx';
+import App            from './app/App';
+import ViewsContainer from './viewsContainer/ViewsContainer';
 
 export {
   App,

@@ -1,48 +1,42 @@
-'use strict';
+import React, {
+  Component,
+  PropTypes
+}                     from 'react';
+import {Jumbotron}    from '../../components';
+import cx             from 'classnames';
+import shallowCompare from 'react-addons-shallow-compare';
+import { Link }       from 'react-router';
 
-import React      from 'react';
-import Jumbotron  from '../../components/jumbotron/Jumbotron.jsx';
-import classNames from 'classnames';
-import { Link }   from 'react-router';
-
-class Home extends React.Component {
+class Home extends Component {
   constructor(props) {
     super(props);
-    this.init();
-  }
-
-  init() {
     this.state = {
-      animated    : true,
-      viewEnters  : false
+      animated: true,
+      viewEntersAnim: true
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.actions.enterHome();
+  }
 
-    this.state = {
-      viewEnters  : true
-    };
+  shouldComponentUpdate(nextProps, nextState) {
+    return shallowCompare(this, nextProps, nextState);
   }
 
   componentWillUnmount() {
     this.props.actions.leaveHome();
   }
 
-  processViewAnimationClasses() {
-    const homeViewClasses = classNames({
-      'animatedViews'    : this.state.animated,
-      'view-enter'       : this.state.viewEnters
-    });
-    return homeViewClasses;
-  }
-
   render() {
+    const { animated, viewEntersAnim } = this.state;
     return(
       <div
         key="homeView"
-        className={this.processViewAnimationClasses()}>
+        className={cx({
+          'animatedViews': animated,
+          'view-enter': viewEntersAnim
+        })}>
         <Jumbotron>
           <h1>
             Full ES2015 ReactJS + Bootstrap
@@ -73,7 +67,7 @@ class Home extends React.Component {
 }
 
 Home.propTypes= {
-  actions: React.PropTypes.object
+  actions: PropTypes.object
 };
 
 export default Home;
