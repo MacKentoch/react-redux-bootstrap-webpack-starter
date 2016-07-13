@@ -1,5 +1,3 @@
-'use strict';
-
 export const ENTER_HOME_VIEW  = 'ENTER_HOME_VIEW';
 export const LEAVE_HOME_VIEW  = 'LEAVE_HOME_VIEW';
 
@@ -15,7 +13,6 @@ export const enterHome = (time = new Date()) => {
     leaveTime:    null
   };
 };
-
 export const leaveHome = (time = new Date()) => {
   return {
     type:         LEAVE_HOME_VIEW,
@@ -34,7 +31,6 @@ export const enterAbout = (time = new Date()) => {
     leaveTime:    null
   };
 };
-
 export const leaveAbout = (time = new Date()) => {
   return {
     type:         LEAVE_ABOUT_VIEW,

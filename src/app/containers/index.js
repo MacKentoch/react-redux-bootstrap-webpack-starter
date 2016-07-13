@@ -1,7 +1,9 @@
 import App            from './app/App';
-import ViewsContainer from './viewsContainer/ViewsContainer';
+import ConnectedHome  from './home/Home';
+import ConnectedAbout from './about/About';
 
 export {
   App,
-  ViewsContainer
+  ConnectedHome,
+  ConnectedAbout
 };

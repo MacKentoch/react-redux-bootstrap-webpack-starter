@@ -1,5 +1,3 @@
-'use strict';
-
 import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
 import { persistState }         from 'redux-devtools';
 import { routerReducer }        from 'react-router-redux';

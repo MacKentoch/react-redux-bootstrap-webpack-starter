@@ -17,7 +17,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.enterHome();
+    this.props.enterHome();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -25,7 +25,7 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    this.props.actions.leaveHome();
+    this.props.leaveHome();
   }
 
   render() {
@@ -67,7 +67,9 @@ class Home extends Component {
 }
 
 Home.propTypes= {
-  actions: PropTypes.object
+  currentView:  PropTypes.string.isRequired,
+  enterHome:    PropTypes.func.isRequired,
+  leaveHome:    PropTypes.func.isRequired
 };
 
 export default Home;

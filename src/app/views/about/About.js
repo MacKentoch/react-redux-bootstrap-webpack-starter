@@ -15,15 +15,15 @@ class About extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.enterAbout();
+    this.props.enterAbout();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
-  }  
+  }
 
   componentWillUnmount() {
-    this.props.actions.leaveAbout();
+    this.props.leaveAbout();
   }
 
   render() {
@@ -43,7 +43,9 @@ class About extends Component {
 }
 
 About.propTypes= {
-  actions: PropTypes.object
+  currentView:  PropTypes.string.isRequired,
+  enterAbout:   PropTypes.func.isRequired,
+  leaveAbout:   PropTypes.func.isRequired
 };
 
 export default About;
