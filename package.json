@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "dev": "NODE_ENV=dev webpack",
-    "testOLD": "NODE_ENV=test mocha --compilers js:babel-core/register --recursive",
-    "test": "NODE_ENV=test mocha test/.setup.js test/**/*.spec.js",
+    "test": "NODE_ENV=test mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
     "prod": "NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
     "start": "NODE_ENV=dev babel-node --presets es2015 ./server.hot.reload.js",
     "dev-win": "env NODE_ENV=dev webpack",
