@@ -6,7 +6,7 @@ import React, {
 }                       from 'react';
 import {smoothScroll}   from './lib/smoothScroll';
 import BackToTopButton  from './backToTopButton/BackToTopButton';
-import {Motion, spring} from 'react-motion';
+import {Motion, spring, presets} from 'react-motion';
 
 class BackToTop extends Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class BackToTop extends Component {
   render() {
     const { showBackButton } = this.state;
     return (
-      <Motion style={{x: spring(showBackButton ? 0 : 120)}}>
+      <Motion style={{x: spring(showBackButton ? 0 : 120, presets.stiff)}}>
         {
           ({x}) =>
             <BackToTopButton
