@@ -12,13 +12,14 @@ import {
 
 const buttonsHeight = 50;
 const containerStyle = {
-  borderWith: '1px',
-  borderColor: '#F1F1F1',
-  backgroundColor: '#3498DB',
-  paddingTop: '5px',
-  paddingBottom: '5px',
-  paddingLeft: '5px',
-  paddingRight: '5px'
+  borderWith:       '1px',
+  borderColor:      '#F1F1F1',
+  backgroundColor:  '#3498DB',
+  paddingTop:       '5px',
+  paddingBottom:    '5px',
+  paddingLeft:      '5px',
+  paddingRight:     '5px',
+  overflow:         'hidden'
 };
 
 class WizardMotion extends Component {
@@ -30,7 +31,7 @@ class WizardMotion extends Component {
       currentStep: initialStep,
       previousStep: null,
       xAxisInial: 0,
-      xAxisMovementOffset: 50
+      xAxisMovementOffset: 10
     };
     this.handlesGoNextStep = this.handlesGoNextStep.bind(this);
     this.handlesGoPrevStep = this.handlesGoPrevStep.bind(this);
@@ -49,12 +50,13 @@ class WizardMotion extends Component {
           height: `${height}px`,
           ...containerStyle
         }}>
+        <div style={{width: `${width * 100}`, overflow: 'hidden'}}>
         {
           steps.map(
             (step, stepIdx) => {
               return (
                 <Motion
-                  style={this.getThisStepStyle(step.id)}
+                  style={this.getThisStepStyle(stepIdx)}
                   key={stepIdx}>
                   {
                     ({x, opacity, zIndex}) => {
@@ -64,10 +66,14 @@ class WizardMotion extends Component {
                             WebkitTransform: `translate3d(${x}px, 0, 0)`,
                             transform: `translate3d(${x}px, 0, 0)`,
                             opacity: `${opacity}`,
-                            top: 0,
-                            zIndex : `${zIndex}`
+                            zIndex : `${zIndex}`,
+                            float: 'left',
+                            backgroundColor: `${step.backColor}`,
+                            width: `${width}px`
                           }}>
-                          a step
+                          <h3>
+                            step: {step.id}
+                          </h3>
                         </div>
                       );
                     }
@@ -77,6 +83,7 @@ class WizardMotion extends Component {
             }
           )
         }
+        </div>
         <div
           style={{height: `${buttonsHeight}px`}}
           className="pull-right">
@@ -132,30 +139,26 @@ class WizardMotion extends Component {
     const backwardMove = -1 * (width + xAxisMovementOffset);
 
     if (previousStep) {
-      const stepDelta = stepId - previousStep;
+      const stepDelta = stepId + 1 - previousStep;
       if (stepDelta < 0) {
         return {
-          x: spring(backwardMove, presets.stiff),
-          opacity: 0,
-          zIndex: 0
+          x: spring(backwardMove * (stepId + 1), presets.stiff),
+          opacity: 0
         };
       } else if (stepDelta > 0) {
         return {
           x: spring(forwardMove, presets.gentle),
-          opacity: 0,
-          zIndex: 0
+          opacity: 0
         };
       } else {
-        // const opacity =
         return {
           x: spring(noMove, presets.gentle),
-          opacity: 1,
-          zIndex: spring(1)
+          opacity: 1
         };
       }
     } else {
       // no previous step: so movement is forward
-      const move =  stepId === currentStep ? noMove : forwardMove;
+      const move =  stepId + 1 === currentStep ? noMove : forwardMove;
       return {
         x: spring(move, presets.gentle),
         opacity: 0
@@ -208,6 +211,6 @@ WizardMotion.propTypes = {
 
 WizardMotion.defaultProps = {
   horizontalCentered: false
-}
+};
 
 export default WizardMotion;

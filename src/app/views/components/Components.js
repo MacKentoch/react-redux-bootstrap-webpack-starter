@@ -46,7 +46,7 @@ class Components extends Component {
               Motion wizard:
             </h1>
             <WizardMotion
-              width={200}
+              width={500}
               height={400}
               horizontalCentered={true}
               initialStep={1}
