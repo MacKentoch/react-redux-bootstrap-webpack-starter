@@ -49,13 +49,13 @@ describe('<NavigationBar />', () => {
   };
 
   it('should render a NavigationBar', () => {
-    const wrapper = mount(<NavigationBar {...props} />);
+    const wrapper = shallow(<NavigationBar {...props} />);
     expect(wrapper).to.exist();
   });
 
   it('should display a brand name', () => {
     const wrapper = mount(<NavigationBar {...props} />);
-    expect(wrapper.props().brand).to.equal(testBrandName);
+    expect(wrapper.prop('brand')).to.equal(testBrandName);
   });
 
   describe('child <LeftNav />', () => {

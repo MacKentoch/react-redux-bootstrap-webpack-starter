@@ -1,7 +1,6 @@
 import React              from 'react';
 import {
-  shallow,
-  mount
+  shallow
 }                         from 'enzyme';
 import chai, {expect}     from 'chai';
 import dirtyChai          from 'dirty-chai';
@@ -34,7 +33,7 @@ describe('<RightNav />', () => {
   };
 
   it('should render a RightNav', () => {
-    const wrapper = mount(<RightNav {...props} />);
+    const wrapper = shallow(<RightNav {...props} />);
 
     expect(wrapper).to.exist();
   });

@@ -50,6 +50,8 @@ Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-d
 - enzyme
 - Sinon
 
+*coverage*
+- nyc
 
 
 
@@ -93,7 +95,7 @@ npm run start-win
 - `ctrl+h`: to toggle devtools panel
 - `ctrl+q`: to change devtools panel position (*by default: on the right*)
 
-### tests
+### tests **without** coverage
 
 *General case:*
 ```bash
@@ -103,6 +105,18 @@ npm run test
 *Windows - particular - case:*
 ```bash
 npm run test-win
+```
+
+### tests **with** coverage
+
+*General case:*
+```bash
+npm run coverage
+```
+
+*Windows - particular - case:*
+```bash
+npm run coverage-win
 ```
 
 ### bundle production mode

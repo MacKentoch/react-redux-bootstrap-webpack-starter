@@ -1,7 +1,6 @@
 import React              from 'react';
 import {
-  shallow,
-  mount
+  shallow
 }                         from 'enzyme';
 import chai, {expect}     from 'chai';
 import sinon              from 'sinon';
@@ -25,7 +24,7 @@ describe('<LeftNavButton />', () => {
   };
 
   it('should render a LeftNavButton', () => {
-    const wrapper = mount(<LeftNavButton {...props} />);
+    const wrapper = shallow(<LeftNavButton {...props} />);
 
     expect(wrapper).to.exist();
   });

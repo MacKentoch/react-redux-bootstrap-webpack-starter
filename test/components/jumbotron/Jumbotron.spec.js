@@ -1,15 +1,14 @@
-import React              from 'react';
+import React          from 'react';
 import {
-  mount,
   shallow
 }                     from 'enzyme';
 import chai, {expect} from 'chai';
-// import dirtyChai      from 'dirty-chai';
+import dirtyChai      from 'dirty-chai';
 
 import { Jumbotron }  from '../../../src/app/components';
 
 // avoid to eslint-disable for chai no-unsued-expressions
-// chai.use(dirtyChai);
+chai.use(dirtyChai);
 
 describe('<Jumbotron />', () => {
   const props = {children: <h1>test</h1>};
