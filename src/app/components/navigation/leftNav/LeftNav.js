@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import LeftNavButton        from './leftNavButton/leftNavButton';
+import LeftNavButton        from './leftNavButton/LeftNavButton';
 
 const LeftNav = ({ leftLinks, onLeftNavButtonClick }) => {
   return (
