@@ -2,7 +2,6 @@ Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-d
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
-[![npm](https://img.shields.io/npm/dt/express.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 
 #### full ES6-ES2015
 
