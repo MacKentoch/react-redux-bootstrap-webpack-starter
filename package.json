@@ -1,6 +1,6 @@
 {
   "name": "react-redux-bootstrap-webpack-starter",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
   "main": "src/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "prod": "NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
     "start": "NODE_ENV=dev babel-node --presets es2015 ./server.hot.reload.js",
-    
+
     "dev-win": "setx NODE_ENV=dev webpack",
     "test-win": "setx NODE_ENV=test nyc mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
     "prod-win": "setx NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
