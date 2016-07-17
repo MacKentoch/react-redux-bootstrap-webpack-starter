@@ -46,15 +46,12 @@ Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-d
   - svg and fonts formats
 - autoprefixer (css and sass)
 
-*tests:*
+**tests:**
 - Mocha
 - Chai (*+ dirty-chai*)
 - enzyme
 - Sinon
-
-*coverage*
 - nyc
-
 
 
 ## Usage
