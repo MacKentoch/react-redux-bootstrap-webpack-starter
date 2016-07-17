@@ -9,11 +9,11 @@
     "coverage": "NODE_ENV=test nyc mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
     "prod": "NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
     "start": "NODE_ENV=dev babel-node --presets es2015 ./server.hot.reload.js",
-    "dev-win": "env NODE_ENV=dev webpack",
-    "test-win": "env NODE_ENV=test mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
-    "coverage-win": "env NODE_ENV=test nyc mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
-    "prod-win": "env NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
-    "start-win": "env NODE_ENV=dev babel-node --presets es2015 ./server.hot.reload.js"
+    "dev-win": "setx NODE_ENV=dev webpack",
+    "test-win": "setx NODE_ENV=test mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
+    "coverage-win": "setx NODE_ENV=test nyc mocha test/.setup.js test/**/*.spec.js --compilers js:babel-core/register --recursive",
+    "prod-win": "setx NODE_ENV=production webpack -p --config webpack.production.config.babel.js ",
+    "start-win": "setx NODE_ENV=dev babel-node --presets es2015 ./server.hot.reload.js"
   },
   "keywords": [
     "react",
@@ -28,6 +28,13 @@
     "redux-devtools",
     "devtools"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter/issues"
+  },
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
   "devDependencies": {
