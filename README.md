@@ -94,7 +94,7 @@ npm run start-win
 - `ctrl+h`: to toggle devtools panel
 - `ctrl+q`: to change devtools panel position (*by default: on the right*)
 
-### tests **without** coverage
+### tests
 
 *General case:*
 ```bash
@@ -104,18 +104,6 @@ npm run test
 *Windows - particular - case:*
 ```bash
 npm run test-win
-```
-
-### tests **with** coverage
-
-*General case:*
-```bash
-npm run coverage
-```
-
-*Windows - particular - case:*
-```bash
-npm run coverage-win
 ```
 
 ### bundle production mode
