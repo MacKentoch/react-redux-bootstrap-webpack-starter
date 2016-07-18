@@ -5,7 +5,7 @@ import {
 import chai, {expect}     from 'chai';
 import sinon              from 'sinon';
 import dirtyChai          from 'dirty-chai';
-import LeftNavButton      from '../../../../../src/app/components/navigation/leftNav/leftNavButton/LeftNavButton';
+import RightNavButton      from '../../../../../src/app/components/navigation/rightNav/rightNavButton/RightNavButton';
 
 chai.use(dirtyChai);
 
@@ -16,22 +16,22 @@ const viewNameMock = 'view name';
 // avoid to eslint-disable for chai no-unsued-expressions
 chai.use(dirtyChai);
 
-describe('<LeftNavButton />', () => {
+describe('<RightNavButton />', () => {
   const props = {
     link: linkMock,
     label: labelMock,
     viewName: viewNameMock
   };
 
-  it('should render a LeftNavButton', () => {
-    const wrapper = shallow(<LeftNavButton {...props} />);
+  it('should render a RightNavButton', () => {
+    const wrapper = shallow(<RightNavButton {...props} />);
 
     expect(wrapper).to.exist();
   });
 
   describe('child <Link />', () => {
     it('should exist', () => {
-      const wrapper = shallow(<LeftNavButton {...props} />);
+      const wrapper = shallow(<RightNavButton {...props} />);
       const Link = wrapper.find('Link');
 
       expect(Link).to.exist();
@@ -42,7 +42,7 @@ describe('<LeftNavButton />', () => {
       const onClickStub = sinon.spy();
 
       const wrapper = shallow(
-        <LeftNavButton
+        <RightNavButton
           {...props}
           onClick={onClickStub}
           />

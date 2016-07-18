@@ -1,9 +1,6 @@
 import React              from 'react';
-import {
-  shallow
-}                         from 'enzyme';
+import { shallow }        from 'enzyme';
 import chai, {expect}     from 'chai';
-import sinon              from 'sinon';
 import dirtyChai          from 'dirty-chai';
 import LeftNav            from '../../../../src/app/components/navigation/leftNav/LeftNav';
 
