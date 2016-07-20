@@ -26,6 +26,7 @@ describe('About VIEW ', () => {
 
   it('should call enterAbout action', () => {
     const enterAboutAction = sinon.spy(); // called on componentDidMount
+    /* eslint-disable no-unused-vars */
     const wrapper = mount(
       <About
         currentView={props.currentView}
@@ -33,8 +34,20 @@ describe('About VIEW ', () => {
         leaveAbout={()=>{}}
       />
     );
+    /* eslint-enable no-unused-vars */
     expect(enterAboutAction).to.have.property('callCount', 1);
   });
 
-
+  it('should call leaveAbout action', () => {
+    const leaveAboutAction = sinon.spy(); // called on componentDidMount
+    const wrapper = mount(
+      <About
+        currentView={props.currentView}
+        enterAbout={()=>{}}
+        leaveAbout={leaveAboutAction}
+      />
+    );
+    wrapper.unmount();
+    expect(leaveAboutAction).to.have.property('callCount', 1);
+  });
 });
