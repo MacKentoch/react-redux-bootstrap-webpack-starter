@@ -19,6 +19,6 @@ UpIcon.propTypes = {
 
 UpIcon.defaultProps = {
   color: '#F1F1F1'
-}
+};
 
 export default UpIcon;
