@@ -8,7 +8,7 @@ describe('fetchTools service', () => {
   describe('checkStatus', () => {
     const response = {status: 200, data: 'response mock'};
     it('should return response', () => {
-      expect(fetchTools.checkStatus(response)).to.equal(response);
+      expect(fetchTools.checkStatus(response)).to.deep.equal(response);
     });
   });
 });
