@@ -15,7 +15,7 @@ const dateFormat = 'DD/MM/YYYY HH:mm';
 chai.use(dirtyChai);
 
 
-describe('redux - action cretator "views"', () => {
+describe('redux - action creator "views"', () => {
   const  now = moment().format(dateFormat);
 
   it('should return enterHome action object', () => {
