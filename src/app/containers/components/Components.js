@@ -1,6 +1,6 @@
 import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as viewsActions      from '../../redux/actions';
+import * as viewsActions      from '../../redux/modules/views';
 import { Components }         from '../../views';
 
 const mapStateToProps = (state) => {

@@ -8,7 +8,7 @@ import {
   leaveAbout,
   enterComponents,
   leaveComponents
-}                       from '../../../src/app/redux/actions';
+}                       from '../../../src/app/redux/modules/views';
 
 const dateFormat = 'DD/MM/YYYY HH:mm';
 
