@@ -23,18 +23,29 @@ const containerStyle = {
 };
 
 class WizardMotion extends Component {
-  constructor(props) {
-    super(props);
-    const { steps, initialStep } = props;
-    this.state = {
-      steps: [...steps],
-      currentStep: initialStep,
-      previousStep: null,
-      xAxisInial: 0,
-      xAxisMovementOffset: 10
-    };
-    this.handlesGoNextStep = this.handlesGoNextStep.bind(this);
-    this.handlesGoPrevStep = this.handlesGoPrevStep.bind(this);
+
+  state = {
+    steps: [],
+    currentStep: 0,
+    previousStep: null,
+    xAxisInial: 0,
+    xAxisMovementOffset: 10
+  }
+
+  componentDidMount() {
+    const { steps, initialStep } = this.props;
+
+    initState.apply(this);
+
+    function initState() {
+      this.setState({
+        steps: [...steps],
+        currentStep: initialStep,
+        previousStep: null,
+        xAxisInial: 0,
+        xAxisMovementOffset: 10
+      });
+    }
   }
 
   render() {
@@ -104,7 +115,7 @@ class WizardMotion extends Component {
     );
   }
 
-  handlesGoNextStep(event) {
+  handlesGoNextStep = (event) => {
     event.preventDefault();
 
     const { steps, currentStep, previousStep } = this.state;
@@ -117,7 +128,7 @@ class WizardMotion extends Component {
     });
   }
 
-  handlesGoPrevStep(event) {
+  handlesGoPrevStep = (event) => {
     event.preventDefault();
 
     const { currentStep, previousStep } = this.state;

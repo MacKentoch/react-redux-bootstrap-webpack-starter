@@ -1,7 +1,7 @@
-import { connect }        from 'react-redux';
-import * as viewsActions  from '../../redux/actions';
-import { Components }     from '../../views';
-
+import { connect }            from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as viewsActions      from '../../redux/actions';
+import { Components }         from '../../views';
 
 const mapStateToProps = (state) => {
   return {
@@ -10,11 +10,24 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    enterComponents: () => dispatch(viewsActions.enterComponents()),
-    leaveComponents: () => dispatch(viewsActions.leaveComponents())
-  };
+  return bindActionCreators(
+    {
+      enterComponents: viewsActions.enterComponents,
+      leaveComponents: viewsActions.leaveComponents
+    },
+    dispatch
+  );
 };
+
+/*
+  without bindActionCreators:
+ */
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     enterComponents: () => dispatch(viewsActions.enterComponents()),
+//     leaveComponents: () => dispatch(viewsActions.leaveComponents())
+//   };
+// };
 
 export default connect(
     mapStateToProps,

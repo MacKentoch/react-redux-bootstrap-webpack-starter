@@ -9,18 +9,11 @@ import BackToTopButton  from './backToTopButton/BackToTopButton';
 import {Motion, spring, presets} from 'react-motion';
 
 class BackToTop extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      windowScrollY: 0,
-      showBackButton: false
-    };
-
-    this.handleWindowScroll = this.handleWindowScroll.bind(this);
-    this.scrollDone = this.scrollDone.bind(this);
-    this.handlesOnBackButtonClick = this.handlesOnBackButtonClick.bind(this);
-  }
+  state = {
+    windowScrollY: 0,
+    showBackButton: false
+  };
 
   componentWillMount() {
     window.addEventListener('scroll', this.handleWindowScroll);
@@ -49,14 +42,13 @@ class BackToTop extends Component {
     );
   }
 
-  handleWindowScroll() {
+  handleWindowScroll = () => {
     if ($) {
       const { windowScrollY } = this.state;
       const { minScrollY } = this.props;
       const currentWindowScrollY = $(window).scrollTop();
 
       if (windowScrollY !== currentWindowScrollY) {
-        // console.log('scrollTop: ', currentWindowScrollY);
         const shouldShowBackButton = currentWindowScrollY >= minScrollY ? true : false;
 
         this.setState({
@@ -71,14 +63,14 @@ class BackToTop extends Component {
     }
   }
 
-  scrollDone() {
+  scrollDone = () => {
     const { onScrollDone } = this.props;
     if (onScrollDone) {
       onScrollDone();
     }
   }
 
-  handlesOnBackButtonClick(event) {
+  handlesOnBackButtonClick = (event) => {
     event.preventDefault();
     const { scrollTo, minScrollY } = this.props;
     const { windowScrollY } = this.state;

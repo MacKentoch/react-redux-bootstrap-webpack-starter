@@ -9,18 +9,13 @@ import {
 import navigationModel        from '../../models/navigation.json';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
-import * as viewsActions      from '../../redux/actions';
+import * as viewsActions      from '../../redux/modules/views';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      navModel : navigationModel
-    };
-    // bind callbacks here (rather than in render()) for better performance
-    this.handleLeftNavItemClick = this.handleLeftNavItemClick.bind(this);
-    this.handleRightNavItemClick = this.handleRightNavItemClick.bind(this);
-  }
+
+  state = {
+    navModel : navigationModel
+  };
 
   render() {
     const { navModel } = this.state;
@@ -46,15 +41,14 @@ class App extends Component {
     );
   }
 
-  handleLeftNavItemClick(event, viewName) {
+  handleLeftNavItemClick = (event, viewName) => {
     // something to do here?
   }
 
-  handleRightNavItemClick(event, viewName) {
+  handleRightNavItemClick = (event, viewName) => {
     // something to do here?
   }
 }
-
 
 // statics :
 App.propTypes = {
@@ -63,7 +57,6 @@ App.propTypes = {
   location:   PropTypes.object,
   actions:    PropTypes.object
 };
-
 
 const mapStateToProps = (state) => {
   return {

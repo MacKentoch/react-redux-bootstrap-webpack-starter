@@ -6,16 +6,15 @@ import cx             from 'classnames';
 import shallowCompare from 'react-addons-shallow-compare';
 
 class About extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      animated: true,
-      viewEntersAnim: true
-    };
-  }
+
+  state = {
+    animated: true,
+    viewEntersAnim: true
+  };
 
   componentDidMount() {
-    this.props.enterAbout();
+    const { enterAbout } = this.props;
+    enterAbout();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -23,7 +22,8 @@ class About extends Component {
   }
 
   componentWillUnmount() {
-    this.props.leaveAbout();
+    const { leaveAbout } = this.props;
+    leaveAbout();
   }
 
   render() {

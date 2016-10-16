@@ -1,6 +1,7 @@
-import { connect }        from 'react-redux';
-import * as viewsActions  from '../../redux/actions';
-import { About }           from '../../views';
+import { connect }            from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as viewsActions      from '../../redux/modules/views';
+import { About }              from '../../views';
 
 
 const mapStateToProps = (state) => {
@@ -10,11 +11,24 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    enterAbout: () => dispatch(viewsActions.enterAbout()),
-    leaveAbout: () => dispatch(viewsActions.leaveAbout())
-  };
+  return bindActionCreators(
+    {
+      enterAbout: viewsActions.enterAbout,
+      leaveAbout: viewsActions.leaveAbout
+    },
+    dispatch
+  );
 };
+
+/*
+  without bindActionCreators:
+ */
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     enterAbout: () => dispatch(viewsActions.enterAbout()),
+//     leaveAbout: () => dispatch(viewsActions.leaveAbout())
+//   };
+// };
 
 export default connect(
     mapStateToProps,

@@ -9,16 +9,15 @@ import {
 }                     from '../../components';
 
 class Components extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      animated: true,
-      viewEntersAnim: true
-    };
-  }
+
+  state = {
+    animated: true,
+    viewEntersAnim: true
+  };
 
   componentDidMount() {
-    this.props.enterComponents();
+    const { enterComponents } =  this.props;
+    enterComponents();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -26,7 +25,8 @@ class Components extends Component {
   }
 
   componentWillUnmount() {
-    this.props.leaveComponents();
+    const { leaveComponents } =  this.props;
+    leaveComponents();
   }
 
   render() {
@@ -71,8 +71,7 @@ class Components extends Component {
 Components.propTypes = {
   currentView: PropTypes.string.isRequired,
   enterComponents: PropTypes.func.isRequired,
-  leaveComponents: PropTypes.func.isRequired,
-
-}
+  leaveComponents: PropTypes.func.isRequired
+};
 
 export default Components;

@@ -8,16 +8,15 @@ import shallowCompare from 'react-addons-shallow-compare';
 import { Link }       from 'react-router';
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      animated: true,
-      viewEntersAnim: true
-    };
-  }
+
+  state = {
+    animated: true,
+    viewEntersAnim: true
+  };
 
   componentDidMount() {
-    this.props.enterHome();
+    const { enterHome } = this.props;
+    enterHome();
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -25,7 +24,8 @@ class Home extends Component {
   }
 
   componentWillUnmount() {
-    this.props.leaveHome();
+    const { leaveHome } = this.props;
+    leaveHome();
   }
 
   render() {

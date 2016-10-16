@@ -6,10 +6,6 @@ import { Link }       from 'react-router';
 import shallowCompare from 'react-addons-shallow-compare';
 
 class LeftNavButton extends Component {
-  constructor(props) {
-    super(props);
-    this.handleLeftNavItemClick = this.handleLeftNavItemClick.bind(this);
-  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
@@ -28,7 +24,7 @@ class LeftNavButton extends Component {
     );
   }
 
-  handleLeftNavItemClick(event) {
+  handleLeftNavItemClick = (event) => {
     const { onClick, viewName } = this.props;
     onClick(event, viewName);
   }
