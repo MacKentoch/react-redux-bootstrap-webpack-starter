@@ -16,6 +16,9 @@ import {
   ConnectedAbout,
   ConnectedComponents
 }                               from '../containers';
+import {
+  PageNotFound
+}                               from '../views';
 import configureStore           from '../redux/store/configureStore';
 import DevTools                 from '../redux/devTools/DevTools.jsx';
 
@@ -31,6 +34,7 @@ export const Routes = () => {
             <IndexRoute component={ConnectedHome} />
             <Route path="/components" component={ConnectedComponents} />
             <Route path="/about" component={ConnectedAbout} />
+            <Route path="*" component={PageNotFound} />
           </Route>
         </Router>
         { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }
