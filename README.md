@@ -14,7 +14,6 @@ Full ES2015 React + React-Router + Redux + Bootstrap with Hot Reload and redux-d
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
 
-[preview here](https://mackentoch.github.io/react-redux-bootstrap-webpack-starter)
 
 ## Detailed Content
 
