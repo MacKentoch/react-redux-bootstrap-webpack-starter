@@ -6,7 +6,7 @@ import {
 }                         from 'redux';
 import createLogger       from 'redux-logger';
 import thunkMiddleware    from 'redux-thunk';
-import * as reducers      from '../reducers';
+import * as reducers      from '../modules/reducers';
 import { routerReducer }  from 'react-router-redux';
 
 const loggerMiddleware = createLogger({

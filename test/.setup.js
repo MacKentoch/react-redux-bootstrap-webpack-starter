@@ -1,4 +1,6 @@
-import { jsdom } from 'jsdom';
+require('babel-register')();
+
+const { jsdom } = require('jsdom');
 
 const exposedProperties = ['window', 'navigator', 'document'];
 

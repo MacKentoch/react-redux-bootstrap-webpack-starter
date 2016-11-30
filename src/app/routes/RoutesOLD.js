@@ -8,22 +8,6 @@ import {
   // hashHistory,
   browserHistory
  }                              from 'react-router';
-import { Provider }             from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
-import {
-  App,
-  ConnectedHome,
-  ConnectedAbout,
-  ConnectedComponents
-}                               from '../containers';
-import {
-  PageNotFound
-}                               from '../views';
-import configureStore           from '../redux/store/configureStore';
-import DevTools                 from '../redux/devTools/DevTools.jsx';
-
-const store         = configureStore();
-const syncedHistory = syncHistoryWithStore(browserHistory, store);
 
 export const Routes = () => {
   return (

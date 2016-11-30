@@ -1,9 +1,9 @@
-import webpack      from 'webpack';
-import path         from 'path';
-import autoprefixer from 'autoprefixer';
-import precss       from 'precss';
+const webpack      = require('webpack');
+const path         = require('path');
+const autoprefixer = require('autoprefixer');
+const precss       = require('precss');
 
-const assetsDir       = path.resolve(__dirname, 'public/assets');
+const assetsDir       = path.join(__dirname, 'docs/public/assets');
 const nodeModulesDir  = path.resolve(__dirname, 'node_modules');
 
 const config = {
@@ -32,13 +32,13 @@ const config = {
       test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
       loader: 'url?limit=100000&name=[name].[ext]'
     }
-  ]},
+    ]},
   plugins: [
     getImplicitGlobals(),
     setNodeEnv()
   ],
   postcss: function () {
-    return [precss, autoprefixer];
+    return [precss, autoprefixer({ browsers: ['last 2 versions'] })];
   }
 };
 /*
@@ -59,4 +59,4 @@ function setNodeEnv() {
   });
 }
 
-export default config;
+module.exports = config;

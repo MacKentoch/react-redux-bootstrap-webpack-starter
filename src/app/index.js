@@ -1,7 +1,9 @@
 import React                from 'react';
-import ReactDOM             from 'react-dom';
+import {render}             from 'react-dom';
 import injectTpEventPlugin  from 'react-tap-event-plugin';
-import { Routes }           from './routes/Route';
+import { AppContainer }     from 'react-hot-loader';
+import Root                 from './Root';
+import routes               from './routes/Routes';
 
 import 'babel-polyfill';
 import 'animate.css';
@@ -17,4 +19,23 @@ const BootstrapedElement    = document.getElementById(ELEMENT_TO_BOOTSTRAP);
 
 injectTpEventPlugin();
 
-ReactDOM.render(<Routes />, BootstrapedElement);
+const renderApp = appRoutes => {
+  render(
+    <AppContainer>
+      <Root routes={appRoutes} />
+    </AppContainer>,
+    BootstrapedElement
+  );
+};
+
+renderApp(routes);
+
+if (module.hot) {
+  module.hot.accept(
+    './routes/Routes',
+    () => {
+      const newRoutes = require('./routes/Routes').default;
+      renderApp(newRoutes);
+    }
+  );
+}
