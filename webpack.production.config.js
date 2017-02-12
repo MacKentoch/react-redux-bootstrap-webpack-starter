@@ -37,7 +37,7 @@ const config = {
     getImplicitGlobals(),
     setNodeEnv()
   ],
-  postcss: function () {
+  postcss() {
     return [precss, autoprefixer({ browsers: ['last 2 versions'] })];
   }
 };

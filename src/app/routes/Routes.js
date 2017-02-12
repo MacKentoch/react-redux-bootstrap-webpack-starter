@@ -6,8 +6,7 @@ import {
 import {
   App,
   ConnectedHome,
-  ConnectedAbout,
-  ConnectedComponents
+  ConnectedAbout
 }                               from '../containers';
 import {
   PageNotFound
@@ -16,12 +15,15 @@ import {
 const Routes = () => {
   return (
     <Route path="/" component={App} >
-      <IndexRoute component={ConnectedHome} />
-      <Route path="/components" component={ConnectedComponents} />
-      <Route path="/about" component={ConnectedAbout} />
-      <Route path="*" component={PageNotFound} />
+    <IndexRoute component={ConnectedHome} onEnter={scrollToTop} />
+    <Route path="/about" component={ConnectedAbout} onEnter={scrollToTop} />
+    <Route path="*" component={PageNotFound} onEnter={scrollToTop} />
     </Route>
   );
 };
+
+function scrollToTop() {
+  window.scrollTo(0, 0);
+}
 
 export default Routes;
