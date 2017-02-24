@@ -1,9 +1,9 @@
-import { createStore, compose, combineReducers, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware } from 'redux';
 import { persistState }         from 'redux-devtools';
-import { routerReducer }        from 'react-router-redux';
+// import { routerReducer }        from 'react-router-redux';
 import createLogger             from 'redux-logger';
 import thunkMiddleware          from 'redux-thunk';
-import * as reducers            from '../modules/reducers';
+import reducer                  from '../modules/reducers';
 import DevTools                 from '../devTools/DevTools.jsx';
 
 
@@ -24,15 +24,8 @@ function getDebugSessionKey() {
   return (matches && matches.length > 0)? matches[1] : null;
 }
 
-// combine reducers -> createStore reducer
-const reducer = combineReducers({
-  ...reducers,
-  routing: routerReducer
-});
-
 export default function configureStore(initialState) {
   const store = createStore(reducer, initialState, enhancer);
-  // checks if webpack HMR:
   if (module.hot) {
     module.hot.accept('../modules/reducers', () =>
       store.replaceReducer(require('../modules/reducers').default)
