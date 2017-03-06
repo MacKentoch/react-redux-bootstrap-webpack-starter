@@ -14,8 +14,8 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
 
-## Breaking changes since v0.5.0
-ReactJS v15.4.x required react-hot-loader to be v3+ (*previous react-hot-loader was v1.x and v1.3.1 came too late*). So This starter had to include breaking changes to follow all of that.
+## Breaking changes since v2.0.0
+redux-devtools is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
 
 ## Detailed Content
 
@@ -23,7 +23,7 @@ ReactJS v15.4.x required react-hot-loader to be v3+ (*previous react-hot-loader 
 - React JS (15.x - [github :link:](https://github.com/facebook/react))
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
-- Redux-devtools (*want to time travel your application State?*)
+- redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
 - React-Router-Redux (*previously named react-simple-router*)
 - react-router (2.x- [github :link:](https://github.com/reactjs/react-router))
 - Bootstrap (3.x - [github :link:](https://github.com/twbs/bootstrap))
@@ -77,9 +77,6 @@ npm run dev
 npm run dev-win
 ```
 
-##### Note : redux-devtools shortcuts
-- `ctrl+h`: to toggle devtools panel
-- `ctrl+q`: to change devtools panel position (*by default: on the right*)
 
 ### dev : hot reload mode (*+ redux-devtools*)
 
@@ -93,10 +90,6 @@ npm run start
 ```bash
 npm run start-win
 ```
-
-##### Note : redux-devtools shortcuts
-- `ctrl+h`: to toggle devtools panel
-- `ctrl+q`: to change devtools panel position (*by default: on the right*)
 
 ### tests
 

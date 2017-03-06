@@ -11,7 +11,6 @@ import {
 import { Provider }             from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore           from './redux/store/configureStore';
-import DevTools                 from './redux/devTools/DevTools.jsx';
 
 const store         = configureStore();
 const syncedHistory = syncHistoryWithStore(browserHistory, store);
@@ -26,7 +25,6 @@ class Root extends Component {
           <Router history={syncedHistory}>
             {routes()}
           </Router>
-          { process.env.NODE_ENV !== 'production' ? <DevTools /> : null }
         </div>
       </Provider>
     );
