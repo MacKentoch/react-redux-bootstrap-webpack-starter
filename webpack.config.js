@@ -3,7 +3,7 @@ const path         = require('path');
 const autoprefixer = require('autoprefixer');
 const precss       = require('precss');
 
-const assetsDir       = path.resolve(__dirname, 'public/assets');
+const assetsDir       = path.resolve(__dirname, 'docs/public/assets');
 const nodeModulesDir  = path.resolve(__dirname, 'node_modules');
 
 const config = {
