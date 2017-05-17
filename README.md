@@ -14,6 +14,14 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
 
+## Breaking changes since v2.1.0
+- `whatwg-fetch` is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
+- `react-addons-shallow-compare` is removed since ReactJS 15.4+ PureComponent does the job
+- splits vendors script and css from main bundle
+- create map file (DEV)
+- 
+
+
 ## Breaking changes since v2.0.0
 redux-devtools is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
 
@@ -35,7 +43,7 @@ redux-devtools is now replaced by [redux-devtools-extension](https://github.com/
 - Webpack ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
 - react-addons-shallow-compare (*pure render mixin equivalent for ES6*)
-- whatwg-fetch (*Why: because it is a fetch `Web API` polyfill*)
+- axios ([github :link:](https://github.com/mzabriskie/axios) *Why: simple, complete, isomorphic ...*)
 
 **Tool chain:**
 - babel 6+

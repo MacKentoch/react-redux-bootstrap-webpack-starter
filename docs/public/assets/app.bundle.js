@@ -2311,7 +2311,6 @@ webpackJsonp([1],{
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var test = true;
 	      return _react2.default.createElement(
 	        _AnimatedView2.default,
 	        null,

@@ -1,6 +1,6 @@
 {
   "name": "react-redux-bootstrap-webpack-starter",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
   "main": "src/index.js",
   "scripts": {
