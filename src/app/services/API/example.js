@@ -1,17 +1,24 @@
+import axios          from 'axios';
 import {
+  getMethod,
+  jsonHeader,
   defaultOptions,
-  checkStatus,
-  parseJSON,
   getLocationOrigin
 }                     from '../fetchTools';
 
-export const getSomething = () => {
-  const url = `${getLocationOrigin()}/api/getSomething`;
+export const getSomething = (endpoint = 'api/getSomethingByDefault') => {
+  const method  = getMethod.method;
+  const headers = jsonHeader;
+  const url     = `${getLocationOrigin()}/${endpoint}`;
   const options = {...defaultOptions};
 
-  return fetch(url, options)
-    .then(checkStatus)
-    .then(parseJSON)
-    .then(data => data)
-    .catch(error => Promise.reject(error));
+  return axios.request({
+    method,
+    url,
+    withCredentials: true,
+    ...headers,
+    ...options
+  })
+  .then(data => data)
+  .catch(error => Promise.reject(error));
 };
