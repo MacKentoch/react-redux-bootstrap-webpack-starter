@@ -85,6 +85,7 @@
     "babel-polyfill": "^6.16.0",
     "bootstrap": "^3.3.7",
     "classnames": "^2.2.5",
+    "flow-bin": "^0.46.0",
     "font-awesome": "^4.7.0",
     "jquery": "^2.2.1",
     "js-base64": "^2.1.9",
