@@ -17,10 +17,9 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 ## Breaking changes since v2.1.0
 - `whatwg-fetch` is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
 - `react-addons-shallow-compare` is removed since ReactJS 15.4+ PureComponent does the job
-- splits vendors script and css from main bundle
+- splits vendors script and css from main bundle (*extract-text-webpack-plugin v1.x*)
 - create map file (DEV)
 - prepared `launch.json` for VSCode debugger
-
 
 ## Breaking changes since v2.0.0
 - redux-devtools is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
