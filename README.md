@@ -19,30 +19,29 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 - `react-addons-shallow-compare` is removed since ReactJS 15.4+ PureComponent does the job
 - splits vendors script and css from main bundle
 - create map file (DEV)
-- 
+- prepared `launch.json` for VSCode debugger
 
 
 ## Breaking changes since v2.0.0
-redux-devtools is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
+- redux-devtools is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
 
 ## Detailed Content
 
 **Front:**
-- React JS (15.x - [github :link:](https://github.com/facebook/react))
+- React JS (15.4.x+ - [github :link:](https://github.com/facebook/react))
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
 - React-Router-Redux (*previously named react-simple-router*)
-- react-router (2.x- [github :link:](https://github.com/reactjs/react-router))
+- react-router (3.x- [github :link:](https://github.com/reactjs/react-router))
 - Bootstrap (3.x - [github :link:](https://github.com/twbs/bootstrap))
 - React-Bootstrap ([github :link:](https://github.com/react-bootstrap/react-bootstrap))
 - font-awesome ([github :link:](https://github.com/FortAwesome/Font-Awesome))
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - react-motion ([github :link:](https://github.com/chenglou/react-motion))
-- Webpack ([github :link:](https://github.com/webpack/webpack))
+- Webpack 1.x ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
-- react-addons-shallow-compare (*pure render mixin equivalent for ES6*)
 - axios ([github :link:](https://github.com/mzabriskie/axios) *Why: simple, complete, isomorphic ...*)
 
 **Tool chain:**
