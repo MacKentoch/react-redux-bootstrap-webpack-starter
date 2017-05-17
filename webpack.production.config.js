@@ -122,6 +122,7 @@ function uglify() {
       // Don't mangle function names
       'keep_fnames': false
     }
-});
+  });
+}
 
 module.exports = config;
