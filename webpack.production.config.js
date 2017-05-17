@@ -7,8 +7,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const assetsDir       = path.join(__dirname, 'docs/public/assets');
 const nodeModulesDir  = path.join(__dirname, 'node_modules');
 const vendorsDir      = path.join(__dirname, 'src/app/vendors');
-const srcDir          = path.join(__dirname, 'src/app');
 const indexFile       = path.join(__dirname, 'src/app/index.js');
+// const srcDir          = path.join(__dirname, 'src/app');
 
 const SPLIT_STYLE = true;
 
@@ -51,24 +51,30 @@ const config = {
     //   include: srcDir,
     //   exclude: [nodeModulesDir, vendorsDir]
     // }],
-    loaders: [{
-      test: /\.jsx?$/,
-      exclude: [nodeModulesDir],
-      loader: 'babel'
-    },  {
-      test: /\.css$/,
-      loader: SPLIT_STYLE ? ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader') : 'style!css!postcss'
-    }, {
-      test: /\.scss$/,
-      loader: SPLIT_STYLE ? ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader') : 'style!css!postcss!sass'
-    }, {
-      test: /\.json$/,
-      loader: 'json'
-    }, {
-      test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
-      loader: 'url?limit=100000&name=[name].[ext]'
-    }
-    ]},
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: [nodeModulesDir, vendorsDir],
+        loader: 'babel'
+      },
+      {
+        test: /\.css$/,
+        loader: SPLIT_STYLE ? ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader') : 'style!css!postcss'
+      },
+      {
+        test: /\.scss$/,
+        loader: SPLIT_STYLE ? ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!sass-loader') : 'style!css!postcss!sass'
+      },
+      {
+        test: /\.json$/,
+        loader: 'json'
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
+        loader: 'url?limit=100000&name=[name].[ext]'
+      }
+    ]
+  },
   plugins: [
     getImplicitGlobals(),
     setNodeEnv(),
