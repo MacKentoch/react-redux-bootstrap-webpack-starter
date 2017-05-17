@@ -11,7 +11,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch hot reload server",
-      "program": "${workspaceRoot}/src/server/index.js"
+      "program": "${workspaceRoot}/server.hot.reload.js"
     },
     {
       "type": "chrome",

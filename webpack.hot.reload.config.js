@@ -8,6 +8,7 @@ const vendorsDir  = path.join(__dirname, 'src/app/vendors');
 
 const config = {
   devtool: 'cheap-module-source-map',
+  debug: true,
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
