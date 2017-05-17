@@ -20,6 +20,8 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 - splits vendors script and css from main bundle (*extract-text-webpack-plugin v1.x*)
 - create map file (DEV)
 - prepared `launch.json` for VSCode debugger
+- add typescript types (typings)
+- add flow types (flow-typed)
 
 ## Breaking changes since v2.0.0
 - redux-devtools is now replaced by [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).
