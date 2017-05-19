@@ -14,6 +14,13 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
 
+## Breaking changes since v2.2.0
+- `cross-env` added so no more particular windows command
+- serve dev and prod bundles 
+ - `npm run serve-dev`: with server hot reload (*uses nodemon*)
+ - `npm run serve-prod`: production like node-express server
+
+
 ## Breaking changes since v2.1.0
 - `whatwg-fetch` is now replaced by [axios](https://github.com/mzabriskie/axios).
 - `react-addons-shallow-compare` is removed since ReactJS 15.4+ PureComponent does the job
@@ -75,59 +82,47 @@ npm install
 ```
 ### bundle dev mode (*+ redux-devtools*)
 
-*General case:*
 ```bash
 npm run dev
 ```
 
-*Windows - particular - case:*
-```bash
-npm run dev-win
-```
-
-
 ### dev : hot reload mode (*+ redux-devtools*)
-
-*General case:*
 
 ```bash
 npm run start
 ```
 
-*Windows - particular - case:*
-```bash
-npm run start-win
-```
-
 ### tests
 
-*General case:*
 ```bash
 npm run test
 ```
 
-*Windows - particular - case:*
-```bash
-npm run test-win
-```
-
 ### bundle production mode
 
-*General case:*
+
 ```bash
 npm run prod
 ```
 
-*Windows - particular - case:*
+### mini node-express server (for dev or prod bundles)
+
+with server hot reload:
 ```bash
-npm run prod-win
+npm run serve-dev
 ```
+
+without hot reload:
+```bash
+npm run serve-prod
+```
+
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Erwan DATIN
+Copyright (c) 2017 Erwan DATIN
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

@@ -1,3 +1,5 @@
+// @flow weak
+
 import {
   createStore,
   applyMiddleware,
@@ -5,6 +7,7 @@ import {
 }                         from 'redux';
 import thunkMiddleware    from 'redux-thunk';
 import reducer            from '../modules/reducers';
+import fetchMiddleware    from '../middleware/fetchMiddleware';
 
 // createStore : enhancer
 // NOTE: if redux devtools extension is not installed, we just keep using Redux compose
@@ -17,7 +20,10 @@ const composeEnhancers =  typeof window === 'object' &&  // for universal ("isom
                           : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunkMiddleware) // logger after thunk to avoid undefined actions
+  applyMiddleware(
+    thunkMiddleware,
+    fetchMiddleware
+  )
 );
 
 export default function configureStore(initialState) {

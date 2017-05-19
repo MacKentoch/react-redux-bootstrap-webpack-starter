@@ -1,3 +1,5 @@
+// @flow weak
+
 /* eslint-disable no-process-env */
 import React, {
   PropTypes,
@@ -17,6 +19,10 @@ const syncedHistory = syncHistoryWithStore(browserHistory, store);
 
 
 class Root extends Component {
+  propTypes = {
+    routes: PropTypes.any
+  };
+
   render() {
     const { routes } = this.props;
     return (
@@ -30,9 +36,5 @@ class Root extends Component {
     );
   }
 }
-
-Root.propTypes = {
-  routes: PropTypes.any
-};
 
 export default Root;

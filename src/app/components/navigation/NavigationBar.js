@@ -1,9 +1,16 @@
+// @flow weak
+
 import React, {PropTypes} from 'react';
 import Humburger          from './humburger/Humburger';
 import LeftNav            from './leftNav/LeftNav';
 import RightNav           from './rightNav/RightNav';
 
-const NavigationBar = ({brand, navModel, handleLeftNavItemClick, handleRightNavItemClick}) => {
+const NavigationBar = ({
+  brand,
+  navModel,
+  handleLeftNavItemClick,
+  handleRightNavItemClick
+}) => {
   return (
     <nav className="navbar navbar-default">
       <div className="containersCustom">

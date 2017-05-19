@@ -17,7 +17,7 @@
       "type": "chrome",
       "request": "launch",
       "name": "Launch Chrome (for dev/prod bundles)",
-      "url": "http://localhost:8081",
+      "url": "http://localhost:8082",
       "webRoot": "${workspaceRoot}"
     },
     {

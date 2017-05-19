@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, {PropTypes} from 'react';
 import cx from 'classnames';
 import UpIcon from './UpIcon';
@@ -19,7 +21,12 @@ const defaultStyle = {
   backgroundColor: defaultBackGroundColor
 };
 
-const BackToTopButton = ({onClick, position, children, motionStyle}) => {
+const BackToTopButton = ({
+  onClick,
+  position,
+  children,
+  motionStyle
+}) => {
   const buttonStyle = setPosition(position, {...motionStyle, ...defaultStyle});
 
   return (

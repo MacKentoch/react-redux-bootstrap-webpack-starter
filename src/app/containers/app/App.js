@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, {
   Component,
   PropTypes
@@ -12,6 +14,12 @@ import { connect }            from 'react-redux';
 import * as viewsActions      from '../../redux/modules/views';
 
 class App extends Component {
+  static propTypes = {
+    children:   PropTypes.node,
+    history:    PropTypes.object,
+    location:   PropTypes.object,
+    actions:    PropTypes.object
+  };
 
   state = {
     navModel : navigationModel
@@ -28,8 +36,6 @@ class App extends Component {
           handleLeftNavItemClick={this.handleLeftNavItemClick}
           handleRightNavItemClick={this.handleRightNavItemClick}
         />
-      <h1>
-      </h1>
         <div className="container-fluid">
           {children}
         </div>
@@ -49,14 +55,6 @@ class App extends Component {
     // something to do here?
   }
 }
-
-// statics :
-App.propTypes = {
-  children:   PropTypes.node,
-  history:    PropTypes.object,
-  location:   PropTypes.object,
-  actions:    PropTypes.object
-};
 
 const mapStateToProps = (state) => {
   return {

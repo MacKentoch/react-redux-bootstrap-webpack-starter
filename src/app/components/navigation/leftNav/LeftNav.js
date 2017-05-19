@@ -1,7 +1,12 @@
+// @flow weak
+
 import React, { PropTypes } from 'react';
 import LeftNavButton        from './leftNavButton/LeftNavButton';
 
-const LeftNav = ({ leftLinks, onLeftNavButtonClick }) => {
+const LeftNav = ({
+  leftLinks,
+  onLeftNavButtonClick
+}) => {
   return (
     <ul className="nav navbar-nav">
       {
@@ -26,8 +31,8 @@ const LeftNav = ({ leftLinks, onLeftNavButtonClick }) => {
 LeftNav.propTypes = {
   leftLinks: PropTypes.arrayOf(
     PropTypes.shape({
-      link: PropTypes.string,
-      label: PropTypes.string,
+      link:     PropTypes.string,
+      label:    PropTypes.string,
       viewName: PropTypes.string
     })
   ),

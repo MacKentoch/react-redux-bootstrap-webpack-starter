@@ -1,7 +1,10 @@
+// @flow weak
+
 import { createStore, compose, applyMiddleware } from 'redux';
 import createLogger             from 'redux-logger';
 import thunkMiddleware          from 'redux-thunk';
 import reducer                  from '../modules/reducers';
+import fetchMiddleware          from '../middleware/fetchMiddleware';
 
 const loggerMiddleware = createLogger({
   level     : 'info',
@@ -19,7 +22,11 @@ const composeEnhancers =  typeof window === 'object' &&  // for universal ("isom
                           : compose;
 
 const enhancer = composeEnhancers(
-  applyMiddleware(thunkMiddleware, loggerMiddleware) // logger after thunk to avoid undefined actions
+  applyMiddleware(
+    thunkMiddleware,
+    fetchMiddleware,
+    loggerMiddleware // logger at the end
+  ) 
 );
 
 export default function configureStore(initialState) {

@@ -1,3 +1,5 @@
+// @flow weak
+
 import React from 'react';
 import {
   Route,
@@ -15,9 +17,9 @@ import {
 const Routes = () => {
   return (
     <Route path="/" component={App} >
-    <IndexRoute component={ConnectedHome} onEnter={scrollToTop} />
-    <Route path="/about" component={ConnectedAbout} onEnter={scrollToTop} />
-    <Route path="*" component={PageNotFound} onEnter={scrollToTop} />
+      <IndexRoute component={ConnectedHome} onEnter={scrollToTop} />
+      <Route path="/about" component={ConnectedAbout} onEnter={scrollToTop} />
+      <Route path="*" component={PageNotFound} onEnter={scrollToTop} />
     </Route>
   );
 };

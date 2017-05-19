@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, {
   PureComponent,
   PropTypes
@@ -5,6 +7,12 @@ import React, {
 import AnimatedView   from '../../components/animatedView/AnimatedView';
 
 class About extends PureComponent {
+  static propTypes= {
+    currentView:  PropTypes.string.isRequired,
+    enterAbout:   PropTypes.func.isRequired,
+    leaveAbout:   PropTypes.func.isRequired
+  };
+
   componentDidMount() {
     const { enterAbout } = this.props;
     enterAbout();
@@ -25,11 +33,5 @@ class About extends PureComponent {
     );
   }
 }
-
-About.propTypes= {
-  currentView:  PropTypes.string.isRequired,
-  enterAbout:   PropTypes.func.isRequired,
-  leaveAbout:   PropTypes.func.isRequired
-};
 
 export default About;

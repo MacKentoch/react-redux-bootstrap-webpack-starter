@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, {
   PureComponent
 }                     from 'react';

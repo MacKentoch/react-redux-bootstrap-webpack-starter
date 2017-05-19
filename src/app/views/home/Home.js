@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, {
   PureComponent,
   PropTypes
@@ -7,6 +9,12 @@ import AnimatedView   from '../../components/animatedView/AnimatedView';
 import { Link }       from 'react-router';
 
 class Home extends PureComponent {
+  static propTypes= {
+    currentView:  PropTypes.string.isRequired,
+    enterHome:    PropTypes.func.isRequired,
+    leaveHome:    PropTypes.func.isRequired
+  };
+
   componentDidMount() {
     const { enterHome } = this.props;
     enterHome();
@@ -47,11 +55,5 @@ class Home extends PureComponent {
     );
   }
 }
-
-Home.propTypes= {
-  currentView:  PropTypes.string.isRequired,
-  enterHome:    PropTypes.func.isRequired,
-  leaveHome:    PropTypes.func.isRequired
-};
 
 export default Home;

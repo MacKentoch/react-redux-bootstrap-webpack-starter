@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, {
   PureComponent,
   PropTypes
@@ -5,6 +7,13 @@ import React, {
 import { Link }       from 'react-router';
 
 class RightNavButton extends PureComponent {
+  static propTypes = {
+    link:     PropTypes.string,
+    label:    PropTypes.string,
+    viewName: PropTypes.string,
+    onClick:  PropTypes.func
+  };
+
   render() {
     const { link, label } = this.props;
     return (
@@ -23,12 +32,5 @@ class RightNavButton extends PureComponent {
     onClick(event, viewName);
   }
 }
-
-RightNavButton.propTypes = {
-  link:     PropTypes.string,
-  label:    PropTypes.string,
-  viewName: PropTypes.string,
-  onClick:  PropTypes.func
-};
 
 export default RightNavButton;

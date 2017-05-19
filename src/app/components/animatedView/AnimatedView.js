@@ -1,3 +1,5 @@
+// @flow weak
+
 import React, {
   PureComponent,
   PropTypes
@@ -7,6 +9,17 @@ import cx           from 'classnames';
 const ANIMATION_DELAY_MS = 500;
 
 class AnimatedView extends PureComponent {
+  enterAnimationTimer = null;
+
+  static propTypes = {
+    children: PropTypes.node,
+    delay:    PropTypes.number
+  };
+
+  static defaultProps = {
+    delay: ANIMATION_DELAY_MS
+  };
+
   state = {
     animated: true,
     viewEnters: false
@@ -43,14 +56,5 @@ class AnimatedView extends PureComponent {
     );
   }
 }
-
-AnimatedView.propTypes = {
-  children: PropTypes.node,
-  delay: PropTypes.number
-};
-
-AnimatedView.defaultProps = {
-  delay: ANIMATION_DELAY_MS
-};
 
 export default AnimatedView;
