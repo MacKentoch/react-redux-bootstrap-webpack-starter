@@ -19,7 +19,7 @@ const syncedHistory = syncHistoryWithStore(browserHistory, store);
 
 
 class Root extends Component {
-  propTypes = {
+  static propTypes = {
     routes: PropTypes.any
   };
 
