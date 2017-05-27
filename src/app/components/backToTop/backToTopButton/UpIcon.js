@@ -1,4 +1,7 @@
-import React, {PropTypes} from 'react';
+// @flow weak
+
+import React              from 'react';
+import PropTypes          from 'prop-types';
 
 const UpIcon = ({color}) => {
   return (

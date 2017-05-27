@@ -2,9 +2,9 @@
 
 /* eslint-disable no-process-env */
 import React, {
-  PropTypes,
   Component
 }                               from 'react';
+import PropTypes                from 'prop-types';
 import {
   Router,
   // hashHistory,

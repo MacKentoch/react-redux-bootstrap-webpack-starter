@@ -3,6 +3,7 @@
 import React, {
   PureComponent
 }                     from 'react';
+// import PropTypes      from 'prop-types';
 import {Jumbotron}    from '../../components';
 import AnimatedView   from '../../components/animatedView/AnimatedView';
 

@@ -1,9 +1,9 @@
 // @flow weak
 
 import React, {
-  PureComponent,
-  PropTypes
+  PureComponent
 }                   from 'react';
+import PropTypes    from 'prop-types';
 import cx           from 'classnames';
 
 const ANIMATION_DELAY_MS = 500;

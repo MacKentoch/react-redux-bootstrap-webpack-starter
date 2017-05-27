@@ -1,7 +1,8 @@
 // @flow weak
 
-import React, { PropTypes } from 'react';
-import RightNavButton       from './rightNavButton/RightNavButton';
+import React              from 'react';
+import PropTypes          from 'prop-types';
+import RightNavButton     from './rightNavButton/RightNavButton';
 
 const RightNav = ({
   rightLinks,

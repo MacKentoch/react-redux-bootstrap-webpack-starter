@@ -1,4 +1,4 @@
-Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-devtools STARTER
+React + React-Router + Redux + Bootstrap + Webpack 2 with Hot Reload and redux-devtools STARTER
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
@@ -13,6 +13,12 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 - *`pure front-end` = server independant (use whatever you want as server: NodeJS, Rails, .NET...)*
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
+
+## Breaking changes since v2.3.0
+- upgrade to `webpack 2.x`
+- upgrade `React 15.5.x +`
+ - `PropTypes` from 'prop-types' (*react 15.5 breaking change*)
+
 
 ## Breaking changes since v2.2.0
 - `cross-env` added so no more particular windows command
@@ -36,7 +42,7 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 ## Detailed Content
 
 **Front:**
-- React JS (15.4.x+ - [github :link:](https://github.com/facebook/react))
+- React JS (15.5.x+ - [github :link:](https://github.com/facebook/react))
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
@@ -48,13 +54,14 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - react-motion ([github :link:](https://github.com/chenglou/react-motion))
-- Webpack 1.x ([github :link:](https://github.com/webpack/webpack))
+- Webpack 2.x ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
 - axios ([github :link:](https://github.com/mzabriskie/axios) *Why: simple, complete, isomorphic ...*)
 
 **Tool chain:**
 - babel 6+
 - eslint
+- webpack 2
 - hot reload
 - loaders
   - `js` / `jsx`
@@ -63,7 +70,6 @@ Full ES2015+ React + React-Router + Redux + Bootstrap with Hot Reload and redux-
   - json
   - images formats
   - svg and fonts formats
-- autoprefixer (css and sass)
 
 **tests:**
 - Mocha

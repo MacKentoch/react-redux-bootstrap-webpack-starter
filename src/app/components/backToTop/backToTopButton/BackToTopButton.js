@@ -1,8 +1,9 @@
 // @flow weak
 
-import React, {PropTypes} from 'react';
-import cx from 'classnames';
-import UpIcon from './UpIcon';
+import React              from 'react';
+import PropTypes          from 'prop-types';
+import cx                 from 'classnames';
+import UpIcon             from './UpIcon';
 
 const defaultBackGroundColor = '#4A4A4A';
 const sideOffset    = '-10px';
