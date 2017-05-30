@@ -1,4 +1,7 @@
 {
   "name": "react-redux-bootstrap-webpack-starter",
-  "dependencies": {}
+  "dependencies": {},
+  "globalDependencies": {
+    "react-router-dom": "registry:dt/react-router-dom#4.0.0+20170323201651"
+  }
 }

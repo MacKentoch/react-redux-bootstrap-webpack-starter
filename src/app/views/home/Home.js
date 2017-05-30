@@ -6,7 +6,7 @@ import React, {
 import PropTypes      from 'prop-types';
 import {Jumbotron}    from '../../components';
 import AnimatedView   from '../../components/animatedView/AnimatedView';
-import { Link }       from 'react-router';
+import { Link }       from 'react-router-dom';
 
 class Home extends PureComponent {
   static propTypes= {
@@ -30,13 +30,16 @@ class Home extends PureComponent {
       <AnimatedView>
         <Jumbotron>
           <h1>
-            Full ES2015 ReactJS + Bootstrap
+            ReactJS + Bootstrap
           </h1>
           <h2>
             with Hot Reload!!!
           </h2>
           <h2>
-            with React Router (SPA)
+            and React Router v4
+          </h2>
+          <h2>
+            and webpack 2.x
           </h2>
           <h1>
             Starter

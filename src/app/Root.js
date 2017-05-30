@@ -4,32 +4,28 @@
 import React, {
   Component
 }                               from 'react';
-import PropTypes                from 'prop-types';
+// import PropTypes                from 'prop-types';
 import {
-  Router,
-  // hashHistory,
-  browserHistory
-}                               from 'react-router';
+  BrowserRouter as Router
+}                               from 'react-router-dom';
 import { Provider }             from 'react-redux';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore           from './redux/store/configureStore';
+import { createBrowserHistory } from 'history';
+import App                      from './containers/app/App';
 
+const history       = createBrowserHistory();
 const store         = configureStore();
-const syncedHistory = syncHistoryWithStore(browserHistory, store);
+const syncedHistory = syncHistoryWithStore(history, store);
 
 
 class Root extends Component {
-  static propTypes = {
-    routes: PropTypes.any
-  };
-
   render() {
-    const { routes } = this.props;
     return (
       <Provider store={store}>
         <div>
           <Router history={syncedHistory}>
-            {routes()}
+            <App />
           </Router>
         </div>
       </Provider>

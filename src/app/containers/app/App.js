@@ -1,8 +1,8 @@
 // @flow weak
 
 import React, {
-  Component,
-  PropTypes
+  Component
+  // PropTypes
 }                             from 'react';
 import {
   NavigationBar,
@@ -12,22 +12,17 @@ import navigationModel        from '../../models/navigation.json';
 import { bindActionCreators } from 'redux';
 import { connect }            from 'react-redux';
 import * as viewsActions      from '../../redux/modules/views';
+import MainRoutes             from '../../routes/MainRoutes';
+import { withRouter }         from 'react-router';
 
 class App extends Component {
-  static propTypes = {
-    children:   PropTypes.node,
-    history:    PropTypes.object,
-    location:   PropTypes.object,
-    actions:    PropTypes.object
-  };
-
   state = {
     navModel : navigationModel
   };
 
   render() {
     const { navModel } = this.state;
-    const { children } = this.props;
+
     return (
       <div id="appContainer">
         <NavigationBar
@@ -37,7 +32,7 @@ class App extends Component {
           handleRightNavItemClick={this.handleRightNavItemClick}
         />
         <div className="container-fluid">
-          {children}
+          <MainRoutes />
         </div>
         <BackToTop
           minScrollY={40}
@@ -73,7 +68,9 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

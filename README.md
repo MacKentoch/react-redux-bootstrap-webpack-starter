@@ -4,7 +4,6 @@ React + React-Router + Redux + Bootstrap + Webpack 2 with Hot Reload and redux-d
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Coverage Status](https://coveralls.io/repos/github/MacKentoch/react-redux-bootstrap-webpack-starter/badge.svg?branch=master)](https://coveralls.io/github/MacKentoch/react-redux-bootstrap-webpack-starter?branch=master)
 
-#### full ES2015+
 
 > My best React + redux project starter.
 
@@ -13,6 +12,10 @@ React + React-Router + Redux + Bootstrap + Webpack 2 with Hot Reload and redux-d
 - *`pure front-end` = server independant (use whatever you want as server: NodeJS, Rails, .NET...)*
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
+
+## Breaking changes since v3.0.0
+- upgrade to `react-router v4`
+
 
 ## Breaking changes since v2.3.0
 - upgrade to `webpack 2.x`
