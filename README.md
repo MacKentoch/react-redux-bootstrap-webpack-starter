@@ -50,7 +50,7 @@ React + React-Router + Redux + Bootstrap + Webpack 2 with Hot Reload and redux-d
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
 - React-Router-Redux (*previously named react-simple-router*)
-- react-router (3.x- [github :link:](https://github.com/reactjs/react-router))
+- react-router (4.x- [github :link:](https://github.com/reactjs/react-router))
 - Bootstrap (3.x - [github :link:](https://github.com/twbs/bootstrap))
 - React-Bootstrap ([github :link:](https://github.com/react-bootstrap/react-bootstrap))
 - font-awesome ([github :link:](https://github.com/FortAwesome/Font-Awesome))
