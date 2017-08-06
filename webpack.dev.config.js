@@ -12,7 +12,10 @@ const SPLIT_STYLE = true;
 const config = {
   devtool: '#source-map',
   entry: {
-    app:    indexFile,
+    app: [
+      'babel-polyfill',
+      indexFile
+    ],
     vendor: [
       'react',
       'react-dom',
@@ -27,7 +30,6 @@ const config = {
       'redux-logger',
       'redux-thunk',
       'react-router',
-      // 'react-router-redux', // commented to avoid webpack error duplicate with 'redux'
       'classnames',
       'axios',
       'js-base64',
@@ -113,8 +115,9 @@ const config = {
 */
 function getImplicitGlobals() {
   return new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery'
+    $:      'jquery',
+    jQuery: 'jquery',
+    jquery: 'jquery'
   });
 }
 

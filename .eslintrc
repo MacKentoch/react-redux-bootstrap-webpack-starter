@@ -5,33 +5,65 @@
     "node": true,
     "es6": true,
     "mocha": true,
+    "jest": true
   },
   "plugins": ["react"],
+  "extends": [
+      "plugin:react/recommended"
+  ],
 
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "binaryLiterals": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "destructuring": true,
-    "forOf": true,
-    "generators": true,
-    "modules": true,
-    "objectLiteralComputedProperties": true,
-    "objectLiteralDuplicateProperties": true,
-    "objectLiteralShorthandMethods": true,
-    "objectLiteralShorthandProperties": true,
-    "octalLiterals": true,
-    "regexUFlag": true,
-    "regexYFlag": true,
-    "spread": true,
-    "superInFunctions": true,
-    "templateStrings": true,
-    "unicodeCodePointEscapes": true,
-    "globalReturn": true,
-    "jsx": true
+  // eslint > 2.x
+  "parserOptions": {
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "binaryLiterals": true,
+      "blockBindings": true,
+      "classes": true,
+      "defaultParams": true,
+      "destructuring": true,
+      "forOf": true,
+      "generators": true,
+      "modules": true,
+      "objectLiteralComputedProperties": true,
+      "objectLiteralDuplicateProperties": true,
+      "objectLiteralShorthandMethods": true,
+      "objectLiteralShorthandProperties": true,
+      "octalLiterals": true,
+      "regexUFlag": true,
+      "regexYFlag": true,
+      "spread": true,
+      "superInFunctions": true,
+      "templateStrings": true,
+      "unicodeCodePointEscapes": true,
+      "globalReturn": true,
+      "jsx": true
+    }
   },
+  // // eslint 1.x:
+  // "ecmaFeatures": {
+  //   "arrowFunctions": true,
+  //   "binaryLiterals": true,
+  //   "blockBindings": true,
+  //   "classes": true,
+  //   "defaultParams": true,
+  //   "destructuring": true,
+  //   "forOf": true,
+  //   "generators": true,
+  //   "modules": true,
+  //   "objectLiteralComputedProperties": true,
+  //   "objectLiteralDuplicateProperties": true,
+  //   "objectLiteralShorthandMethods": true,
+  //   "objectLiteralShorthandProperties": true,
+  //   "octalLiterals": true,
+  //   "regexUFlag": true,
+  //   "regexYFlag": true,
+  //   "spread": true,
+  //   "superInFunctions": true,
+  //   "templateStrings": true,
+  //   "unicodeCodePointEscapes": true,
+  //   "globalReturn": true,
+  //   "jsx": true
+  // },
 
   "rules": {
 

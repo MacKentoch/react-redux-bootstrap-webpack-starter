@@ -10,6 +10,12 @@ import { Link }       from 'react-router-dom';
 
 class Home extends PureComponent {
   static propTypes= {
+    // react-router 4:
+    match:    PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history:  PropTypes.object.isRequired,
+    
+    // views:
     currentView:  PropTypes.string.isRequired,
     enterHome:    PropTypes.func.isRequired,
     leaveHome:    PropTypes.func.isRequired
@@ -39,7 +45,7 @@ class Home extends PureComponent {
             and React Router v4
           </h2>
           <h2>
-            and webpack 2.x
+            and webpack 3.x
           </h2>
           <h1>
             Starter

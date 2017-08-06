@@ -1,11 +1,3 @@
 // @flow weak
 
-import App                  from './app/App';
-import ConnectedHome        from './home/Home';
-import ConnectedAbout       from './about/About';
-
-export {
-  App,
-  ConnectedHome,
-  ConnectedAbout
-};
+export { default as App }  from './app'; // export from index.js is App connected to redux

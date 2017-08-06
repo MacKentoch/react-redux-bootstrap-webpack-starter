@@ -1,18 +1,11 @@
 // @flow weak
 
-import axios from 'axios';
+import axios  from 'axios';
 
 export const FETCH_MOCK = 'FETCH_MOCK';
 export const FETCH      = 'FETCH';
-// //////////////////////////////////////////////////////////////
-//          fetch middleware:
-// //////////////////////////////////////////////////////////////
-// - no more use redux thunk in your actions creators = less code
-// - have a FETCH_MOCK mode (no backend need just json or js mocks supplied) for nearly no effort
-// - returns promises
-// //////////////////////////////////////////////////////////////
-
-// USAGE: FETCH_MOCK mode
+//
+// FETCH_MOCK mode
 // in any action just add fetch object like:
 // {
 //  fetch: {
@@ -27,7 +20,7 @@ export const FETCH      = 'FETCH';
 // }
 //
 
-// Usage: FETCH mode
+// FETCH mode
 // in any action just add fetch object like:
 // {
 //  fetch: {
@@ -38,13 +31,15 @@ export const FETCH      = 'FETCH';
 //      fail: 'TYPE_FOR_ERROR',
 //    },
 //    url: 'an url',
-//    method: 'get', // lower case, one of 'get', 'post'...
-//    options: {} // OPTIONAL
+//    method: 'get',  // lower case, one of 'get', 'post'...
+//    headers: {}     // OPTIONAL CONTENT like: data: { someprop: 'value ...}
+//    options: {}     // OPTIONAL CONTENT like: Authorization: 'Bearer _A_TOKEN_'
 //  }
 // }
 //
 //
-
+//
+//
 const fetchMiddleware = store => next => action => {
   if (!action.fetch) {
     return next(action);
@@ -81,7 +76,10 @@ const fetchMiddleware = store => next => action => {
     return Promise.resolve(
       store.dispatch({
         type:     success,
-        payload:  mockResult
+        payload:  {
+          status: 200,
+          data: mockResult
+        }
       })
     );
   }
@@ -91,11 +89,12 @@ const fetchMiddleware = store => next => action => {
       actionTypes: {request, success, fail},
       url,
       method,
+      headers,
       options
     } = action.fetch;
 
     // request
-    store.dispatch({ type: request, url, method });
+    store.dispatch({ type: request });
 
     // fetch server (success or fail)
     // returns a Promise
@@ -105,12 +104,13 @@ const fetchMiddleware = store => next => action => {
       withCredentials: true,
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        // 'Acces-Control-Allow-Origin': '*'
+        'Content-Type': 'application/json',
+        'Acces-Control-Allow-Origin': '*',
+        ...headers
       },
       ...options
     })
-      .then(data => store.dispatch({type: success, payload: data.data}))
+      .then(data => store.dispatch({type: success, payload: data}))
       .catch(
         err => {
           store.dispatch({type: fail, error: err});

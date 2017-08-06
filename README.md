@@ -1,4 +1,4 @@
-React + React-Router + Redux + Bootstrap + Webpack 2 with Hot Reload and redux-devtools STARTER
+React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux-devtools-extension STARTER
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
@@ -8,10 +8,23 @@ React + React-Router + Redux + Bootstrap + Webpack 2 with Hot Reload and redux-d
 > My best React + redux project starter.
 
 - *webpack is as simple as possible*
-- *ReactJS is written with `optimization tricks` (stateless, pure render...).*
+- *ReactJS is written with `optimization tricks` (stateless, pure render, PureComponent...).*
 - *`pure front-end` = server independant (use whatever you want as server: NodeJS, Rails, .NET...)*
 
-*Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful `redux-devtools`.**
+*Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).**
+
+
+![preview](./preview/preview.png)
+
+## Breaking changes since v4.0.0
+- upgrade `React 15.6.x +`
+- upgrade to `webpack 3`
+- clean with rimraf before bundles building
+- scroll to top on route
+- login view
+- protected view
+- JWT auth. private views
+- file organization (*views connected to redux are no more in container but are index.js in same directory as View.js*)
 
 ## Breaking changes since v3.0.0
 - upgrade to `react-router v4`
@@ -45,19 +58,19 @@ React + React-Router + Redux + Bootstrap + Webpack 2 with Hot Reload and redux-d
 ## Detailed Content
 
 **Front:**
-- React JS (15.5.x+ - [github :link:](https://github.com/facebook/react))
+- React JS (15.6.x+ - [github :link:](https://github.com/facebook/react))
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
 - React-Router-Redux (*previously named react-simple-router*)
-- react-router (3.x- [github :link:](https://github.com/reactjs/react-router))
+- react-router (4.x- [github :link:](https://github.com/reactjs/react-router))
 - Bootstrap (3.x - [github :link:](https://github.com/twbs/bootstrap))
 - React-Bootstrap ([github :link:](https://github.com/react-bootstrap/react-bootstrap))
 - font-awesome ([github :link:](https://github.com/FortAwesome/Font-Awesome))
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - react-motion ([github :link:](https://github.com/chenglou/react-motion))
-- Webpack 2.x ([github :link:](https://github.com/webpack/webpack))
+- Webpack 3.x ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
 - axios ([github :link:](https://github.com/mzabriskie/axios) *Why: simple, complete, isomorphic ...*)
 

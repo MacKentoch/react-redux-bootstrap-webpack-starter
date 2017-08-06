@@ -10,8 +10,12 @@ const indexFile       = path.join(__dirname, 'src/app/index.js');
 const SPLIT_STYLE = true;
 
 const config = {
+  // devtool: '#source-map',
   entry: {
-    app:    indexFile,
+    app: [
+      'babel-polyfill',
+      indexFile
+    ],
     vendor: [
       'react',
       'react-dom',
@@ -25,7 +29,6 @@ const config = {
       'redux-logger',
       'redux-thunk',
       'react-router',
-      // 'react-router-redux', // commented to avoid webpack error duplicate with 'redux'
       'classnames',
       'axios',
       'js-base64',
@@ -102,8 +105,7 @@ const config = {
     new webpack.optimize.CommonsChunkPlugin({
       name:     'vendor',
       filename: 'app.vendor.bundle.js' 
-    }),
-    uglify()
+    })
   ]
 };
 /*
@@ -111,8 +113,9 @@ const config = {
 */
 function getImplicitGlobals() {
   return new webpack.ProvidePlugin({
-    $: 'jquery',
-    jQuery: 'jquery'
+    $:      'jquery',
+    jQuery: 'jquery',
+    jquery: 'jquery'
   });
 }
 
@@ -120,30 +123,6 @@ function setNodeEnv() {
   return new webpack.DefinePlugin({
     'process.env': {
       'NODE_ENV': JSON.stringify('production')
-    }
-  });
-}
-
-function uglify() {
-  return new webpack.optimize.UglifyJsPlugin({
-    // Don't beautify output (enable for neater output)
-    beautify: false,
-    // Eliminate comments
-    comments: true,
-    // Compression specific options
-    compress: {
-      warnings: false,
-      // Drop `console` statements
-      'drop_console': true
-    },
-    // Mangling specific options
-    mangle: {
-      // Don't mangle $
-      except: ['$'],
-      // Don't care about IE8
-      'screw_ie8': true,
-      // Don't mangle function names
-      'keep_fnames': false
     }
   });
 }

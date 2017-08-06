@@ -3,11 +3,12 @@
 import { connect }            from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as viewsActions      from '../../redux/modules/views';
-import { About }              from '../../views';
-
+import App                    from './App';
+import { withRouter }         from 'react-router';
 
 const mapStateToProps = (state) => {
   return {
+    // views
     currentView:  state.views.currentView
   };
 };
@@ -15,24 +16,17 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      enterAbout: viewsActions.enterAbout,
-      leaveAbout: viewsActions.leaveAbout
+      // views
+      ...viewsActions
     },
     dispatch
   );
 };
 
-/*
-  without bindActionCreators:
- */
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     enterAbout: () => dispatch(viewsActions.enterAbout()),
-//     leaveAbout: () => dispatch(viewsActions.leaveAbout())
-//   };
-// };
-
-export default connect(
+// IMPORTANT: witRouter is "needed here" to avoid blocking routing:
+export default withRouter(
+  connect(
     mapStateToProps,
     mapDispatchToProps
-  )(About);
+  )(App)
+);

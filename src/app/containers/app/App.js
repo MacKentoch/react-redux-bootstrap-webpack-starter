@@ -2,20 +2,27 @@
 
 import React, {
   Component
-  // PropTypes
 }                             from 'react';
+import PropTypes              from 'prop-types';
 import {
   NavigationBar,
   BackToTop
 }                             from '../../components';
-import navigationModel        from '../../models/navigation.json';
-import { bindActionCreators } from 'redux';
-import { connect }            from 'react-redux';
-import * as viewsActions      from '../../redux/modules/views';
+import navigationModel        from '../../config/navigation.json';
 import MainRoutes             from '../../routes/MainRoutes';
-import { withRouter }         from 'react-router';
 
 class App extends Component {
+  static propTypes = {
+    // react-router 4:
+    match:    PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+    history:  PropTypes.object.isRequired,
+
+    // views:
+    currentView: PropTypes.string
+
+  };
+  
   state = {
     navModel : navigationModel
   };
@@ -51,26 +58,4 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentView:  state
-  };
-};
-
-// "bindActionCreators" use-case is to pass dispatch to "store non aware children components" (but I feel like it is a good habbit to use it everytime)
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions : bindActionCreators(
-      {
-        ...viewsActions
-      },
-      dispatch)
-  };
-};
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+export default App;

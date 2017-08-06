@@ -1,58 +1,36 @@
 // @flow weak
 
-import React, {
-  PureComponent
-}                   from 'react';
-import PropTypes    from 'prop-types';
-import cx           from 'classnames';
+import React, { Component } from 'react';
+import PropTypes            from 'prop-types';
+import cx                   from 'classnames';
+// import { withRouter }       from 'react-router-dom';
 
-const ANIMATION_DELAY_MS = 500;
-
-class AnimatedView extends PureComponent {
-  enterAnimationTimer = null;
-
+class AnimatedView extends Component {
   static propTypes = {
     children: PropTypes.node,
-    delay:    PropTypes.number
+    animated: PropTypes.bool
   };
 
   static defaultProps = {
-    delay: ANIMATION_DELAY_MS
+    animated: true
   };
-
-  state = {
-    animated: true,
-    viewEnters: false
-  };
-
-  componentDidMount() {
-    const { delay } = this.props;
-
-    this.enterAnimationTimer = setTimeout(
-      () => this.setState({viewEnters: true}),
-      delay
-    );
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.enterAnimationTimer);
-  }
 
   render() {
-    const { animated, viewEnters } = this.state;
-    const { children } = this.props;
+    const {
+      animated,
+      children
+    } = this.props;
 
     return (
       <section
         className={
           cx({
-            'content':       true,
-            'invisible':     !viewEnters && animated,
-            'view-enter':    viewEnters && animated
+            'content':    true,
+            'view-enter': animated
           })
         }>
-      { children }
-    </section>
+        { children }
+      </section>
     );
   }
 }
