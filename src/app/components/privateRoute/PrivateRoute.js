@@ -30,13 +30,14 @@ class PrivateRoute extends Component {
     const { location } = this.props;
 
     const isUserAuthenticated = this.isAuthenticated();
+    const isTokenExpired      = this.isExpired();
 
     return (
       <Route
         {...rest}
         render={
           props => (
-            isUserAuthenticated
+            !isTokenExpired && isUserAuthenticated
               ? <InnerComponent {...props} />
               : <Redirect to={{ pathname: '/login', state: { from: location } }} />
           )
@@ -54,6 +55,13 @@ class PrivateRoute extends Component {
                             ? true 
                             : false;
     return isAuthenticated;
+  }
+
+  isExpired() {
+    // comment me:
+    console.log('token expires: ', auth.getTokenExpirationDate(auth.getToken()));
+
+    return auth.isExpiredToken(auth.getToken());
   }
 }
 
