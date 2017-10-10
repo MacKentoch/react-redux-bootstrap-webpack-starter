@@ -16,6 +16,10 @@ React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux
 
 ![preview](./preview/preview.png)
 
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter.svg' />
+</a>
+
 ## Breaking changes since v4.0.0
 - upgrade `React 15.6.x +`
 - upgrade to `webpack 3`
