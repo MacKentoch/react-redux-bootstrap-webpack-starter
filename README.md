@@ -7,6 +7,7 @@ React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter'>
   <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter.svg' />
 </a>
+
 > My best React + redux project starter.
 
 - *webpack is as simple as possible*
