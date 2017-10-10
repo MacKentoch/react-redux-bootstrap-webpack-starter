@@ -4,7 +4,9 @@ React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Coverage Status](https://coveralls.io/repos/github/MacKentoch/react-redux-bootstrap-webpack-starter/badge.svg?branch=master)](https://coveralls.io/github/MacKentoch/react-redux-bootstrap-webpack-starter?branch=master)
 
-
+<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter'>
+  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter.svg' />
+</a>
 > My best React + redux project starter.
 
 - *webpack is as simple as possible*
@@ -15,10 +17,6 @@ React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux
 
 
 ![preview](./preview/preview.png)
-
-<a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter'>
-  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/Mp96tCWH2KdajZuBzqB6jwj8/MacKentoch/react-redux-bootstrap-webpack-starter.svg' />
-</a>
 
 ## Breaking changes since v4.0.0
 - upgrade `React 15.6.x +`
