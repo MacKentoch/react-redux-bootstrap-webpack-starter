@@ -23,7 +23,7 @@ React 16 + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and re
 - upgrade to React 16.x
 - `react-router 4+` with `react-router-redux ^5.0.0-alpha.8` (*read this [nice article about migrating from react-router 3 to react-router 4](https://codeburst.io/react-router-v4-unofficial-migration-guide-5a370b8905a)*)
 - add few flow types (*still keep propTypes*)
-- updated hot relaod (*[read hot reload starter](https://gaearon.github.io/react-hot-loader/getstarted/)*)
+- updated hot reload (*[read hot reload starter](https://gaearon.github.io/react-hot-loader/getstarted/)*)
 
 ## Breaking changes since v4.0.0
 - upgrade `React 15.6.x +`
