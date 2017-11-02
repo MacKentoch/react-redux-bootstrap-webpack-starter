@@ -7,7 +7,7 @@
   ],
   "plugins": [
     "transform-regenerator",
-    "transform-async-to-generator",
+    "transform-async-to-generator"
     // "react-hot-loader/babel"
   ],
   "env": {
