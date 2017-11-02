@@ -14,7 +14,7 @@ class Home extends PureComponent {
     match:    PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history:  PropTypes.object.isRequired,
-    
+
     // views:
     currentView:  PropTypes.string.isRequired,
     enterHome:    PropTypes.func.isRequired,

@@ -1,5 +1,6 @@
-// @flow weak
+// @flow
 
+// #region imports
 import React, {
   PureComponent
 }                     from 'react';
@@ -10,9 +11,36 @@ import {
   Button
 }                     from 'react-bootstrap';
 import auth           from '../../services/auth';
-// import { Link }       from 'react-router-dom';
+// #endregion
 
-class Login extends PureComponent {
+// #region flow types
+type Props = {
+  // react-router 4:
+  match: any,
+  location: any,
+  history: any,
+
+  // views props:
+  currentView: string,
+  enterLogin: () => void,
+  leaveLogin: () => void,
+
+  // userAuth:
+  isAuthenticated: boolean,
+  isFetching: boolean,
+  isLogging: boolean,
+  disconnectUser: () => any,
+  logUserIfNeeded: () => any
+};
+
+type State = {
+  email: string,
+  password: string
+}
+// #endregion
+
+class Login extends PureComponent<Props, State> {
+  // #region propTypes
   static propTypes= {
     // react-router 4:
     match:    PropTypes.object.isRequired,
@@ -31,6 +59,7 @@ class Login extends PureComponent {
     disconnectUser:  PropTypes.func.isRequired,
     logUserIfNeeded: PropTypes.func.isRequired
   };
+  // #endregion
 
   static defaultProps = {
     isFetching:      false,
@@ -42,13 +71,14 @@ class Login extends PureComponent {
     password:       ''
   };
 
+  // #region lifecycle methods
   componentDidMount() {
     const {
       enterLogin,
       disconnectUser
     } = this.props;
 
-    disconnectUser(); // diconnect user: remove token and user info 
+    disconnectUser(); // diconnect user: remove token and user info
     enterLogin();
   }
 
@@ -65,7 +95,7 @@ class Login extends PureComponent {
 
     const {
       isLogging
-    } = this.props
+    } = this.props;
 
     return (
       <div className="content">
@@ -156,7 +186,7 @@ class Login extends PureComponent {
             md={4}
             mdOffset={4}
             xs={10}
-            xsOffset={1}            
+            xsOffset={1}
           >
             <Button
               bsStyle="primary"
@@ -169,24 +199,39 @@ class Login extends PureComponent {
       </div>
     );
   }
+  // #endregion
 
-  handlesOnEmailChange = (event) => {
-    event.preventDefault();
-    // should add some validator before setState in real use cases
-    this.setState({ email: event.target.value.trim() });
+  // #region form inputs change callbacks
+  handlesOnEmailChange = (
+    event: SyntheticEvent<>
+  ) => {
+    if (event) {
+      event.preventDefault();
+      // should add some validator before setState in real use cases
+      this.setState({ email: event.target.value.trim() });
+    }
   }
 
-  handlesOnPasswordChange = (event) => {
-    event.preventDefault();
-    // should add some validator before setState in real use cases
-    this.setState({ password: event.target.value.trim() });
+  handlesOnPasswordChange = (
+    event: SyntheticEvent<>
+  ) => {
+    if (event) {
+      event.preventDefault();
+      // should add some validator before setState in real use cases
+      this.setState({ password: event.target.value.trim() });
+    }
   }
+  // #endregion
 
-  handlesOnLogin = async (event) => {
+
+  // #region on login button click callback
+  handlesOnLogin = async (
+    event: SyntheticEvent<>
+  ) => {
     if (event) {
       event.preventDefault();
     }
-    
+
     const {
       history,
       logUserIfNeeded
@@ -221,16 +266,23 @@ class Login extends PureComponent {
       /* eslint-enable no-console */
     }
   }
+  // #endregion
 
-  goHome = (event: any) => {
+  // #region on go back home button click callback
+  goHome = (
+    event: SyntheticEvent<>
+  ) => {
     if (event) {
       event.preventDefault();
     }
+
     const {
       history
     } = this.props;
+
     history.push({ pathname: '/' });
   }
+  // #endregion
 }
 
 export default Login;

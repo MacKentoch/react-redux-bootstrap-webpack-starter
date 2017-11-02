@@ -1,4 +1,4 @@
-React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux-devtools-extension STARTER
+React 16 + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux-devtools-extension STARTER
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
@@ -18,6 +18,12 @@ React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux
 
 
 ![preview](./preview/preview.png)
+
+##Breaking chnages since v5.0.0
+- upgrade to React 16.x
+- `react-router 4+` with `react-router-redux ^5.0.0-alpha.8` (*read this [nice article about migrating from react-router 3 to react-router 4](https://codeburst.io/react-router-v4-unofficial-migration-guide-5a370b8905a)*)
+- add few flow types (*still keep propTypes*)
+- updated hot relaod (*[read hot reload starter](https://gaearon.github.io/react-hot-loader/getstarted/)*)
 
 ## Breaking changes since v4.0.0
 - upgrade `React 15.6.x +`
@@ -61,11 +67,11 @@ React + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux
 ## Detailed Content
 
 **Front:**
-- React JS (15.6.x+ - [github :link:](https://github.com/facebook/react))
+- React JS (16.x+ - [github :link:](https://github.com/facebook/react))
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
-- React-Router-Redux (*previously named react-simple-router*)
+- React-Router-Redux 5.x ([github :link:](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux))
 - react-router (4.x- [github :link:](https://github.com/reactjs/react-router))
 - Bootstrap (3.x - [github :link:](https://github.com/twbs/bootstrap))
 - React-Bootstrap ([github :link:](https://github.com/react-bootstrap/react-bootstrap))

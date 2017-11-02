@@ -1,4 +1,4 @@
-// @flow weak
+// @flow
 
 module.exports = {
   plugins: {

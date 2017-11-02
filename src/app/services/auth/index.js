@@ -134,6 +134,7 @@ export const auth = {
   /**
    * delete token
    *
+   * @param {'localStorage' | 'sessionStorage'} [storage='localStorage'] specify storage
    * @param {any} [tokenKey='token'] token key
    * @returns {bool} success/failure flag
    */

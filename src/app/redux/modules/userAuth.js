@@ -113,7 +113,7 @@ export default function (
 
   case RECEIVED_USER_INFOS_DATA:
     const userInfos = action.payload.data;
-    
+
     return {
       ...state,
       actionTime: currentTime,
@@ -154,13 +154,13 @@ export function disconnectUser() {
 }
 
 /**
- * 
- * check if user is connected by looking at locally stored 
+ *
+ * check if user is connected by looking at locally stored
  * - token
  * - user fonrmation
- * 
+ *
  * @export
- * @returns {action} action 
+ * @returns {action} action
  */
 export function checkUserIsConnected() {
   const token           = auth.getToken();
@@ -181,11 +181,11 @@ export function checkUserIsConnected() {
  *  user login
  *
  * @param {string} login user login
- * @param {string} password usepasswordr 
+ * @param {string} password usepasswordr
  * @returns {Promise<any>} promised action
  */
 function logUser(
-  login:    string,
+  login: string,
   password: string
 ) {
   return async (dispatch) => {

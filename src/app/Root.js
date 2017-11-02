@@ -1,37 +1,37 @@
-// @flow weak
+// @flow
 
-/* eslint-disable no-process-env */
+// #region imports
 import React, {
   Component
 }                               from 'react';
-// import PropTypes                from 'prop-types';
 import {
-  // BrowserRouter as Router,
-  HashRouter as Router,
+  Router,
   Switch,
   Route
 }                               from 'react-router-dom';
 import { Provider }             from 'react-redux';
-import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore           from './redux/store/configureStore';
-import { createBrowserHistory } from 'history';
+import { history }              from './redux/store/configureStore';
 import App                      from './containers/app';
 import ScrollTop                from './components/scrollToTop/ScrollToTop';
 import Login                    from './views/login';
 import PageNotFound             from './views/pageNotFound/PageNotFound'; // not connected to redux (no index.js)
 import LogoutRoute              from './components/logoutRoute/LogoutRoute';
+// #endregion
 
-const history       = createBrowserHistory();
-const store         = configureStore();
-const syncedHistory = syncHistoryWithStore(history, store);
+// #region flow types
+type Props = any;
+type State = any;
+// #endregion
 
+const store = configureStore();
 
-class Root extends Component {
+class Root extends Component<Props, State> {
   render() {
     return (
       <Provider store={store}>
         <div>
-          <Router history={syncedHistory}>
+          <Router history={history}>
             <ScrollTop>
               <Switch>
                 <Route exact path="/login" component={Login} />

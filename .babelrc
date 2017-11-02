@@ -1,14 +1,14 @@
 {
   "presets": [
-    "es2015",
+    [ "env", { "modules": false } ],
     "react",
     "stage-2",
     "flow"
   ],
   "plugins": [
-    "react-hot-loader/babel",
     "transform-regenerator",
-    "transform-async-to-generator"
+    "transform-async-to-generator",
+    // "react-hot-loader/babel"
   ],
   "env": {
     "production": {
