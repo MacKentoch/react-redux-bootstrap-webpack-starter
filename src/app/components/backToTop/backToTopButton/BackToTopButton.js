@@ -22,12 +22,20 @@ const defaultStyle = {
   backgroundColor: defaultBackGroundColor
 };
 
+type Props = {
+  position: 'bottom-left' | 'bottom-right',
+  onClick: () => any,
+  children: any,
+  motionStyle: any,
+  ...any
+};
+
 const BackToTopButton = ({
   onClick,
   position,
   children,
   motionStyle
-}) => {
+}: Props) => {
   const buttonStyle = setPosition(position, {...motionStyle, ...defaultStyle});
 
   return (

@@ -1,6 +1,8 @@
 {
   "presets": [
-    [ "env", { "modules": false } ],
+    ["env", {
+      "modules": false
+    }],
     "react",
     "stage-2",
     "flow"
@@ -8,7 +10,6 @@
   "plugins": [
     "transform-regenerator",
     "transform-async-to-generator"
-    // "react-hot-loader/babel"
   ],
   "env": {
     "production": {

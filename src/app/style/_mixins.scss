@@ -1,15 +1,16 @@
-
 @mixin background-cover {
-  -webkit-background-size: cover;
   -moz-background-size: cover;
+  -webkit-background-size: cover;
   background-size: cover;
 }
 
 @mixin card-shadows {
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.2), 0 1px 5px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
-// animations
+
+/* animations */
+
 @mixin fade-in($delay, $duration, $ease) {
   opacity: 0;
   animation-name: fadeIn;
@@ -17,7 +18,6 @@
   animation-duration: $duration;
   animation-delay: $delay;
   animation-fill-mode: both;
-
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -36,7 +36,6 @@
   animation-duration: $duration;
   animation-delay: $delay;
   animation-fill-mode: both;
-
   @keyframes fadeInRight {
     from {
       opacity: 0;
@@ -56,7 +55,6 @@
   animation-duration: $duration;
   animation-delay: $delay;
   animation-fill-mode: both;
-
   @keyframes fadeInRightPulse {
     from {
       opacity: 0;
@@ -83,17 +81,14 @@
   animation-duration: $duration;
   animation-delay: $delay;
   animation-fill-mode: both;
-
   @keyframes fadeInDown {
     from {
       opacity: 0;
       transform: translate3d(0, -40%, 0);
     }
-
     75% {
       opacity: 0.4;
     }
-
     to {
       opacity: 1;
       transform: none;

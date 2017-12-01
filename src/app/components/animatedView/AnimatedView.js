@@ -2,8 +2,11 @@
 
 import React, { Component } from 'react';
 import PropTypes            from 'prop-types';
-import cx                   from 'classnames';
-// import { withRouter }       from 'react-router-dom';
+import classnames           from 'classnames/bind';
+import styles               from './animatedView.scss';
+
+// IMPORTANT: we need to bind classname to CSSModule generated classes:
+const cx = classnames.bind(styles);
 
 class AnimatedView extends Component {
   static propTypes = {

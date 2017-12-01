@@ -37,11 +37,19 @@ const config = {
       },
       {
         test:  /\.scss$/,
-        use:  [
-          'style-loader',
-          {loader: 'css-loader', options: { importLoaders: 1 }},
-          'postcss-loader',
-          'sass-loader'
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            query: {
+              modules: true,
+              sourceMap: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]'
+            }
+          },
+          'sass-loader',
+          'postcss-loader'
         ]
       },
       {

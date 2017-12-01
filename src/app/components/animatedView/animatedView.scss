@@ -1,0 +1,6 @@
+@import "../../style/_vars.scss";
+@import "../../style/_mixins.scss";
+.view-enter {
+  @include fade-in(0s, 0.7s, ease-in);
+  z-index: 9999;
+}

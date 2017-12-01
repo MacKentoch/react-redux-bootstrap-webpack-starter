@@ -9,8 +9,6 @@ import {
   Switch,
   Route
 }                               from 'react-router-dom';
-import { Provider }             from 'react-redux';
-import configureStore           from './redux/store/configureStore';
 import { history }              from './redux/store/configureStore';
 import App                      from './containers/app';
 import ScrollTop                from './components/scrollToTop/ScrollToTop';
@@ -24,28 +22,23 @@ type Props = any;
 type State = any;
 // #endregion
 
-const store = configureStore();
-
 class Root extends Component<Props, State> {
   render() {
     return (
-      <Provider store={store}>
-        <div>
-          <Router history={history}>
-            <ScrollTop>
-              <Switch>
-                <Route exact path="/login" component={Login} />
-                <App />
-                {/* logout: just redirects to login (App will take care of removing the token) */}
-                <LogoutRoute path="/logout" />
-                <Route component={PageNotFound} />
-              </Switch>
-            </ScrollTop>
-          </Router>
-        </div>
-      </Provider>
+      <div>
+        <Router history={history}>
+          <ScrollTop>
+            <Switch>
+              <Route exact path="/login" component={Login} />
+              <App />
+              {/* logout: just redirects to login (App will take care of removing the token) */}
+              <LogoutRoute path="/logout" />
+              <Route component={PageNotFound} />
+            </Switch>
+          </ScrollTop>
+        </Router>
+      </div>
     );
   }
 }
-
 export default Root;
