@@ -58,10 +58,6 @@
   version "4.6.1"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.6.1.tgz#0dbaef4febad5d074d06dbdfae6b027d1d701d25"
 
-"@types/history@^3":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@types/history/-/history-3.2.2.tgz#b6affa240cb10b5f841c6443d8a24d7f3fc8bb0c"
-
 "@types/jquery@^3.2.16":
   version "3.2.16"
   resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.2.16.tgz#04419c404a3194350e7d3f339a90e72c88db3111"
@@ -134,12 +130,13 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router-redux@^4.0.51":
-  version "4.0.51"
-  resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-4.0.51.tgz#047e8c206892790bc2462f30d8b346d5b4f24fa0"
+"@types/react-router-redux@^5.0.10":
+  version "5.0.10"
+  resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-5.0.10.tgz#42f612fe6c608e2803b476c035ef81606bdd3bbf"
   dependencies:
-    "@types/history" "^3"
-    redux "^3.6.0"
+    "@types/history" "*"
+    "@types/react" "*"
+    redux "^3.7.2"
 
 "@types/react-router@*", "@types/react-router@^4.0.16":
   version "4.0.16"
@@ -6327,9 +6324,13 @@ react-router-dom@^4.2.2:
     react-router "^4.2.0"
     warning "^3.0.0"
 
-react-router-redux@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.8.tgz#227403596b5151e182377dab835b5d45f0f8054e"
+react-router-redux@^5.0.0-alpha.8:
+  version "5.0.0-alpha.8"
+  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.8.tgz#5242c705730b2ac862aff7a8e90f870d0cf45e12"
+  dependencies:
+    history "^4.7.2"
+    prop-types "^15.6.0"
+    react-router "^4.2.0"
 
 react-router@^4.2.0:
   version "4.2.0"
