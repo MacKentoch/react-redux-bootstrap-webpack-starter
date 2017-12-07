@@ -1,7 +1,10 @@
 // @flow weak
 
 import { connect }            from 'react-redux';
-import { bindActionCreators } from 'redux';
+import {
+  bindActionCreators,
+  compose
+}                             from 'redux';
 import * as viewsActions      from '../../redux/modules/views';
 import App                    from './App';
 import { withRouter }         from 'react-router';
@@ -23,10 +26,8 @@ const mapDispatchToProps = (dispatch) => {
   );
 };
 
-// IMPORTANT: witRouter is "needed here" to avoid blocking routing:
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(App)
-);
+// we use here compose (from redux) just for conveniance (since compose(f,h, g)(args) looks better than f(g(h(args))))
+export default compose(
+  withRouter, // IMPORTANT: witRouter is "needed here" to avoid blocking routing:
+  connect(mapStateToProps, mapDispatchToProps)
+)(App);
