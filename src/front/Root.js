@@ -9,10 +9,9 @@ import compose from 'recompose/compose';
 import configureStore from './redux/store/configureStore';
 import { history } from './redux/store/configureStore';
 import ScrollTop from './components/scrollToTop/ScrollToTop';
-import LogoutRoute from './components/logoutRoute/LogoutRoute';
 import withMainLayout from './hoc/withMainLayout';
 import MainRoutes from './routes/MainRoutes';
-import { PageNotFound, Login } from './routes/routes';
+import { PageNotFound } from './routes/routes';
 // #endregion
 
 // #region flow types
@@ -33,9 +32,6 @@ class Root extends Component<Props, State> {
           <ScrollTop>
             <Switch>
               <MainApp />
-              <Route exact path="/login" component={Login} />
-              {/* logout: just redirects to login (App will take care of removing the token) */}
-              <LogoutRoute path="/logout" />
               <Route path="*" component={PageNotFound} />
             </Switch>
           </ScrollTop>
