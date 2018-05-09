@@ -5,9 +5,9 @@ const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const assetsDir = path.join(__dirname, 'docs/assets');
-const rootPath = path.join(__dirname, 'docs');
-const publicAssets = 'assets/';
+const outputPath = path.join(__dirname, 'docs/assets');
+const devServerRootPath = path.join(__dirname, 'docs');
+const publicPath = '/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const srcInclude = path.join(__dirname, 'src/front');
 const indexFile = path.join(__dirname, 'src/front/index.js');
@@ -23,8 +23,8 @@ const config = {
     extensions: ['*', '.js', '.jsx'],
   },
   output: {
-    path: assetsDir,
-    publicPath: publicAssets,
+    path: outputPath,
+    publicPath,
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
@@ -85,7 +85,7 @@ const config = {
     new webpack.NoEmitOnErrorsPlugin(),
   ],
   devServer: {
-    contentBase: rootPath,
+    contentBase: devServerRootPath,
     port: 3001,
     hot: true,
     historyApiFallback: true,

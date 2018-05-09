@@ -8,8 +8,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 
-const assetsDir = path.join(__dirname, 'docs/assets');
-const publicAssets = './assets/';
+const outputPath = path.join(__dirname, 'docs/assets');
+const publicPath = '/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/front/index.js');
 
@@ -21,8 +21,8 @@ const config = {
     extensions: ['.js', 'jsx'],
   },
   output: {
-    path: assetsDir,
-    publicPath: publicAssets,
+    path: outputPath,
+    publicPath,
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
