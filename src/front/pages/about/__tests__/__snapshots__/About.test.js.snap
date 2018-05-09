@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About page renders as expected 1`] = `
+<div>
+  <div>
+    <h1>
+      About
+    </h1>
+  </div>
+</div>
+`;

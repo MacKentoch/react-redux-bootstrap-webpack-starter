@@ -1,4 +1,4 @@
-React 16 + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and redux-devtools-extension STARTER
+React 16+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
@@ -15,6 +15,20 @@ React 16 + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and re
 
 ![preview](./preview/preview.png)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMacKentoch%2Freact-redux-bootstrap-webpack-starter.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMacKentoch%2Freact-redux-bootstrap-webpack-starter?ref=badge_shield)
+
+## Breaking changes since v6.0.0
+
+* upgrade to `React 16.3.x`
+* upgrade to `webpack 4`
+* upgrade to `react-hot-loader v4`
+* drop `CSS Module` in favor of `styled-components` (_scoped style, theme support, better scaling in huge applications, simplify toolchain and keep nearly SASS syntax_)
+* add `flow types` (*even a little typing at least for better dev experience*)
+* drop `prop-types`(*static and dynamic typing apart, flow type does far more so avoid writing 2 differents typing system*)
+* `workbox-webpack-plugin` (_service worker caching powerful tool from Google_)
+* [loadable-components](https://github.com/smooth-code/loadable-components) (_split your code: here splitted just by routes, by you can split a component level if you feel the need_)
+* `webpack-bundle-analyzer`: analyze your bundle size (_maybe you should split or lazy load some part of your application: you will see clearly how to fix that_)
+* drop `moment` for `date-fns` (*since far smaller size and job's done*)
+
 
 ## Breaking changes since v5.0.0
 - upgrade to React 16.x
@@ -45,7 +59,7 @@ React 16 + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and re
 
 ## Breaking changes since v2.2.0
 - `cross-env` added so no more particular windows command
-- serve dev and prod bundles 
+- serve dev and prod bundles
  - `npm run serve-dev`: with server hot reload (*uses nodemon*)
  - `npm run serve-prod`: production like node-express server
 
@@ -65,7 +79,7 @@ React 16 + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and re
 ## Detailed Content
 
 **Front:**
-- React JS (16.x+ - [github :link:](https://github.com/facebook/react))
+- React JS (16.3+ - [github :link:](https://github.com/facebook/react))
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
@@ -84,22 +98,18 @@ React 16 + React-Router 4 + Redux + Bootstrap + Webpack 3 with Hot Reload and re
 **Tool chain:**
 - babel 6+
 - eslint
-- webpack 2
+- webpack 4
 - hot reload
 - loaders
   - `js` / `jsx`
-  - sass
   - css
   - json
   - images formats
   - svg and fonts formats
 
 **tests:**
-- Mocha
-- Chai (*+ dirty-chai*)
+- Jest
 - enzyme
-- Sinon
-- nyc
 
 
 ## Usage

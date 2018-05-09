@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home page renders as expected 1`] = `
+<div>
+  <div>
+    <div
+      className="jumbotron"
+    >
+      <div
+        className="sc-bdVaJa bDWFJH"
+      >
+        <h1
+          className="sc-bwzfXH jJLXBi"
+        >
+          ReactJS 16.3+ Redux Bootstrap
+        </h1>
+        <h2>
+          with Hot Reload (
+          <i>
+            react-hot-loader 4+
+          </i>
+          )!!!
+        </h2>
+        <h2>
+          and React Router v4
+        </h2>
+        <h2>
+          and webpack 4.x
+        </h2>
+        <h2>
+          and styled-components (
+          <i
+            className="sc-htpNat jfNlAg"
+          >
+            so keep using SCSS like styles and benefit performant css-in-js
+          </i>
+          )
+        </h2>
+        <h1>
+          Starter
+        </h1>
+        <p>
+          <a
+            className="btn btn-success btn-lg"
+            href="/about"
+            onClick={[Function]}
+          >
+            <i
+              className="fa fa-info"
+            />
+              go to about
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -8,10 +8,27 @@
     "flow"
   ],
   "plugins": [
+    "loadable-components/babel",
     "transform-regenerator",
     "transform-async-to-generator"
   ],
   "env": {
+    "test": {
+      "presets": [
+        ["env", {
+          "modules": "commonjs"
+        }],
+        "react",
+        "stage-2",
+        "flow",
+        "jest"
+      ],
+      "plugins": [
+        "loadable-components/babel",
+        "transform-regenerator",
+        "transform-async-to-generator"
+      ]
+    },
     "production": {
       "presets": [
         "react-optimize"

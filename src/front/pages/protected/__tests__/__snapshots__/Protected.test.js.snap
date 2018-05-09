@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Protected page renders as expected 1`] = `
+<div>
+  <div>
+    <h1>
+      Protected view
+    </h1>
+    <h3>
+      If you can read, it means you are authenticated
+    </h3>
+  </div>
+</div>
+`;
