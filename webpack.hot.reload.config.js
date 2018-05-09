@@ -5,8 +5,8 @@ const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const assetsDir = path.join(__dirname, 'docs/public/assets');
-const rootPath = path.join(__dirname, 'docs/public');
+const assetsDir = path.join(__dirname, 'docs/assets');
+const rootPath = path.join(__dirname, 'docs');
 const publicAssets = 'assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const srcInclude = path.join(__dirname, 'src/front');

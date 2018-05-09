@@ -9,7 +9,7 @@ const config = require('../config');
 // #endregion
 
 // #region constants
-const DOCS_PATH = '../../../docs/public/';
+const DOCS_PATH = '../../../docs/';
 // #endregion
 
 // $FlowIgnore

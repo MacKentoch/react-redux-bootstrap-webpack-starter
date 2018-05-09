@@ -1,4 +1,4 @@
-React 16+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
+React 16.3+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
@@ -9,6 +9,7 @@ React 16+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and red
 - *webpack is as simple as possible*
 - *ReactJS is written with `optimization tricks` (stateless, pure render, PureComponent...).*
 - *`pure front-end` = server independant (use whatever you want as server: NodeJS, Rails, .NET...)*
+- `SPA` but `SEO` and/or `PWA` friendly since use of `dynamic imports` and `application snapshot`.
 
 *Concept behind:* same as [react-bootstrap-webpack-starter](https://github.com/MacKentoch/react-bootstrap-webpack-starter) **but added `Redux` and amazing and helpful [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension).**
 
@@ -26,9 +27,10 @@ React 16+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and red
 * drop `prop-types`(*static and dynamic typing apart, flow type does far more so avoid writing 2 differents typing system*)
 * `workbox-webpack-plugin` (_service worker caching powerful tool from Google_)
 * [loadable-components](https://github.com/smooth-code/loadable-components) (_split your code: here splitted just by routes, by you can split a component level if you feel the need_)
+* [react-snaphot](https://github.com/stereobooster/react-snap) (*SEO friendly*)
 * `webpack-bundle-analyzer`: analyze your bundle size (_maybe you should split or lazy load some part of your application: you will see clearly how to fix that_)
 * drop `moment` for `date-fns` (*since far smaller size and job's done*)
-
+* drop `mocha` and all library around it for `jest` (*all in one toolset and snapshot testing*)
 
 ## Breaking changes since v5.0.0
 - upgrade to React 16.x
@@ -91,7 +93,7 @@ React 16+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and red
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - react-motion ([github :link:](https://github.com/chenglou/react-motion))
-- Webpack 3.x ([github :link:](https://github.com/webpack/webpack))
+- Webpack 4.x ([github :link:](https://github.com/webpack/webpack))
 - babel 6+ ([github :link:](https://github.com/babel/babel))
 - axios ([github :link:](https://github.com/mzabriskie/axios) *Why: simple, complete, isomorphic ...*)
 
