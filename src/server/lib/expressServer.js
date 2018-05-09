@@ -9,7 +9,7 @@ const config = require('../config');
 // #endregion
 
 // #region constants
-const DOCS_PATH = '../../../docs/';
+const DOCS_PATH = '../../../docs/public/';
 // #endregion
 
 // $FlowIgnore
@@ -23,8 +23,8 @@ const expressServer = (app = null, isDev = false) => {
   app.set('ipAdress', config.get('server.host'));
 
   app.use(
-    '/public/assets/',
-    express.static(path.join(__dirname, DOCS_PATH, 'public/assets/')),
+    '/assets',
+    express.static(path.join(__dirname, DOCS_PATH, 'assets/')),
   );
 
   app.get('/*', (req, res) =>

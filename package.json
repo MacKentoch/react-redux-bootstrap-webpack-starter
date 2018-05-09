@@ -20,11 +20,11 @@
   "scripts": {
     "flow": "node_modules/.bin/flow",
     "test": "cross-env NODE_ENV=test jest",
-    "predev": "node ./scripts/prepareIndexHtml.js",
-    "dev": "rimraf docs/public/assets && cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
+    "predev": "rimraf docs/public/* &&  node ./scripts/prepareIndexHtml.js",
+    "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
     "postdev": "react-snap",
-    "preprod": "node ./scripts/prepareIndexHtml.js",
-    "prod": "rimraf docs/public/assets && cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "preprod": "rimraf docs/public/* && node ./scripts/prepareIndexHtml.js",
+    "prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
     "postprod": "react-snap",
     "analyze": "rimraf docs/public/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
     "prestart": "node ./scripts/prepareIndexHtml.js",
@@ -33,7 +33,7 @@
     "serve-prod": "npm run prod && node ./src/server/server.js"
   },
   "reactSnap": {
-    "source": "docs"
+    "source": "docs/public"
   },
   "keywords": [
     "react",
@@ -83,6 +83,7 @@
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-logger": "^3.0.6",
     "@types/rename": "^1.0.1",
+    "@types/rimraf": "^2.0.2",
     "@types/webpack": "^4.1.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -115,7 +116,9 @@
     "jest": "^22.4.3",
     "jest-css-modules": "^1.1.0",
     "json-loader": "^0.5.7",
+    "mini-css-extract-plugin": "^0.4.0",
     "nodemon": "^1.17.3",
+    "optimize-css-assets-webpack-plugin": "^4.0.1",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react-addons-test-utils": "^15.6.2",
     "react-hot-loader": "^4.0.0",
