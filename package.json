@@ -32,6 +32,9 @@
     "serve-dev": "npm run dev && nodemon ./src/server/server.js",
     "serve-prod": "npm run prod && node ./src/server/server.js"
   },
+  "reactSnap": {
+    "source": "docs"
+  },
   "keywords": [
     "react",
     "react 16",
@@ -173,10 +176,6 @@
     "serve-favicon": "^2.5.0",
     "smoothscroll-polyfill": "^0.4.3",
     "styled-components": "^3.2.6"
-  },
-  "reactSnap": {
-    "source": "docs",
-    "include": ["/"]
   },
   "jest": {
     "roots": [

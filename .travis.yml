@@ -4,6 +4,7 @@ node_js:
 - 8
 sudo: false
 cache:
+  yarn: true
   directories:
   - node_modules
 before_install:
