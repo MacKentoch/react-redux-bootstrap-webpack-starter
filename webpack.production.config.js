@@ -9,7 +9,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 
 const assetsDir = path.join(__dirname, 'docs/assets');
-const publicAssets = './assets/';
+const publicAssets = 'assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/front/index.js');
 
