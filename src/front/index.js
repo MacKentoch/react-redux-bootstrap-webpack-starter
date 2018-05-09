@@ -17,6 +17,7 @@ const bootstrapedElement = document.getElementById(ELEMENT_TO_BOOTSTRAP);
 // #endregion
 
 // #region globals (styles, polyfill ...)
+window.__webpack_public_path__ = process.env.ASSET_PATH;
 // smoothscroll polyfill
 smoothScrollPolyfill.polyfill();
 // force polyfill (even if browser partially implements it)
