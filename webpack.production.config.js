@@ -81,6 +81,7 @@ const config = {
   plugins: [
     new WebpackRequireFrom({
       methodName: 'getBaseUrl',
+      replaceSrcMethodName: 'replaceDynamicSrc',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

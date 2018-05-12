@@ -27,7 +27,8 @@ injectGlobalStyle();
 injectTpEventPlugin();
 
 // used by webpack-require-from:
-global.getBaseUrl = getLocationOrigin();
+window.getBaseUrl = getLocationOrigin();
+window.replaceDynamicSrc = getLocationOrigin();
 // #endregion
 
 // #region render (with hot reload if dev)
