@@ -7,6 +7,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
+const WebpackRequireFrom = require('webpack-require-from');
 
 const outputPath = path.join(__dirname, 'docs/assets');
 const publicPath = '/assets/';
@@ -78,6 +79,9 @@ const config = {
     ],
   },
   plugins: [
+    new WebpackRequireFrom({
+      methodName: 'getBaseUrl',
+    }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',

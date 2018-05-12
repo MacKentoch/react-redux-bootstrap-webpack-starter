@@ -9,6 +9,7 @@ import { AppContainer } from 'react-hot-loader';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
 import injectGlobalStyle from './style/injectGlobalStyles';
 import Root from './Root';
+import { getLocationOrigin } from './services/API/fetchTools';
 // #endregion
 
 // #region constants
@@ -24,6 +25,9 @@ window.__forceSmoothScrollPolyfill__ = true;
 
 injectGlobalStyle();
 injectTpEventPlugin();
+
+// used by webpack-require-from:
+global.getBaseUrl = getLocationOrigin();
 // #endregion
 
 // #region render (with hot reload if dev)
