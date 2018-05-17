@@ -7,6 +7,7 @@ import { hydrate, render } from 'react-dom';
 import injectTpEventPlugin from 'react-tap-event-plugin';
 import { AppContainer } from 'react-hot-loader';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
+import { loadComponents, getState } from 'loadable-components';
 import injectGlobalStyle from './style/injectGlobalStyles';
 import Root from './Root';
 // import { getLocationOrigin } from './services/API/fetchTools';
@@ -22,6 +23,7 @@ const bootstrapedElement = document.getElementById(ELEMENT_TO_BOOTSTRAP);
 smoothScrollPolyfill.polyfill();
 // force polyfill (even if browser partially implements it)
 window.__forceSmoothScrollPolyfill__ = true;
+window.snapSaveState = () => getState();
 
 injectGlobalStyle();
 injectTpEventPlugin();
@@ -37,7 +39,10 @@ const renderApp = RootComponent => {
 
   // needed for react-snap:
   if (bootstrapedElement.hasChildNodes()) {
-    hydrate(<Application />, bootstrapedElement);
+    // avoid 1st load flickering due to async component loading:
+    loadComponents().then(() => {
+      hydrate(<Application />, bootstrapedElement);
+    });
   } else {
     render(<Application />, bootstrapedElement);
   }
