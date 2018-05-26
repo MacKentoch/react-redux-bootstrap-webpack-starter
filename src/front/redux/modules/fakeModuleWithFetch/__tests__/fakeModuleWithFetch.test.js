@@ -20,7 +20,7 @@ jest.mock(
   { virtual: true },
 );
 
-jest.mock('../../../services/API/fetchTools', () => ({
+jest.mock('../../../../services/API/fetchTools', () => ({
   getLocationOrigin: 'http://localhost',
 }));
 // #endregion

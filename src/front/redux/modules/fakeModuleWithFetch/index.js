@@ -3,9 +3,9 @@
 // #region imports
 import { format } from 'date-fns';
 import { type Dispatch } from 'redux';
-import fakeData from '../../mock/fakeAPI.json';
-import appConfig from '../../config/appConfig';
-import { getLocationOrigin } from '../../services/API/fetchTools';
+import fakeData from '../../../mock/fakeAPI.json';
+import appConfig from '../../../config/appConfig';
+import { getLocationOrigin } from '../../../services/API/fetchTools';
 import { type State } from './fakeModuleWithFetch.types';
 // #endregion
 
