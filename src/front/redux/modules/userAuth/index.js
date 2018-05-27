@@ -3,10 +3,10 @@
 // #region imports
 import { format } from 'date-fns';
 import { type Dispatch } from 'redux';
-import appConfig from '../../config/appConfig';
-import userInfosMockData from '../../mock/userInfosMock.json';
-import { getLocationOrigin } from '../../services/API/fetchTools';
-import auth from '../../services/auth';
+import appConfig from '../../../config/appConfig';
+import userInfosMockData from '../../../mock/userInfosMock.json';
+import { getLocationOrigin } from '../../../services/API/fetchTools';
+import auth from '../../../services/auth';
 import { type State } from './userAuth.types';
 // #endregion
 
