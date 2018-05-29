@@ -44,5 +44,11 @@ describe('userAuth action creators', () => {
 
     const action = disconnectUser();
     expect(action).toEqual(expectedAction);
+
+    store.dispatch(disconnectUser());
+
+    const actions = store.getActions();
+    const expectedPayload = { type: 'DISCONNECT_USER' };
+    expect(actions).toEqual([expectedPayload]);
   });
 });
