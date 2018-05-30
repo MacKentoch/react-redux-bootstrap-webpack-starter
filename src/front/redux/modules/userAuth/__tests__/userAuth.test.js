@@ -31,6 +31,17 @@ const initialState = {
 jest.mock('../../../../services/API/fetchTools', () => ({
   getLocationOrigin: 'http://localhost',
 }));
+
+jest.mock('../../../../services/auth', () => ({
+  getToken() {
+    return 'fake_token_for_test',
+  },
+  getUserInfo() {
+    return {
+      _id: 'some_fake_id'
+    }
+  }
+}));
 // #endregion
 
 describe('userAuth action creators', () => {
