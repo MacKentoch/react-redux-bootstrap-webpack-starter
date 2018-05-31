@@ -41,7 +41,7 @@ function withMainLayout(/* no args option yet, but could pass them here */) {
       componentDidMount() {
         if (typeof window !== undefined) {
           // register service worker (no worry about multiple attempts to register, browser will ignore when already registered)
-          // registerServiceWorker();
+          registerServiceWorker();
         }
       }
 
