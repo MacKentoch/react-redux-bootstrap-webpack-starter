@@ -16,7 +16,7 @@
     "test": {
       "presets": [
         ["env", {
-          // "modules": "commonjs"
+          "modules": "commonjs"
         }],
         "react",
         "stage-2",

@@ -34,13 +34,18 @@ jest.mock('../../../../services/API/fetchTools', () => ({
 
 jest.mock('../../../../services/auth', () => ({
   getToken() {
-    return 'fake_token_for_test',
+    return 'fake_token_for_test';
   },
+
   getUserInfo() {
     return {
-      _id: 'some_fake_id'
-    }
-  }
+      _id: 'some_fake_id',
+    };
+  },
+
+  clearAllAppStorage() {
+    return true;
+  },
 }));
 // #endregion
 
