@@ -39,7 +39,7 @@ jest.mock('../../../../services/auth', () => ({
 
   getUserInfo() {
     return {
-      _id: 'some_fake_id',
+      id: 'some_fake_id',
     };
   },
 
@@ -57,6 +57,24 @@ describe('userAuth action creators', () => {
   });
   it('disconnectUser should return valid action', async () => {
     const expectedAction = { type: 'DISCONNECT_USER' };
+
+    const action = disconnectUser();
+    expect(action).toEqual(expectedAction);
+
+    store.dispatch(disconnectUser());
+
+    const actions = store.getActions();
+    const expectedPayload = { type: 'DISCONNECT_USER' };
+    expect(actions).toEqual([expectedPayload]);
+  });
+
+  it('checkUserIsConnected should return valid action', async () => {
+    const expectedAction = {
+      type: 'CHECK_IF_USER_IS_AUTHENTICATED',
+      id: 'some_fake_id',
+      token: 'fake_token_for_test',
+      isAuthenticated: true,
+    }; // authentication status (token based auth)
 
     const action = disconnectUser();
     expect(action).toEqual(expectedAction);
