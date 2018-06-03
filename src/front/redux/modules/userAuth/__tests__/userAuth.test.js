@@ -4,7 +4,7 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMiddleware from '../../../middleware/fetchMiddleware';
-import { disconnectUser } from '../index';
+import { disconnectUser, checkUserIsConnected } from '../index';
 // #endregion
 
 // #region constants
@@ -55,6 +55,7 @@ describe('userAuth action creators', () => {
   beforeEach(() => {
     store = mockStore(initialState);
   });
+
   it('disconnectUser should return valid action', async () => {
     const expectedAction = { type: 'DISCONNECT_USER' };
 
@@ -74,15 +75,12 @@ describe('userAuth action creators', () => {
       id: 'some_fake_id',
       token: 'fake_token_for_test',
       isAuthenticated: true,
-    }; // authentication status (token based auth)
+    };
 
-    const action = disconnectUser();
-    expect(action).toEqual(expectedAction);
-
-    store.dispatch(disconnectUser());
-
+    store.dispatch(checkUserIsConnected());
     const actions = store.getActions();
-    const expectedPayload = { type: 'DISCONNECT_USER' };
+    const expectedPayload = expectedAction;
+
     expect(actions).toEqual([expectedPayload]);
   });
 });
