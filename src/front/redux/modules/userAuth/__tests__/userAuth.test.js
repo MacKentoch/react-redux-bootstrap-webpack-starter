@@ -17,13 +17,14 @@ const initialState = {
   time: '',
 
   // userInfos
-  id: '',
+  id: 'some_fake_id',
+  _id: 'some_fake_id',
   login: '',
   firstname: '',
   lastname: '',
 
-  token: null,
-  isAuthenticated: false, // authentication status (token based auth)
+  token: 'fake_token_for_test',
+  isAuthenticated: true, // authentication status (token based auth)
 };
 // #endregion
 
@@ -39,7 +40,7 @@ jest.mock('../../../../services/auth', () => ({
 
   getUserInfo() {
     return {
-      id: 'some_fake_id',
+      _id: 'some_fake_id',
     };
   },
 
@@ -72,7 +73,7 @@ describe('userAuth action creators', () => {
   it('checkUserIsConnected should return valid action', async () => {
     const expectedAction = {
       type: 'CHECK_IF_USER_IS_AUTHENTICATED',
-      id: 'some_fake_id',
+      _id: 'some_fake_id',
       token: 'fake_token_for_test',
       isAuthenticated: true,
     };
