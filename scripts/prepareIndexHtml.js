@@ -7,8 +7,8 @@ const chalk = require('chalk');
 // #endregion
 
 // #region constants
-const indexRaw = join(__dirname, './index-raw.html');
-const destHtml = join(__dirname, '../docs/index.html');
+const indexRaw = join(__dirname, '../', 'src/front/statics/index-raw.html');
+const destHtml = join(__dirname, '../', 'docs/index.html');
 // #endregion
 
 // #region utils
@@ -22,10 +22,14 @@ function prepareIndexHtml() {
   if (fs.existsSync(indexRaw)) {
     copyFile(indexRaw, destHtml);
 
-    console.log(
+    return console.log(
       `${chalk.default.greenBright('==== index.html generated 🏋️‍ ====')}`,
     );
   }
+
+  return console.log(
+    `${chalk.default.red('==== index.html not found... 😢 ====')}`,
+  );
 }
 // #endergion
 
