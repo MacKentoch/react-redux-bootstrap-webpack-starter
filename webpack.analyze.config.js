@@ -77,6 +77,10 @@ const config = {
       },
     },
     minimizer: [
+      new MiniCssExtractPlugin({
+        filename: '[name].[hash].css',
+        chunkFilename: '[id].[hash].css',
+      }),
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
