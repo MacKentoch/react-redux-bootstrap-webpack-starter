@@ -10,8 +10,8 @@ const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 // #endregion
 
 // #region constants
-const outputPath = path.join(__dirname, 'docs/public/assets');
-const publicPath = 'public/assets/';
+const outputPath = path.join(__dirname, 'docs/assets');
+const publicPath = '/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/front/index.js');
 // #endregion
