@@ -9,16 +9,15 @@ import BackToTopButton from '../BackToTopButton';
 describe('BackToTopButton component', () => {
   it('renders as expected', () => {
     const props = {
-      position: 'bottom-right',
+      position: 'bottom-left',
       onClick: () => {},
       motionStyle: {},
     };
-    const aChild = <p>button</p>;
 
     const component = renderer
       .create(
-        <div id="appContainer">
-          <BackToTopButton {...props}>{aChild}</BackToTopButton>
+        <div>
+          <BackToTopButton {...props} />
         </div>,
       )
       .toJSON();

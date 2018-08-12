@@ -9,14 +9,14 @@ import BackToTop from '../BackToTop';
 describe('BackToTop component', () => {
   it('renders as expected', () => {
     const props = {
-      minScrollY: 40,
-      scrollTo: 'appContainer',
+      minScrollY: 10,
+      scrollTo: null,
       onScrollDone: () => {},
     };
 
     const component = renderer
       .create(
-        <div id="appContainer">
+        <div>
           <BackToTop {...props} />
         </div>,
       )

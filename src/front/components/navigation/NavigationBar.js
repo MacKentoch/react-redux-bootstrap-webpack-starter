@@ -2,79 +2,125 @@
 
 // #region imports
 import React, { PureComponent } from 'react';
-import Humburger from './humburger/Humburger';
-import LeftNav from './leftNav/LeftNav';
-import RightNav from './rightNav/RightNav';
-import { type LeftLink, type OnLeftNavButtonClick } from './leftNav/LeftNav';
 import {
-  type RightLink,
-  type OnRightNavButtonClick,
-} from './rightNav/RightNav';
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+} from 'reactstrap';
+import { withRouter } from 'react-router-dom';
+import {
+  type Match,
+  type Location,
+  type RouterHistory,
+} from 'react-router-dom';
+import { type AuthContextProps } from '../../contexts/auth/consumerHOC';
 // #endregion
 
 // #region flow types
-export type Props = {
-  brand: string,
+type Props = {
+  // withRouter HOC:
+  match: Match,
+  location: Location,
+  history: RouterHistory,
 
+  // parent props:
+  brand: string,
   handleLeftNavItemClick: OnLeftNavButtonClick,
   handleRightNavItemClick: OnRightNavButtonClick,
-
   navModel: {
     leftLinks: Array<LeftLink>,
     rightLinks: Array<RightLink>,
   },
 
   ...any,
-};
+} & AuthContextProps;
 
-export type State = any;
+type State = {
+  isOpen: boolean,
+  ...any,
+};
 // #endregion
 
 class NavigationBar extends PureComponent<Props, State> {
-  static defaultProps = { brand: 'brand' };
+  static defaultProps = {
+    brand: 'brand',
+  };
 
-  // #region life cycle
+  state = {
+    isOpen: false,
+  };
+
+  // #region lifecycle
   render() {
     const {
       brand,
-      navModel,
-      handleLeftNavItemClick,
-      handleRightNavItemClick,
+      navModel: { rightLinks },
+      isAuthenticated,
     } = this.props;
 
+    const { isOpen } = this.state;
+
     return (
-      <nav className="navbar navbar-default">
-        <div className="containersCustom">
-          <div className="navbar-header">
-            {<Humburger />}
-            <a className="navbar-brand">{brand}</a>
-          </div>
-          <div
-            className="collapse navbar-collapse"
-            id="bs-example-navbar-collapse-1"
-          >
-            <ul className="nav navbar-nav">
-              {
-                <LeftNav
-                  leftLinks={navModel.leftLinks}
-                  onLeftNavButtonClick={handleLeftNavItemClick}
-                />
-              }
-            </ul>
-            <ul className="nav navbar-nav navbar-right">
-              {
-                <RightNav
-                  rightLinks={navModel.rightLinks}
-                  onRightNavButtonClick={handleRightNavItemClick}
-                />
-              }
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">{brand}</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            {rightLinks.map(({ label, link, viewName }, index) => (
+              <NavItem key={`${index}`}>
+                <NavLink href="#" onClick={this.handlesNavItemClick(link)}>
+                  {label}
+                </NavLink>
+              </NavItem>
+            ))}
+            {isAuthenticated && (
+              <NavItem>
+                <NavLink href="#" onClick={this.handlesDisconnect}>
+                  Disconnect
+                </NavLink>
+              </NavItem>
+            )}
+          </Nav>
+        </Collapse>
+      </Navbar>
     );
   }
   // #endregion
+
+  // #region navigation bar toggle
+  toggle = (evt: SyntheticEvent<>) => {
+    if (evt) {
+      evt.preventDefault();
+    }
+    this.setState((isOpen: prevIsOpened) => ({ isOpen: !prevIsOpened }));
+  };
+  // #endregion
+
+  // #region handlesNavItemClick event
+  handlesNavItemClick = (link: string = '/') => (evt: SyntheticEvent<>) => {
+    if (evt) {
+      evt.preventDefault();
+    }
+    const { history } = this.props;
+    history.push(link);
+  };
+  // #endregion
+
+  // #region disconnect
+  handlesDisconnect = (evt: SyntheticEvent<>) => {
+    if (evt) {
+      evt.preventDefault();
+    }
+    const { history, disconnectUser } = this.props;
+
+    disconnectUser();
+    history.push('/');
+  };
+  // #endregion
 }
 
-export default NavigationBar;
+export default withRouter(NavigationBar);
