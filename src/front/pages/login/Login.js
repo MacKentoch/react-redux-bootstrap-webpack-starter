@@ -7,7 +7,9 @@ import {
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import { Row, Col, Button } from 'react-bootstrap';
+import Button from 'reactstrap/lib/Button';
+import Row from 'reactstrap/lib/Row';
+import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
 // #endregion
 
@@ -58,7 +60,7 @@ class Login extends PureComponent<Props, State> {
     return (
       <div className="content">
         <Row>
-          <Col md={4} mdOffset={4} xs={10} xsOffset={1}>
+          <Col md={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
             <form className="form-horizontal" noValidate>
               <fieldset>
                 <legend>Login</legend>
@@ -70,16 +72,17 @@ class Login extends PureComponent<Props, State> {
                   >
                     Email
                   </label>
-                  <div className="col-lg-10">
+                  <Col lg={12}>
                     <input
                       type="text"
                       className="form-control"
                       id="inputEmail"
                       placeholder="Email"
+                      autoComplete="username email"
                       value={email}
                       onChange={this.handlesOnEmailChange}
                     />
-                  </div>
+                  </Col>
                 </div>
 
                 <div className="form-group">
@@ -89,22 +92,24 @@ class Login extends PureComponent<Props, State> {
                   >
                     Password
                   </label>
-                  <div className="col-lg-10">
+                  <Col lg={12}>
                     <input
                       type="password"
                       className="form-control"
                       id="inputPassword"
                       placeholder="Password"
+                      autoComplete="current-password"
                       value={password}
                       onChange={this.handlesOnPasswordChange}
                     />
-                  </div>
+                  </Col>
                 </div>
+
                 <div className="form-group">
-                  <Col lg={10} lgOffset={2}>
+                  <Col lg={{ size: 12 }}>
                     <Button
                       className="login-button btn-block"
-                      bsStyle="primary"
+                      color="primary"
                       disabled={isLogging}
                       onClick={this.handlesOnLogin}
                     >
@@ -124,10 +129,12 @@ class Login extends PureComponent<Props, State> {
           </Col>
         </Row>
         <Row>
-          <Col md={4} mdOffset={4} xs={10} xsOffset={1}>
-            <Button bsStyle="primary" onClick={this.goHome}>
-              back to home
-            </Button>
+          <Col md={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
+            <div className="pull-right">
+              <Button className="btn-block" onClick={this.goHome}>
+                back to home
+              </Button>
+            </div>
           </Col>
         </Row>
       </div>
