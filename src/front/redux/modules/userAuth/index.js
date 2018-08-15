@@ -2,12 +2,12 @@
 
 // #region imports
 import { format } from 'date-fns';
-import { type Dispatch } from 'redux';
 import appConfig from '../../../config/appConfig';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
 import { type State } from './userAuth.types';
+import { type Dispatch, type GetState } from '../../../types/redux/redux-thunk';
 // #endregion
 
 // #region CONSTANTS
@@ -241,9 +241,9 @@ export function logUserIfNeeded(
   password: string,
 ): (...any) => Promise<any> {
   return (
-    dispatch: (Dispatch<State>) => any,
-    getState: () => { userAuth: State, ...any },
-  ): Promise<anys> => {
+    dispatch: Dispatch<Action>,
+    getState: GetState<{ userAuth: State, ...any }>,
+  ): Promise<any> => {
     if (shouldLogUser(getState())) {
       return dispatch(logUser(email, password));
     }

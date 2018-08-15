@@ -17,3 +17,9 @@ export type State = {
 
   ...any,
 } & User;
+
+export type UserAuthActions = {
+  disconnectUser: () => any,
+  logUserIfNeeded: (email: string, password: string) => Promise<any>,
+  fetchUserInfoDataIfNeeded: (id: string) => any,
+};

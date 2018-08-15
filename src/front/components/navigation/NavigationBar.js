@@ -17,7 +17,7 @@ import {
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import { type AuthContextProps } from '../../contexts/auth/consumerHOC';
+import { type UserAuthActions } from '../../redux/modules/userAuth/userAuth.types';
 // #endregion
 
 // #region flow types
@@ -26,6 +26,10 @@ type Props = {
   match: Match,
   location: Location,
   history: RouterHistory,
+
+  // redux
+  token: string | null,
+  isAuthenticated: boolean,
 
   // parent props:
   brand: string,
@@ -37,7 +41,7 @@ type Props = {
   },
 
   ...any,
-} & AuthContextProps;
+} & UserAuthActions;
 
 type State = {
   isOpen: boolean,

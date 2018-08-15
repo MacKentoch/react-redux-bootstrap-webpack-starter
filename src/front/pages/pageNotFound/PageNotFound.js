@@ -7,7 +7,7 @@ import {
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import Jumbotron from '../../components/jumbotron/Jumbotron';
+import Jumbotron from 'reactstrap/lib/Jumbotron';
 // #endregion
 
 // #region flow types
