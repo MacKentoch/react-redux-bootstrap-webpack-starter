@@ -11,6 +11,7 @@ import Button from 'reactstrap/lib/Button';
 import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
+import { type UserAuthActions } from '../../types/redux/userAuth';
 // #endregion
 
 // #region flow types
@@ -24,9 +25,7 @@ export type Props = {
   isAuthenticated: boolean,
   isFetching: boolean,
   isLogging: boolean,
-  disconnectUser: () => any,
-  logUserIfNeeded: () => any,
-};
+} & UserAuthActions;
 
 export type State = {
   email: string,
