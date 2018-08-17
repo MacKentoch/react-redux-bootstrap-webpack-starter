@@ -1,4 +1,5 @@
 /// <reference path="globals/axios/index.d.ts" />
+/// <reference path="globals/bootstrap/index.d.ts" />
 /// <reference path="globals/classnames/index.d.ts" />
 /// <reference path="globals/jest/index.d.ts" />
 /// <reference path="globals/js-base64/index.d.ts" />

@@ -4,7 +4,7 @@
 let store = {};
 // #endregion
 
-class LocalStorageMock {
+class SessionStorageMock {
   constructor() {
     store = {};
   }
@@ -26,10 +26,10 @@ class LocalStorageMock {
   }
 }
 
-const localStorage = new LocalStorageMock();
+const sessionStorage = new SessionStorageMock();
 
-if (!window.localStorage) {
-  window.localStorage = localStorage;
+if (!window.sessionStorage) {
+  window.sessionStorage = localStorage;
 }
 
-module.exports = localStorage;
+module.exports = sessionStorage;

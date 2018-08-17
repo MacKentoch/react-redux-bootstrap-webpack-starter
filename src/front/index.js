@@ -8,6 +8,7 @@ import injectTpEventPlugin from 'react-tap-event-plugin';
 import { AppContainer } from 'react-hot-loader';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
 import { loadComponents, getState } from 'loadable-components';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import injectGlobalStyle from './style/injectGlobalStyles';
 import Root from './Root';
 // import { getLocationOrigin } from './services/API/fetchTools';
