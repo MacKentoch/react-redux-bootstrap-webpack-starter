@@ -8,7 +8,13 @@ export type State = {
   // actions details
   isFetching: false,
   isLogging: false,
-  time: '',
+  actionTime: '',
+
+  isAuthenticated: boolean,
+  token: string,
+  id: string,
+  firstname: string,
+  lastname: string,
 
   ...any,
 } & User;
