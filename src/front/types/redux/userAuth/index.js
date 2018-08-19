@@ -20,7 +20,8 @@ export type State = {
 } & User;
 
 export type UserAuthActions = {
-  disconnectUser: () => any,
+  checkUserIsConnected: () => any,
   logUserIfNeeded: (email: string, password: string) => Promise<any>,
   fetchUserInfoDataIfNeeded: (id: string) => any,
+  disconnectUser: () => any,
 };
