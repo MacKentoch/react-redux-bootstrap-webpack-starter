@@ -11,13 +11,12 @@ import {
   NavItem,
   NavLink,
 } from 'reactstrap';
-import { withRouter } from 'react-router-dom';
 import {
   type Match,
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import { type UserAuthActions } from '../../redux/modules/userAuth/userAuth.types';
+import { type UserAuthActions } from '../../types/redux/userAuth';
 // #endregion
 
 // #region flow types
@@ -127,4 +126,4 @@ class NavigationBar extends PureComponent<Props, State> {
   // #endregion
 }
 
-export default withRouter(NavigationBar);
+export default NavigationBar;

@@ -1,9 +1,10 @@
 // @flow
 
 // #region imports
-import connect from 'react-redux';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import compose from 'recompose/compose';
+import { withRouter } from 'react-router-dom';
 import * as userAuthActions from '../../redux/modules/userAuth';
 import NavigationBar from './NavigationBar';
 // #endregion
@@ -26,4 +27,5 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
+  withRouter,
 )(NavigationBar);
