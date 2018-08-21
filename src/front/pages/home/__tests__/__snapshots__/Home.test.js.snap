@@ -12,7 +12,7 @@ exports[`Home page renders as expected 1`] = `
         <h1
           className="sc-bwzfXH jJLXBi"
         >
-          ReactJS 16.3+ Redux Bootstrap
+          ReactJS 16.3+ Bootstrap 4
         </h1>
         <h2>
           with Hot Reload (
