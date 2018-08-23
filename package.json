@@ -170,6 +170,7 @@
     "chalk": "^2.4.1",
     "classnames": "^2.2.6",
     "compression": "^1.7.2",
+    "connected-react-router": "^4.4.1",
     "convict": "^4.2.0",
     "date-fns": "^1.29.0",
     "express": "^4.16.3",

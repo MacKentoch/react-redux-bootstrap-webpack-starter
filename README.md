@@ -18,6 +18,9 @@ React 16.3+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and r
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMacKentoch%2Freact-redux-bootstrap-webpack-starter.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FMacKentoch%2Freact-redux-bootstrap-webpack-starter?ref=badge_shield)
 
 ## Breaking changes since v6.0.0
+- migration to bootstrap 4
+
+## Breaking changes since v6.0.0
 
 * upgrade to `React 16.3.x`
 * upgrade to `webpack 4`
