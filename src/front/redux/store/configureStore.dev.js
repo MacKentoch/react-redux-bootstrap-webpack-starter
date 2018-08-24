@@ -3,7 +3,8 @@
 // #region imports
 import { createStore, applyMiddleware } from 'redux';
 import { createLogger } from 'redux-logger';
-import { routerMiddleware } from 'react-router-redux';
+// import { routerMiddleware } from 'react-router-redux'; // deprecated in favor of react-connected-router
+import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 // #region import createHistory from hashHistory or BrowserHistory:
 // import createHistory from 'history/createHashHistory';
@@ -38,7 +39,11 @@ const enhancer = composeWithDevTools(
 // #endregion
 
 export default function configureStore(initialState) {
-  const store = createStore(reducer, initialState, enhancer);
+  const store = createStore(
+    connectRouter(history)(reducer),
+    initialState,
+    enhancer,
+  );
   if (module.hot) {
     module.hot.accept('../modules/reducers', () =>
       store.replaceReducer(require('../modules/reducers').default),
