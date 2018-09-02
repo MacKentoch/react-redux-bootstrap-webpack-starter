@@ -99,7 +99,7 @@ class NavigationBar extends PureComponent<Props, State> {
     if (evt) {
       evt.preventDefault();
     }
-    this.setState((isOpen: prevIsOpened) => ({ isOpen: !prevIsOpened }));
+    this.setState(({isOpen: prevIsOpened}) => ({ isOpen: !prevIsOpened }));
   };
   // #endregion
 
