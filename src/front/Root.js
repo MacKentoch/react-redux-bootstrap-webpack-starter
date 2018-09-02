@@ -2,7 +2,7 @@
 
 // #region imports
 import React, { Component } from 'react';
-import { ConnectedRouter } from 'react-router-redux';
+import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import compose from 'recompose/compose';

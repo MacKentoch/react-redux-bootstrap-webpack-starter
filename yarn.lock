@@ -270,15 +270,6 @@
     "@types/react" "*"
     "@types/react-router" "*"
 
-"@types/react-router-redux@^5.0.15":
-  version "5.0.15"
-  resolved "https://registry.yarnpkg.com/@types/react-router-redux/-/react-router-redux-5.0.15.tgz#aebc593bd3426adb6ae2eba6ac8c919ee232ce7b"
-  dependencies:
-    "@types/history" "*"
-    "@types/react" "*"
-    "@types/react-router" "*"
-    redux ">= 3.7.2"
-
 "@types/react-router@*", "@types/react-router@^4.0.30":
   version "4.0.30"
   resolved "https://registry.yarnpkg.com/@types/react-router/-/react-router-4.0.30.tgz#64bcd886befd1f932779b74d17954adbefb7a3a7"
@@ -7793,14 +7784,6 @@ react-router-dom@^4.2.2:
     react-router "^4.3.1"
     warning "^4.0.1"
 
-react-router-redux@^5.0.0-alpha.9:
-  version "5.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.9.tgz#825431516e0e6f1fd93b8807f6bd595e23ec3d10"
-  dependencies:
-    history "^4.7.2"
-    prop-types "^15.6.0"
-    react-router "^4.2.0"
-
 react-router@^4.2.0, react-router@^4.3.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/react-router/-/react-router-4.3.1.tgz#aada4aef14c809cb2e686b05cee4742234506c4e"
@@ -7988,7 +7971,7 @@ redux-thunk@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 
-redux@*, "redux@>= 3.7.2", redux@^4.0.0:
+redux@*, redux@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-4.0.0.tgz#aa698a92b729315d22b34a0553d7e6533555cc03"
   dependencies:

@@ -1,7 +1,6 @@
 // @flow
 
 // #region imports
-import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import fakeModuleWithFetch from './fakeModuleWithFetch';
 import userAuth from './userAuth';
@@ -14,5 +13,4 @@ export const reducers = {
 
 export default combineReducers({
   ...reducers,
-  routing: routerReducer,
 });

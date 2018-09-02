@@ -20,6 +20,7 @@
   "scripts": {
     "flow": "node_modules/.bin/flow",
     "test": "cross-env NODE_ENV=test jest",
+    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "clean-docs": "rimraf docs/*",
     "prepare:index-html": "node ./scripts/prepareIndexHtml.js",
     "predev": "npm run clean-docs",
@@ -87,7 +88,6 @@
     "@types/react-redux": "^5.0.19",
     "@types/react-router": "^4.0.30",
     "@types/react-router-dom": "^4.3.0",
-    "@types/react-router-redux": "^5.0.15",
     "@types/redux": "^3.6.0",
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-logger": "^3.0.6",
@@ -197,7 +197,6 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-router-redux": "^5.0.0-alpha.9",
     "react-tap-event-plugin": "^3.0.2",
     "reactstrap": "^6.3.1",
     "recompose": "^0.27.0",
