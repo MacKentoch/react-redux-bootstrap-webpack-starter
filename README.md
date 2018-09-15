@@ -101,7 +101,7 @@ npm run serve-prod
 
 ## Donate
 
-Do you use & like react-native-beacons-manager but you don’t find a way to show some love?
+Do you use & like react-redux-bootstrap-webpack-starter but you don’t find a way to show some love?
 If yes, please consider donating to support this project. Otherwise, no worries, regardless of whether there is support or not, I will keep maintaining this project. Still, if you buy me a cup of coffee I would be more than happy though 😄
 
 [![Support via PayPal](./assets/Paypal-button.png)](https://www.paypal.me/ErwanDatin/)
@@ -110,7 +110,7 @@ If yes, please consider donating to support this project. Otherwise, no worries,
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Erwan DATIN
+Copyright (c) 2018 Erwan DATIN
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
