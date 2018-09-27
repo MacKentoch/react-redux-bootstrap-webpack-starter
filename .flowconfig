@@ -4,6 +4,7 @@
 
 [libs]
 ./interfaces/global.js
+./flow-typed
 
 [options]
 module.name_mapper='.*\(.css\)' -> 'CSSModule'

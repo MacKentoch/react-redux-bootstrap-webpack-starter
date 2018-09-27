@@ -1,38 +1,35 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "modules": false
     }],
-    "react",
-    "stage-2",
-    "flow"
+    "@babel/preset-react",
+    "@babel/preset-flow"
   ],
   "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread",
     "loadable-components/babel",
-    "transform-regenerator",
-    "transform-async-to-generator"
+    "@babel/plugin-transform-regenerator",
+    "@babel/plugin-transform-async-to-generator"
   ],
   "env": {
     "test": {
       "presets": [
-        ["env", {
-          "modules": "commonjs"
-        }],
-        "react",
-        "stage-2",
-        "flow",
-        "jest"
+        "@babel/preset-env",
+        "@babel/preset-react",
+        "@babel/preset-flow"
       ],
       "plugins": [
+        "@babel/plugin-transform-modules-commonjs",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-object-rest-spread",
         "loadable-components/babel",
-        "transform-regenerator",
-        "transform-async-to-generator"
+        "@babel/plugin-transform-regenerator",
+        "@babel/plugin-transform-async-to-generator"
       ]
     },
     "production": {
-      "presets": [
-        "react-optimize"
-      ],
       "plugins": ["transform-remove-console"],
       "comments": false
     }

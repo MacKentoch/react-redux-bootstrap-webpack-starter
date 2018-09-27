@@ -4,7 +4,6 @@
 import 'babel-polyfill'; // NOTE: REALLY important to avoid "regeneratorRuntime is not defined"
 import React from 'react';
 import { hydrate, render } from 'react-dom';
-import injectTpEventPlugin from 'react-tap-event-plugin';
 import { AppContainer } from 'react-hot-loader';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
 import { loadComponents, getState } from 'loadable-components';
@@ -27,7 +26,6 @@ window.__forceSmoothScrollPolyfill__ = true;
 window.snapSaveState = () => getState();
 
 injectGlobalStyle();
-injectTpEventPlugin();
 // #endregion
 
 // #region render (with hot reload if dev)
