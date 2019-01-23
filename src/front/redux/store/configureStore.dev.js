@@ -10,6 +10,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import createHistory from 'history/createHashHistory';
 import createHistory from 'history/createBrowserHistory';
 // #endregion
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import thunkMiddleware from 'redux-thunk';
 import reducer from '../modules/reducers';
 import fetchMiddleware from '../middleware/fetchMiddleware';
@@ -38,12 +40,23 @@ const enhancer = composeWithDevTools(
 );
 // #endregion
 
+// #region persisted reducer
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['router'],
+  // whitelist: ['userAuth'],
+};
+
+const persistedReducer = persistReducer(
+  persistConfig,
+  connectRouter(history)(reducer),
+);
+// #endregion
+
 export default function configureStore(initialState) {
-  const store = createStore(
-    connectRouter(history)(reducer),
-    initialState,
-    enhancer,
-  );
+  const store = createStore(persistedReducer, initialState, enhancer);
+
   if (module.hot) {
     module.hot.accept('../modules/reducers', () =>
       store.replaceReducer(require('../modules/reducers').default),

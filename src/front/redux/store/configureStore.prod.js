@@ -10,6 +10,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import createHistory from 'history/createHashHistory';
 import createHistory from 'history/createBrowserHistory';
 // #endregion
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import reducer from '../modules/reducers';
 import fetchMiddleware from '../middleware/fetchMiddleware';
 // #endregion
@@ -24,6 +26,20 @@ const enhancer = composeWithDevTools(
 );
 // #endregion
 
+// #region persisted reducer
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['router'],
+  // whitelist: ['userAuth'],
+};
+
+const persistedReducer = persistReducer(
+  persistConfig,
+  connectRouter(history)(reducer),
+);
+// #endregion
+
 export default function configureStore(initialState) {
-  return createStore(connectRouter(history)(reducer), initialState, enhancer);
+  return createStore(persistedReducer, initialState, enhancer);
 }
