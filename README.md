@@ -82,7 +82,6 @@ npm run test
 
 ### bundle production mode
 
-
 ```bash
 npm run prod
 ```
@@ -90,11 +89,13 @@ npm run prod
 ### mini node-express server (for dev or prod bundles)
 
 with server hot reload:
+
 ```bash
 npm run serve-dev
 ```
 
 without hot reload:
+
 ```bash
 npm run serve-prod
 ```
