@@ -1,7 +1,7 @@
 // @flow
 
 // #region imports
-import React, { PureComponent } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Redirect, withRouter } from 'react-router-dom';
 import {
   type Match,
@@ -20,23 +20,16 @@ type Props = {
 
   ...any,
 };
-type State = any;
 // #endregion
 
-class LogoutRoute extends PureComponent<Props, State> {
-  // #region lifecycle
-  componentDidMount() {
-    auth.clearAllAppStorage();
-  }
+function LogoutRoute(props: Props) {
+  useEffect(() => auth.clearAllAppStorage());
 
-  render() {
-    return (
-      <Route {...this.props}>
-        <Redirect to={{ pathname: '/login' }} />
-      </Route>
-    );
-  }
-  // #endregion
+  return (
+    <Route {...this.props}>
+      <Redirect to={{ pathname: '/login' }} />
+    </Route>
+  );
 }
 
 export default withRouter(LogoutRoute);
