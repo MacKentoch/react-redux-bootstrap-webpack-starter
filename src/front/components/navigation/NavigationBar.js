@@ -1,7 +1,7 @@
 // @flow
 
 // #region imports
-import React, { PureComponent } from 'react';
+import React, { useState } from 'react';
 import {
   Collapse,
   Navbar,
@@ -41,89 +41,67 @@ type Props = {
 
   ...any,
 } & UserAuthActions;
-
-type State = {
-  isOpen: boolean,
-  ...any,
-};
 // #endregion
 
-class NavigationBar extends PureComponent<Props, State> {
-  static defaultProps = {
-    brand: 'brand',
-  };
-
-  state = {
-    isOpen: false,
-  };
-
-  // #region lifecycle
-  render() {
-    const {
-      brand,
-      navModel: { rightLinks },
-      isAuthenticated,
-    } = this.props;
-
-    const { isOpen } = this.state;
-
-    return (
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">{brand}</NavbarBrand>
-        <NavbarToggler onClick={this.toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            {rightLinks.map(({ label, link, viewName }, index) => (
-              <NavItem key={`${index}`}>
-                <NavLink href="#" onClick={this.handlesNavItemClick(link)}>
-                  {label}
-                </NavLink>
-              </NavItem>
-            ))}
-            {isAuthenticated && (
-              <NavItem>
-                <NavLink href="#" onClick={this.handlesDisconnect}>
-                  Disconnect
-                </NavLink>
-              </NavItem>
-            )}
-          </Nav>
-        </Collapse>
-      </Navbar>
-    );
-  }
-  // #endregion
+function NavigationBar({
+  brand,
+  navModel: { rightLinks },
+  isAuthenticated,
+  history,
+  disconnectUser,
+}: Props) {
+  const [isOpen, setIsOpen] = useState(false);
 
   // #region navigation bar toggle
-  toggle = (evt: SyntheticEvent<>) => {
-    if (evt) {
-      evt.preventDefault();
-    }
-    this.setState(({isOpen: prevIsOpened}) => ({ isOpen: !prevIsOpened }));
+  const toggle = (evt: SyntheticEvent<>) => {
+    evt && evt.preventDefault();
+    setIsOpen(!isOpen);
   };
   // #endregion
 
   // #region handlesNavItemClick event
-  handlesNavItemClick = (link: string = '/') => (evt: SyntheticEvent<>) => {
-    if (evt) {
-      evt.preventDefault();
-    }
-    const { history } = this.props;
+  const handlesNavItemClick = (link: string = '/') => (
+    evt: SyntheticEvent<>,
+  ) => {
+    evt && evt.preventDefault();
     history.push(link);
   };
   // #endregion
 
   // #region disconnect
-  handlesDisconnect = (evt: SyntheticEvent<>) => {
-    if (evt) {
-      evt.preventDefault();
-    }
-    const { history, disconnectUser } = this.props;
-
+  const handlesDisconnect = (evt: SyntheticEvent<>) => {
+    evt && evt.preventDefault();
     disconnectUser();
     history.push('/');
   };
   // #endregion
+
+  return (
+    <Navbar color="light" light expand="md">
+      <NavbarBrand href="/">{brand}</NavbarBrand>
+      <NavbarToggler onClick={toggle} />
+      <Collapse isOpen={isOpen} navbar>
+        <Nav className="ml-auto" navbar>
+          {rightLinks.map(({ label, link, viewName }, index) => (
+            <NavItem key={`${index}`}>
+              <NavLink href="#" onClick={handlesNavItemClick(link)}>
+                {label}
+              </NavLink>
+            </NavItem>
+          ))}
+          {isAuthenticated && (
+            <NavItem>
+              <NavLink href="#" onClick={handlesDisconnect}>
+                Disconnect
+              </NavLink>
+            </NavItem>
+          )}
+        </Nav>
+      </Collapse>
+    </Navbar>
+  );
 }
+
+NavigationBar.displayName = 'NavigationBar';
 
 export default NavigationBar;
