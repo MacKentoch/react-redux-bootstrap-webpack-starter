@@ -47,13 +47,11 @@ class Login extends PureComponent<Props, State> {
   // #region lifecycle methods
   componentDidMount() {
     const { disconnectUser } = this.props;
-
     disconnectUser(); // diconnect user: remove token and user info
   }
 
   render() {
     const { email, password } = this.state;
-
     const { isLogging } = this.props;
 
     return (

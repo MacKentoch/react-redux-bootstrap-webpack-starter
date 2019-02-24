@@ -1,7 +1,7 @@
 // @flow
 
 // #region imports
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   type Match,
   type Location,
@@ -18,19 +18,16 @@ type Props = {
 
   ...any,
 };
-type State = any;
 // #endregion
 
-class About extends PureComponent<Props, State> {
-  // #region lifecycle
-  render() {
-    return (
-      <div>
-        <h1>About</h1>
-      </div>
-    );
-  }
-  // #endregion
+function About(props: Props) {
+  return (
+    <div>
+      <h1>About</h1>
+    </div>
+  );
 }
+
+About.displayName = 'About';
 
 export default About;
