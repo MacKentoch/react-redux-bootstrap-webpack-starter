@@ -1,7 +1,7 @@
 // @flow
 
-// #region lifecycle
-import React, { PureComponent } from 'react';
+// #region imports
+import React from 'react';
 import {
   type Match,
   type Location,
@@ -19,21 +19,19 @@ type Props = {
 
   ...any,
 };
-type State = any;
+
 // #endregion
 
-class PageNotFound extends PureComponent<Props, State> {
-  // #region lifecycle
-  render() {
-    return (
-      <div>
-        <Jumbotron>
-          <h1>Sorry this page does not exists...</h1>
-        </Jumbotron>
-      </div>
-    );
-  }
-  // #endregion
+function PageNotFound(props: Props) {
+  return (
+    <div>
+      <Jumbotron>
+        <h1>Sorry this page does not exists...</h1>
+      </Jumbotron>
+    </div>
+  );
 }
+
+PageNotFound.displayName = 'PageNotFound';
 
 export default PageNotFound;
