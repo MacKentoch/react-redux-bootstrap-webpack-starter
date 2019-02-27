@@ -1,7 +1,7 @@
 // @flow
 
 // #region imports
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   type Match,
   type Location,
@@ -18,21 +18,17 @@ type Props = {
 
   ...any,
 };
-
-type State = any;
 // #endregion
 
-class Protected extends PureComponent<Props, State> {
-  // #region lifecycle
-  render() {
-    return (
-      <div>
-        <h1>Protected view</h1>
-        <h3>If you can read, it means you are authenticated</h3>
-      </div>
-    );
-  }
-  // #endregion
+function Protected(props: Props) {
+  return (
+    <div>
+      <h1>Protected view</h1>
+      <h3>If you can read, it means you are authenticated</h3>
+    </div>
+  );
 }
+
+Protected.displayName = 'Protected';
 
 export default Protected;

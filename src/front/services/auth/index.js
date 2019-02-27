@@ -6,7 +6,7 @@ import {
   type TokenKey,
   type UserInfoKey,
   type STORES_TYPES,
-} from './type';
+} from '../../types/auth';
 import decode from 'jwt-decode';
 import isAfter from 'date-fns/is_after';
 // #endregion
@@ -70,7 +70,7 @@ export const auth = {
     value: string = '',
     toStorage: Storage = APP_PERSIST_STORES_TYPES[0],
     tokenKey: TokenKey = TOKEN_KEY,
-  ): ?string {
+  ): void {
     if (!value || value.length <= 0) {
       return;
     }
@@ -78,12 +78,14 @@ export const auth = {
     if (toStorage === APP_PERSIST_STORES_TYPES[0]) {
       if (localStorage) {
         localStorage.setItem(tokenKey, value);
+        return;
       }
     }
     // sessionStorage:
     if (toStorage === APP_PERSIST_STORES_TYPES[1]) {
       if (sessionStorage) {
         sessionStorage.setItem(tokenKey, value);
+        return;
       }
     }
   },
@@ -117,18 +119,18 @@ export const auth = {
     if (fromStorage === APP_PERSIST_STORES_TYPES[0]) {
       if (localStorage && localStorage.getItem(tokenKey)) {
         return true;
-      } else {
-        return false;
       }
+      return false;
     }
+
     // sessionStorage:
     if (fromStorage === APP_PERSIST_STORES_TYPES[1]) {
       if (sessionStorage && sessionStorage.getItem(tokenKey)) {
         return true;
-      } else {
-        return false;
       }
+      return false;
     }
+
     // default:
     return false;
   },
@@ -235,16 +237,20 @@ export const auth = {
     if (!value || value.length <= 0) {
       return;
     }
+
     // localStorage:
     if (toStorage === APP_PERSIST_STORES_TYPES[0]) {
       if (localStorage) {
         localStorage.setItem(userInfoKey, stringify(value));
+        return;
       }
     }
+
     // sessionStorage:
     if (toStorage === APP_PERSIST_STORES_TYPES[1]) {
       if (sessionStorage) {
         sessionStorage.setItem(userInfoKey, stringify(value));
+        return;
       }
     }
   },
@@ -259,10 +265,13 @@ export const auth = {
     // localStorage:
     if (localStorage && localStorage[userInfoKey]) {
       localStorage.removeItem(userInfoKey);
+      return;
     }
+
     // sessionStorage:
     if (sessionStorage && sessionStorage[userInfoKey]) {
       sessionStorage.removeItem(userInfoKey);
+      return;
     }
   },
 
@@ -277,9 +286,12 @@ export const auth = {
   clearAllAppStorage(): any {
     if (localStorage) {
       localStorage.clear();
+      return;
     }
+
     if (sessionStorage) {
       sessionStorage.clear();
+      return;
     }
   },
 };
