@@ -2,7 +2,7 @@
 
 // #region imports
 import React from 'react';
-import renderer from 'react-test-renderer'; // needed both for snpashot testing but also to prevent errors from enzyme
+import { mount } from 'enzyme';
 import BackToTop from '../BackToTop';
 // #endregion
 
@@ -14,13 +14,12 @@ describe('BackToTop component', () => {
       onScrollDone: () => {},
     };
 
-    const component = renderer
-      .create(
-        <div>
-          <BackToTop {...props} />
-        </div>,
-      )
-      .toJSON();
-    expect(component).toMatchSnapshot();
+    const wrapper = mount(
+      <div>
+        <BackToTop {...props} />
+      </div>,
+    );
+
+    expect(wrapper).toMatchSnapshot();
   });
 });
