@@ -23,20 +23,20 @@ React 16.3+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and r
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
-- React-Router-Redux 5.x ([github :link:](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-redux))
+- connected-react-router 4 ([github :link:](https://github.com/supasate/connected-react-router))
 - react-router (4.x- [github :link:](https://github.com/reactjs/react-router))
-- Bootstrap (3.x - [github :link:](https://github.com/twbs/bootstrap))
-- React-Bootstrap ([github :link:](https://github.com/react-bootstrap/react-bootstrap))
+- Bootstrap (4.x - [github :link:](https://github.com/twbs/bootstrap))
+- reactstrap ([github :link:](https://github.com/reactstrap/reactstrap))
 - font-awesome ([github :link:](https://github.com/FortAwesome/Font-Awesome))
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
 - react-motion ([github :link:](https://github.com/chenglou/react-motion))
 - Webpack 4.x ([github :link:](https://github.com/webpack/webpack))
-- babel 6+ ([github :link:](https://github.com/babel/babel))
+- babel 7+ ([github :link:](https://github.com/babel/babel))
 - axios ([github :link:](https://github.com/mzabriskie/axios) *Why: simple, complete, isomorphic ...*)
 
 **Tool chain:**
-- babel 6+
+- babel 7+
 - eslint
 - webpack 4
 - hot reload
