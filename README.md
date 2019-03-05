@@ -60,30 +60,30 @@ React 16.3+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and r
 ### Install
 
 ```bash
-npm install
+yarn install
 ```
 ### bundle dev mode (*+ redux-devtools*)
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
 ### dev : hot reload mode (*+ redux-devtools*)
 
 ```bash
-npm run start
+yarn run start
 ```
 
 ### tests
 
 ```bash
-npm run test
+yarn run test
 ```
 
 ### bundle production mode
 
 ```bash
-npm run prod
+yarn run prod
 ```
 
 ### mini node-express server (for dev or prod bundles)
@@ -91,13 +91,13 @@ npm run prod
 with server hot reload:
 
 ```bash
-npm run serve-dev
+yarn run serve-dev
 ```
 
 without hot reload:
 
 ```bash
-npm run serve-prod
+yarn run serve-prod
 ```
 
 ## Donate
