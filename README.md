@@ -1,4 +1,4 @@
-React 16.3+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
+React 16.8+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
 ==========
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
@@ -19,7 +19,7 @@ React 16.3+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and r
 ## Detailed Content
 
 **Front:**
-- React JS (16.3+ - [github :link:](https://github.com/facebook/react))
+- React JS (16.8+ - [github :link:](https://github.com/facebook/react))
 - Redux (*as you application grows managing state will be a serious concern, save pain with Redux*)
 - React-Redux (*Redux is not specific to ReactJS, you could easily use it with Angular2 for instance*)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
