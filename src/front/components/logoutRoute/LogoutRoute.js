@@ -2,13 +2,13 @@
 
 // #region imports
 import React, { useEffect } from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import {
   type Match,
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import auth from '../../services/auth';
+import { type UserAuthActions } from '../../types/redux/userAuth';
 // #endregion
 
 // #region flow types
@@ -19,11 +19,12 @@ type Props = {
   history: RouterHistory,
 
   ...any,
-};
+} & UserAuthActions;
 // #endregion
 
 function LogoutRoute(props: Props) {
-  useEffect(() => auth.clearAllAppStorage());
+  const { disconnectUser } = props;
+  useEffect(() => disconnectUser());
 
   return (
     <Route {...this.props}>
@@ -32,4 +33,4 @@ function LogoutRoute(props: Props) {
   );
 }
 
-export default withRouter(LogoutRoute);
+export default LogoutRoute;

@@ -190,13 +190,14 @@ export function checkUserIsConnected(): Action {
   const token = auth.getToken();
   const user = auth.getUserInfo();
   const checkUserHasId = (obj: any) => obj && (obj.id || false);
+  const isExpired = auth.isExpiredToken(token);
   const isAuthenticated = token && checkUserHasId(user) ? true : false;
 
   return {
     type: CHECK_IF_USER_IS_AUTHENTICATED,
     token,
     ...user,
-    isAuthenticated,
+    isAuthenticated: isAuthenticated && !isExpired,
   };
 }
 // #endregion
