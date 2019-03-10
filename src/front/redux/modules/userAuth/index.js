@@ -33,7 +33,8 @@ type ActionType =
   | 'RECEIVED_LOG_USER'
   | 'ERROR_LOG_USER'
   | 'CHECK_IF_USER_IS_AUTHENTICATED'
-  | 'DISCONNECT_USER';
+  | 'DISCONNECT_USER'
+  | 'FETCH_MIDDLEWARE';
 
 type Action = {
   type: ActionType,
@@ -41,7 +42,8 @@ type Action = {
   isFetching?: boolean,
   actionTime?: string,
   data?: { ...any } | Array<any>,
-  error: { ...any },
+  error?: { ...any },
+  payload?: any,
 };
 // #endregion
 
@@ -111,20 +113,24 @@ export default function(state: State = initialState, action: Action): State {
         isLogging: true,
       };
 
-    case RECEIVED_LOG_USER:
-      const userLogged = action.payload.data;
+    case RECEIVED_LOG_USER: {
+      const {
+        // $FlowIgnore
+        data: { token, id, login, firstname, lastname },
+      } = action.payload;
 
       return {
         ...state,
         actionTime: currentTime,
         isAuthenticated: true,
-        token: userLogged.token,
-        id: userLogged.id,
-        login: userLogged.login,
-        firstname: userLogged.firstname,
-        lastname: userLogged.lastname,
+        token: token,
+        id: id,
+        login: login,
+        firstname: firstname,
+        lastname: lastname,
         isLogging: false,
       };
+    }
 
     case ERROR_LOG_USER:
       return {
@@ -183,7 +189,7 @@ export function disconnectUser(): Action {
 export function checkUserIsConnected(): Action {
   const token = auth.getToken();
   const user = auth.getUserInfo();
-  const checkUserHasId = obj => obj && obj._id;
+  const checkUserHasId = (obj: any) => obj && (obj.id || false);
   const isAuthenticated = token && checkUserHasId(user) ? true : false;
 
   return {
@@ -196,8 +202,8 @@ export function checkUserIsConnected(): Action {
 // #endregion
 
 // #region loguser
-function logUser(login: string, password: string): Promise<any> {
-  return async (dispatch: Dispatch<State>): Promise<any> => {
+function logUser(login: string, password: string) {
+  return async (dispatch: Dispatch<Action>): Promise<any> => {
     const FETCH_TYPE = appConfig.DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
     const __SOME_LOGIN_API__ = 'login';
 
@@ -259,8 +265,8 @@ function shouldLogUser(state: { userAuth: State, ...any }): boolean {
   return true;
 }
 
-function fetchUserInfosData(id: string = ''): Promise<any> {
-  return (dispatch: Dispatch<State>): Promise<any> => {
+function fetchUserInfosData(id: string = '') {
+  return async (dispatch: Dispatch<Action>) => {
     const token = auth.getToken();
     const {
       DEV_MODE,
@@ -271,7 +277,7 @@ function fetchUserInfosData(id: string = ''): Promise<any> {
     const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
     const url = `${getLocationOrigin()}/${users}/${id}`;
     const method = 'get';
-    const headers = { authorization: `Bearer ${token}` };
+    const headers = { authorization: `Bearer ${token || ''}` };
     const options = { credentials: 'same-origin' }; // put options here (see axios options)
 
     return dispatch({
@@ -298,10 +304,11 @@ function fetchUserInfosData(id: string = ''): Promise<any> {
 
 export function fetchUserInfoDataIfNeeded(id: string = '') {
   return (
-    dispatch: (Dispatch<State>) => any,
+    dispatch: (Dispatch<Action>) => any,
     getState: () => { userAuth: State, ...any },
   ) => {
     if (shouldFetchUserInfoData(getState())) {
+      // $FlowIgnore
       return dispatch(fetchUserInfosData(id));
     }
     return Promise.resolve();

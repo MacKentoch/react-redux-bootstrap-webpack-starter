@@ -12,6 +12,7 @@ import ScrollTop from './components/scrollToTop/ScrollToTop';
 import withMainLayout from './hoc/withMainLayout';
 import MainRoutes from './routes/MainRoutes';
 import { PageNotFound } from './routes/routes';
+import * as userAuthActions from './redux/modules/userAuth';
 // #endregion
 
 // #region flow types
@@ -21,10 +22,15 @@ type State = any;
 
 // #region constants
 const MainApp = compose(withMainLayout())(MainRoutes);
-const store = configureStore();
+// $FlowIgnore
+const store = configureStore({});
 // #endregion
 
 class Root extends Component<Props, State> {
+  componentDidMount() {
+    store.dispatch(userAuthActions.checkUserIsConnected());
+  }
+
   render() {
     return (
       <Provider store={store}>

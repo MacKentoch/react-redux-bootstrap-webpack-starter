@@ -8,7 +8,7 @@ export type ThunkAction<Action, State> = (
 ) => any;
 
 export type Dispatch<Action> = (
-  action: Action | ThunkAction<Action> | PromiseAction<Action>,
+  action: Action | ThunkAction<Action, *> | PromiseAction<Action>,
 ) => any;
 
 export type GetState<State> = () => { ...any } & State;

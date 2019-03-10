@@ -206,15 +206,18 @@ export const auth = {
   getUserInfo(
     fromStorage: Storage = APP_PERSIST_STORES_TYPES[0],
     userInfoKey: UserInfoKey = USER_INFO,
-  ): ?string {
+  ): any {
     // localStorage:
     if (fromStorage === APP_PERSIST_STORES_TYPES[0]) {
-      return (localStorage && parse(localStorage.getItem(userInfoKey))) || null;
+      return (
+        (localStorage && parse(localStorage.getItem(userInfoKey) || '')) || null
+      );
     }
     // sessionStorage:
     if (fromStorage === APP_PERSIST_STORES_TYPES[1]) {
       return (
-        (sessionStorage && parse(sessionStorage.getItem(userInfoKey))) || null
+        (sessionStorage && parse(sessionStorage.getItem(userInfoKey) || '')) ||
+        null
       );
     }
     // default:

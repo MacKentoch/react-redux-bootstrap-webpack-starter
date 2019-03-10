@@ -54,7 +54,8 @@ const persistedReducer = persistReducer(
 );
 // #endregion
 
-export default function configureStore(initialState) {
+export default function configureStore(initialState: any = {}) {
+  // $FlowIgnore
   const store = createStore(persistedReducer, initialState, enhancer);
 
   if (module.hot) {
