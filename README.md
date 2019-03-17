@@ -27,6 +27,7 @@ React 16.8+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and r
 - react-router (4.x- [github :link:](https://github.com/reactjs/react-router))
 - Bootstrap (4.x - [github :link:](https://github.com/twbs/bootstrap))
 - reactstrap ([github :link:](https://github.com/reactstrap/reactstrap))
+- loadable-components - work with reactsnap for better static website performance - (*stuck to pre v2.2.3+ breakings changes, waiting for a new solution see [PR](https://github.com/stereobooster/react-snap/pull/338/commits/adf107b4bff212a854a93e2d90f89d369433a807)*)
 - font-awesome ([github :link:](https://github.com/FortAwesome/Font-Awesome))
 - animate.css ([github :link:](https://github.com/daneden/animate.css))
 - classnames ([github :link:](https://github.com/JedWatson/classnames))
