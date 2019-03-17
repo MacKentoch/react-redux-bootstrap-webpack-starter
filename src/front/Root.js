@@ -23,7 +23,7 @@ type State = any;
 // #region constants
 const MainApp = compose(withMainLayout())(MainRoutes);
 // $FlowIgnore
-const store = configureStore({});
+const {store} = configureStore({});
 // #endregion
 
 class Root extends Component<Props, State> {

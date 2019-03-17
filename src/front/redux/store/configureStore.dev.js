@@ -10,7 +10,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 // import createHistory from 'history/createHashHistory';
 import createHistory from 'history/createBrowserHistory';
 // #endregion
-import { persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import thunkMiddleware from 'redux-thunk';
 import reducer from '../modules/reducers';
@@ -63,5 +63,7 @@ export default function configureStore(initialState: any = {}) {
       store.replaceReducer(require('../modules/reducers').default),
     );
   }
-  return store;
+
+  const persistor = persistStore(store);
+  return { store, persistor };
 }
