@@ -1,6 +1,5 @@
 // @flow
 
-// #region imports
 import {
   type Storage,
   type TokenKey,
@@ -9,7 +8,6 @@ import {
 } from '../../types/auth';
 import decode from 'jwt-decode';
 import isAfter from 'date-fns/is_after';
-// #endregion
 
 // #region constants
 const TOKEN_KEY = 'token';

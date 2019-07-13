@@ -1,12 +1,10 @@
 // @flow
 
-// #region imports
 const express = require('express');
 const path = require('path');
 const chalk = require('chalk');
 const { error404, error500 } = require('../middleware/errors');
 const config = require('../config');
-// #endregion
 
 // #region constants
 const DOCS_PATH = '../../../docs/';

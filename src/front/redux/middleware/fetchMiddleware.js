@@ -1,8 +1,6 @@
 // @flow
 
-// #region imports
 import axios from 'axios';
-// #endregion
 
 // #region constants
 export const FETCH_MOCK = 'FETCH_MOCK';
@@ -45,7 +43,9 @@ export const FETCH = 'FETCH';
 //
 //
 //
-const fetchMiddleware = store => next => action => {
+const fetchMiddleware = (store: Object) => (next: Function) => (
+  action: Object,
+) => {
   if (!action.fetch) {
     return next(action);
   }

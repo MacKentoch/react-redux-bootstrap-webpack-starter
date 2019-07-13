@@ -11,7 +11,7 @@ import {
 // #endregion
 
 export const getSomething = (
-  endpoint = 'api/getSomethingByDefault',
+  endpoint: string = 'api/getSomethingByDefault',
 ): Promise<any> => {
   const method = getMethod.method;
   const headers = jsonHeader;

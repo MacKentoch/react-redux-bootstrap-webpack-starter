@@ -1,10 +1,8 @@
 // @flow
 
-// #region imports
 import React, { Component } from 'react';
 import wrapDisplayName from 'recompose/wrapDisplayName';
 import AnimatedDiv from './styled/AnimatedDiv';
-// #endregion
 
 // #region flow types
 type Props = any;

@@ -30,8 +30,10 @@ function BackToTop({ minScrollY, onScrollDone }: Props) {
     const currentWindowScrollY =
       window.pageYOffset !== undefined
         ? window.pageYOffset
-        : (
+        : // $FlowIgnore
+          (
             document.documentElement ||
+            // $FlowIgnore
             document.body.parentNode ||
             document.body
           ).scrollTop;
@@ -56,9 +58,7 @@ function BackToTop({ minScrollY, onScrollDone }: Props) {
   // #endregion
 
   // #region on button click (smooth scroll)
-  const handlesOnBackButtonClick = (
-    event: React.SyntheticEvent<HTMLInputElement>,
-  ) => {
+  const handlesOnBackButtonClick = (event?: SyntheticEvent<*>) => {
     event && event.preventDefault();
     if (window && windowScrollY && windowScrollY > minScrollY) {
       // using here smoothscroll-polyfill
@@ -67,7 +67,7 @@ function BackToTop({ minScrollY, onScrollDone }: Props) {
     }
   };
 
-  const scrollDone = () => onScrollDone && onScrollDone();
+  // const scrollDone = () => onScrollDone && onScrollDone();
   // #endregion
 
   // #region mount and unmount subscrubstions

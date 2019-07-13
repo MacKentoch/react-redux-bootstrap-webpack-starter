@@ -1,13 +1,11 @@
 // @flow
 
-// #region imports
 import { format } from 'date-fns';
 import { type Dispatch } from 'redux';
 import fakeData from '../../../mock/fakeAPI.json';
 import appConfig from '../../../config/appConfig';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import { type State } from './fakeModuleWithFetch.types';
-// #endregion
 
 // #region CONSTANTS
 const REQUEST_FAKE_FETCH = 'REQUEST_FAKE_FETCH';
@@ -21,14 +19,17 @@ type ActionType =
   | 'RECEIVED_FAKE_FETCH'
   | 'ERROR_FAKE_FETCH';
 
+type PartialState = $Shape<State>;
+
 type Action = {
   type: ActionType,
 
   isFetching?: boolean,
   actionTime?: string,
   data?: { ...any } | Array<any>,
-  error: { ...any },
-};
+  error?: { ...any },
+  payload?: Array<any>,
+} & PartialState;
 // #endregion
 
 // #region REDUCER
@@ -61,6 +62,7 @@ export default function(state: State = initialState, action: Action): State {
         ...state,
         actionTime: currentTime,
         isFetching: false,
+        // $FlowIgnore
         data: [...action.payload],
       };
     }

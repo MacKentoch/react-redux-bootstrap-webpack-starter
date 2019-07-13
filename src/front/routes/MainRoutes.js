@@ -1,12 +1,10 @@
 // @flow
 
-// #region imports
 import React from 'react';
 import { Route, Switch } from 'react-router';
 import { Home, About, PageNotFound, Protected, Login } from './routes';
 import LogoutRoute from '../components/logoutRoute';
 import PrivateRoute from '../components/privateRoute';
-// #endregion
 
 const MainRoutes = () => {
   return (

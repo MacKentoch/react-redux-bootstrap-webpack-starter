@@ -1,16 +1,14 @@
 // @flow
 
-// #region imports
 import 'babel-polyfill'; // NOTE: REALLY important to avoid "regeneratorRuntime is not defined"
 import React from 'react';
 import { hydrate, render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
 import { loadComponents, getState } from 'loadable-components';
+// $FlowIgnore
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Root from './Root';
-// import { getLocationOrigin } from './services/API/fetchTools';
-// #endregion
 
 // #region constants
 const ELEMENT_TO_BOOTSTRAP = 'root';
@@ -34,18 +32,22 @@ const renderApp = RootComponent => {
   );
 
   // needed for react-snap:
+  // $FlowIgnore
   if (bootstrapedElement.hasChildNodes()) {
     // avoid 1st load flickering due to async component loading:
     loadComponents().then(() => {
+      // $FlowIgnore
       hydrate(<Application />, bootstrapedElement);
     });
   } else {
+    // $FlowIgnore
     render(<Application />, bootstrapedElement);
   }
 };
 
 renderApp(Root);
 
+// $FlowIgnore
 if (module.hot) {
   module.hot.accept('./Root', () => {
     const RootComponent = require('./Root').default;

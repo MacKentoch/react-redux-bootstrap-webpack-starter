@@ -1,8 +1,6 @@
 // @flow
 
-// #region imports
 import { type User } from '../../user';
-// #endregion
 
 export type State = {
   // actions details

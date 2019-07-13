@@ -1,8 +1,6 @@
 // @flow
 
-// #region  imports
 import appConfig from '../../config/appConfig';
-// #endregion
 
 // #region constants
 const { path: swPath } = appConfig.sw;

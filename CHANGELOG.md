@@ -1,7 +1,9 @@
 
 # v6.1.1
-- upgrade styled-components to v4+
-
+- upgrade `styled-components` to v4+ (*now uses createGlobalStyle()*)
+- upgrade `loadable-components` to 2.2.3 (*max version compatible with reactsnap, avoiding flashing on application start*)
+- upgrade `react-snap` to lastest
+- upgrade dependencies
 
 # v6.1.0
 - migration to `bootstrap 4` and `reactstrap`

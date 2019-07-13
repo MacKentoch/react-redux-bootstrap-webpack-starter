@@ -36,6 +36,8 @@ type ActionType =
   | 'DISCONNECT_USER'
   | 'FETCH_MIDDLEWARE';
 
+type PartialState = $Shape<State>;
+
 type Action = {
   type: ActionType,
 
@@ -44,7 +46,7 @@ type Action = {
   data?: { ...any } | Array<any>,
   error?: { ...any },
   payload?: any,
-};
+} & PartialState;
 // #endregion
 
 // #region REDUCER
@@ -148,8 +150,11 @@ export default function(state: State = initialState, action: Action): State {
         isFetching: true,
       };
 
-    case RECEIVED_USER_INFOS_DATA:
-      const userInfos = action.payload.data;
+    case RECEIVED_USER_INFOS_DATA: {
+      const {
+        // $FlowIgnore
+        data: { userInfos },
+      } = action.payload;
 
       return {
         ...state,
@@ -160,6 +165,7 @@ export default function(state: State = initialState, action: Action): State {
         firstname: userInfos.firstname,
         lastname: userInfos.lastname,
       };
+    }
 
     case ERROR_USER_INFOS_DATA:
       return {

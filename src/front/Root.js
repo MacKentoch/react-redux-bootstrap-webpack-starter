@@ -1,6 +1,5 @@
 // @flow
 
-// #region imports
 import React, { Component, Fragment } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
@@ -14,7 +13,6 @@ import MainRoutes from './routes/MainRoutes';
 import { PageNotFound } from './routes/routes';
 import * as userAuthActions from './redux/modules/userAuth';
 import GlobalStyle from './style/GlobalStyles';
-// #endregion
 
 // #region flow types
 type Props = any;

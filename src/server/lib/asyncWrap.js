@@ -1,8 +1,6 @@
 // @flow
 
-// #region imports
-import config from '../../../config';
-// #endregion
+const config = require('../config');
 
 // #region constants
 const shouldLogErrors = config.get('debug');

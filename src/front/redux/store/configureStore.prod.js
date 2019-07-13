@@ -3,15 +3,11 @@
 // #region imports
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-// import { routerMiddleware } from 'react-router-redux'; // deprecated in favor of react-connected-router
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
-// #region import createHistory from hashHistory or BrowserHistory:
-// import createHistory from 'history/createHashHistory';
-import createHistory from 'history/createBrowserHistory';
-// #endregion
+import { createBrowserHistory as createHistory } from 'history';
 import { persistReducer, persistStore } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage';
 import reducer from '../modules/reducers';
 import fetchMiddleware from '../middleware/fetchMiddleware';
 // #endregion
@@ -41,7 +37,6 @@ const persistedReducer = persistReducer(
 // #endregion
 
 export default function configureStore(initialState: any = {}) {
-  // $FlowIgnore
   const store = createStore(persistedReducer, initialState, enhancer);
   const persistor = persistStore(store);
   return { store, persistor };
