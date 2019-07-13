@@ -1,7 +1,7 @@
 // @flow
 
 // #region imports
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -13,6 +13,7 @@ import withMainLayout from './hoc/withMainLayout';
 import MainRoutes from './routes/MainRoutes';
 import { PageNotFound } from './routes/routes';
 import * as userAuthActions from './redux/modules/userAuth';
+import GlobalStyle from './style/GlobalStyles';
 // #endregion
 
 // #region flow types
@@ -23,7 +24,7 @@ type State = any;
 // #region constants
 const MainApp = compose(withMainLayout())(MainRoutes);
 // $FlowIgnore
-const {store} = configureStore({});
+const { store } = configureStore({});
 // #endregion
 
 class Root extends Component<Props, State> {
@@ -34,14 +35,17 @@ class Root extends Component<Props, State> {
   render() {
     return (
       <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <ScrollTop>
-            <Switch>
-              <MainApp />
-              <Route path="*" component={PageNotFound} />
-            </Switch>
-          </ScrollTop>
-        </ConnectedRouter>
+        <Fragment>
+          <ConnectedRouter history={history}>
+            <ScrollTop>
+              <Switch>
+                <MainApp />
+                <Route path="*" component={PageNotFound} />
+              </Switch>
+            </ScrollTop>
+          </ConnectedRouter>
+          <GlobalStyle />
+        </Fragment>
       </Provider>
     );
   }

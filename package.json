@@ -1,6 +1,6 @@
 {
   "name": "react-redux-bootstrap-webpack-starter",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
   "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
@@ -106,6 +106,7 @@
     "@types/redux-persist": "^4.3.1",
     "@types/rename": "^1.0.1",
     "@types/rimraf": "^2.0.2",
+    "@types/styled-components": "^4.1.18",
     "@types/webpack": "^4.4.9",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.3",
@@ -206,7 +207,7 @@
     "serialize-javascript": "^1.5.0",
     "serve-favicon": "^2.5.0",
     "smoothscroll-polyfill": "^0.4.3",
-    "styled-components": "^3.2.6"
+    "styled-components": "^4.3.2"
   },
   "jest": {
     "roots": [

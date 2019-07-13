@@ -1,4 +1,8 @@
 
+# v6.1.1
+- upgrade styled-components to v4+
+
+
 # v6.1.0
 - migration to `bootstrap 4` and `reactstrap`
 - drop `react-router-redux@alpha5` (*deprecated*) for `react-connected-router`

@@ -1,10 +1,10 @@
 // @flow
 
 // #region imports
-import { injectGlobal } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 // #endregion
 
-const injectGlobalStyle = () => injectGlobal`
+const GlobalStyle = createGlobalStyle`
   html, body {
     margin: 0;
     height: 100%;
@@ -24,4 +24,4 @@ const injectGlobalStyle = () => injectGlobal`
   }
 `;
 
-export default injectGlobalStyle;
+export default GlobalStyle;
