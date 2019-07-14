@@ -1,6 +1,3 @@
-// @flow
-
-// #region imports
 const webpack = require('webpack');
 const path = require('path');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
@@ -10,7 +7,6 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
-// #endregion
 
 // #region constants
 const outputPath = path.join(__dirname, 'docs/assets');

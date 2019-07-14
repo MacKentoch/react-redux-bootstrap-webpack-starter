@@ -9,6 +9,7 @@ export const reducers = {
   userAuth,
 };
 
+// $FlowIgnore
 export default combineReducers({
   ...reducers,
 });

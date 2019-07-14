@@ -1,6 +1,3 @@
-// @flow
-
-// #region imports
 const webpack = require('webpack');
 const path = require('path');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
@@ -12,7 +9,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-// #endregion
+
 
 // #region constants
 const outputPath = path.join(__dirname, 'docs/public/assets');

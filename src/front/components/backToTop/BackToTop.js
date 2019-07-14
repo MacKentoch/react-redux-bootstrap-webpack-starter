@@ -1,11 +1,9 @@
 // @flow
 /* eslint-disable no-undefined */
 
-// #region imports
 import React, { useState, useEffect } from 'react';
 import BackToTopButton from './backToTopButton/BackToTopButton';
 import { Motion, spring, presets } from 'react-motion';
-// #endregion
 
 // #region flow types
 type Props = {

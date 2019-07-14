@@ -1,6 +1,5 @@
 // @flow
 
-// #region imports
 import React from 'react';
 import {
   type Match,
@@ -9,10 +8,10 @@ import {
 } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Jumbotron from 'reactstrap/lib/Jumbotron';
+import FadeInEntrance from '../../components/fadeInEntrance';
 import HomeInfo from './styled/HomeInfo';
 import MainTitle from './styled/MainTitle';
 import LightNote from './styled/LightNote';
-// #endregion
 
 // #region flow types
 export type Props = {
@@ -23,13 +22,11 @@ export type Props = {
 
   ...any,
 };
-
-export type State = any;
 // #endregion
 
 function Home(props: Props) {
   return (
-    <div>
+    <FadeInEntrance>
       <Jumbotron>
         <HomeInfo>
           <MainTitle>ReactJS 16.3+ Bootstrap 4</MainTitle>
@@ -55,7 +52,7 @@ function Home(props: Props) {
           </p>
         </HomeInfo>
       </Jumbotron>
-    </div>
+    </FadeInEntrance>
   );
 }
 

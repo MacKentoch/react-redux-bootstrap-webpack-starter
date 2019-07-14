@@ -1,12 +1,8 @@
-// @flow
-
-// #region imports
 const webpack = require('webpack');
 const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// #endregion
 
 // #region constants
 const outputPath = path.join(__dirname, 'docs/assets');

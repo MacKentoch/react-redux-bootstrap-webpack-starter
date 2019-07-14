@@ -1,45 +1,317 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavigationBar component renders as expected 1`] = `
-<div>
-  <nav
-    className="navbar navbar-expand-md navbar-light bg-light"
-  >
-    <a
-      className="navbar-brand"
-      href="/"
-    >
-      test
-    </a>
-    <button
-      className="navbar-toggler"
-      onClick={[Function]}
-      type="button"
-    >
-      <span
-        className="navbar-toggler-icon"
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <div>
+    <MemoryRouter>
+      <NavigationBar
+        brand="test"
+        checkUserIsConnected={[MockFunction]}
+        disconnectUser={[MockFunction]}
+        fetchUserInfoDataIfNeeded={[MockFunction]}
+        handleLeftNavItemClick={[Function]}
+        handleRightNavItemClick={[Function]}
+        history={Object {}}
+        isAuthenticated={true}
+        logUserIfNeeded={[MockFunction]}
+        navModel={
+          Object {
+            "leftLinks": Array [
+              Object {
+                "label": "home",
+                "link": "/",
+                "onClick": [Function],
+                "viewName": "home",
+              },
+            ],
+            "rightLinks": Array [
+              Object {
+                "label": "home",
+                "link": "/",
+                "onClick": [Function],
+                "viewName": "home",
+              },
+            ],
+          }
+        }
       />
-    </button>
-    <div
-      className="collapse navbar-collapse"
-      style={Object {}}
-    >
-      <ul
-        className="ml-auto navbar-nav"
-      >
-        <li
-          className="nav-item"
-        >
-          <a
-            className="nav-link"
-            href="#"
-            onClick={[Function]}
-          >
-            home
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</div>
+    </MemoryRouter>
+  </div>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <MemoryRouter>
+        <NavigationBar
+          brand="test"
+          checkUserIsConnected={[MockFunction]}
+          disconnectUser={[MockFunction]}
+          fetchUserInfoDataIfNeeded={[MockFunction]}
+          handleLeftNavItemClick={[Function]}
+          handleRightNavItemClick={[Function]}
+          history={Object {}}
+          isAuthenticated={true}
+          logUserIfNeeded={[MockFunction]}
+          navModel={
+            Object {
+              "leftLinks": Array [
+                Object {
+                  "label": "home",
+                  "link": "/",
+                  "onClick": [Function],
+                  "viewName": "home",
+                },
+              ],
+              "rightLinks": Array [
+                Object {
+                  "label": "home",
+                  "link": "/",
+                  "onClick": [Function],
+                  "viewName": "home",
+                },
+              ],
+            }
+          }
+        />
+      </MemoryRouter>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <NavigationBar
+          brand="test"
+          checkUserIsConnected={[MockFunction]}
+          disconnectUser={[MockFunction]}
+          fetchUserInfoDataIfNeeded={[MockFunction]}
+          handleLeftNavItemClick={[Function]}
+          handleRightNavItemClick={[Function]}
+          history={Object {}}
+          isAuthenticated={true}
+          logUserIfNeeded={[MockFunction]}
+          navModel={
+            Object {
+              "leftLinks": Array [
+                Object {
+                  "label": "home",
+                  "link": "/",
+                  "onClick": [Function],
+                  "viewName": "home",
+                },
+              ],
+              "rightLinks": Array [
+                Object {
+                  "label": "home",
+                  "link": "/",
+                  "onClick": [Function],
+                  "viewName": "home",
+                },
+              ],
+            }
+          }
+        />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "brand": "test",
+          "checkUserIsConnected": [MockFunction],
+          "disconnectUser": [MockFunction],
+          "fetchUserInfoDataIfNeeded": [MockFunction],
+          "handleLeftNavItemClick": [Function],
+          "handleRightNavItemClick": [Function],
+          "history": Object {},
+          "isAuthenticated": true,
+          "logUserIfNeeded": [MockFunction],
+          "navModel": Object {
+            "leftLinks": Array [
+              Object {
+                "label": "home",
+                "link": "/",
+                "onClick": [Function],
+                "viewName": "home",
+              },
+            ],
+            "rightLinks": Array [
+              Object {
+                "label": "home",
+                "link": "/",
+                "onClick": [Function],
+                "viewName": "home",
+              },
+            ],
+          },
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <MemoryRouter>
+          <NavigationBar
+            brand="test"
+            checkUserIsConnected={[MockFunction]}
+            disconnectUser={[MockFunction]}
+            fetchUserInfoDataIfNeeded={[MockFunction]}
+            handleLeftNavItemClick={[Function]}
+            handleRightNavItemClick={[Function]}
+            history={Object {}}
+            isAuthenticated={true}
+            logUserIfNeeded={[MockFunction]}
+            navModel={
+              Object {
+                "leftLinks": Array [
+                  Object {
+                    "label": "home",
+                    "link": "/",
+                    "onClick": [Function],
+                    "viewName": "home",
+                  },
+                ],
+                "rightLinks": Array [
+                  Object {
+                    "label": "home",
+                    "link": "/",
+                    "onClick": [Function],
+                    "viewName": "home",
+                  },
+                ],
+              }
+            }
+          />
+        </MemoryRouter>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <NavigationBar
+            brand="test"
+            checkUserIsConnected={[MockFunction]}
+            disconnectUser={[MockFunction]}
+            fetchUserInfoDataIfNeeded={[MockFunction]}
+            handleLeftNavItemClick={[Function]}
+            handleRightNavItemClick={[Function]}
+            history={Object {}}
+            isAuthenticated={true}
+            logUserIfNeeded={[MockFunction]}
+            navModel={
+              Object {
+                "leftLinks": Array [
+                  Object {
+                    "label": "home",
+                    "link": "/",
+                    "onClick": [Function],
+                    "viewName": "home",
+                  },
+                ],
+                "rightLinks": Array [
+                  Object {
+                    "label": "home",
+                    "link": "/",
+                    "onClick": [Function],
+                    "viewName": "home",
+                  },
+                ],
+              }
+            }
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "brand": "test",
+            "checkUserIsConnected": [MockFunction],
+            "disconnectUser": [MockFunction],
+            "fetchUserInfoDataIfNeeded": [MockFunction],
+            "handleLeftNavItemClick": [Function],
+            "handleRightNavItemClick": [Function],
+            "history": Object {},
+            "isAuthenticated": true,
+            "logUserIfNeeded": [MockFunction],
+            "navModel": Object {
+              "leftLinks": Array [
+                Object {
+                  "label": "home",
+                  "link": "/",
+                  "onClick": [Function],
+                  "viewName": "home",
+                },
+              ],
+              "rightLinks": Array [
+                Object {
+                  "label": "home",
+                  "link": "/",
+                  "onClick": [Function],
+                  "viewName": "home",
+                },
+              ],
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
 `;

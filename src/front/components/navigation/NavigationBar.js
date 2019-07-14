@@ -17,6 +17,7 @@ import {
   type RouterHistory,
 } from 'react-router-dom';
 import { type UserAuthActions } from '../../types/redux/userAuth';
+import { type Link } from '../../config/navigation';
 // #endregion
 
 // #region flow types
@@ -32,11 +33,11 @@ type Props = {
 
   // parent props:
   brand: string,
-  handleLeftNavItemClick: OnLeftNavButtonClick,
-  handleRightNavItemClick: OnRightNavButtonClick,
+  handleLeftNavItemClick: (event: SyntheticEvent<>, viewName: string) => any,
+  handleRightNavItemClick: (event: SyntheticEvent<>, viewName: string) => any,
   navModel: {
-    leftLinks: Array<LeftLink>,
-    rightLinks: Array<RightLink>,
+    leftLinks: Array<Link>,
+    rightLinks: Array<Link>,
   },
 
   ...any,

@@ -1,32 +1,31 @@
 // @flow
 
-// #region imports
 import React from 'react';
-import renderer from 'react-test-renderer'; // needed both for snpashot testing but also to prevent errors from enzyme
+import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import Login from '../Login';
 import { type Props } from '../Login';
-// #endregion
 
 describe('Login page', () => {
   it('renders as expected', () => {
+    // $FlowIgnore
     const props: Props = {
       isFetching: false,
       isLogging: false,
       isAuthenticated: false,
-      logUserIfNeeded: () => {},
-      disconnectUser: () => {},
+      logUserIfNeeded: jest.fn(),
+      disconnectUser: jest.fn(),
+      checkUserIsConnected: jest.fn(),
+      fetchUserInfoDataIfNeeded: jest.fn(),
     };
 
-    const component = renderer
-      .create(
-        <div>
-          <MemoryRouter>
-            <Login {...props} />
-          </MemoryRouter>
-        </div>,
-      )
-      .toJSON();
+    const component = shallow(
+      <div>
+        <MemoryRouter>
+          <Login {...props} />
+        </MemoryRouter>
+      </div>,
+    );
     expect(component).toMatchSnapshot();
   });
 });

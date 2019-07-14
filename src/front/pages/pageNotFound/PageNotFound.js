@@ -1,6 +1,5 @@
 // @flow
 
-// #region imports
 import React from 'react';
 import {
   type Match,
@@ -8,7 +7,7 @@ import {
   type RouterHistory,
 } from 'react-router-dom';
 import Jumbotron from 'reactstrap/lib/Jumbotron';
-// #endregion
+import FadeInEntrance from '../../components/fadeInEntrance';
 
 // #region flow types
 type Props = {
@@ -16,19 +15,17 @@ type Props = {
   match: Match,
   location: Location,
   history: RouterHistory,
-
-  ...any,
 };
 
 // #endregion
 
 function PageNotFound(props: Props) {
   return (
-    <div>
+    <FadeInEntrance>
       <Jumbotron>
         <h1>Sorry this page does not exists...</h1>
       </Jumbotron>
-    </div>
+    </FadeInEntrance>
   );
 }
 

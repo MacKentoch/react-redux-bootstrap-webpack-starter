@@ -1,9 +1,6 @@
 // @flow
 
-// #region imports
-import compose from 'recompose/compose';
+import { compose } from 'redux';
 import Protected from './Protected';
-import withEnterAnimation from '../../hoc/withEnterAnimation';
-// #endregion
 
-export default compose(withEnterAnimation(/* no option yet */))(Protected);
+export default compose()(Protected);

@@ -1,8 +1,6 @@
 // @flow
 
-// #region imports
 import React from 'react';
-// #endregion
 
 // #region flow types
 type Props = {

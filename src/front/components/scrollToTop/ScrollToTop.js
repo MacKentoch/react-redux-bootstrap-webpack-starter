@@ -1,14 +1,12 @@
 // @flow
 
-// #region imports
-import React, { Component } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import {
   type Match,
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
 import { withRouter } from 'react-router';
-// #endregion
 
 // #region flow types
 type Props = {
@@ -17,31 +15,32 @@ type Props = {
   location: Location,
   history: RouterHistory,
 
-  children: React.ReactNode,
-
-  ...any,
+  children: any,
 };
-type State = any;
 // #endregion
 
-class ScrollToTop extends Component<Props, State> {
-  // #region lifecycle
-  componentDidUpdate(prevProps: Props) {
-    if (window) {
-      const { location: prevLocation } = prevProps;
-      const { location: nextLocation } = this.props;
+function useScrollToTopOnLocationChange(location: any) {
+  const prevLocation = useRef();
 
-      if (prevLocation !== nextLocation) {
-        window.scrollTo(0, 0);
-      }
+  useEffect(() => {
+    prevLocation.current = location;
+  }, []);
+
+  useEffect(() => {
+    if (prevLocation.current !== location) {
+      window && window.scrollTo(0, 0);
+      prevLocation.current = location;
     }
-  }
-
-  render() {
-    const { children } = this.props;
-    return children;
-  }
-  // #endregion
+  }, [location]);
 }
 
+function ScrollToTop({ children, location }: Props) {
+  useScrollToTopOnLocationChange(location);
+
+  return <Fragment>{children}</Fragment>;
+}
+
+ScrollToTop.displayName = 'ScrollToTop';
+
+// $FlowIgnore
 export default withRouter(ScrollToTop);

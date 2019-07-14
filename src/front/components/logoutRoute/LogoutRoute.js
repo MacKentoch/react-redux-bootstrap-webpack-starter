@@ -17,8 +17,6 @@ type Props = {
   match: Match,
   location: Location,
   history: RouterHistory,
-
-  ...any,
 } & UserAuthActions;
 // #endregion
 

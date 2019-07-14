@@ -1,6 +1,6 @@
 // @flow
 
-export const appConfig = {
+export const appConfig = Object.freeze({
   DEV_MODE: true, // block fetch
 
   // api endpoints:
@@ -13,6 +13,6 @@ export const appConfig = {
   sw: {
     path: 'public/assets/sw.js',
   },
-};
+});
 
 export default appConfig;

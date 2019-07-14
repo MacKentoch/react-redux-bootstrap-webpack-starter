@@ -1,113 +1,167 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login page renders as expected 1`] = `
-<div>
-  <div
-    className="content"
-  >
-    <div
-      className="row"
-    >
-      <div
-        className="col-10 offset-1 col-md-4 offset-md-4"
-      >
-        <form
-          className="form-horizontal"
-          noValidate={true}
-        >
-          <fieldset>
-            <legend>
-              Login
-            </legend>
-            <div
-              className="form-group"
-            >
-              <label
-                className="col-lg-2 control-label"
-                htmlFor="inputEmail"
-              >
-                Email
-              </label>
-              <div
-                className="col-lg-12"
-              >
-                <input
-                  autoComplete="username email"
-                  className="form-control"
-                  id="inputEmail"
-                  onChange={[Function]}
-                  placeholder="Email"
-                  type="text"
-                  value=""
-                />
-              </div>
-            </div>
-            <div
-              className="form-group"
-            >
-              <label
-                className="col-lg-2 control-label"
-                htmlFor="inputPassword"
-              >
-                Password
-              </label>
-              <div
-                className="col-lg-12"
-              >
-                <input
-                  autoComplete="current-password"
-                  className="form-control"
-                  id="inputPassword"
-                  onChange={[Function]}
-                  placeholder="Password"
-                  type="password"
-                  value=""
-                />
-              </div>
-            </div>
-            <div
-              className="form-group"
-            >
-              <div
-                className="col-lg-12"
-              >
-                <button
-                  aria-label={null}
-                  className="login-button btn-block btn btn-primary"
-                  disabled={false}
-                  onClick={[Function]}
-                  type="button"
-                >
-                  <span>
-                    Login
-                  </span>
-                </button>
-              </div>
-            </div>
-          </fieldset>
-        </form>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="col-10 offset-1 col-md-4 offset-md-4"
-      >
-        <div
-          className="pull-right"
-        >
-          <button
-            aria-label={null}
-            className="btn-block btn btn-secondary"
-            onClick={[Function]}
-            type="button"
-          >
-            back to home
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <div>
+    <MemoryRouter>
+      <Login
+        checkUserIsConnected={[MockFunction]}
+        disconnectUser={[MockFunction]}
+        fetchUserInfoDataIfNeeded={[MockFunction]}
+        isAuthenticated={false}
+        isFetching={false}
+        isLogging={false}
+        logUserIfNeeded={[MockFunction]}
+      />
+    </MemoryRouter>
+  </div>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <MemoryRouter>
+        <Login
+          checkUserIsConnected={[MockFunction]}
+          disconnectUser={[MockFunction]}
+          fetchUserInfoDataIfNeeded={[MockFunction]}
+          isAuthenticated={false}
+          isFetching={false}
+          isLogging={false}
+          logUserIfNeeded={[MockFunction]}
+        />
+      </MemoryRouter>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <Login
+          checkUserIsConnected={[MockFunction]}
+          disconnectUser={[MockFunction]}
+          fetchUserInfoDataIfNeeded={[MockFunction]}
+          isAuthenticated={false}
+          isFetching={false}
+          isLogging={false}
+          logUserIfNeeded={[MockFunction]}
+        />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "checkUserIsConnected": [MockFunction],
+          "disconnectUser": [MockFunction],
+          "fetchUserInfoDataIfNeeded": [MockFunction],
+          "isAuthenticated": false,
+          "isFetching": false,
+          "isLogging": false,
+          "logUserIfNeeded": [MockFunction],
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <MemoryRouter>
+          <Login
+            checkUserIsConnected={[MockFunction]}
+            disconnectUser={[MockFunction]}
+            fetchUserInfoDataIfNeeded={[MockFunction]}
+            isAuthenticated={false}
+            isFetching={false}
+            isLogging={false}
+            logUserIfNeeded={[MockFunction]}
+          />
+        </MemoryRouter>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Login
+            checkUserIsConnected={[MockFunction]}
+            disconnectUser={[MockFunction]}
+            fetchUserInfoDataIfNeeded={[MockFunction]}
+            isAuthenticated={false}
+            isFetching={false}
+            isLogging={false}
+            logUserIfNeeded={[MockFunction]}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "checkUserIsConnected": [MockFunction],
+            "disconnectUser": [MockFunction],
+            "fetchUserInfoDataIfNeeded": [MockFunction],
+            "isAuthenticated": false,
+            "isFetching": false,
+            "isLogging": false,
+            "logUserIfNeeded": [MockFunction],
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
 `;

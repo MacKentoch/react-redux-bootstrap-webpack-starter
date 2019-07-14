@@ -1,6 +1,5 @@
 // @flow
 
-// #region imports
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import {
@@ -9,7 +8,6 @@ import {
   type RouterHistory,
 } from 'react-router-dom';
 import { type UserAuthActions } from '../../types/redux/userAuth';
-// #endregion
 
 // #region flow types
 type Props = {

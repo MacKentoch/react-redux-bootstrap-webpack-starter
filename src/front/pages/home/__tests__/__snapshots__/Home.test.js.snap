@@ -1,58 +1,125 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home page renders as expected 1`] = `
-<div>
-  <div>
-    <div
-      className="jumbotron"
-    >
-      <div
-        className="sc-bdVaJa bDWFJH"
-      >
-        <h1
-          className="sc-bwzfXH jJLXBi"
-        >
-          ReactJS 16.3+ Bootstrap 4
-        </h1>
-        <h2>
-          with Hot Reload (
-          <i>
-            react-hot-loader 4+
-          </i>
-          )!!!
-        </h2>
-        <h2>
-          and React Router v4
-        </h2>
-        <h2>
-          and webpack 4.x
-        </h2>
-        <h2>
-          and styled-components (
-          <i
-            className="sc-htpNat jfNlAg"
-          >
-            so keep using SCSS like styles and benefit performant css-in-js
-          </i>
-          )
-        </h2>
-        <h1>
-          Starter
-        </h1>
-        <p>
-          <a
-            className="btn btn-success btn-lg"
-            href="/about"
-            onClick={[Function]}
-          >
-            <i
-              className="fa fa-info"
-            />
-              go to about
-          </a>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <div>
+    <MemoryRouter>
+      <Home
+        actions={Object {}}
+      />
+    </MemoryRouter>
+  </div>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <MemoryRouter>
+        <Home
+          actions={Object {}}
+        />
+      </MemoryRouter>,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": <Home
+          actions={Object {}}
+        />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "actions": Object {},
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      "type": [Function],
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <MemoryRouter>
+          <Home
+            actions={Object {}}
+          />
+        </MemoryRouter>,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": <Home
+            actions={Object {}}
+          />,
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "actions": Object {},
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": [Function],
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromError": true,
+          "getDerivedStateFromProps": Object {
+            "hasShouldComponentUpdateBug": false,
+          },
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    Symbol(enzyme.__providerValues__): undefined,
+  },
+  Symbol(enzyme.__providerValues__): Map {},
+}
 `;

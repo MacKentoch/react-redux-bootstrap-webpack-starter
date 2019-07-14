@@ -15,7 +15,7 @@ export type Navigation = {
 };
 // #endregion
 
-const navigation = {
+const navigation = Object.freeze({
   brand: 'React Redux Bootstrap Starter',
   leftLinks: [],
   rightLinks: [
@@ -42,6 +42,6 @@ const navigation = {
     //   isRouteBtn: true,
     // },
   ],
-};
+});
 
 export default navigation;

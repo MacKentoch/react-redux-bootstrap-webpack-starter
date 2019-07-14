@@ -49,11 +49,14 @@ const persistedReducer = persistReducer(
 // #endregion
 
 export default function configureStore(initialState: any = {}) {
+  // $FlowIgnore
   const store = createStore(persistedReducer, initialState, enhancer);
 
   // $FlowIgnore
   if (module.hot) {
+    // $FlowIgnore
     module.hot.accept('../modules/reducers', () =>
+      // $FlowIgnore
       store.replaceReducer(require('../modules/reducers').default),
     );
   }

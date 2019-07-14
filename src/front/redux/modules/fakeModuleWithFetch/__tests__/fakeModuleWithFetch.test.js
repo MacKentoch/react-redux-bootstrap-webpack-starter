@@ -1,8 +1,6 @@
 // @flow
 
-// #region imports
 import { fakeFetchIfNeeded } from '../index';
-// #endregion
 
 // #region jest mocks (JSON files)
 jest.mock(

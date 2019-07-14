@@ -37,6 +37,7 @@ const persistedReducer = persistReducer(
 // #endregion
 
 export default function configureStore(initialState: any = {}) {
+  // $FlowIgnore
   const store = createStore(persistedReducer, initialState, enhancer);
   const persistor = persistStore(store);
   return { store, persistor };

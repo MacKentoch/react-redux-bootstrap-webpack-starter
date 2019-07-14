@@ -1,6 +1,5 @@
 // @flow
 
-// #region imports
 import React, { Component } from 'react';
 import wrapDisplayName from 'recompose/wrapDisplayName';
 import compose from 'recompose/compose';
@@ -11,7 +10,6 @@ import BackToTop from '../../components/backToTop/BackToTop';
 import navigationModel from '../../config/navigation';
 import { type Navigation } from '../../config/navigation';
 import registerServiceWorker from '../../services/sw/registerServiceWorker';
-// #endregion
 
 // #region flow types
 type Props = {
@@ -32,7 +30,7 @@ type State = {
 
 // #region withMainLayout HOC
 function withMainLayout(/* no args option yet, but could pass them here */) {
-  return BaseComponent => {
+  return (BaseComponent: any) => {
     // #region returned Component
     class WithMainLayout extends Component<Props, State> {
       state = { navModel: navigationModel };

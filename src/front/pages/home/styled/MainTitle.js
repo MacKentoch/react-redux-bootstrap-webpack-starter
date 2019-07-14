@@ -1,8 +1,6 @@
 // @flow
 
-// #region imports
 import styled from 'styled-components';
-// #endregion
 
 const MainTitle = styled.h1`
   color: #222 !important;

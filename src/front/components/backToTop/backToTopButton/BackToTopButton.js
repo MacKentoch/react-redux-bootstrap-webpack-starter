@@ -1,19 +1,16 @@
 // @flow
 
-// #region imports
 import React from 'react';
 import cx from 'classnames';
 import UpIcon from './UpIcon';
 import WithRightMargin from './styled/WithRightMargin';
-// #endregion
 
 // #region flow types
 type Props = {
   position: 'bottom-left' | 'bottom-right',
   onClick: (event: SyntheticEvent<>) => any,
-  children: any,
+  children?: any,
   motionStyle: any,
-  ...any,
 };
 // #endregion
 

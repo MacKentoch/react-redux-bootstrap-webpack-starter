@@ -2,7 +2,7 @@
 
 // #region imports
 import React from 'react';
-import renderer from 'react-test-renderer'; // needed both for snpashot testing but also to prevent errors from enzyme
+import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import NavigationBar from '../NavigationBar';
 // #endregion
@@ -31,17 +31,22 @@ describe('NavigationBar component', () => {
           },
         ],
       },
+      isAuthenticated: true,
+      history: {},
+      disconnectUser: jest.fn(),
+      checkUserIsConnected: jest.fn(),
+      fetchUserInfoDataIfNeeded: jest.fn(),
+      logUserIfNeeded: jest.fn(),
     };
 
-    const component = renderer
-      .create(
-        <div>
-          <MemoryRouter>
-            <NavigationBar {...props} />
-          </MemoryRouter>
-        </div>,
-      )
-      .toJSON();
+    const component = shallow(
+      <div>
+        <MemoryRouter>
+          <NavigationBar {...props} />
+        </MemoryRouter>
+      </div>,
+    );
+
     expect(component).toMatchSnapshot();
   });
 });

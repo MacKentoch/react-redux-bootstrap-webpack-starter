@@ -1,10 +1,8 @@
-// @flow
 
-// #region imports
 import React from 'react';
 import { mount } from 'enzyme';
 import BackToTop from '../BackToTop';
-// #endregion
+
 
 describe('BackToTop component', () => {
   it('renders as expected', () => {

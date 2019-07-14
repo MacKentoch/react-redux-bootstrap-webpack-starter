@@ -62,9 +62,9 @@ describe('userAuth action creators', () => {
 
     const action = disconnectUser();
     expect(action).toEqual(expectedAction);
-
+    // $FlowIgnore
     store.dispatch(disconnectUser());
-
+    // $FlowIgnore
     const actions = store.getActions();
     const expectedPayload = { type: 'DISCONNECT_USER' };
     expect(actions).toEqual([expectedPayload]);
@@ -77,8 +77,9 @@ describe('userAuth action creators', () => {
       token: 'fake_token_for_test',
       isAuthenticated: true,
     };
-
+    // $FlowIgnore
     store.dispatch(checkUserIsConnected());
+    // $FlowIgnore
     const actions = store.getActions();
     const expectedPayload = expectedAction;
 
