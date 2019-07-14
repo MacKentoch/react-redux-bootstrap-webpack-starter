@@ -1,11 +1,9 @@
 // @flow
 
-// #region imports
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMiddleware from '../../../middleware/fetchMiddleware';
 import { disconnectUser, checkUserIsConnected } from '../index';
-// #endregion
 
 // #region constants
 const middlewares = [thunk, fetchMiddleware];
@@ -47,6 +45,10 @@ jest.mock('../../../../services/auth', () => ({
   clearAllAppStorage() {
     return true;
   },
+
+  isExpiredToken() {
+    return true;
+  },
 }));
 // #endregion
 
@@ -75,7 +77,7 @@ describe('userAuth action creators', () => {
       type: 'CHECK_IF_USER_IS_AUTHENTICATED',
       _id: 'some_fake_id',
       token: 'fake_token_for_test',
-      isAuthenticated: true,
+      isAuthenticated: false,
     };
     // $FlowIgnore
     store.dispatch(checkUserIsConnected());

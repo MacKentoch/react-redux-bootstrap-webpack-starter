@@ -1,6 +1,5 @@
 // @flow
 
-// #region imports
 import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import {
@@ -9,7 +8,6 @@ import {
   type RouterHistory,
 } from 'react-router-dom';
 import { type UserAuthActions } from '../../types/redux/userAuth';
-// #endregion
 
 // #region flow types
 type Props = {
@@ -25,7 +23,7 @@ function LogoutRoute(props: Props) {
   useEffect(() => disconnectUser());
 
   return (
-    <Route {...this.props}>
+    <Route {...props}>
       <Redirect to={{ pathname: '/login' }} />
     </Route>
   );

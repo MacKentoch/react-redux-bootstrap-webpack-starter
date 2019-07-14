@@ -271,6 +271,7 @@ function shouldLogUser(state: { userAuth: State, ...any }): boolean {
   }
   return true;
 }
+// #endregion
 
 function fetchUserInfosData(id: string = '') {
   return async (dispatch: Dispatch<Action>) => {

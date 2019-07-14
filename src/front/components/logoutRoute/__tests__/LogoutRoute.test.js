@@ -6,8 +6,9 @@ import LogoutRoute from '../LogoutRoute';
 describe('LogoutRoute component', () => {
   it('renders as expected', () => {
     const props = {
-      actions: {},
+      disconnectUser: jest.fn(),
     };
+
     const component = renderer
       .create(
         <div>
