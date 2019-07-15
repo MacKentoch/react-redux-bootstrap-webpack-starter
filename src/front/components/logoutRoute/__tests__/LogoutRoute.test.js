@@ -1,5 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer'; // needed both for snpashot testing but also to prevent errors from enzyme
+import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import LogoutRoute from '../LogoutRoute';
 
@@ -9,15 +9,13 @@ describe('LogoutRoute component', () => {
       disconnectUser: jest.fn(),
     };
 
-    const component = renderer
-      .create(
-        <div>
-          <MemoryRouter>
-            <LogoutRoute {...props} />
-          </MemoryRouter>
-        </div>,
-      )
-      .toJSON();
+    const component = shallow(
+      <div>
+        <MemoryRouter initialEntries={['/']}>
+          <LogoutRoute {...props} />
+        </MemoryRouter>
+      </div>,
+    );
     expect(component).toMatchSnapshot();
   });
 });

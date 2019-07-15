@@ -15,7 +15,6 @@ describe('BackToTop component', () => {
         <BackToTop {...props} />
       </div>,
     );
-
     expect(wrapper).toMatchSnapshot();
   });
 });

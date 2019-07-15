@@ -212,8 +212,7 @@
   "jest": {
     "roots": [
       "<rootDir>/src/",
-      "<rootDir>/src/test",
-      "<rootDir>/src/test/__mocks__"
+      "<rootDir>/src/test"
     ],
     "setupFiles": [
       "<rootDir>/src/test/__mocks__/localStorage.js",
