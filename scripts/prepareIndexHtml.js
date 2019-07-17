@@ -23,13 +23,11 @@ function prepareIndexHtml() {
     copyFile(indexRaw, destHtml);
 
     return console.log(
-      `${chalk.default.greenBright('==== index.html generated 🏋️‍ ====')}`,
+      `${chalk.greenBright('==== index.html generated 🏋️‍ ====')}`,
     );
   }
 
-  return console.log(
-    `${chalk.default.red('==== index.html not found... 😢 ====')}`,
-  );
+  return console.log(`${chalk.red('==== index.html not found... 😢 ====')}`);
 }
 // #endergion
 

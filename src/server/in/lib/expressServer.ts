@@ -2,21 +2,22 @@ import * as express from 'express';
 import * as path from 'path';
 import chalk from 'chalk';
 import { error404, error500 } from '../middleware/errors';
-import config from '../config';
 
 // #region constants
 const DOCS_PATH = '../../../../docs/';
+// const DOCS_PATH = 'docs/';
+const port = process.env.PORT || 8082;
+const host = process.env.SERVER_HOST || 'localhost';
 // #endregion
 
-// $FlowIgnore
 const expressServer = (app: express.Application, isDev = false) => {
   if (!app) {
     console.log('Server application instance is undefined');
     throw new Error('Server application instance is undefined');
   }
 
-  app.set('port', config.get('server.port'));
-  app.set('ipAdress', config.get('server.host'));
+  app.set('port', port);
+  app.set('ipAdress', host);
 
   app.use(
     '/assets',
@@ -31,12 +32,13 @@ const expressServer = (app: express.Application, isDev = false) => {
   app.use(error500);
 
   /* eslint-disable no-console */
-  app.listen(config.get('server.port'), config.get('server.host'), () =>
+  // @ts-ignore
+  app.listen(port, host, () =>
     console.log(`
         =====================================================
         -> Server (${chalk.bgBlue('SPA')}) 🏃 (running) on ${chalk.green(
-      config.get('server.host'),
-    )}:${chalk.green(config.get('server.port'))}
+      host,
+    )}:${chalk.green(`${port}`)}
         =====================================================
       `),
   );

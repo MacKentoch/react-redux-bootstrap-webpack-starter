@@ -3,7 +3,8 @@
     "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
-    "outDir": "out",
+    // "baseUrl": "./",
+    // "outDir": "./",
     "sourceMap": true,
     "strict": true,
     "target": "es2017",
@@ -12,6 +13,6 @@
   },
   "compileOnSave": true,
   "include": [
-    "in",
+    "src/server/**/*.ts",
   ]
 }

@@ -1,5 +1,4 @@
 const nodeExternals = require('webpack-node-externals');
-const CopyPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 const { NODE_ENV = 'production' } = process.env;
@@ -13,8 +12,8 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   output: {
-    path: path.resolve(__dirname, 'src/server/out'),
-    filename: 'index.js',
+    path: path.resolve(__dirname),
+    filename: 'server.js',
   },
   module: {
     rules: [
@@ -25,15 +24,4 @@ module.exports = {
     ],
   },
   externals: [nodeExternals()],
-  plugins: [
-    new CopyPlugin([
-      {
-        from: 'src/server/in/config/*.json',
-        transformPath(targetPath, absolutePath) {
-          // we don't want all source path in out directory:
-          return targetPath.split('/').pop();
-        },
-      },
-    ]),
-  ],
 };

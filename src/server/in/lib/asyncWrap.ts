@@ -1,9 +1,8 @@
 import * as express from 'express';
-import config from '../config';
 
 // #region constants
-const shouldLogErrors = config.get('debug');
-// #endregino
+const shouldLogErrors = process.env.DEBUG || false;
+// #endregion
 
 /**
  * Returns a route handler for Express that calls the passed in function
@@ -11,7 +10,6 @@ const shouldLogErrors = config.get('debug');
  * @return {Promise}
  */
 
-// $FlowIgnore
 export default function(fn: Function) {
   if (fn.length <= 3) {
     // $FlowIgnore
@@ -28,7 +26,6 @@ export default function(fn: Function) {
       });
     };
   } else {
-    // $FlowIgnore
     return function(
       err: express.Errback,
       req: express.Request,
