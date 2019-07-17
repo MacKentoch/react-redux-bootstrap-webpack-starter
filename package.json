@@ -23,24 +23,23 @@
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "clean-docs": "rimraf docs/*",
     "prepare:index-html": "node ./scripts/prepareIndexHtml.js",
-    "build-server": "cross-env NODE_ENV=production webpack -p --config webpack.server.config.js",
-    "predev": "npm run clean-docs",
+    "build-server": "tsc server/index.ts",
+
+    "predev": "npm run clean-docs && node ./scripts/prepareIndexHtml.js",
     "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
     "postdev": "react-snap",
-    "predev-static": "rimraf docs/* &&  node ./scripts/prepareIndexHtml.js",
-    "dev-static": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
-    "preprod": "npm run clean-docs",
+
+    "preprod": "npm run clean-docs && node ./scripts/prepareIndexHtml.js",
     "prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
     "postprod": "react-snap",
-    "preprod-static": "npm run clean-docs",
-    "prod-static": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
+
     "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
+
     "prestart": "npm run clean-docs && npm run prepare:index-html",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development",
-    "serve-dev": "npm run dev && ts-node ./src/server/in/index.ts",
-    "serve-prod": "npm run prod && npm run build-server && node ./server.js",
-    "serve-dev-static": "npm run dev-static && ts-node ./src/server/in/index.ts",
-    "serve-prod-static": "npm run prod-static && ts-node ./src/server/in/index.ts"
+
+    "serve-dev": "npm run dev && ts-node server/index.ts",
+    "serve-prod": "npm run prod && npm run build-server && node server/index.js"
   },
   "reactSnap": {
     "source": "docs"
