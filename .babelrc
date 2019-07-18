@@ -8,6 +8,7 @@
     "@babel/preset-flow"
   ],
   "plugins": [
+    "react-hot-loader/babel",
     "@babel/plugin-proposal-class-properties",
     "@babel/plugin-proposal-object-rest-spread",
     "loadable-components/babel",
@@ -22,6 +23,7 @@
         "@babel/preset-flow"
       ],
       "plugins": [
+        "react-hot-loader/babel",
         "@babel/plugin-transform-modules-commonjs",
         "@babel/plugin-proposal-class-properties",
         "@babel/plugin-proposal-object-rest-spread",
@@ -31,7 +33,7 @@
       ]
     },
     "production": {
-      "plugins": ["transform-remove-console"],
+      "plugins": ["react-hot-loader/babel", "transform-remove-console"],
       "comments": false
     }
   }

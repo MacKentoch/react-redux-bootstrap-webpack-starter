@@ -23,16 +23,22 @@
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "clean-docs": "rimraf docs/*",
     "prepare:index-html": "node ./scripts/prepareIndexHtml.js",
+
     "build-server": "tsc server/index.ts",
+
     "predev": "npm run clean-docs",
     "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
     "postdev": "react-snap",
+
     "preprod": "npm run clean-docs",
     "prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
     "postprod": "react-snap",
+
     "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
+
     "prestart": "npm run clean-docs",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development",
+
     "serve-dev": "npm run dev && ts-node server/index.ts",
     "serve-prod": "npm run prod && npm run build-server && node server/index.js"
   },
@@ -130,7 +136,6 @@
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react-addons-test-utils": "^15.6.2",
-    "react-hot-loader": "^4.0.0",
     "react-snap": "^1.23.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-logger": "^3.0.6",
@@ -185,6 +190,7 @@
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.8.3",
     "react-helmet": "^5.2.0",
+    "react-hot-loader": "^4.12.8",
     "react-motion": "^0.5.2",
     "react-overdrive": "^0.0.10",
     "react-redux": "^5.0.7",

@@ -79,7 +79,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/front/index.html',
+      template: 'src/front/index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

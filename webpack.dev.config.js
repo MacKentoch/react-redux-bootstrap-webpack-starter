@@ -34,11 +34,11 @@ const config = {
       {
         test: /\.jsx?$/,
         exclude: [nodeModulesDir],
-        loader: 'babel-loader',
+        use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.tsx?$/,
-        use: ['ts-loader'],
+        use: ['react-hot-loader/webpack', 'ts-loader'],
       },
       {
         test: /\.css$/,
@@ -78,7 +78,8 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/front/index.html',
+      template: 'src/front/index.html',
+      filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new ModernizrWebpackPlugin({
       htmlWebpackPlugin: true,

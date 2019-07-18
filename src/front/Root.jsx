@@ -1,4 +1,5 @@
-import * as React from 'react';
+// @flow
+import React from 'react';
 import { Component } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
@@ -36,7 +37,7 @@ class Root extends Component<Props, State> {
     return (
       <Provider store={store}>
         <ThemeProvider theme={{}}>
-          <>
+          <React.Fragment>
             <ConnectedRouter history={history}>
               <ScrollTop>
                 <Switch>
@@ -48,7 +49,7 @@ class Root extends Component<Props, State> {
               </ScrollTop>
             </ConnectedRouter>
             <GlobalStyle />
-          </>
+          </React.Fragment>
         </ThemeProvider>
       </Provider>
     );

@@ -1,12 +1,9 @@
-// @flow
-
 import 'babel-polyfill'; // NOTE: REALLY important to avoid "regeneratorRuntime is not defined"
 import React from 'react';
 import { hydrate, render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import { hot } from 'react-hot-loader';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
 import { loadComponents, getState } from 'loadable-components';
-// $FlowIgnore
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Root from './Root';
 
@@ -25,11 +22,7 @@ window.snapSaveState = () => getState();
 
 // #region render (with hot reload if dev)
 const renderApp = RootComponent => {
-  const Application = () => (
-    <AppContainer>
-      <RootComponent />
-    </AppContainer>
-  );
+  const Application = hot(module)(RootComponent);
 
   // needed for react-snap:
   // $FlowIgnore
@@ -46,12 +39,4 @@ const renderApp = RootComponent => {
 };
 
 renderApp(Root);
-
-// $FlowIgnore
-if (module.hot) {
-  module.hot.accept('./Root', () => {
-    const RootComponent = require('./Root').default;
-    renderApp(RootComponent);
-  });
-}
 // #endregion

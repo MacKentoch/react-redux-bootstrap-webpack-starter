@@ -1,15 +1,18 @@
+// @flow
+
 import { createStore, applyMiddleware } from 'redux';
-import { createLogger } from 'redux-logger';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory as createHistory } from 'history';
 import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 import reducer from '../modules/reducers';
 import fetchMiddleware from '../middleware/fetchMiddleware';
 
 // #region constants
+const isProd = process.env.NODE_ENV === 'production';
 export const history = createHistory();
 // #endregion
 
@@ -22,14 +25,22 @@ const loggerMiddleware = createLogger({
 });
 // #endregion
 
-const enhancer = composeWithDevTools(
-  applyMiddleware(
-    thunkMiddleware,
-    routerMiddleware(history),
-    fetchMiddleware,
-    loggerMiddleware, // logger at the end
-  ),
-);
+const enhancer = !isProd
+  ? composeWithDevTools(
+      applyMiddleware(
+        thunkMiddleware,
+        routerMiddleware(history),
+        fetchMiddleware,
+        loggerMiddleware, // logger at the end
+      ),
+    )
+  : composeWithDevTools(
+      applyMiddleware(
+        thunkMiddleware,
+        fetchMiddleware,
+        routerMiddleware(history),
+      ),
+    );
 // #endregion
 
 // #region persisted reducer
@@ -48,15 +59,6 @@ const persistedReducer = persistReducer(
 
 export default function configureStore(initialState: any = {}) {
   const store = createStore(persistedReducer, initialState, enhancer);
-
-  // @ts-ignore
-  if (module.hot) {
-    // @ts-ignore
-    module.hot.accept('../modules/reducers', () =>
-      store.replaceReducer(require('../modules/reducers').default),
-    );
-  }
-
   const persistor = persistStore(store);
   return { store, persistor };
 }
