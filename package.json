@@ -24,20 +24,15 @@
     "clean-docs": "rimraf docs/*",
     "prepare:index-html": "node ./scripts/prepareIndexHtml.js",
     "build-server": "tsc server/index.ts",
-
-    "predev": "npm run clean-docs && node ./scripts/prepareIndexHtml.js",
+    "predev": "npm run clean-docs",
     "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
     "postdev": "react-snap",
-
-    "preprod": "npm run clean-docs && node ./scripts/prepareIndexHtml.js",
+    "preprod": "npm run clean-docs",
     "prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
     "postprod": "react-snap",
-
     "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
-
-    "prestart": "npm run clean-docs && npm run prepare:index-html",
+    "prestart": "npm run clean-docs",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development",
-
     "serve-dev": "npm run dev && ts-node server/index.ts",
     "serve-prod": "npm run prod && npm run build-server && node server/index.js"
   },
@@ -97,7 +92,8 @@
     "@types/react-redux": "^5.0.19",
     "@types/react-router": "^4.0.30",
     "@types/react-router-dom": "^4.3.0",
-    "@types/redux-logger": "^3.0.6",
+    "@types/redux": "^3.6.0",
+    "@types/redux-logger": "^3.0.7",
     "@types/redux-mock-store": "^1.0.0",
     "@types/rename": "^1.0.1",
     "@types/rimraf": "^2.0.2",
@@ -196,7 +192,7 @@
     "react-router-dom": "^4.2.2",
     "reactstrap": "^6.3.1",
     "recompose": "^0.27.0",
-    "redux": "^4.0.0",
+    "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
     "serialize-javascript": "^1.5.0",

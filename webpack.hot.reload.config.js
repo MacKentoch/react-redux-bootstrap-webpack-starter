@@ -21,7 +21,7 @@ const config = {
   },
   resolve: {
     modules: ['src/front', 'node_modules'],
-    extensions: ['*', '.js', '.jsx'],
+    extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
     path: outputPath,
@@ -36,6 +36,10 @@ const config = {
         include: srcInclude,
         exclude: [nodeModulesDir],
         loaders: ['babel-loader'],
+      },
+      {
+        test: /\.tsx?$/,
+        use: ['ts-loader'],
       },
       {
         test: /\.css$/,
@@ -75,8 +79,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: '../index.html',
-      template: 'src/front/statics/index.html',
+      template: './src/front/index.html',
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

@@ -1,15 +1,14 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-
 
 // #region constants
 const outputPath = path.join(__dirname, 'docs/public/assets');
@@ -23,7 +22,7 @@ const config = {
   entry: { app: indexFile },
   resolve: {
     modules: ['src/front', 'node_modules'],
-    extensions: ['.js', 'jsx'],
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
     path: outputPath,
@@ -37,6 +36,10 @@ const config = {
         test: /\.jsx?$/,
         exclude: [nodeModulesDir],
         loader: 'babel-loader',
+      },
+      {
+        test: /\.tsx?$/,
+        use: ['ts-loader'],
       },
       {
         test: /\.css$/,
@@ -88,8 +91,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      filename: '../index.html',
-      template: 'src/front/statics/index.html',
+      template: './src/front/index.html',
     }),
     new ModernizrWebpackPlugin({
       htmlWebpackPlugin: true,
