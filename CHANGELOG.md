@@ -1,9 +1,10 @@
-
 # v6.1.1
 - upgrade `styled-components` to v4+ (*now uses createGlobalStyle()*)
 - upgrade `loadable-components` to 2.2.3 (*max version compatible with reactsnap, avoiding flashing on application start*)
 - upgrade `react-snap` to lastest
 - upgrade dependencies
+- upgrade `react-hot-loader` (*redux store initialization and top index file code changed*)
+- migrate server code to Typescript (*NOTE: server code is no more in __ROOT__/src/server but in __ROOT__/server*)
 
 # v6.1.0
 - migration to `bootstrap 4` and `reactstrap`
