@@ -1,6 +1,6 @@
 {
   "name": "react-redux-bootstrap-webpack-starter",
-  "version": "6.1.1",
+  "version": "7.0.0",
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
   "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
@@ -23,22 +23,16 @@
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
     "clean-docs": "rimraf docs/*",
     "prepare:index-html": "node ./scripts/prepareIndexHtml.js",
-
     "build-server": "tsc server/index.ts",
-
     "predev": "npm run clean-docs",
     "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
     "postdev": "react-snap",
-
     "preprod": "npm run clean-docs",
     "prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
     "postprod": "react-snap",
-
     "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
-
     "prestart": "npm run clean-docs",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development",
-
     "serve-dev": "npm run dev && ts-node server/index.ts",
     "serve-prod": "npm run prod && npm run build-server && node server/index.js"
   },
@@ -103,6 +97,7 @@
     "@types/redux-mock-store": "^1.0.0",
     "@types/rename": "^1.0.1",
     "@types/rimraf": "^2.0.2",
+    "@types/smoothscroll-polyfill": "^0.3.1",
     "@types/webpack": "^4.4.9",
     "babel-core": "^7.0.0-0",
     "babel-eslint": "^8.2.3",
