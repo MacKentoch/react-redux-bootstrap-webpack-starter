@@ -10,7 +10,7 @@ const devServerRootPath = path.join(__dirname, 'docs');
 const publicPath = '/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const srcInclude = path.join(__dirname, 'src/front');
-const indexFile = path.join(__dirname, 'src/front/index.js');
+const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
 
 const config = {
@@ -21,7 +21,7 @@ const config = {
   },
   resolve: {
     modules: ['src/front', 'node_modules'],
-    extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
     path: outputPath,
@@ -39,6 +39,8 @@ const config = {
       },
       {
         test: /\.tsx?$/,
+        include: srcInclude,
+        exclude: [nodeModulesDir],
         use: ['ts-loader'],
       },
       {
@@ -80,6 +82,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/front/index.html',
+      filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

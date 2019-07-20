@@ -1,8 +1,4 @@
-// @flow
-
-import { type User } from '../../user';
-
-export type State = {
+type State = {
   // actions details
   isFetching: false,
   isLogging: false,
@@ -13,11 +9,9 @@ export type State = {
   id: string,
   firstname: string,
   lastname: string,
-
-  ...any,
 } & User;
 
-export type UserAuthActions = {
+type UserAuthActions = {
   checkUserIsConnected: () => any,
   logUserIfNeeded: (email: string, password: string) => Promise<any>,
   fetchUserInfoDataIfNeeded: (id: string) => any,

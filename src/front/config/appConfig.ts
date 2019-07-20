@@ -1,5 +1,3 @@
-// @flow
-
 export const appConfig = Object.freeze({
   DEV_MODE: true, // block fetch
 

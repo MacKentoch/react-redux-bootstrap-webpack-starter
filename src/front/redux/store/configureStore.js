@@ -1,5 +1,3 @@
-// @flow
-
 import { createStore, applyMiddleware } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -57,7 +55,7 @@ const persistedReducer = persistReducer(
 );
 // #endregion
 
-export default function configureStore(initialState: any = {}) {
+export default function configureStore(initialState = {}) {
   const store = createStore(persistedReducer, initialState, enhancer);
   const persistor = persistStore(store);
   return { store, persistor };

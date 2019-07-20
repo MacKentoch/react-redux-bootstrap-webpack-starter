@@ -1,6 +1,4 @@
-// @flow
-
-export type User = {
+type User = {
   id: '',
   login: '',
   firstname: '',

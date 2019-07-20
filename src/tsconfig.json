@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "esnext"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowJs": true,
+    "checkJs": false,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "removeComments": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "esModuleInterop": true,
+    "typeRoots": ["./front/types"],
+    "noEmit": true,
+    "outDir": "./"
+  },
+  "include": ["./**/*.ts", "./**/*.tsx", "./**/*.js"],
+  "exclude": ["node_modules", "test/*", "./**/__tests__/*", "*.d.ts"]
+}

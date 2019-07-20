@@ -1,6 +1,3 @@
-// @flow
-
-// #flow types
 export type Link = {
   label: string,
   link: string,
@@ -35,12 +32,6 @@ const navigation = Object.freeze({
       view: 'about',
       isRouteBtn: true,
     },
-    // {
-    //   label: 'Disconnect',
-    //   link: '/login',
-    //   view: 'login',
-    //   isRouteBtn: true,
-    // },
   ],
 });
 

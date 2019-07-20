@@ -1,6 +1,6 @@
-// @flow
 import React from 'react';
 import { Component } from 'react';
+import { hot } from 'react-hot-loader';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -55,4 +55,4 @@ class Root extends Component<Props, State> {
     );
   }
 }
-export default Root;
+export default hot(module)(Root);
