@@ -1,5 +1,4 @@
-// @flow
-
+import { MiddlewareAPI, Dispatch, Middleware, AnyAction } from 'redux';
 import axios from 'axios';
 
 // #region constants
@@ -39,21 +38,38 @@ export const FETCH = 'FETCH';
 //    options: {}     // OPTIONAL CONTENT like: Authorization: 'Bearer _A_TOKEN_'
 //  }
 // }
-//
-//
-//
-//
-const fetchMiddleware = (store: Object) => (next: Function) => (
-  action: Object,
-) => {
+
+export enum FETCH_TYPE_ENUM {
+  'FETCH', 'FETCH_MOCK'
+}
+
+export type FetchMiddleWareAction = {
+   fetch: {
+     type: FETCH_TYPE_ENUM,
+     actionTypes?: {
+       request: string,
+       success: string,
+       fail: string,
+     },
+     url: string,
+     method: 'get' | 'put' | 'post' | 'delete',
+     headers?: any     // OPTIONAL CONTENT like: data: { someprop: 'value ...}
+     options?: any     // OPTIONAL CONTENT like: Authorization: 'Bearer _A_TOKEN_'
+   },
+   mockResult?: any
+}
+
+const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
+  next: Function,
+) => (action: AnyAction | FetchMiddleWareAction) => {
   if (!action.fetch) {
     return next(action);
   }
 
   if (
     !action.fetch.type ||
-    !action.fetch.type === FETCH_MOCK ||
-    !action.fetch.type === FETCH
+    !action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK ||
+    !action.fetch.type === FETCH_TYPE_ENUM.FETCH
   ) {
     return next(action);
   }
