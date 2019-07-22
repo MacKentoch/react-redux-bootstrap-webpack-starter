@@ -1,6 +1,3 @@
-// @flow
-
-// #region imports
 import axios from 'axios';
 import {
   getMethod,
@@ -8,9 +5,8 @@ import {
   defaultOptions,
   getLocationOrigin,
 } from './fetchTools';
-// #endregion
 
-export const getSomething = (
+export const getSomething = async (
   endpoint: string = 'api/getSomethingByDefault',
 ): Promise<any> => {
   const method = getMethod.method;
@@ -18,14 +14,12 @@ export const getSomething = (
   const url = `${getLocationOrigin()}/${endpoint}`;
   const options = { ...defaultOptions };
 
-  return axios
-    .request({
-      method,
-      url,
-      withCredentials: true,
-      ...headers,
-      ...options,
-    })
-    .then(data => data)
-    .catch(error => Promise.reject(error));
+  const data = await axios.request({
+    method,
+    url,
+    withCredentials: true,
+    ...headers,
+    ...options,
+  });
+  return data;
 };

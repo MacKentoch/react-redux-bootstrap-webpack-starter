@@ -1,11 +1,9 @@
-// @flow
-
-import {
-  type Storage,
-  type TokenKey,
-  type UserInfoKey,
-  type STORES_TYPES,
-} from '../../types/auth';
+// import {
+//   type Storage,
+//   type TokenKey,
+//   type UserInfoKey,
+//   type STORES_TYPES,
+// } from '../../types/auth';
 import decode from 'jwt-decode';
 import isAfter from 'date-fns/is_after';
 

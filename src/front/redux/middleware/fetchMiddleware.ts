@@ -40,7 +40,8 @@ export const FETCH = 'FETCH';
 // }
 
 export enum FETCH_TYPE_ENUM {
-  'FETCH', 'FETCH_MOCK'
+  FETCH = 'FETCH',
+  FETCH_MOCK = 'FETCH_MOCK'
 }
 
 export type FetchMiddleWareAction = {
@@ -61,15 +62,15 @@ export type FetchMiddleWareAction = {
 
 const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
   next: Function,
-) => (action: AnyAction | FetchMiddleWareAction) => {
+) => async (action: AnyAction | FetchMiddleWareAction) => {
   if (!action.fetch) {
     return next(action);
   }
 
   if (
     !action.fetch.type ||
-    !action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK ||
-    !action.fetch.type === FETCH_TYPE_ENUM.FETCH
+    action.fetch.type !== FETCH_TYPE_ENUM.FETCH_MOCK ||
+    action.fetch.type !== FETCH_TYPE_ENUM.FETCH
   ) {
     return next(action);
   }
@@ -82,7 +83,7 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
    * fetch mock
    * @type {[type]}
    */
-  if (action.fetch.type === FETCH_MOCK) {
+  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK) {
     if (!action.fetch.mockResult) {
       throw new Error(
         'Fetch middleware require a mockResult payload when type is "FETCH_MOCK"',
@@ -109,7 +110,7 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
     );
   }
 
-  if (action.fetch.type === FETCH) {
+  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH) {
     const {
       actionTypes: { request, success, fail },
       url,
@@ -122,8 +123,8 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
     store.dispatch({ type: request });
 
     // fetch server (success or fail)
-    // returns a Promise
-    return axios
+    try {
+      const data = await axios
       .request({
         method,
         url,
@@ -136,11 +137,13 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
         },
         ...options,
       })
-      .then(data => store.dispatch({ type: success, payload: data }))
-      .catch(err => {
-        store.dispatch({ type: fail, error: err.response });
-        return Promise.reject(err.response);
-      });
+      store.dispatch({ type: success, payload: data })
+      return data;
+
+    } catch (error) {
+      store.dispatch({ type: fail, error: error.response });
+      throw error;
+    }
   }
   return next(action);
 };
