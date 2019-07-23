@@ -1,9 +1,3 @@
-// import {
-//   type Storage,
-//   type TokenKey,
-//   type UserInfoKey,
-//   type STORES_TYPES,
-// } from '../../types/auth';
 import decode from 'jwt-decode';
 import isAfter from 'date-fns/is_after';
 
@@ -39,9 +33,9 @@ export const auth = {
    * @returns {string} token value
    */
   getToken(
-    fromStorage: Storage = APP_PERSIST_STORES_TYPES[0],
+    fromStorage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     tokenKey: TokenKey = TOKEN_KEY,
-  ): ?string {
+  ): string | null {
     // localStorage:
     if (fromStorage === APP_PERSIST_STORES_TYPES[0]) {
       return (localStorage && localStorage.getItem(tokenKey)) || null;
@@ -64,7 +58,7 @@ export const auth = {
    */
   setToken(
     value: string = '',
-    toStorage: Storage = APP_PERSIST_STORES_TYPES[0],
+    toStorage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     tokenKey: TokenKey = TOKEN_KEY,
   ): void {
     if (!value || value.length <= 0) {
@@ -108,7 +102,7 @@ export const auth = {
    * @returns {bool} is authenticed response
    */
   isAuthenticated(
-    fromStorage: Storage = APP_PERSIST_STORES_TYPES[0],
+    fromStorage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     tokenKey: TokenKey = TOKEN_KEY,
   ): boolean {
     // localStorage:
@@ -138,7 +132,7 @@ export const auth = {
    * @returns {bool} success/failure flag
    */
   clearToken(
-    storage: Storage = APP_PERSIST_STORES_TYPES[0],
+    storage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     tokenKey: TokenKey = TOKEN_KEY,
   ): boolean {
     // localStorage:
@@ -166,7 +160,7 @@ export const auth = {
       return new Date(0); // is expired
     }
 
-    const token = decode(encodedToken);
+    const token: { exp: number } = decode(encodedToken);
     if (!token.exp) {
       return new Date(0); // is expired
     }
@@ -200,19 +194,20 @@ export const auth = {
    * @returns {string} token value
    */
   getUserInfo(
-    fromStorage: Storage = APP_PERSIST_STORES_TYPES[0],
+    fromStorage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     userInfoKey: UserInfoKey = USER_INFO,
   ): any {
     // localStorage:
     if (fromStorage === APP_PERSIST_STORES_TYPES[0]) {
-      // $FlowIgnore
-      return (localStorage && parse(localStorage.getItem(userInfoKey))) || null;
+      return (
+        (localStorage && parse(localStorage.getItem(userInfoKey) || '')) || null
+      );
     }
     // sessionStorage:
     if (fromStorage === APP_PERSIST_STORES_TYPES[1]) {
       return (
-        // $FlowIgnore
-        (sessionStorage && parse(sessionStorage.getItem(userInfoKey))) || null
+        (sessionStorage && parse(sessionStorage.getItem(userInfoKey) || '')) ||
+        null
       );
     }
     // default:
@@ -229,7 +224,7 @@ export const auth = {
    */
   setUserInfo(
     value: string = '',
-    toStorage: Storage = APP_PERSIST_STORES_TYPES[0],
+    toStorage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     userInfoKey: UserInfoKey = USER_INFO,
   ): any {
     if (!value || value.length <= 0) {

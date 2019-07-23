@@ -38,6 +38,7 @@ const config = {
       },
       {
         test: /\.tsx?$/,
+        exclude: [nodeModulesDir],
         use: ['react-hot-loader/webpack', 'ts-loader'],
       },
       {

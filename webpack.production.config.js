@@ -37,6 +37,7 @@ const config = {
       },
       {
         test: /\.tsx?$/,
+        exclude: [nodeModulesDir],
         use: ['ts-loader'],
       },
       {
