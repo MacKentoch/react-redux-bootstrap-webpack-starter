@@ -1,11 +1,9 @@
-// @flow
-
 import { format } from 'date-fns';
-import { type Dispatch } from 'redux';
+import { Dispatch } from 'redux';
 import fakeData from '../../../mock/fakeAPI.json';
 import appConfig from '../../../config/appConfig';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
-import { type State } from './fakeModuleWithFetch.types';
+import { State } from '../../../types/redux/modules/fakeModuleWithFetch';
 
 // #region CONSTANTS
 const REQUEST_FAKE_FETCH = 'REQUEST_FAKE_FETCH';
@@ -19,16 +17,15 @@ type ActionType =
   | 'RECEIVED_FAKE_FETCH'
   | 'ERROR_FAKE_FETCH';
 
-type PartialState = $Shape<State>;
+type PartialState = Partial<State>;
 
 type Action = {
   type: ActionType,
-
   isFetching?: boolean,
   actionTime?: string,
-  data?: { ...any } | Array<any>,
-  error?: { ...any },
-  payload?: Array<any>,
+  data?: Array<any> | any,
+  error?: any,
+  payload?: Array<any> | any,
 } & PartialState;
 // #endregion
 
@@ -44,7 +41,10 @@ const initialState: State = {
 // #endregion
 
 // #region reducer
-export default function(state: State = initialState, action: Action): State {
+export default function(
+  state: State = initialState,
+  action: Partial<Action>,
+): State {
   const currentTime = format(new Date());
 
   switch (action.type) {
@@ -58,21 +58,22 @@ export default function(state: State = initialState, action: Action): State {
     }
 
     case RECEIVED_FAKE_FETCH: {
+      const { payload = [] } = action;
       return {
         ...state,
         actionTime: currentTime,
         isFetching: false,
-        // $FlowIgnore
-        data: [...action.payload],
+        data: [...payload],
       };
     }
 
     case ERROR_FAKE_FETCH: {
+      const { error = {} } = action;
       return {
         ...state,
         actionTime: currentTime,
         isFetching: false,
-        error: action.error ? { ...action.error } : {},
+        error: { ...error },
       };
     }
     // #endregion
@@ -89,7 +90,7 @@ export default function(state: State = initialState, action: Action): State {
 
 // #region fetch example
 function fakeFetch() {
-  return (dispatch: Dispatch<State>): Promise<any> => {
+  return (dispatch: Dispatch<Action>): Promise<any> => {
     const shouldFetchMock = appConfig.DEV_MODE;
     const fetchType = shouldFetchMock ? 'FETCH_MOCK' : 'FETCH';
     const mockResult = fakeData;

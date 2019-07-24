@@ -16,7 +16,7 @@ import {
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import { type UserAuthActions } from '../../types/redux/userAuth';
+import { type UserAuthActions } from '../../types/redux/modules/userAuth';
 import { type Link } from '../../config/navigation';
 // #endregion
 

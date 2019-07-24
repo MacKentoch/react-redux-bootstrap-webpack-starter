@@ -6,7 +6,7 @@ import appConfig from '../../../config/appConfig';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
-import { type State } from '../../../types/redux/userAuth';
+import { type State } from '../../../types/redux/modules/userAuth';
 import { type Dispatch, type GetState } from '../../../types/redux/redux-thunk';
 // #endregion
 

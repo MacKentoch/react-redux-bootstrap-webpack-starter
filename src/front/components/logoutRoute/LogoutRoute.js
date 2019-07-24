@@ -7,7 +7,7 @@ import {
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import { type UserAuthActions } from '../../types/redux/userAuth';
+import { type UserAuthActions } from '../../types/redux/modules/userAuth';
 
 // #region flow types
 type Props = {
