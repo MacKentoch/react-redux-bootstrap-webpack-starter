@@ -1,5 +1,6 @@
 import { format } from 'date-fns';
 import { Dispatch } from 'redux';
+import { ThunkAction } from 'redux-thunk';
 import fakeData from '../../../mock/fakeAPI.json';
 import appConfig from '../../../config/appConfig';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
@@ -13,6 +14,7 @@ const ERROR_FAKE_FETCH = 'ERROR_FAKE_FETCH';
 
 // #region flow types
 type ActionType =
+  | 'FETCH_MIDDLEWARE'
   | 'REQUEST_FAKE_FETCH'
   | 'RECEIVED_FAKE_FETCH'
   | 'ERROR_FAKE_FETCH';
@@ -89,8 +91,8 @@ export default function(
 // #region ACTIONS CREATORS
 
 // #region fetch example
-function fakeFetch() {
-  return (dispatch: Dispatch<Action>): Promise<any> => {
+function fakeFetch(): ThunkAction<Promise<any>, State, void, Action> {
+  return dispatch => {
     const shouldFetchMock = appConfig.DEV_MODE;
     const fetchType = shouldFetchMock ? 'FETCH_MOCK' : 'FETCH';
     const mockResult = fakeData;
@@ -102,10 +104,11 @@ function fakeFetch() {
     // fetch middleware
     // -> you handles pure front or with back-end asyncs just by disaptching a single object
     //   -> just change config: appConfig.DEV_MODE
+    const type: ActionType = 'FETCH_MIDDLEWARE';
     return Promise.resolve(
       dispatch({
         // type name is not important here since fetchMiddleware will intercept this action:
-        type: 'FETCH_MIDDLEWARE',
+        type,
         // here are fetch middleware props:
         fetch: {
           type: fetchType,
@@ -126,11 +129,13 @@ function fakeFetch() {
   };
 }
 
-export function fakeFetchIfNeeded() {
-  return (
-    dispatch: Dispatch<State>,
-    getState: () => { fakeModuleWithFetch: State, ...any },
-  ): Promise<any> => {
+export function fakeFetchIfNeeded(): ThunkAction<
+  Promise<any>,
+  State,
+  void,
+  Action,
+> {
+  return (dispatch, getState): Promise<any> => {
     if (shouldFakeFetch(getState())) {
       return dispatch(fakeFetch());
     }
@@ -138,16 +143,9 @@ export function fakeFetchIfNeeded() {
   };
 }
 
-function shouldFakeFetch(state: {
-  fakeModuleWithFetch: State,
-  ...any,
-}): boolean {
+function shouldFakeFetch(state: { fakeModuleWithFetch: State } & any): boolean {
   const { isFetching } = state.fakeModuleWithFetch;
-
-  if (isFetching) {
-    return false;
-  }
-  return true;
+  return !isFetching;
 }
 // #endregion
 
