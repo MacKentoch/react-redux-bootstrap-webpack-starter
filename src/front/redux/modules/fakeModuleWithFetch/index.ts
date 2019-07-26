@@ -1,10 +1,9 @@
 import { format } from 'date-fns';
-import { Dispatch } from 'redux';
 import { ThunkAction } from 'redux-thunk';
 import fakeData from '../../../mock/fakeAPI.json';
 import appConfig from '../../../config/appConfig';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
-import { State } from '../../../types/redux/modules/fakeModuleWithFetch';
+import { State } from './type';
 
 // #region CONSTANTS
 const REQUEST_FAKE_FETCH = 'REQUEST_FAKE_FETCH';
@@ -91,7 +90,8 @@ export default function(
 // #region ACTIONS CREATORS
 
 // #region fetch example
-function fakeFetch(): ThunkAction<Promise<any>, State, void, Action> {
+type FakeFetchAction = ThunkAction<Promise<any>, State, void, Action>;
+function fakeFetch(): FakeFetchAction {
   return dispatch => {
     const shouldFetchMock = appConfig.DEV_MODE;
     const fetchType = shouldFetchMock ? 'FETCH_MOCK' : 'FETCH';
@@ -129,12 +129,7 @@ function fakeFetch(): ThunkAction<Promise<any>, State, void, Action> {
   };
 }
 
-export function fakeFetchIfNeeded(): ThunkAction<
-  Promise<any>,
-  State,
-  void,
-  Action,
-> {
+export function fakeFetchIfNeeded(): FakeFetchAction {
   return (dispatch, getState): Promise<any> => {
     if (shouldFakeFetch(getState())) {
       return dispatch(fakeFetch());

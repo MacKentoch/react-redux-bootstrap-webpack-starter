@@ -18,15 +18,15 @@
     "resolveJsonModule": true,
     // "noEmit": true,
     "outDir": "dist",
-    "trailing-comma": [true, {
-      "singleline": "never",
-      "multiline": {
-        "objects": "always",
-        "arrays": "always",
-        "functions": "never",
-        "typeLiterals": "always"
-      }
-    }]
+    // "trailing-comma": [true, {
+    //   "singleline": "never",
+    //   "multiline": {
+    //     "objects": "always",
+    //     "arrays": "always",
+    //     "functions": "never",
+    //     "typeLiterals": "always"
+    //   }
+    // }]
   },
   "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js"],
   "exclude": ["node_modules", "test/*", "*.d.ts"]

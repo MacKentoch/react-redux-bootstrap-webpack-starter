@@ -1,23 +1,18 @@
-// @flow
-
-// #region imports
-import { format } from 'date-fns';
+import { ThunkAction } from 'redux-thunk';
 import appConfig from '../../../config/appConfig';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
-import { type State } from '../../../types/redux/modules/userAuth';
-import { type Dispatch, type GetState } from '../../../types/redux/redux-thunk';
-// #endregion
+import { State } from './type';
 
 // #region CONSTANTS
-const REQUEST_USER_INFOS_DATA: string = 'REQUEST_USER_INFOS_DATA';
-const RECEIVED_USER_INFOS_DATA: string = 'RECEIVED_USER_INFOS_DATA';
-const ERROR_USER_INFOS_DATA: string = 'ERROR_USER_INFOS_DATA';
+const REQUEST_USER_INFOS_DATA = 'REQUEST_USER_INFOS_DATA';
+const RECEIVED_USER_INFOS_DATA = 'RECEIVED_USER_INFOS_DATA';
+const ERROR_USER_INFOS_DATA = 'ERROR_USER_INFOS_DATA';
 
-const REQUEST_LOG_USER: string = 'REQUEST_LOG_USER';
-const RECEIVED_LOG_USER: string = 'RECEIVED_LOG_USER';
-const ERROR_LOG_USER: string = 'ERROR_LOG_USER';
+const REQUEST_LOG_USER = 'REQUEST_LOG_USER';
+const RECEIVED_LOG_USER = 'RECEIVED_LOG_USER';
+const ERROR_LOG_USER = 'ERROR_LOG_USER';
 
 const CHECK_IF_USER_IS_AUTHENTICATED = 'CHECK_IF_USER_IS_AUTHENTICATED';
 
@@ -36,17 +31,20 @@ type ActionType =
   | 'DISCONNECT_USER'
   | 'FETCH_MIDDLEWARE';
 
-type PartialState = $Shape<State>;
+type PartialState = Partial<State>;
+type UserInfo = { user: User };
 
 type Action = {
   type: ActionType,
 
   isFetching?: boolean,
   actionTime?: string,
-  data?: { ...any } | Array<any>,
-  error?: { ...any },
+  data?: Array<any> | any,
+  error?: any,
   payload?: any,
-} & PartialState;
+} & PartialState &
+  Partial<UserInfo>;
+
 // #endregion
 
 // #region REDUCER
@@ -56,7 +54,6 @@ const initialState: State = {
   // actions details
   isFetching: false,
   isLogging: false,
-  time: '',
 
   // userInfos
   id: '',
@@ -64,41 +61,35 @@ const initialState: State = {
   firstname: '',
   lastname: '',
 
-  token: null,
+  token: '',
   isAuthenticated: false, // authentication status (token based auth)
 };
 // #endregion
 
 // #region reducer
 export default function(state: State = initialState, action: Action): State {
-  const currentTime = format(new Date());
-
   switch (action.type) {
-    case CHECK_IF_USER_IS_AUTHENTICATED:
-      return {
-        ...state,
-        actionTime: currentTime,
-        isAuthenticated: action.isAuthenticated,
-        token: action.token || initialState.token,
-        id: action.user && action.user.id ? action.user.id : initialState.id,
-        login:
-          action.user && action.user.login
-            ? action.user.login
-            : initialState.login,
-        firstname:
-          action.user && action.user.firstname
-            ? action.user.firstname
-            : initialState.firstname,
-        lastname:
-          action.user && action.user.lastname
-            ? action.user.lastname
-            : initialState.firstname,
-      };
+    case CHECK_IF_USER_IS_AUTHENTICATED: {
+      const {
+        isAuthenticated = false,
+        token = '',
+        user = { id: '', login: '', firstname: '', lastname: '' },
+      } = action;
 
-    case DISCONNECT_USER:
       return {
         ...state,
-        actionTime: currentTime,
+        isAuthenticated,
+        token,
+        id: user.id,
+        login: user.login,
+        firstname: user.firstname,
+        lastname: user.lastname,
+      };
+    }
+
+    case DISCONNECT_USER: {
+      return {
+        ...state,
         isAuthenticated: false,
         token: initialState.token,
         id: initialState.id,
@@ -106,24 +97,29 @@ export default function(state: State = initialState, action: Action): State {
         firstname: initialState.firstname,
         lastname: initialState.lastname,
       };
+    }
 
     // user login (get token and userInfo)
-    case REQUEST_LOG_USER:
+    case REQUEST_LOG_USER: {
       return {
         ...state,
-        actionTime: currentTime,
         isLogging: true,
       };
+    }
 
     case RECEIVED_LOG_USER: {
       const {
-        // $FlowIgnore
-        data: { token, id, login, firstname, lastname },
+        data: {
+          token = '',
+          id = '',
+          login = '',
+          firstname = '',
+          lastname = '',
+        },
       } = action.payload;
 
       return {
         ...state,
-        actionTime: currentTime,
         isAuthenticated: true,
         token: token,
         id: id,
@@ -134,31 +130,31 @@ export default function(state: State = initialState, action: Action): State {
       };
     }
 
-    case ERROR_LOG_USER:
+    case ERROR_LOG_USER: {
       return {
         ...state,
-        actionTime: currentTime,
         isAuthenticated: false,
         isLogging: false,
       };
+    }
 
     // not used right now:
-    case REQUEST_USER_INFOS_DATA:
+    case REQUEST_USER_INFOS_DATA: {
       return {
         ...state,
-        actionTime: currentTime,
         isFetching: true,
       };
+    }
 
     case RECEIVED_USER_INFOS_DATA: {
       const {
-        // $FlowIgnore
-        data: { userInfos },
+        data: {
+          userInfos = { id: '', login: '', firstname: '', lastname: '' },
+        },
       } = action.payload;
 
       return {
         ...state,
-        actionTime: currentTime,
         isFetching: false,
         id: userInfos.id,
         login: userInfos.login,
@@ -167,12 +163,12 @@ export default function(state: State = initialState, action: Action): State {
       };
     }
 
-    case ERROR_USER_INFOS_DATA:
+    case ERROR_USER_INFOS_DATA: {
       return {
         ...state,
-        actionTime: currentTime,
         isFetching: false,
       };
+    }
 
     default:
       return state;
@@ -187,7 +183,7 @@ export default function(state: State = initialState, action: Action): State {
 // #region disconnect user
 export function disconnectUser(): Action {
   auth.clearAllAppStorage();
-  return { type: DISCONNECT_USER };
+  return { type: 'DISCONNECT_USER' };
 }
 // #endregion
 
@@ -209,8 +205,9 @@ export function checkUserIsConnected(): Action {
 // #endregion
 
 // #region loguser
-function logUser(login: string, password: string) {
-  return async (dispatch: Dispatch<Action>): Promise<any> => {
+type RLogUserAction = ThunkAction<Promise<any>, State, void, Action>;
+function logUser(login: string, password: string): RLogUserAction {
+  return async dispatch => {
     const FETCH_TYPE = appConfig.DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
     const __SOME_LOGIN_API__ = 'login';
 
@@ -227,8 +224,9 @@ function logUser(login: string, password: string) {
     };
 
     // fetchMiddleware (does: fetch mock, real fetch, dispatch 3 actions... for a minimum code on action creator!)
+    const type: ActionType = 'FETCH_MIDDLEWARE';
     return dispatch({
-      type: 'FETCH_MIDDLEWARE',
+      type,
       fetch: {
         // common props:
         type: FETCH_TYPE,
@@ -252,24 +250,17 @@ function logUser(login: string, password: string) {
 export function logUserIfNeeded(
   email: string,
   password: string,
-): (...any) => Promise<any> {
-  return (
-    dispatch: Dispatch<Action>,
-    getState: GetState<{ userAuth: State, ...any }>,
-  ): Promise<any> => {
+): RLogUserAction {
+  return (dispatch, getState): Promise<any> => {
     if (shouldLogUser(getState())) {
       return dispatch(logUser(email, password));
     }
     return Promise.resolve();
   };
 }
-function shouldLogUser(state: { userAuth: State, ...any }): boolean {
+function shouldLogUser(state: { userAuth: State } & any): boolean {
   const { isLogging } = state.userAuth;
-
-  if (isLogging) {
-    return false;
-  }
-  return true;
+  return !isLogging;
 }
 // #endregion
 
@@ -311,23 +302,15 @@ function fetchUserInfosData(id: string = '') {
 }
 
 export function fetchUserInfoDataIfNeeded(id: string = '') {
-  return (
-    dispatch: (Dispatch<Action>) => any,
-    getState: () => { userAuth: State, ...any },
-  ) => {
+  return (dispatch, getState) => {
     if (shouldFetchUserInfoData(getState())) {
-      // $FlowIgnore
       return dispatch(fetchUserInfosData(id));
     }
     return Promise.resolve();
   };
 }
 
-function shouldFetchUserInfoData(state: { userAuth: State, ...any }): boolean {
+function shouldFetchUserInfoData(state: { userAuth: State } & any): boolean {
   const { isFetching } = state.userAuth;
-
-  if (isFetching) {
-    return false;
-  }
-  return true;
+  return !isFetching;
 }

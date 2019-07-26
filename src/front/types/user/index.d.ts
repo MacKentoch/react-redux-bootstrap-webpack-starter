@@ -1,8 +1,8 @@
 type User = {
-  id: '',
-  login: '',
-  firstname: '',
-  lastname: '',
-  token: null,
+  id: string,
+  login: string,
+  firstname: string,
+  lastname: string,
+  token: string,
   isAuthenticated: boolean,
 };

@@ -10,7 +10,7 @@ import Button from 'reactstrap/lib/Button';
 import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
-import { type UserAuthActions } from '../../types/redux/modules/userAuth';
+import { type UserAuthActions } from '../../redux/modules/userAuth';
 import FadeInEntrance from '../../components/fadeInEntrance';
 
 // #region flow types

@@ -1,6 +1,3 @@
-// @flow
-
-// #region imports
 import React, { useState } from 'react';
 import {
   Collapse,
@@ -16,9 +13,8 @@ import {
   type Location,
   type RouterHistory,
 } from 'react-router-dom';
-import { type UserAuthActions } from '../../types/redux/modules/userAuth';
+import { type UserAuthActions } from '../../redux/modules/userAuth';
 import { type Link } from '../../config/navigation';
-// #endregion
 
 // #region flow types
 type Props = {
