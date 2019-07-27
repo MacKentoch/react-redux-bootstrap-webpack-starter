@@ -264,8 +264,10 @@ function shouldLogUser(state: { userAuth: State } & any): boolean {
 }
 // #endregion
 
-function fetchUserInfosData(id: string = '') {
-  return async (dispatch: Dispatch<Action>) => {
+// #region fetch user data
+type RFetchUserDataAction = ThunkAction<Promise<any>, State, void, Action>;
+function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
+  return async dispatch => {
     const token = auth.getToken();
     const {
       DEV_MODE,
@@ -279,8 +281,9 @@ function fetchUserInfosData(id: string = '') {
     const headers = { authorization: `Bearer ${token || ''}` };
     const options = { credentials: 'same-origin' }; // put options here (see axios options)
 
+    const type: ActionType = 'FETCH_MIDDLEWARE';
     return dispatch({
-      type: 'FETCH_MIDDLEWARE',
+      type,
       fetch: {
         // common props:
         type: FETCH_TYPE,
@@ -301,7 +304,9 @@ function fetchUserInfosData(id: string = '') {
   };
 }
 
-export function fetchUserInfoDataIfNeeded(id: string = '') {
+export function fetchUserInfoDataIfNeeded(
+  id: string = '',
+): RFetchUserDataAction {
   return (dispatch, getState) => {
     if (shouldFetchUserInfoData(getState())) {
       return dispatch(fetchUserInfosData(id));
