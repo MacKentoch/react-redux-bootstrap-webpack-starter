@@ -19,7 +19,14 @@ const fadeInAnimationCss = css`
   animation-fill-mode: both;
 `;
 
-const FadeInDiv = styled.div`
+type FadeInProps = {
+  startAnimation: boolean,
+};
+
+const FadeInDiv =
+  styled.div <
+  FadeInProps >
+  `
   ${({ startAnimation }) => startAnimation && fadeInAnimationCss};
 `;
 

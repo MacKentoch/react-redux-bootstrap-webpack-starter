@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import FadeInDiv from './styled/FadeInDiv';
 
