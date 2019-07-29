@@ -90,7 +90,7 @@ export default function(
 // #region ACTIONS CREATORS
 
 // #region fetch example
-type FakeFetchAction = ThunkAction<Promise<any>, State, void, Action>;
+type FakeFetchAction = ThunkAction<Promise<any>, State, void, {} & Action>;
 function fakeFetch(): FakeFetchAction {
   return dispatch => {
     const shouldFetchMock = appConfig.DEV_MODE;

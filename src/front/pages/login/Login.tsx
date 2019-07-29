@@ -1,37 +1,26 @@
-// @flow
-
 import React, { useState, useEffect } from 'react';
-import {
-  type Match,
-  type Location,
-  type RouterHistory,
-} from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 import Button from 'reactstrap/lib/Button';
 import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
-import { type UserAuthActions } from '../../redux/modules/userAuth';
+import { UserAuthActions } from '../../redux/modules/userAuth/type';
 import FadeInEntrance from '../../components/fadeInEntrance';
 
-// #region flow types
+// #region types
 export type Props = {
-  // react-router 4:
-  match: Match,
-  location: Location,
-  history: RouterHistory,
-
   // userAuth:
   isAuthenticated: boolean,
   isFetching: boolean,
   isLogging: boolean,
-} & UserAuthActions;
+} & RouteComponentProps &
+  UserAuthActions;
 // #endregion
 
 function Login({
   isLogging,
   isFetching,
   disconnectUser,
-  // $FlowIgnore
   logUserIfNeeded,
   history,
 }: Props) {
@@ -44,25 +33,25 @@ function Login({
   }, []);
 
   // #region form inputs change callbacks
-  const handlesOnEmailChange = (event: SyntheticEvent<>) => {
+  const handlesOnEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event) {
       event.preventDefault();
-      // $FlowIgnore
       setEmail(event.target.value.trim());
     }
   };
 
-  const handlesOnPasswordChange = (event: SyntheticEvent<>) => {
+  const handlesOnPasswordChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     if (event) {
       event.preventDefault();
-      // $FlowIgnore
       setPassword(event.target.value.trim());
     }
   };
   // #endregion
 
   // #region on login button click callback
-  const handlesOnLogin = async (event?: SyntheticEvent<>) => {
+  const handlesOnLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event && event.preventDefault();
 
     const userLogin = {
@@ -71,7 +60,7 @@ function Login({
     };
 
     try {
-      const response = await logUserIfNeeded(userLogin);
+      const response = await logUserIfNeeded(email, password);
       const {
         data: { token, user },
       } = response.payload;
@@ -89,7 +78,7 @@ function Login({
   // #endregion
 
   // #region on go back home button click callback
-  const goHome = (event: SyntheticEvent<>) => {
+  const goHome = (event: React.MouseEvent<HTMLButtonElement>) => {
     event && event.preventDefault();
     history.push({ pathname: '/' });
   };

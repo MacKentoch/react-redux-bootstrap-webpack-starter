@@ -1,13 +1,9 @@
 import React from 'react';
+import { RouteComponentProps } from 'react-router';
 import FadeInEntrance from '../../components/fadeInEntrance';
 
 // #region types
-type Props = {
-  // react-router 4:
-  match: Match,
-  location: Location,
-  history: RouterHistory,
-};
+type Props = {} & RouteComponentProps;
 // #endregion
 
 function Protected(props: Props) {
