@@ -6,24 +6,30 @@ import { RootState } from '../../redux/modules/types';
 import { UserAuthActions } from '../../redux/modules/userAuth/type'
 
 // #region redux map state and dispatch to props
-const mapStateToProps = (state: RootState) => {
+
+// #region types
+export type MappedStateToProps = {
+  isAuthenticated: boolean,
+  isFetching: boolean,
+  isLogging: boolean
+};
+export type OwnProps = {};
+
+export type MappedDispatchToProps = {} & UserAuthActions;
+// #endregion
+
+
+const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   return {
     isAuthenticated: state.userAuth.isAuthenticated,
     isFetching: state.userAuth.isFetching,
     isLogging: state.userAuth.isLogging,
   };
 };
-export type MappedProps = {
-  isAuthenticated: boolean,
-  isFetching: boolean,
-  isLogging: boolean
-};
 
-type FromReduxActions = {} & UserAuthActions;
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({ ...userAuthActions }, dispatch);
 };
-export type MappedDispatchToProps = FromReduxActions;
 // #endregion
 
 export default compose<Login>(

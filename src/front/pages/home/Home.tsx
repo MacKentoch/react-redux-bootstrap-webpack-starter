@@ -1,27 +1,18 @@
-// @flow
-
 import React from 'react';
-import {
-  type Match,
-  type Location,
-  type RouterHistory,
-} from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 import { Link } from 'react-router-dom';
 import Jumbotron from 'reactstrap/lib/Jumbotron';
 import FadeInEntrance from '../../components/fadeInEntrance';
 import HomeInfo from './styled/HomeInfo';
 import MainTitle from './styled/MainTitle';
 import LightNote from './styled/LightNote';
+import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
 
-// #region flow types
-export type Props = {
-  // react-router 4:
-  match: Match,
-  location: Location,
-  history: RouterHistory,
-
-  ...any,
-};
+// #region  types
+export type Props = {} & RouteComponentProps &
+  MappedDispatchToProps &
+  MappedStateToProps &
+  OwnProps;
 // #endregion
 
 function Home(props: Props) {

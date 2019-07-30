@@ -1,22 +1,15 @@
-// @flow
-
 import React, { Fragment, useEffect, useCallback } from 'react';
 import { withRouter } from 'react-router';
-import { type Match, type Location, type RouterHistory } from 'react-router';
+import { RouteComponentProps } from 'react-router';
 import NavigationBar from '../../components/navigation';
 import BackToTop from '../../components/backToTop/BackToTop';
 import navigationModel from '../../config/navigation';
 import registerServiceWorker from '../../services/sw/registerServiceWorker';
 
-// #region flow types
+// #region types
 type Props = {
-  // from withRouter HOC:
-  match: Match,
-  location: Location,
-  history: RouterHistory,
-
   children: any,
-};
+} & RouteComponentProps;
 // #endregion
 
 // #region MainLayout HOC
@@ -32,19 +25,19 @@ function MainLayout({ history, location, match, children }: Props) {
 
   // #region callbacks
   /* eslint-disable no-unused-vars*/
-  const handleLeftNavItemClick = useCallback((
-    event: SyntheticEvent<>,
-    viewName: string,
-  ) => {
-    // something to do here?
-  }, []);
+  const handleLeftNavItemClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, viewName: string) => {
+      // something to do here?
+    },
+    [],
+  );
 
-  const handleRightNavItemClick = useCallback((
-    event: SyntheticEvent<>,
-    viewName: string,
-  ) => {
-    // something to do here?
-  }, []);
+  const handleRightNavItemClick = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, viewName: string) => {
+      // something to do here?
+    },
+    [],
+  );
   // #endregion
 
   return (
@@ -63,5 +56,4 @@ function MainLayout({ history, location, match, children }: Props) {
   );
 }
 
-// $FlowIgnore
 export default withRouter(MainLayout);

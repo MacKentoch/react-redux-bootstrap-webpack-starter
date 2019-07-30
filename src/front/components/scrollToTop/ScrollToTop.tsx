@@ -1,22 +1,10 @@
-// @flow
-
 import React, { Fragment, useEffect, useRef } from 'react';
-import {
-  type Match,
-  type Location,
-  type RouterHistory,
-} from 'react-router-dom';
-import { withRouter } from 'react-router';
+import { withRouter, RouteComponentProps } from 'react-router';
 
-// #region flow types
+// #region types
 type Props = {
-  // react-router 4:
-  match: Match,
-  location: Location,
-  history: RouterHistory,
-
   children: any,
-};
+} & RouteComponentProps;
 // #endregion
 
 function useScrollToTopOnLocationChange(location: any) {

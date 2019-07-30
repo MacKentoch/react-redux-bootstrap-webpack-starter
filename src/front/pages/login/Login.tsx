@@ -4,17 +4,14 @@ import Button from 'reactstrap/lib/Button';
 import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
-import { UserAuthActions } from '../../redux/modules/userAuth/type';
 import FadeInEntrance from '../../components/fadeInEntrance';
+import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
 
 // #region types
-export type Props = {
-  // userAuth:
-  isAuthenticated: boolean,
-  isFetching: boolean,
-  isLogging: boolean,
-} & RouteComponentProps &
-  UserAuthActions;
+export type Props = {} & RouteComponentProps &
+  MappedStateToProps &
+  MappedDispatchToProps &
+  OwnProps;
 // #endregion
 
 function Login({

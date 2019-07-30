@@ -1,5 +1,3 @@
-// @flow
-
 import styled from 'styled-components';
 
 const LightNote = styled.i`

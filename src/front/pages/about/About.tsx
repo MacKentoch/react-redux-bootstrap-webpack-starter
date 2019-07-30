@@ -1,20 +1,9 @@
-// @flow
-
 import React from 'react';
-import {
-  type Match,
-  type Location,
-  type RouterHistory,
-} from 'react-router-dom';
+import { RouteComponentProps } from 'react-router';
 import FadeInEntrance from '../../components/fadeInEntrance';
 
-// #region flow types
-type Props = {
-  // react-router 4:
-  match: Match,
-  location: Location,
-  history: RouterHistory,
-};
+// #region types
+type Props = {} & RouteComponentProps;
 // #endregion
 
 function About(props: Props) {
