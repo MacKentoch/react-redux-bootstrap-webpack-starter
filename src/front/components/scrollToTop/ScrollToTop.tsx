@@ -30,5 +30,4 @@ function ScrollToTop({ children, location }: Props) {
 
 ScrollToTop.displayName = 'ScrollToTop';
 
-// $FlowIgnore
 export default withRouter(ScrollToTop);
