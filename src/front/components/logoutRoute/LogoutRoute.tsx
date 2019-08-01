@@ -1,21 +1,13 @@
-// @flow
-
 import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import {
-  type Match,
-  type Location,
-  type RouterHistory,
-} from 'react-router-dom';
-import { type UserAuthActions } from '../../redux/modules/userAuth';
+import { RouteComponentProps } from 'react-router';
+import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
 
-// #region flow types
-type Props = {
-  // react-router 4:
-  match: Match,
-  location: Location,
-  history: RouterHistory,
-} & UserAuthActions;
+// #region types
+type Props = {} & RouteComponentProps &
+  MappedDispatchToProps &
+  MappedStateToProps &
+  OwnProps;
 // #endregion
 
 function LogoutRoute(props: Props) {
@@ -28,5 +20,7 @@ function LogoutRoute(props: Props) {
     </Route>
   );
 }
+
+LogoutRoute.displayName = 'LogoutRoute';
 
 export default LogoutRoute;
