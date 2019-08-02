@@ -1,14 +1,12 @@
-// @flow
-
 import React from 'react';
 
-// #region flow types
+// #region types
 type Props = {
   color: string,
 };
 // #endregion
 
-const UpIcon = ({ color }: Props) => {
+const UpIcon = ({ color = '#F1F1F1' }: Props) => {
   return (
     <svg width="24px" height="24px" viewBox="0 0 512 512" fill={`${color}`}>
       <path
@@ -19,12 +17,6 @@ const UpIcon = ({ color }: Props) => {
   );
 };
 
-// #region statics
-UpIcon.defaultProps = {
-  color: '#F1F1F1',
-};
-
 UpIcon.displayName = 'UpIcon';
-// #endregion
 
 export default UpIcon;

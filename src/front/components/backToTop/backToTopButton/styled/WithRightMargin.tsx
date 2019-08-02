@@ -1,5 +1,3 @@
-// @flow
-
 import styled from 'styled-components';
 
 const WithRightMargin = styled.div`

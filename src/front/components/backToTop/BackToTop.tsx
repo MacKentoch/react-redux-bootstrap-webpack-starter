@@ -1,11 +1,9 @@
-// @flow
 /* eslint-disable no-undefined */
-
 import React, { useState, useEffect } from 'react';
 import BackToTopButton from './backToTopButton/BackToTopButton';
 import { Motion, spring, presets } from 'react-motion';
 
-// #region flow types
+// #region types
 type Props = {
   minScrollY: number,
   scrollTo?: string,
@@ -13,7 +11,12 @@ type Props = {
 };
 // #endregion
 
-function BackToTop({ minScrollY, onScrollDone }: Props) {
+function BackToTop({
+  minScrollY = 120,
+  onScrollDone = () => {
+    return;
+  },
+}: Props) {
   const [showBackButton, setShowBackButton] = useState(false);
   const [windowScrollY, setWindowScrollY] = useState(0);
   const [tickingScollObserve, setTickingScollObserve] = useState(false);
@@ -56,7 +59,9 @@ function BackToTop({ minScrollY, onScrollDone }: Props) {
   // #endregion
 
   // #region on button click (smooth scroll)
-  const handlesOnBackButtonClick = (event?: SyntheticEvent<*>) => {
+  const handlesOnBackButtonClick = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
     event && event.preventDefault();
     if (window && windowScrollY && windowScrollY > minScrollY) {
       // using here smoothscroll-polyfill
@@ -100,12 +105,5 @@ function BackToTop({ minScrollY, onScrollDone }: Props) {
 }
 
 BackToTop.displayName = 'BackToTop';
-
-BackToTop.defaultProps = {
-  minScrollY: 120,
-  onScrollDone: () => {
-    return;
-  },
-};
 
 export default BackToTop;
