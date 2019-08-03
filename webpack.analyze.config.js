@@ -14,7 +14,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const outputPath = path.join(__dirname, 'docs/public/assets');
 const publicPath = 'public/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
-const indexFile = path.join(__dirname, 'src/front/index.js');
+const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
 
 const config = {

@@ -197,7 +197,6 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "reactstrap": "^6.3.1",
-    "recompose": "^0.27.0",
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
     "redux-thunk": "^2.3.0",
