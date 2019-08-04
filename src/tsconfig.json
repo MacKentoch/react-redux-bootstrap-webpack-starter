@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "esnext"],
+    "lib": ["dom", "es2015", "esnext"],
     "module": "commonjs",
     "moduleResolution": "node",
     "allowJs": true,
@@ -16,17 +16,7 @@
     "esModuleInterop": true,
     "typeRoots": ["front/types"],
     "resolveJsonModule": true,
-    // "noEmit": true,
     "outDir": "dist",
-    // "trailing-comma": [true, {
-    //   "singleline": "never",
-    //   "multiline": {
-    //     "objects": "always",
-    //     "arrays": "always",
-    //     "functions": "never",
-    //     "typeLiterals": "always"
-    //   }
-    // }]
   },
   "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js"],
   "exclude": ["node_modules", "test/*", "*.d.ts"]
