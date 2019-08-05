@@ -29,7 +29,7 @@ type ActionType =
   | 'ERROR_LOG_USER'
   | 'CHECK_IF_USER_IS_AUTHENTICATED'
   | 'DISCONNECT_USER'
-  | 'FETCH_MIDDLEWARE';
+  | 'FETCH';
 
 type PartialState = Partial<State>;
 type UserInfo = { user: User };
@@ -224,7 +224,7 @@ function logUser(login: string, password: string): RLogUserAction {
     };
 
     // fetchMiddleware (does: fetch mock, real fetch, dispatch 3 actions... for a minimum code on action creator!)
-    const type: ActionType = 'FETCH_MIDDLEWARE';
+    const type: ActionType = 'FETCH';
     return dispatch({
       type,
       fetch: {
@@ -274,14 +274,13 @@ function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
       api: { users },
     } = appConfig;
     const FETCH_TYPE = DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
-
     const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
     const url = `${getLocationOrigin()}/${users}/${id}`;
     const method = 'get';
     const headers = { authorization: `Bearer ${token || ''}` };
     const options = { credentials: 'same-origin' }; // put options here (see axios options)
 
-    const type: ActionType = 'FETCH_MIDDLEWARE';
+    const type: ActionType = 'FETCH';
     return dispatch({
       type,
       fetch: {

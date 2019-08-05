@@ -58,6 +58,7 @@ function Login({
 
     try {
       const response = await logUserIfNeeded(email, password);
+      console.log('"response: ', response)
       const {
         data: { token, user },
       } = response.payload;

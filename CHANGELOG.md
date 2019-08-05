@@ -1,5 +1,6 @@
 # v7.0.0
 - migrate front to Typescript
+- replace Uglyfy-js webpack plugin with TerserPlugin (*for hooks compatibility*)
 
 # v6.1.1
 - upgrade `styled-components` to v4+ (*now uses createGlobalStyle()*)

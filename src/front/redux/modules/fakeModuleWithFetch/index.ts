@@ -13,7 +13,7 @@ const ERROR_FAKE_FETCH = 'ERROR_FAKE_FETCH';
 
 // #region flow types
 type ActionType =
-  | 'FETCH_MIDDLEWARE'
+  | 'FETCH'
   | 'REQUEST_FAKE_FETCH'
   | 'RECEIVED_FAKE_FETCH'
   | 'ERROR_FAKE_FETCH';
@@ -104,7 +104,7 @@ function fakeFetch(): FakeFetchAction {
     // fetch middleware
     // -> you handles pure front or with back-end asyncs just by disaptching a single object
     //   -> just change config: appConfig.DEV_MODE
-    const type: ActionType = 'FETCH_MIDDLEWARE';
+    const type: ActionType = 'FETCH';
     return Promise.resolve(
       dispatch({
         // type name is not important here since fetchMiddleware will intercept this action:

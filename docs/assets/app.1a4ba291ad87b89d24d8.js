@@ -1439,6 +1439,7 @@ function Login(_a) {
                     return [4, logUserIfNeeded(email, password)];
                 case 2:
                     response = _b.sent();
+                    console.log('"response: ', response);
                     _a = response.payload.data, token = _a.token, user = _a.user;
                     auth_1.default.setToken(token);
                     auth_1.default.setUserInfo(user);
@@ -1722,15 +1723,17 @@ var fetchMiddleware = function (store) { return function (next) { return functio
                 if (!action.fetch) {
                     return [2, next(action)];
                 }
-                if (!action.fetch.type ||
-                    action.fetch.type !== FETCH_TYPE_ENUM.FETCH_MOCK ||
-                    action.fetch.type !== FETCH_TYPE_ENUM.FETCH) {
+                if (!action.fetch.type) {
+                    return [2, next(action)];
+                }
+                if (action.fetch.type !== 'FETCH_MOCK' ||
+                    action.fetch.type !== 'FETCH') {
                     return [2, next(action)];
                 }
                 if (!action.fetch.actionTypes) {
                     return [2, next(action)];
                 }
-                if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK) {
+                if (action.fetch.type === "FETCH_MOCK") {
                     if (!action.fetch.mockResult) {
                         throw new Error('Fetch middleware require a mockResult payload when type is "FETCH_MOCK"');
                     }
@@ -1744,7 +1747,7 @@ var fetchMiddleware = function (store) { return function (next) { return functio
                             },
                         }))];
                 }
-                if (!(action.fetch.type === FETCH_TYPE_ENUM.FETCH)) return [3, 4];
+                if (!(action.fetch.type === 'FETCH')) return [3, 4];
                 _c = action.fetch, _d = _c.actionTypes, request = _d.request, success = _d.success, fail = _d.fail, url = _c.url, method = _c.method, headers = _c.headers, options = _c.options;
                 store.dispatch({ type: request });
                 _e.label = 1;
@@ -1837,7 +1840,7 @@ function fakeFetch() {
         var url = fetchTools_1.getLocationOrigin() + "/" + appConfig_1.default.api.fakeEndPoint;
         var method = 'get';
         var options = {};
-        var type = 'FETCH_MIDDLEWARE';
+        var type = 'FETCH';
         return Promise.resolve(dispatch({
             type: type,
             fetch: {
@@ -2061,7 +2064,7 @@ function logUser(login, password) {
                     password: password,
                 },
             };
-            type = 'FETCH_MIDDLEWARE';
+            type = 'FETCH';
             return [2, dispatch({
                     type: type,
                     fetch: {
@@ -2108,7 +2111,7 @@ function fetchUserInfosData(id) {
             method = 'get';
             headers = { authorization: "Bearer " + (token || '') };
             options = { credentials: 'same-origin' };
-            type = 'FETCH_MIDDLEWARE';
+            type = 'FETCH';
             return [2, dispatch({
                     type: type,
                     fetch: {
@@ -2417,29 +2420,25 @@ exports.auth = {
         if (userInfoKey === void 0) { userInfoKey = USER_INFO; }
         if (fromStorage === APP_PERSIST_STORES_TYPES[0]) {
             try {
-                var value = (window &&
+                return ((window &&
                     localStorage &&
                     parse(localStorage.getItem(userInfoKey) || '')) ||
-                    null;
-                console.log('########## localstorage: ', JSON.stringify({
-                    value: value,
-                    fromStorage: fromStorage,
-                    userInfoKey: userInfoKey,
-                    valueInSorage: JSON.parse(localStorage.getItem(userInfoKey) || '{}'),
-                }, null, ' '));
-                return value;
+                    null);
             }
             catch (error) {
-                console.log('##########  error:', JSON.stringify(error, null, ' '));
                 return null;
             }
         }
         if (fromStorage === APP_PERSIST_STORES_TYPES[1]) {
-            console.log('########## sessionStorage');
-            return ((window &&
-                sessionStorage &&
-                parse(sessionStorage.getItem(userInfoKey) || '')) ||
-                null);
+            try {
+                return ((window &&
+                    sessionStorage &&
+                    parse(sessionStorage.getItem(userInfoKey) || '')) ||
+                    null);
+            }
+            catch (error) {
+                return null;
+            }
         }
         return null;
     },
@@ -2600,4 +2599,4 @@ var templateObject_1;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=app.7b8cda372549c004a38a.js.map
+//# sourceMappingURL=app.1a4ba291ad87b89d24d8.js.map

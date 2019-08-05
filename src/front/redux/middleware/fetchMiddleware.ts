@@ -63,14 +63,18 @@ export type FetchMiddleWareAction = {
 const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
   next: Function,
 ) => async (action: AnyAction | FetchMiddleWareAction) => {
+  // #region validation
   if (!action.fetch) {
     return next(action);
   }
 
+  if (!action.fetch.type) {
+    return next(action);
+  }
+
   if (
-    !action.fetch.type ||
-    action.fetch.type !== FETCH_TYPE_ENUM.FETCH_MOCK ||
-    action.fetch.type !== FETCH_TYPE_ENUM.FETCH
+    action.fetch.type !== 'FETCH_MOCK' ||
+    action.fetch.type !== 'FETCH'
   ) {
     return next(action);
   }
@@ -78,12 +82,10 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
   if (!action.fetch.actionTypes) {
     return next(action);
   }
+  // #endregion
 
-  /**
-   * fetch mock
-   * @type {[type]}
-   */
-  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK) {
+  // #region fetch mock
+  if (action.fetch.type === "FETCH_MOCK") {
     if (!action.fetch.mockResult) {
       throw new Error(
         'Fetch middleware require a mockResult payload when type is "FETCH_MOCK"',
@@ -109,8 +111,10 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
       }),
     );
   }
+  // #endregion
 
-  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH) {
+  // #region real fetch
+  if (action.fetch.type === 'FETCH') {
     const {
       actionTypes: { request, success, fail },
       url,
@@ -145,6 +149,9 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
       throw error;
     }
   }
+  // #endregion
+
+
   return next(action);
 };
 
