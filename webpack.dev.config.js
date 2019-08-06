@@ -6,8 +6,6 @@ const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 
 // #region constants
-const outputPath = path.join(__dirname, 'docs/assets');
-const publicPath = '/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
@@ -24,8 +22,8 @@ const config = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
-    path: outputPath,
-    publicPath,
+    path: path.join(__dirname, 'docs/assets'),
+    publicPath: '/assets/',
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
   },

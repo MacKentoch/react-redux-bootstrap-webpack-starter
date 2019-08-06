@@ -12,8 +12,6 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 
 // #region constants
-const outputPath = path.join(__dirname, 'docs/public/assets');
-const publicPath = 'public/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
@@ -26,8 +24,8 @@ const config = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
-    path: outputPath,
-    publicPath,
+    path: path.join(__dirname, 'docs/public/assets'),
+    publicPath: '/assets/',
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
   },

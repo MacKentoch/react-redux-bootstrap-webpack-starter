@@ -5,13 +5,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // #region constants
-const outputPath = path.join(__dirname, 'docs/assets');
-const devServerRootPath = path.join(__dirname, 'docs');
-const publicPath = '/assets/';
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const srcInclude = path.join(__dirname, 'src/front');
 const srcExclude = path.join(__dirname, 'src/test');
-// const srcExcludeDefinitions = path.join(__dirname, 'src/**/*/*.d.ts');
 const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
 
@@ -26,8 +22,8 @@ const config = {
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
-    path: outputPath,
-    publicPath,
+    path: path.join(__dirname, 'docs/assets'),
+    publicPath: '/assets/',
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
@@ -37,13 +33,13 @@ const config = {
         test: /\.jsx?$/,
         include: srcInclude,
         exclude: [nodeModulesDir, srcExclude],
-        loaders: ['babel-loader'],
+        loaders: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.tsx?$/,
         include: srcInclude,
         exclude: [nodeModulesDir, srcExclude],
-        use: ['ts-loader'],
+        use: ['react-hot-loader/webpack', 'ts-loader'],
       },
       {
         test: /\.css$/,
@@ -98,7 +94,7 @@ const config = {
     new webpack.NoEmitOnErrorsPlugin(),
   ],
   devServer: {
-    contentBase: devServerRootPath,
+    contentBase: path.join(__dirname, 'docs'),
     port: 3001,
     hot: true,
     historyApiFallback: true,
