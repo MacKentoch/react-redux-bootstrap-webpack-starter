@@ -80,7 +80,7 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/front/index.html',
-      filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
+      filename: 'index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
