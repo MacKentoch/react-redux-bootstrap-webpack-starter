@@ -3,6 +3,12 @@ const { jsWithTs: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {
   preset: 'ts-jest',
+  globals: {
+      ts-jest: {
+        tsConfig: "src/tsconfig"
+      }
+    }
+  },
   testEnvironment: 'node',
   verbose: true,
   transform: {

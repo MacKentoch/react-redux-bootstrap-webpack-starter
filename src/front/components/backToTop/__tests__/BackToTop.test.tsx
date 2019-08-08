@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import BackToTop from '../BackToTop';
 
 describe('BackToTop component', () => {
@@ -10,7 +10,7 @@ describe('BackToTop component', () => {
       onScrollDone: jest.fn(),
     };
 
-    const wrapper = mount(
+    const wrapper = shallow(
       <div>
         <BackToTop {...props} />
       </div>,
