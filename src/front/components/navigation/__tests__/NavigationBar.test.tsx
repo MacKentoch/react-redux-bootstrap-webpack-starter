@@ -1,11 +1,8 @@
-// @flow
-
-// #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import NavigationBar from '../NavigationBar';
-// #endregion
+
 
 describe('NavigationBar component', () => {
   it('renders as expected', () => {
