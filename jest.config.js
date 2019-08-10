@@ -2,9 +2,14 @@ const { jsWithBabel: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {
   preset: 'ts-jest',
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   globals: {
     'ts-jest': {
-      tsConfig: '/src/tsconfig.json',
+      tsConfig: 'src/tsconfig.json',
     },
   },
   testEnvironment: 'node',
@@ -13,10 +18,7 @@ module.exports = {
     ...tsjPreset.transform,
   },
   roots: ['<rootDir>/src/', '<rootDir>/src/test'],
-  setupFiles: [
-    '<rootDir>/src/test/__mocks__/localStorage.ts',
-    '<rootDir>/src/test/__mocks__/sessionStorage.ts',
-  ],
+  setupFiles: [],
   setupFilesAfterEnv: ['<rootDir>/src/test/setupTests.js'],
   moduleNameMapper: {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
