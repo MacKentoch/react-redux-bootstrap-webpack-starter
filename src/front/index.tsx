@@ -1,5 +1,6 @@
-import 'babel-polyfill';
-import 'regenerator-runtime';
+// import 'babel-polyfill';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import { hydrate, render } from 'react-dom';

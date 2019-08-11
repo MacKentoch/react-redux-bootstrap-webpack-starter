@@ -14,10 +14,11 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "esModuleInterop": true,
-    "typeRoots": ["front/types"],
+    "typeRoots": ["front/types", "../node_modules/@types"],
     "resolveJsonModule": true,
     "outDir": "dist",
+    // "types": ["node", "jest", "react"]
   },
   "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js", "*.test.tsx"],
-  "exclude": ["node_modules", "*.d.ts"]
+  "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
 }

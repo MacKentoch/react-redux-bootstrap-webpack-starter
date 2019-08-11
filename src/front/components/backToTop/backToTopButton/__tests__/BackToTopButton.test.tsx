@@ -1,18 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import BackToTopButton from '../BackToTopButton';
+import BackToTopButton, { BackButtonPosition } from '../BackToTopButton';
 
 describe('BackToTopButton component', () => {
   it('renders as expected', () => {
+    const position: BackButtonPosition = 'bottom-left';
     const props = {
-      position: 'bottom-left',
+      position,
       onClick: () => {},
       motionStyle: {},
     };
 
     const component = shallow(
       <div>
-        <BackToTopButton {...props} />
+        <BackToTopButton {...props}>
+          <p>a child</p>
+        </BackToTopButton>
       </div>,
     );
 

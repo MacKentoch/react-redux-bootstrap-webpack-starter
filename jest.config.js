@@ -2,21 +2,17 @@ const { jsWithBabel: tsjPreset } = require('ts-jest/presets');
 
 module.exports = {
   preset: 'ts-jest',
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
+  transform: { ...tsjPreset.transform },
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   globals: {
     'ts-jest': {
-      tsConfig: 'src/tsconfig.json',
+      tsConfig: './src/tsconfig.json',
+      babelConfig: true,
     },
   },
   testEnvironment: 'node',
   verbose: true,
-  transform: {
-    ...tsjPreset.transform,
-  },
   roots: ['<rootDir>/src/', '<rootDir>/src/test'],
   setupFiles: [],
   setupFilesAfterEnv: ['<rootDir>/src/test/setupTests.js'],
