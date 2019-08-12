@@ -4,12 +4,10 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import Login from '../Login';
-import { type Props } from '../Login';
 
 describe('Login page', () => {
   it('renders as expected', () => {
-    // $FlowIgnore
-    const props: Props = {
+    const props = {
       isFetching: false,
       isLogging: false,
       isAuthenticated: false,

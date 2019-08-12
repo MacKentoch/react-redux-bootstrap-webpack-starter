@@ -3,33 +3,28 @@ import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import NavigationBar from '../NavigationBar';
 
-
 describe('NavigationBar component', () => {
   it('renders as expected', () => {
     const props = {
       brand: 'test',
-      handleLeftNavItemClick: () => {},
-      handleRightNavItemClick: () => {},
       navModel: {
         leftLinks: [
           {
             link: '/',
             label: 'home',
-            viewName: 'home',
-            onClick: () => {},
           },
         ],
         rightLinks: [
           {
             link: '/',
             label: 'home',
-            viewName: 'home',
-            onClick: () => {},
           },
         ],
       },
+      token: '',
       isAuthenticated: true,
-      history: {},
+      leftNavItemClick: jest.fn(),
+      rightNavItemClick: jest.fn(),
       disconnectUser: jest.fn(),
       checkUserIsConnected: jest.fn(),
       fetchUserInfoDataIfNeeded: jest.fn(),

@@ -12,11 +12,7 @@ import { RouteComponentProps } from 'react-router';
 import { OwnProps, MappedDispatchToProps, MappedStateToProps } from './index';
 
 // #region types
-type Props = {
-  // redux
-  token: string | null,
-  isAuthenticated: boolean,
-} & RouteComponentProps &
+type Props = {} & RouteComponentProps &
   OwnProps &
   MappedStateToProps &
   MappedDispatchToProps;

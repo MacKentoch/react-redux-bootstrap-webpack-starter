@@ -1,16 +1,15 @@
 import React from 'react';
-import renderer from 'react-test-renderer'; // needed both for snpashot testing but also to prevent errors from enzyme
+import { shallow } from 'enzyme';
 import UpIcon from '../UpIcon';
 
 describe('UpIcon component', () => {
   it('renders as expected', () => {
-    const component = renderer
-      .create(
-        <div>
-          <UpIcon />
-        </div>,
-      )
-      .toJSON();
+    const props = { color: '' };
+    const component = shallow(
+      <div>
+        <UpIcon {...props} />
+      </div>,
+    );
     expect(component).toMatchSnapshot();
   });
 });

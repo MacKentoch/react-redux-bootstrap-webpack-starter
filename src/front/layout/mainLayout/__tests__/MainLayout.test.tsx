@@ -7,7 +7,9 @@ describe('MainLayout', () => {
   it('renders as expected', () => {
     const component = shallow(
       <MemoryRouter>
-        <MainLayout />
+        <MainLayout>
+          <p>a child</p>
+        </MainLayout>
       </MemoryRouter>,
     );
     expect(component).toMatchSnapshot();
