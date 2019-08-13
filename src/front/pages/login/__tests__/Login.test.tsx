@@ -1,8 +1,7 @@
-// @flow
-
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { Route } from 'react-router-dom';
 import Login from '../Login';
 
 describe('Login page', () => {

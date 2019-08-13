@@ -1,5 +1,7 @@
 # v7.0.0
+- React 16.8.x to 16.9.x
 - migrate front to Typescript
+- test migration from enzyme to [react-testing-library](https://github.com/testing-library/react-testing-library) (*because of useEffect hook not being testable with enzyme*)
 - replace Uglyfy-js webpack plugin with TerserPlugin (*for hooks compatibility*)
 
 # v6.1.1

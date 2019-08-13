@@ -3,19 +3,15 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { Route } from 'react-router-dom';
 import About from '../About';
 
 describe('About page', () => {
   it('renders as expected', () => {
-    const props = {
-      actions: {},
-    };
     const component = shallow(
-      <div>
-        <MemoryRouter>
-          <About {...props} />
-        </MemoryRouter>
-      </div>,
+      <MemoryRouter initialEntries={['/']}>
+        <Route path="/about" component={About} />
+      </MemoryRouter>,
     );
     expect(component).toMatchSnapshot();
   });
