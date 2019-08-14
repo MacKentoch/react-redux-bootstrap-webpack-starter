@@ -17,11 +17,14 @@ describe('Login page', () => {
     };
 
     const component = shallow(
-      <div>
-        <MemoryRouter>
-          <Login {...props} />
-        </MemoryRouter>
-      </div>,
+      <MemoryRouter>
+        <Route
+          path="/login"
+          component={(passedProps: any) => (
+            <Login {...props} {...passedProps} />
+          )}
+        />
+      </MemoryRouter>,
     );
     expect(component).toMatchSnapshot();
   });

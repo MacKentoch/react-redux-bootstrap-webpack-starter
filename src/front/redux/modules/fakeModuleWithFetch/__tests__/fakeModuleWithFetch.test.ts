@@ -1,5 +1,3 @@
-// @flow
-
 import { fakeFetchIfNeeded } from '../index';
 
 // #region jest mocks (JSON files)

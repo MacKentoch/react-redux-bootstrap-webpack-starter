@@ -1,21 +1,15 @@
-// @flow
-
-// #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
+import { Route } from 'react-router-dom';
 import Protected from '../Protected';
-// #endregion
 
 describe('Protected page', () => {
   it('renders as expected', () => {
-    const props = {
-      actions: {},
-    };
     const component = shallow(
       <div>
         <MemoryRouter>
-          <Protected {...props} />
+          <Route path="/protected"  component={Protected} />
         </MemoryRouter>
       </div>,
     );
