@@ -34,7 +34,7 @@ type ActionType =
 type PartialState = Partial<State>;
 type UserInfo = { user: User };
 
-type Action = {
+export type Action = {
   type: ActionType,
 
   isFetching?: boolean,

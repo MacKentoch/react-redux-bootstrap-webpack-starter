@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
 
 // #region types

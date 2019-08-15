@@ -1,24 +1,27 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { ThunkAction } from 'redux-thunk';
 import fetchMiddleware from '../../../middleware/fetchMiddleware';
-import { disconnectUser, checkUserIsConnected } from '../index';
+import { disconnectUser, checkUserIsConnected, Action } from '../index';
+import { State } from '../type';
+
+// #region types
+type Actions = ThunkAction<Promise<any>, State, void, Action>;
+// #endregion
 
 // #region constants
 const middlewares = [thunk, fetchMiddleware];
-const mockStore = configureMockStore(middlewares);
-const initialState = {
+const mockStore = configureMockStore<State, Actions>(middlewares);
+const initialState: State = {
   // actions details
   isFetching: false,
   isLogging: false,
-  time: '',
 
   // userInfos
   id: 'some_fake_id',
-  _id: 'some_fake_id',
   login: '',
   firstname: '',
   lastname: '',
-
   token: 'fake_token_for_test',
   isAuthenticated: true, // authentication status (token based auth)
 };
@@ -51,7 +54,7 @@ jest.mock('../../../../services/auth', () => ({
 // #endregion
 
 describe('userAuth action creators', () => {
-  let store = null;
+  let store: any = null;
 
   beforeEach(() => {
     store = mockStore(initialState);
@@ -62,9 +65,7 @@ describe('userAuth action creators', () => {
 
     const action = disconnectUser();
     expect(action).toEqual(expectedAction);
-    // $FlowIgnore
     store.dispatch(disconnectUser());
-    // $FlowIgnore
     const actions = store.getActions();
     const expectedPayload = { type: 'DISCONNECT_USER' };
     expect(actions).toEqual([expectedPayload]);
@@ -77,9 +78,7 @@ describe('userAuth action creators', () => {
       token: 'fake_token_for_test',
       isAuthenticated: false,
     };
-    // $FlowIgnore
     store.dispatch(checkUserIsConnected());
-    // $FlowIgnore
     const actions = store.getActions();
     const expectedPayload = expectedAction;
 
