@@ -1,7 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
-import LogoutRoute from '../LogoutRoute';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import LogoutRoute from '../index';
+
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
 
 describe('LogoutRoute component', () => {
   it('renders as expected', () => {
