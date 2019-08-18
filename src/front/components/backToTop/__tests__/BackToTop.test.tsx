@@ -9,11 +9,7 @@ describe('BackToTop component', () => {
       onScrollDone: jest.fn(),
     };
 
-    const wrapper = shallow(
-      <div>
-        <BackToTop {...props} />
-      </div>,
-    );
+    const wrapper = shallow(<BackToTop {...props} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

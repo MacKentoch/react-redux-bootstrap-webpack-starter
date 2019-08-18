@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import { Route } from 'react-router-dom';
-import Home from '../Home';
+import Home from '../Index';
 
 describe('Home page', () => {
   it('renders as expected', () => {
