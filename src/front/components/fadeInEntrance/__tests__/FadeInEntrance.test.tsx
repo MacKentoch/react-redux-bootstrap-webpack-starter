@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import FadeInEntrance from '../FadeInEntrance';
+import FadeInEntrance from '../index';
 
 describe('FadeInEntrance component', () => {
   it('renders as expected', () => {

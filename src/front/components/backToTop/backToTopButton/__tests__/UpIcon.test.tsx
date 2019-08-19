@@ -5,11 +5,7 @@ import UpIcon from '../UpIcon';
 describe('UpIcon component', () => {
   it('renders as expected', () => {
     const props = { color: '' };
-    const component = shallow(
-      <div>
-        <UpIcon {...props} />
-      </div>,
-    );
+    const component = shallow(<UpIcon {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

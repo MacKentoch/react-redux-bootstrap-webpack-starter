@@ -12,11 +12,9 @@ describe('BackToTopButton component', () => {
     };
 
     const component = shallow(
-      <div>
-        <BackToTopButton {...props}>
-          <p>a child</p>
-        </BackToTopButton>
-      </div>,
+      <BackToTopButton {...props}>
+        <p>a child</p>
+      </BackToTopButton>,
     );
 
     expect(component).toMatchSnapshot();
