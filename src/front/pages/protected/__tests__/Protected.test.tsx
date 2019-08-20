@@ -11,11 +11,9 @@ import Protected from '../index'; // import connected component to avoid router 
 describe('Protected page', () => {
   it('renders as expected', () => {
     const component = shallow(
-      <div>
-        <MemoryRouter>
-          <Protected />
-        </MemoryRouter>
-      </div>,
+      <MemoryRouter>
+        <Protected />
+      </MemoryRouter>,
     );
     expect(component).toMatchSnapshot();
   });

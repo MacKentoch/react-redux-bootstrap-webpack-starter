@@ -2,13 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 import { Route } from 'react-router-dom';
-import PageNotFound from '../PageNotFound';
+import PageNotFound from '../index';
 
 describe('PageNotFound page', () => {
   it('renders as expected', () => {
     const component = shallow(
       <MemoryRouter>
-        <Route path="/pageNotFound" component={PageNotFound} />
+        <PageNotFound />
       </MemoryRouter>,
     );
     expect(component).toMatchSnapshot();
