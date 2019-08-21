@@ -3,6 +3,8 @@ const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+// const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -41,6 +43,29 @@ const config = {
         exclude: [nodeModulesDir, srcExclude],
         use: ['react-hot-loader/webpack', 'ts-loader'],
       },
+      // {
+      //   test: /\.(j|t)sx?$/,
+      //   exclude: /node_modules/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       cacheDirectory: true,
+      //       babelrc: true,
+      //       // presets: [
+      //       //   [
+      //       //     '@babel/preset-env',
+      //       //     { targets: { browsers: 'last 2 versions' } }, // or whatever your project requires
+      //       //   ],
+      //       //   '@babel/preset-typescript',
+      //       //   '@babel/preset-react',
+      //       // ],
+      //       // plugins: [
+      //       //   ['@babel/plugin-proposal-class-properties', { loose: true }],
+      //       //   'react-hot-loader/babel',
+      //       // ],
+      //     },
+      //   },
+      // },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -78,6 +103,10 @@ const config = {
     },
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: path.join(__dirname, '/src/tsconfig.json'),
+      transpileOnly: true,
+    }),
     new HtmlWebpackPlugin({
       template: 'src/front/index.html',
       filename: 'index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
