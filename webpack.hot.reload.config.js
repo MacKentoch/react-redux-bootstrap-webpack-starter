@@ -31,41 +31,45 @@ const config = {
   },
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        include: srcInclude,
-        exclude: [nodeModulesDir, srcExclude],
-        loaders: ['react-hot-loader/webpack', 'babel-loader'],
-      },
-      {
-        test: /\.tsx?$/,
-        include: srcInclude,
-        exclude: [nodeModulesDir, srcExclude],
-        use: ['react-hot-loader/webpack', 'ts-loader'],
-      },
       // {
-      //   test: /\.(j|t)sx?$/,
-      //   exclude: /node_modules/,
-      //   use: {
-      //     loader: 'babel-loader',
-      //     options: {
-      //       cacheDirectory: true,
-      //       babelrc: true,
-      //       // presets: [
-      //       //   [
-      //       //     '@babel/preset-env',
-      //       //     { targets: { browsers: 'last 2 versions' } }, // or whatever your project requires
-      //       //   ],
-      //       //   '@babel/preset-typescript',
-      //       //   '@babel/preset-react',
-      //       // ],
-      //       // plugins: [
-      //       //   ['@babel/plugin-proposal-class-properties', { loose: true }],
-      //       //   'react-hot-loader/babel',
-      //       // ],
-      //     },
-      //   },
+      //   test: /\.jsx?$/,
+      //   include: srcInclude,
+      //   exclude: [nodeModulesDir, srcExclude],
+      //   loaders: ['react-hot-loader/webpack', 'babel-loader'],
       // },
+      // {
+      //   test: /\.tsx?$/,
+      //   include: srcInclude,
+      //   exclude: [nodeModulesDir, srcExclude],
+      //   use: ['react-hot-loader/webpack', 'ts-loader'],
+      // },
+      // {
+      {
+        test: /\.(j|t)sx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            babelrc: false,
+            presets: [
+              [
+                '@babel/preset-env',
+                { targets: { browsers: 'last 2 versions' } }, // or whatever your project requires
+              ],
+              '@babel/preset-typescript',
+              '@babel/preset-react',
+            ],
+            plugins: [
+              // plugin-proposal-decorators is only needed if you're using experimental decorators in TypeScript
+              ['@babel/plugin-proposal-decorators', { legacy: true }],
+              ['@babel/plugin-proposal-class-properties', { loose: true }],
+              'react-hot-loader/babel',
+            ],
+          },
+        },
+      },
+
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
