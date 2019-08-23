@@ -61,8 +61,6 @@ const config = {
               '@babel/preset-react',
             ],
             plugins: [
-              // plugin-proposal-decorators is only needed if you're using experimental decorators in TypeScript
-              ['@babel/plugin-proposal-decorators', { legacy: true }],
               ['@babel/plugin-proposal-class-properties', { loose: true }],
               'react-hot-loader/babel',
             ],
@@ -108,7 +106,7 @@ const config = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
-      tsconfig: path.join(__dirname, '/src/tsconfig.json'),
+      // tsconfig: path.join(__dirname, '/src/tsconfig.json'),
       transpileOnly: true,
     }),
     new HtmlWebpackPlugin({
