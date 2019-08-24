@@ -16,6 +16,7 @@ const indexFile = path.join(__dirname, 'src/front/index.tsx');
 
 const config = {
   mode: 'production',
+  target: 'web',
   entry: { app: indexFile },
   resolve: {
     modules: ['src/front', 'node_modules'],
