@@ -1,16 +1,16 @@
 self.__precacheManifest = [
   {
-    "url": "/assets/vendors.66cf673a778c8bf23dd5.js"
+    "url": "/assets/vendors.313f08b43ab1b7e799f4.js"
   },
   {
     "revision": "5ea9e5ec691f9b5f3150ed63859abdbc",
     "url": "/assets/modernizr-bundle.js"
   },
   {
-    "url": "/assets/app.66cf673a778c8bf23dd5.js"
+    "url": "/assets/app.313f08b43ab1b7e799f4.js"
   },
   {
-    "revision": "f7e47a061a6e914c693a4ef197264ca3",
+    "revision": "abafb869f062620c5c3b9edd2ff09708",
     "url": "/assets/../index.html"
   }
 ];

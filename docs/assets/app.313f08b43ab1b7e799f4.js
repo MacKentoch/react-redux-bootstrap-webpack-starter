@@ -2257,14 +2257,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var loadable_components_1 = __importDefault(__webpack_require__(/*! loadable-components */ "./node_modules/loadable-components/dist/loadable-components.es.js"));
-exports.Home = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/home */ "./src/front/pages/home/index.ts")); }); });
-exports.About = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/about */ "./src/front/pages/about/index.ts")); }); });
-exports.Login = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/login */ "./src/front/pages/login/index.ts")); }); });
-exports.Protected = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/protected */ "./src/front/pages/protected/index.ts")); }); });
-exports.PageNotFound = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/pageNotFound */ "./src/front/pages/pageNotFound/index.ts")); }); });
-exports.PrivateRoute = loadable_components_1.default(function () {
-    return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../components/privateRoute/PrivateRoute */ "./src/front/components/privateRoute/PrivateRoute.tsx")); });
+exports.Home = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/home */ "./src/front/pages/home/index.ts")); }); }, {
+    modules: ['home'],
 });
+exports.About = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/about */ "./src/front/pages/about/index.ts")); }); }, {
+    modules: ['about'],
+});
+exports.Login = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/login */ "./src/front/pages/login/index.ts")); }); }, {
+    modules: ['login'],
+});
+exports.Protected = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/protected */ "./src/front/pages/protected/index.ts")); }); }, {
+    modules: ['protected'],
+});
+exports.PageNotFound = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../pages/pageNotFound */ "./src/front/pages/pageNotFound/index.ts")); }); }, {
+    modules: ['pageNotFound'],
+});
+exports.PrivateRoute = loadable_components_1.default(function () { return Promise.resolve().then(function () { return __importStar(__webpack_require__(/*! ../components/privateRoute/PrivateRoute */ "./src/front/components/privateRoute/PrivateRoute.tsx")); }); }, { modules: ['PrivateRoute'] });
 
 
 ; /* eslint-disable global-require, import/no-unresolved, no-var, camelcase, func-names */ (function register() { /* react-hot-loader/webpack */ var safe_require = function safe_require() { return  false ? undefined : __webpack_require__(/*! react-hot-loader */ "./node_modules/react-hot-loader/index.js"); }; var reactHotLoader = (typeof reactHotLoaderGlobal !== 'undefined' ? reactHotLoaderGlobal : safe_require()).default; if (!reactHotLoader) { return; } /* eslint-disable camelcase, no-undef */ var webpackExports = typeof __webpack_exports__ !== 'undefined' ? __webpack_exports__ : exports; /* eslint-enable camelcase, no-undef */ if (!webpackExports) { return; } if (typeof webpackExports === 'function') { reactHotLoader.register(webpackExports, 'module.exports', "/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/src/front/routes/routes.ts"); return; } /* eslint-disable no-restricted-syntax */ for (var key in webpackExports) { /* eslint-enable no-restricted-syntax */ if (!Object.prototype.hasOwnProperty.call(webpackExports, key)) { continue; } var namedExport = void 0; try { namedExport = webpackExports[key]; } catch (err) { continue; } reactHotLoader.register(namedExport, key, "/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/src/front/routes/routes.ts"); } })(); 
@@ -2599,4 +2607,4 @@ var templateObject_1;
 /***/ })
 
 /******/ });
-//# sourceMappingURL=app.66cf673a778c8bf23dd5.js.map
+//# sourceMappingURL=app.313f08b43ab1b7e799f4.js.map
