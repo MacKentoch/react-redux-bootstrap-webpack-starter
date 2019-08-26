@@ -34,7 +34,7 @@
     "prestart": "npm run clean-docs",
     "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development",
     "serve-dev": "npm run dev && ts-node server/index.ts",
-    "serve-prod": "npm run prod && npm run build-server && node server/index.js"
+    "serve-prod": "npm run prod && ts-node server/index.ts"
   },
   "reactSnap": {
     "source": "docs"
