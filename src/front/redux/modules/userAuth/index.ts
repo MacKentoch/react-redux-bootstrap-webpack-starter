@@ -225,7 +225,7 @@ function logUser(login: string, password: string): RLogUserAction {
 
     // fetchMiddleware (does: fetch mock, real fetch, dispatch 3 actions... for a minimum code on action creator!)
     const type: ActionType = 'FETCH';
-    return dispatch({
+    return await dispatch({
       type,
       fetch: {
         // common props:

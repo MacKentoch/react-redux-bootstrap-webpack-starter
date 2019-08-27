@@ -51,14 +51,9 @@ function Login({
   const handlesOnLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
     event && event.preventDefault();
 
-    const userLogin = {
-      login: email,
-      password: password,
-    };
-
     try {
       const response = await logUserIfNeeded(email, password);
-      console.log('"response: ', response)
+      console.log('"response: ', response);
       const {
         data: { token, user },
       } = response.payload;

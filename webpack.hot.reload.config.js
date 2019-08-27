@@ -105,6 +105,11 @@ const config = {
     },
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('hot'),
+      },
+    }),
     new ForkTsCheckerWebpackPlugin({
       // tsconfig: path.join(__dirname, '/src/tsconfig.json'),
       transpileOnly: true,

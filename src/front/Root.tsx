@@ -55,4 +55,7 @@ class Root extends Component<Props, State> {
     );
   }
 }
-export default hot(module)(Root);
+
+const RootComponent = process.env.NODE_ENV === 'hot' ? hot(module)(Root) : Root;
+
+export default RootComponent;
