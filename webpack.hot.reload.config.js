@@ -86,24 +86,24 @@ const config = {
       },
     ],
   },
-  optimization: {
-    runtimeChunk: false,
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
-  },
+  // optimization: {
+  //   runtimeChunk: false,
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       commons: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name: 'vendors',
+  //         chunks: 'all',
+  //       },
+  //       styles: {
+  //         name: 'styles',
+  //         test: /\.css$/,
+  //         chunks: 'all',
+  //         enforce: true,
+  //       },
+  //     },
+  //   },
+  // },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -111,17 +111,17 @@ const config = {
       },
     }),
     new ForkTsCheckerWebpackPlugin({
-      // tsconfig: path.join(__dirname, '/src/tsconfig.json'),
+      tsconfig: path.join(__dirname, 'src/tsconfig.json'),
       transpileOnly: true,
     }),
     new HtmlWebpackPlugin({
       template: 'src/front/index.html',
       filename: 'index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css',
+    //   chunkFilename: '[id].css',
+    // }),
     new ProgressBarPlugin({
       format: 'Build [:bar] :percent (:elapsed seconds)',
       clear: false,
