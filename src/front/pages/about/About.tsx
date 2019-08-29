@@ -8,7 +8,7 @@ import FadeInEntrance from '../../components/fadeInEntrance';
 // const mockStore = configureStore(middlewares);
 
 // #region types
-type Props = {} & RouteComponentProps;
+type Props = {} & RouteComponentProps<any>;
 // #endregion
 
 function About(props: Props) {
