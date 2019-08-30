@@ -1,6 +1,6 @@
+import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { Component } from 'react';
-import { hot } from 'react-hot-loader';
 import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -56,6 +56,6 @@ class Root extends Component<Props, State> {
   }
 }
 
-const RootComponent = process.env.NODE_ENV === 'hot' ? hot(module)(Root) : Root;
+const RootComponent = process.env.NODE_ENV === 'hot' ? hot(Root) : Root;
 
 export default RootComponent;
