@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 // #endregion
 
-export default compose<PrivateRoute>(
+export default compose< PrivateRoute>(
   connect(
     mapStateToProps,
     mapDispatchToProps,

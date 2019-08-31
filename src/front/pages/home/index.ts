@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 // #endregion
 
-export default compose<Home>(
+export default compose< Home>(
   connect(
     mapStateToProps,
     mapDispatchToProps,

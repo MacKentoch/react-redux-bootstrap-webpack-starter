@@ -3,7 +3,7 @@ import { RouteComponentProps } from 'react-router';
 import FadeInEntrance from '../../components/fadeInEntrance';
 
 // #region types
-type Props = {} & RouteComponentProps;
+export type Props = {} & RouteComponentProps;
 // #endregion
 
 function Protected(props: Props) {

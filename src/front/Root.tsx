@@ -56,6 +56,8 @@ class Root extends Component<Props, State> {
   }
 }
 
+console.log('typeof hot', typeof hot);
+
 const RootComponent = process.env.NODE_ENV === 'hot' ? hot(Root) : Root;
 
 export default RootComponent;

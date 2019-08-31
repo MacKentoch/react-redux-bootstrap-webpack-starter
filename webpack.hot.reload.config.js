@@ -17,7 +17,16 @@ const config = {
   mode: 'development',
   devtool: 'cheap-module-source-map',
   entry: {
-    app: ['react-hot-loader/patch', indexFile],
+    app: [
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:8080',
+      // bundle the client for webpack-dev-server
+      // and connect to the provided endpoint
+      'webpack/hot/only-dev-server',
+      // bundle the client for hot reloading
+      // only- means to only hot reload for successful updates
+      indexFile,
+    ],
   },
   resolve: {
     modules: ['src/front', 'node_modules'],
@@ -31,19 +40,6 @@ const config = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.jsx?$/,
-      //   include: srcInclude,
-      //   exclude: [nodeModulesDir, srcExclude],
-      //   loaders: ['react-hot-loader/webpack', 'babel-loader'],
-      // },
-      // {
-      //   test: /\.tsx?$/,
-      //   include: srcInclude,
-      //   exclude: [nodeModulesDir, srcExclude],
-      //   use: ['react-hot-loader/webpack', 'ts-loader'],
-      // },
-      // {
       {
         test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
@@ -106,7 +102,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/front/index.html',
+      template: path.join(__dirname, 'src/front/index.html'),
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new webpack.DefinePlugin({
@@ -134,7 +130,7 @@ const config = {
     publicPath: '/assets/',
     port: 3001,
     hot: true,
-    historyApiFallback: true,
+    // historyApiFallback: true,
   },
 };
 

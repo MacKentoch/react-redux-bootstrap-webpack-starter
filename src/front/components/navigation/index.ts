@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 // #endregion
 
-export default compose<NavigationBar>(
+export default compose< NavigationBar>(
   connect(
     mapStateToProps,
     mapDispatchToProps,

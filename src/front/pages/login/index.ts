@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 // #endregion
 
-export default compose<Login>(
+export default compose< Login>(
   connect(
     mapStateToProps,
     mapDispatchToProps,
