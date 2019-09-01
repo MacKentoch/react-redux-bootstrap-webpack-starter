@@ -15,7 +15,7 @@ export type MappedStateToProps = {
 };
 export type OwnProps = {};
 
-export type MappedDispatchToProps = {} & UserAuthActions;
+export type MappedDispatchToProps = UserAuthActions;
 // #endregion
 
 
@@ -27,12 +27,12 @@ const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
   return bindActionCreators({ ...userAuthActions }, dispatch);
 };
 // #endregion
 
-export default compose< Login>(
+export default compose<any>(
   connect(
     mapStateToProps,
     mapDispatchToProps,

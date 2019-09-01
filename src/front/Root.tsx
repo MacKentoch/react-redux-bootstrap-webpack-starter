@@ -27,6 +27,8 @@ const { store } = configureStore({});
 class Root extends Component<Props, State> {
   componentDidMount() {
     store.dispatch(userAuthActions.checkUserIsConnected());
+
+    console.log('typeof hot', typeof hot);
   }
 
   componentDidCatch(error: any, info: any) {
@@ -55,8 +57,6 @@ class Root extends Component<Props, State> {
     );
   }
 }
-
-console.log('typeof hot', typeof hot);
 
 const RootComponent = process.env.NODE_ENV === 'hot' ? hot(Root) : Root;
 

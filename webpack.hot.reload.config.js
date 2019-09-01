@@ -19,7 +19,7 @@ const config = {
   entry: {
     app: [
       'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:8080',
+      'webpack-dev-server/client?http://localhost:3001',
       // bundle the client for webpack-dev-server
       // and connect to the provided endpoint
       'webpack/hot/only-dev-server',
@@ -126,11 +126,16 @@ const config = {
     new webpack.NoEmitOnErrorsPlugin(),
   ],
   devServer: {
+    port: 3001,
+
+    hot: true, // enable HMR on the server
+
+    noInfo: false,
+    quiet: false,
+
     contentBase: path.join(__dirname, 'docs'),
     publicPath: '/assets/',
-    port: 3001,
-    hot: true,
-    // historyApiFallback: true,
+    historyApiFallback: true,
   },
 };
 

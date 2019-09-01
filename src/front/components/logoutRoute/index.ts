@@ -26,10 +26,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 // #endregion
 
-export default compose<LogoutRoute>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
-  withRouter,
-)(LogoutRoute);
+export default compose<any>(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps,
+    ),
+    withRouter,
+  )(LogoutRoute);

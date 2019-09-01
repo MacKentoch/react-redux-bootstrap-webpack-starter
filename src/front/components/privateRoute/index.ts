@@ -25,12 +25,12 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
+const mapDispatchToProps = (dispatch: Dispatch<any>) => {
   return bindActionCreators({ ...userAuthActions }, dispatch);
 };
 // #endregion
 
-export default compose< PrivateRoute>(
+export default compose<any>(
   connect(
     mapStateToProps,
     mapDispatchToProps,
