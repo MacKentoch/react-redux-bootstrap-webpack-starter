@@ -25,7 +25,7 @@ const mapStateToProps = (state: RootState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return bindActionCreators({ ...userAuthActions }, dispatch);
 };
 // #endregion

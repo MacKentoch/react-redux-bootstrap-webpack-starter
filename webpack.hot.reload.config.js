@@ -31,6 +31,9 @@ const config = {
   resolve: {
     modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   output: {
     path: path.join(__dirname, 'docs/assets'),

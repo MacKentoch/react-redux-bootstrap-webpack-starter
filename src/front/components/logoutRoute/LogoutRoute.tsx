@@ -10,7 +10,7 @@ type Props = {} & RouteComponentProps &
   OwnProps;
 // #endregion
 
-function LogoutRoute(props: Props): React.FC<Props> {
+function LogoutRoute(props: Props) {
   const { disconnectUser } = props;
   useEffect(() => disconnectUser());
 
