@@ -30,9 +30,8 @@ const config = {
     ],
   },
   resolve: {
-    modules: ['src/front', 'node_modules'],
+    modules: ['src/front', 'node_modules', 'react-hot-loader/webpack'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
-    'react-hot-loader/webpack'
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
@@ -142,11 +141,11 @@ const config = {
       clear: false,
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
+    // new webpack.NoEmitOnErrorsPlugin(),
   ],
   devServer: {
     port: 3001,
-    hot: true, // enable HMR on the server
+    hot: true,
     noInfo: false,
     quiet: false,
     contentBase: path.join(__dirname, 'docs'),
