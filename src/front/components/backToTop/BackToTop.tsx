@@ -11,12 +11,7 @@ type Props = {
 };
 // #endregion
 
-function BackToTop({
-  minScrollY = 120,
-  onScrollDone = () => {
-    return;
-  },
-}: Props) {
+function BackToTop({ minScrollY = 120, onScrollDone = () => {} }: Props) {
   const [showBackButton, setShowBackButton] = useState(false);
   const [windowScrollY, setWindowScrollY] = useState(0);
   const [tickingScollObserve, setTickingScollObserve] = useState(false);
@@ -31,10 +26,8 @@ function BackToTop({
     const currentWindowScrollY =
       window.pageYOffset !== undefined
         ? window.pageYOffset
-        : // $FlowIgnore
-          (
+        : (
             document.documentElement ||
-            // $FlowIgnore
             document.body.parentNode ||
             document.body
           ).scrollTop;
@@ -66,11 +59,9 @@ function BackToTop({
     if (window && windowScrollY && windowScrollY > minScrollY) {
       // using here smoothscroll-polyfill
       window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-      // smoothScroll.scrollTo(scrollTo, this.scrollDone);
+      typeof onScrollDone === 'function' && onScrollDone();
     }
   };
-
-  // const scrollDone = () => onScrollDone && onScrollDone();
   // #endregion
 
   // #region mount and unmount subscrubstions
