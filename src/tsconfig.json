@@ -19,6 +19,6 @@
     "resolveJsonModule": true,
     "outDir": "./dist"
   },
-  "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js", "*.test.tsx"],
+  "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js", "*.test.tsx"]
   // "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
 }

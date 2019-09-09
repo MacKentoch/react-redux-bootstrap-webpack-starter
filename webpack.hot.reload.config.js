@@ -30,11 +30,11 @@ const config = {
     ],
   },
   resolve: {
-    modules: ['src/front', 'node_modules', 'react-hot-loader/webpack'],
-    extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
+    modules: ['src/front', 'node_modules', 'react-hot-loader/webpack'],
+    extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
     path: path.join(__dirname, 'docs/assets'),
@@ -44,11 +44,11 @@ const config = {
   },
   module: {
     rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: [nodeModulesDir],
-        use: ['react-hot-loader/webpack', 'babel-loader'],
-      },
+      // {
+      //   test: /\.jsx?$/,
+      //   exclude: [nodeModulesDir],
+      //   use: ['react-hot-loader/webpack', 'babel-loader'],
+      // },
       {
         test: /\.(j|t)sx?$/,
         exclude: /node_modules/,
