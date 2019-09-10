@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { Component } from 'react';
 import { ConnectedRouter } from 'connected-react-router';
@@ -27,8 +26,6 @@ const { store } = configureStore({});
 class Root extends Component<Props, State> {
   componentDidMount() {
     store.dispatch(userAuthActions.checkUserIsConnected());
-
-    console.log('typeof hot', typeof hot);
   }
 
   componentDidCatch(error: any, info: any) {
@@ -58,7 +55,5 @@ class Root extends Component<Props, State> {
   }
 }
 
-console.log('#######  DEBUG: current NODE_ENV: ', process.env.NODE_ENV);
-const RootComponent = process.env.NODE_ENV === 'hot' ? hot(Root) : Root;
-export default hot(Root);
+export default Root;
 // export default RootComponent;

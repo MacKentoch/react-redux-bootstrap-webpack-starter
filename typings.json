@@ -1,5 +1,5 @@
 {
   "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.9.0+20170324193834"
+    "recompose": "registry:dt/recompose#0.22.0+20170306203754"
   }
 }

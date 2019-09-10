@@ -3,6 +3,7 @@ import "core-js/stable";
 import "regenerator-runtime/runtime";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import { hot } from 'react-hot-loader/root';
 import { hydrate, render } from 'react-dom';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
 import { loadComponents, getState } from 'loadable-components';
@@ -24,6 +25,14 @@ smoothScrollPolyfill.polyfill();
 // #endregion
 
 // render app (hydrate for react-snap):
-bootstrapedElement && bootstrapedElement.hasChildNodes()
-  ? loadComponents().then(() => hydrate(<Root />, bootstrapedElement))
-  : render(<Root />, bootstrapedElement);
+function renderApp(RootComponent: any) {
+  // @ts-ignore
+  const Application = hot(module)(RootComponent);
+  // needed for react-snap:
+  bootstrapedElement && bootstrapedElement.hasChildNodes()
+    ? loadComponents().then(() => hydrate(<Application />, bootstrapedElement))
+    : render(<Application />, bootstrapedElement);
+}
+
+renderApp(Root);
+// #endregion
