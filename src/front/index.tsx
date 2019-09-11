@@ -2,8 +2,8 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
 import { hot } from 'react-hot-loader/root';
+import React from 'react';
 import { hydrate, render } from 'react-dom';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
 import { loadComponents, getState } from 'loadable-components';
