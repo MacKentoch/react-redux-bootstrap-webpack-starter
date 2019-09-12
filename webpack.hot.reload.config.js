@@ -19,11 +19,11 @@ const config = {
   context: __dirname,
   entry: {
     app: [
-      'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:3001',
+      // 'react-hot-loader/patch',
+      // 'webpack-dev-server/client?http://localhost:3001',
       // bundle the client for webpack-dev-server
       // and connect to the provided endpoint
-      'webpack/hot/only-dev-server',
+      // 'webpack/hot/only-dev-server',
       // bundle the client for hot reloading
       // only- means to only hot reload for successful updates
       indexFile,
@@ -33,25 +33,24 @@ const config = {
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
-    modules: ['src/front', 'node_modules', 'react-hot-loader/webpack'],
+    modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
     path: path.join(__dirname, 'docs/assets'),
-    publicPath: 'http://localhost:3001/assets/',
+    publicPath: '/assets/',
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
   module: {
     rules: [
-      // {
-      //   test: /\.jsx?$/,
-      //   exclude: [nodeModulesDir],
-      //   use: ['react-hot-loader/webpack', 'babel-loader'],
-      // },
       {
-        test: /\.(j|t)sx?$/,
-        exclude: /node_modules/,
+        test: /\.jsx?$/,
+        exclude: [nodeModulesDir],
+        use: ['react-hot', 'babel-loader'],
+      },
+      {
+        test: /\.ts(x?)$/,
         use: [
           {
             loader: 'ts-loader',
@@ -60,27 +59,8 @@ const config = {
             },
           },
         ],
-        // use: {
-        //   loader: 'babel-loader',
-        //   options: {
-        //     cacheDirectory: true,
-        //     babelrc: false,
-        //     presets: [
-        //       [
-        //         '@babel/preset-env',
-        //         { targets: { browsers: 'last 2 versions' } }, // or whatever your project requires
-        //       ],
-        //       '@babel/preset-typescript',
-        //       '@babel/preset-react',
-        //     ],
-        //     plugins: [
-        //       ['@babel/plugin-proposal-class-properties', { loose: true }],
-        //       'react-hot-loader/babel',
-        //     ],
-        //   },
-        // },
+        exclude: [nodeModulesDir],
       },
-
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -119,7 +99,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html',
+      template: path.join(__dirname, 'index.html'),
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new webpack.DefinePlugin({
@@ -141,14 +121,13 @@ const config = {
       clear: false,
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // new webpack.NoEmitOnErrorsPlugin(),
   ],
   devServer: {
     port: 3001,
     hot: true,
     noInfo: false,
     quiet: false,
-    contentBase: path.join(__dirname, 'docs'),
+    contentBase: path.join(__dirname, '/docs'),
     publicPath: '/assets/',
     historyApiFallback: true,
     headers: { 'Access-Control-Allow-Origin': '*' },
