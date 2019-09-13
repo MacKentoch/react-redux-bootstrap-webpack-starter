@@ -18,27 +18,18 @@ const config = {
   devtool: 'cheap-module-source-map',
   context: __dirname,
   entry: {
-    app: [
-      // 'react-hot-loader/patch',
-      // 'webpack-dev-server/client?http://localhost:3001',
-      // bundle the client for webpack-dev-server
-      // and connect to the provided endpoint
-      // 'webpack/hot/only-dev-server',
-      // bundle the client for hot reloading
-      // only- means to only hot reload for successful updates
-      indexFile,
-    ],
+    app: [indexFile],
   },
   resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
+    // alias: {
+    //   'react-dom': '@hot-loader/react-dom',
+    // },
     modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
-    path: path.join(__dirname, 'docs/assets'),
-    publicPath: '/assets/',
+    path: path.resolve(__dirname, './docs/assets'),
+    publicPath: 'http://localhost:3001/',
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
@@ -99,12 +90,12 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'index.html'),
+      template: path.resolve(__dirname, './index.html'),
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('hot'),
+        NODE_ENV: JSON.stringify('dev'),
       },
     }),
     new ForkTsCheckerWebpackPlugin({
@@ -123,13 +114,14 @@ const config = {
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
+    host: 'localhost',
     port: 3001,
-    hot: true,
-    noInfo: false,
-    quiet: false,
-    contentBase: path.join(__dirname, '/docs'),
-    publicPath: '/assets/',
+    // hot: true,
+    // noInfo: false,
+    // quiet: false,
     historyApiFallback: true,
+    contentBase: path.resolve(__dirname, '/docs'),
+    publicPath: '/assets/',
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
 };
