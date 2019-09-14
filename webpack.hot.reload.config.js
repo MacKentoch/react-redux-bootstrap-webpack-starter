@@ -18,7 +18,7 @@ const config = {
   devtool: 'cheap-module-source-map',
   context: __dirname,
   entry: {
-    app: [indexFile],
+    app: ['react-hot-loader/patch', indexFile],
   },
   resolve: {
     // alias: {
@@ -28,8 +28,8 @@ const config = {
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
-    path: path.resolve(__dirname, './docs/assets'),
-    publicPath: 'http://localhost:3001/',
+    path: path.join(__dirname, 'docs/assets'),
+    publicPath: '/assets/',
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
@@ -38,11 +38,14 @@ const config = {
       {
         test: /\.jsx?$/,
         exclude: [nodeModulesDir],
-        use: ['react-hot', 'babel-loader'],
+        use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.ts(x?)$/,
         use: [
+          {
+            loader: 'react-hot-loader/webpack',
+          },
           {
             loader: 'ts-loader',
             options: {
@@ -90,8 +93,8 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, './index.html'),
-      filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
+      template: 'index.html',
+      // filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new webpack.DefinePlugin({
       'process.env': {
@@ -116,12 +119,9 @@ const config = {
   devServer: {
     host: 'localhost',
     port: 3001,
-    // hot: true,
-    // noInfo: false,
-    // quiet: false,
     historyApiFallback: true,
-    contentBase: path.resolve(__dirname, '/docs'),
-    publicPath: '/assets/',
+    contentBase: path.join(__dirname, 'docs'),
+    // publicPath: '/assets/',
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
 };
