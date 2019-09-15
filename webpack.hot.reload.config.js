@@ -28,8 +28,8 @@ const config = {
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   output: {
-    path: path.join(__dirname, 'docs/assets'),
-    publicPath: '/assets/',
+    path: path.join(__dirname, 'docs'),
+    // publicPath: '/assets/',
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
@@ -94,7 +94,6 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
-      // filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new webpack.DefinePlugin({
       'process.env': {
