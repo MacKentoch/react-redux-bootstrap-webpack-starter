@@ -27,7 +27,7 @@ smoothScrollPolyfill.polyfill();
 // render app (hydrate for react-snap):
 function renderApp(RootComponent: any) {
   // @ts-ignore
-  const Application = hot(module)(RootComponent);
+  const Application = hot(RootComponent);
   // needed for react-snap:
   bootstrapedElement && bootstrapedElement.hasChildNodes()
     ? loadComponents().then(() => hydrate(<Application />, bootstrapedElement))

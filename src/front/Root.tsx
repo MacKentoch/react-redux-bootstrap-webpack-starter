@@ -56,4 +56,3 @@ class Root extends Component<Props, State> {
 }
 
 export default Root;
-// export default RootComponent;
