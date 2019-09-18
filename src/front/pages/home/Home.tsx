@@ -20,20 +20,13 @@ function Home(props: Props) {
     <FadeInEntrance>
       <Jumbotron>
         <HomeInfo>
-          <MainTitle>ReactJS 16.3+ Bootstrap 4</MainTitle>
+          <MainTitle>ReactJS 16.9+ Bootstrap 4</MainTitle>
           <h2>
             with Hot Reload (<i>react-hot-loader 4+</i>
             )!!!
           </h2>
           <h2>and React Router v4</h2>
           <h2>and webpack 4.x</h2>
-          <h2>
-            and styled-components (
-            <LightNote>
-              so keep using SCSS like styles and benefit performant css-in-js
-            </LightNote>
-            )
-          </h2>
           <h1>Starter</h1>
           <p>
             <Link className="btn btn-success btn-lg" to={'/about'}>
