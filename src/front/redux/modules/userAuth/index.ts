@@ -4,6 +4,8 @@ import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
 import { State } from './type';
+import Axios from 'axios';
+import { response } from 'express';
 
 // #region CONSTANTS
 const REQUEST_USER_INFOS_DATA = 'REQUEST_USER_INFOS_DATA';
@@ -225,7 +227,7 @@ function logUser(login: string, password: string): RLogUserAction {
 
     // fetchMiddleware (does: fetch mock, real fetch, dispatch 3 actions... for a minimum code on action creator!)
     const type: ActionType = 'FETCH';
-    const response = await dispatch({
+    dispatch({
       type,
       fetch: {
         // common props:
@@ -244,7 +246,6 @@ function logUser(login: string, password: string): RLogUserAction {
         options,
       },
     });
-    return response;
   };
 }
 
@@ -281,26 +282,30 @@ function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
     const headers = { authorization: `Bearer ${token || ''}` };
     const options = { credentials: 'same-origin' }; // put options here (see axios options)
 
-    const type: ActionType = 'FETCH';
-    return dispatch({
-      type,
-      fetch: {
-        // common props:
-        type: FETCH_TYPE,
-        actionTypes: {
-          request: REQUEST_USER_INFOS_DATA,
-          success: RECEIVED_USER_INFOS_DATA,
-          fail: ERROR_USER_INFOS_DATA,
-        },
-        // mock fetch props:
-        mockResult,
-        // real fetch props:
+    if (DEV_MODE) {
+      return Promise.resolve({ data: mockResult });
+    }
+
+    try {
+      dispatch({ type: REQUEST_USER_INFOS_DATA });
+
+      const reponse = await Axios.request({
         url,
         method,
-        headers,
-        options,
-      },
-    });
+        withCredentials: true,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Acces-Control-Allow-Origin': '*',
+          ...headers,
+        },
+        ...options,
+      });
+
+      return response;
+    } catch (error) {
+      dispatch({ type: ERROR_USER_INFOS_DATA, error });
+    }
   };
 }
 

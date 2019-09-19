@@ -26,16 +26,16 @@ const loggerMiddleware = createLogger({
 const enhancer = !isProd
   ? composeWithDevTools(
       applyMiddleware(
-        fetchMiddleware,
         thunkMiddleware,
+        fetchMiddleware,
         routerMiddleware(history),
         loggerMiddleware, // logger at the end
       ),
     )
   : composeWithDevTools(
       applyMiddleware(
-        fetchMiddleware,
         thunkMiddleware,
+        fetchMiddleware,
         routerMiddleware(history),
       ),
     );
