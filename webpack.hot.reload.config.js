@@ -4,6 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 // const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 // #region constants
@@ -14,6 +15,7 @@ const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
 
 const config = {
+  target: 'node',
   mode: 'development',
   devtool: 'cheap-module-source-map',
   context: __dirname,
@@ -27,6 +29,7 @@ const config = {
     modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
+  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     path: path.join(__dirname, 'docs'),
     // publicPath: '/assets/',
