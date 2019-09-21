@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
-// const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -23,16 +22,12 @@ const config = {
     app: ['react-hot-loader/patch', indexFile],
   },
   resolve: {
-    // alias: {
-    //   'react-dom': '@hot-loader/react-dom',
-    // },
     modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     path: path.join(__dirname, 'docs'),
-    // publicPath: '/assets/',
     filename: '[name].js',
     chunkFilename: '[name].js',
   },
@@ -105,7 +100,6 @@ const config = {
     }),
     new ForkTsCheckerWebpackPlugin({
       tsconfig: path.join(__dirname, 'src/tsconfig.json'),
-      // transpileOnly: true,
       checkSyntacticErrors: false,
     }),
     new MiniCssExtractPlugin({
@@ -123,7 +117,6 @@ const config = {
     port: 3001,
     historyApiFallback: true,
     contentBase: path.join(__dirname, 'docs'),
-    // publicPath: '/assets/',
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
 };
