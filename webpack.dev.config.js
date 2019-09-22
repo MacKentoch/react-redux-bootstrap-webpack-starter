@@ -4,6 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -21,6 +22,7 @@ const config = {
     modules: ['src/front', 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
+  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     path: path.join(__dirname, 'docs/assets'),
     publicPath: '/assets/',
