@@ -42,7 +42,7 @@ React 16.8+ React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and r
 - webpack 4
 - hot reload
 - loaders
-  - `js` / `jsx`
+  - `ts` / `tsx`
   - css
   - json
   - images formats

@@ -71,7 +71,7 @@
     "@babel/preset-typescript": "^7.6.0",
     "@babel/register": "^7.0.0",
     "@testing-library/jest-dom": "^4.0.0",
-    "@testing-library/react": "^9.1.0",
+    "@testing-library/react": "^9.1.4",
     "@types/axios": "^0.14.0",
     "@types/body-parser": "^1.17.0",
     "@types/chalk": "^2.2.0",
