@@ -10,5 +10,5 @@ cache:
 services:
   - xvfb
 before_script:
-  - npm install
-after_success: npm run test
+  - yarn install
+after_success: yarn run test
