@@ -8,6 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -39,7 +40,14 @@ const config = {
       {
         test: /\.tsx?$/,
         exclude: [nodeModulesDir],
-        use: ['ts-loader'],
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -101,6 +109,10 @@ const config = {
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: path.join(__dirname, 'src/tsconfig.json'),
+      checkSyntacticErrors: false,
     }),
     new CompressionWebpackPlugin({
       filename: '[path].gz[query]',
