@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -33,13 +34,23 @@ const config = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: [nodeModulesDir],
+        exclude: /node_modules/,
         use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.tsx?$/,
-        exclude: [nodeModulesDir],
-        use: ['react-hot-loader/webpack', 'ts-loader'],
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'react-hot-loader/webpack',
+          },
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
+          },
+        ],
       },
       {
         test: /\.css$/,
@@ -78,6 +89,10 @@ const config = {
     },
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: path.join(__dirname, 'src/tsconfig.json'),
+      checkSyntacticErrors: false,
+    }),
     new HtmlWebpackPlugin({
       template: 'src/front/index.html',
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'

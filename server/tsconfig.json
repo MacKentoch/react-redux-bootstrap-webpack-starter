@@ -7,7 +7,7 @@
     "strict": true,
     "target": "es2017",
     "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "moduleResolution": "node"
   },
   "compileOnSave": true,
   "include": ["./**/*.ts", "*.test.tsx"],

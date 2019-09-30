@@ -35,12 +35,15 @@ const config = {
       {
         test: /\.jsx?$/,
         exclude: [nodeModulesDir],
-        loader: 'babel-loader',
+        use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.tsx?$/,
         exclude: [nodeModulesDir],
         use: [
+          {
+            loader: 'react-hot-loader/webpack',
+          },
           {
             loader: 'ts-loader',
             options: {
@@ -98,6 +101,10 @@ const config = {
     ],
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      tsconfig: path.join(__dirname, 'src/tsconfig.json'),
+      checkSyntacticErrors: false,
+    }),
     new HtmlWebpackPlugin({
       template: 'src/front/index.html',
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
@@ -109,10 +116,6 @@ const config = {
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
-    }),
-    new ForkTsCheckerWebpackPlugin({
-      tsconfig: path.join(__dirname, 'src/tsconfig.json'),
-      checkSyntacticErrors: false,
     }),
     new CompressionWebpackPlugin({
       filename: '[path].gz[query]',

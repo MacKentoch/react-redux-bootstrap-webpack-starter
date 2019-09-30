@@ -18,7 +18,11 @@
     // "typeRoots": ["front/types", "../node_modules/@types"],
     "resolveJsonModule": true,
     "outDir": "../dist/assets"
+    // "baseUrl": ".",
+    // "paths": {
+    //   "tslib": ["./node_modules/tslib/tslib.d.ts"]
+    // }
   },
-  "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js", "*.test.tsx"]
-  // "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
+  "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js", "*.test.tsx"],
+  "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
 }
