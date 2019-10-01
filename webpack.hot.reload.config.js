@@ -14,7 +14,7 @@ const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
 
 const config = {
-  target: 'node',
+  // target: 'node',
   mode: 'development',
   devtool: 'cheap-module-source-map',
   context: __dirname,

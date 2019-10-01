@@ -7,21 +7,21 @@ const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
-// #region constants
+// #region constants`
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // #endregion
 
 const config = {
+  target: 'web',
   mode: 'development',
   devtool: 'source-map',
-  target: 'web',
   entry: {
-    app: indexFile,
+    app: ['react-hot-loader/patch', indexFile],
   },
   resolve: {
     modules: ['src/front', 'node_modules'],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
@@ -34,12 +34,11 @@ const config = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: [nodeModulesDir],
         use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.tsx?$/,
-        exclude: /node_modules/,
         use: [
           {
             loader: 'react-hot-loader/webpack',
@@ -51,6 +50,7 @@ const config = {
             },
           },
         ],
+        exclude: [nodeModulesDir],
       },
       {
         test: /\.css$/,

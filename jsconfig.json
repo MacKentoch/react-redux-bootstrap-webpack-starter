@@ -3,7 +3,7 @@
     "include": [
       "react",
       "redux",
-      "react-router",
+      "react-router"
     ]
   }
 }
