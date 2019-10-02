@@ -25,7 +25,7 @@ const config = {
     modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
-  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
+  // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     path: path.join(__dirname, 'docs'),
     filename: '[name].js',
