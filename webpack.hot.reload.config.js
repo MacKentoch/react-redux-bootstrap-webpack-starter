@@ -24,6 +24,9 @@ const config = {
   resolve: {
     modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
   externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
