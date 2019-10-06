@@ -10,5 +10,5 @@
     "moduleResolution": "node"
   },
   "compileOnSave": true,
-  "include": ["./**/*.ts", "*.test.tsx"],
+  "include": ["./**/*.ts", "*.test.tsx"]
 }

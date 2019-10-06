@@ -19,5 +19,6 @@
     "outDir": "../dist/assets"
   },
   "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js", "*.test.tsx"],
-  "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
+  "exclude": ["../server/"]
+  // "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
 }

@@ -10,7 +10,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-const nodeExternals = require('webpack-node-externals');
+// const nodeExternals = require('webpack-node-externals');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -24,7 +24,7 @@ const config = {
     modules: ['src/front', 'node_modules'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
-  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
+  // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     path: path.join(__dirname, 'docs/public/assets'),
     publicPath: '/assets/',

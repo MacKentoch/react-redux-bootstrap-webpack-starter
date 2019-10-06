@@ -4,7 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const nodeExternals = require('webpack-node-externals');
+// const nodeExternals = require('webpack-node-externals');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -28,7 +28,7 @@ const config = {
       'react-dom': '@hot-loader/react-dom',
     },
   },
-  externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
+  // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
     path: path.join(__dirname, 'docs'),
     filename: '[name].js',
@@ -43,18 +43,18 @@ const config = {
       },
       {
         test: /\.ts(x?)$/,
+        exclude: [nodeModulesDir],
         use: [
           {
             loader: 'react-hot-loader/webpack',
           },
           {
             loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-            },
+            // options: {
+            //   transpileOnly: true,
+            // },
           },
         ],
-        exclude: [nodeModulesDir],
       },
       {
         test: /\.css$/,
