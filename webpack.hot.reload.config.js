@@ -19,14 +19,14 @@ const config = {
   devtool: 'cheap-module-source-map',
   context: __dirname,
   entry: {
-    app: ['react-hot-loader/patch', indexFile],
+    app: [indexFile],
   },
   resolve: {
     modules: ['src/front', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
+    // alias: {
+    //   'react-dom': '@hot-loader/react-dom',
+    // },
   },
   // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
@@ -38,21 +38,21 @@ const config = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: [nodeModulesDir],
+        exclude: [nodeModulesDir, srcExclude],
         use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.ts(x?)$/,
-        exclude: [nodeModulesDir],
+        exclude: [nodeModulesDir, srcExclude],
         use: [
           {
             loader: 'react-hot-loader/webpack',
           },
           {
             loader: 'ts-loader',
-            // options: {
-            //   transpileOnly: true,
-            // },
+            options: {
+              transpileOnly: true,
+            },
           },
         ],
       },
