@@ -45,9 +45,9 @@ const config = {
         test: /\.ts(x?)$/,
         exclude: [nodeModulesDir, srcExclude],
         use: [
-          {
-            loader: 'react-hot-loader/webpack',
-          },
+          // {
+          //   loader: 'react-hot-loader/webpack',
+          // },
           {
             loader: 'ts-loader',
             options: {
