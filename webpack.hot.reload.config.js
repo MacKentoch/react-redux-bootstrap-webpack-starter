@@ -45,9 +45,9 @@ const config = {
         test: /\.ts(x?)$/,
         exclude: [nodeModulesDir, srcExclude],
         use: [
-          // {
-          //   loader: 'react-hot-loader/webpack',
-          // },
+          {
+            loader: 'react-hot-loader/webpack',
+          },
           {
             loader: 'ts-loader',
             options: {
@@ -74,24 +74,24 @@ const config = {
       },
     ],
   },
-  optimization: {
-    runtimeChunk: false,
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
-  },
+  // optimization: {
+  //   runtimeChunk: false,
+  //   splitChunks: {
+  //     cacheGroups: {
+  //       commons: {
+  //         test: /[\\/]node_modules[\\/]/,
+  //         name: 'vendors',
+  //         chunks: 'all',
+  //       },
+  //       styles: {
+  //         name: 'styles',
+  //         test: /\.css$/,
+  //         chunks: 'all',
+  //         enforce: true,
+  //       },
+  //     },
+  //   },
+  // },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
