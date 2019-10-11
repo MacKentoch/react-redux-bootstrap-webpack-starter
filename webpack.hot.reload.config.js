@@ -4,6 +4,7 @@ const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -188,6 +189,9 @@ const config = {
   },
   devtool: 'eval-source-map',
   plugins: [
+    new TsConfigPathsPlugin({
+      configFileName: path.join(__dirname, '/src/tsconfig.json'),
+    }),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),

@@ -2,6 +2,7 @@
   "compilerOptions": {
     "importHelpers": true,
     "target": "es5",
+    "types": ["react", "jest"],
     "lib": ["dom", "es2015", "esnext"],
     "module": "commonjs",
     "moduleResolution": "node",
