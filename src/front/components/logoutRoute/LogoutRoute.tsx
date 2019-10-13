@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
+import {useEffect} from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
