@@ -8,7 +8,7 @@ module.exports = {
   globals: {
     'ts-jest': {
       tsConfig: './src/tsconfig.json',
-      babelConfig: true,
+      babelConfig: false,
     },
   },
   testEnvironment: 'node',

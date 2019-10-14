@@ -1,4 +1,4 @@
-type User = {
+declare type User = {
   id: string,
   login: string,
   firstname: string,

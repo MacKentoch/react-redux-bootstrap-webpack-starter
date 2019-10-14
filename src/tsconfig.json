@@ -19,7 +19,7 @@
     "resolveJsonModule": true,
     "outDir": "../dist/assets"
   },
-  // "include": ["./front/**/*"]
-  "include": ["front/**/*.ts", "front/**/*.tsx", "front/**/*.js", "*.test.tsx"],
-  "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
+  "include": ["./front"],
+  "exclude": ["../server"]
+  // "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
 }

@@ -6,13 +6,9 @@ const shouldLogErrors = process.env.DEBUG || false;
 
 /**
  * Returns a route handler for Express that calls the passed in function
- * @param  {Function} fn The asynchronous the route needs to call
- * @return {Promise}
  */
-
 export default function(fn: Function) {
   if (fn.length <= 3) {
-    // $FlowIgnore
     return function(
       req: express.Request,
       res: express.Response,
