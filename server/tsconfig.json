@@ -8,8 +8,8 @@
     "target": "es2017",
     "resolveJsonModule": true,
     "moduleResolution": "node",
+    "baseUrl": ".",
     "outDir": "out"
   },
-  "compileOnSave": true,
-  "include": ["./src", "./test"]
+  "include": ["./src/**/*", "./test/**/*"]
 }

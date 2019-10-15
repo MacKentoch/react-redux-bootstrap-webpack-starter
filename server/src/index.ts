@@ -10,7 +10,6 @@ const pe = new PrettyError();
 (() => {
   try {
     pe.start();
-
     const app = express();
     expressServer(app, dev);
   } catch (error) {
