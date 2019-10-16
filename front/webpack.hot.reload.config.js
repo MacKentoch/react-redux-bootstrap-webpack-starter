@@ -3,14 +3,14 @@ const path = require('path');
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
+// const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+// const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
-const srcInclude = path.join(__dirname, 'src/front');
-const srcExclude = path.join(__dirname, 'src/test');
-const indexFile = path.join(__dirname, 'src/front/index.tsx');
+const srcInclude = path.join(__dirname, 'src');
+const srcExclude = path.join(__dirname, 'test');
+const indexFile = path.join(__dirname, 'src/index.tsx');
 // #endregion
 
 // const config = {
@@ -149,7 +149,7 @@ const indexFile = path.join(__dirname, 'src/front/index.tsx');
 // };
 
 const config = {
-  entry: ['./src/front'],
+  entry: ['./src'],
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
@@ -160,6 +160,10 @@ const config = {
       'react-dom': '@hot-loader/react-dom',
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
+  },
+  node: {
+    fs: 'empty',
+    net: 'empty',
   },
   module: {
     rules: [
@@ -189,9 +193,6 @@ const config = {
   },
   devtool: 'eval-source-map',
   plugins: [
-    new TsConfigPathsPlugin({
-      configFileName: path.join(__dirname, '/src/tsconfig.json'),
-    }),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),

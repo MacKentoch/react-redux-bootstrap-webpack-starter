@@ -1,9 +1,0 @@
-{
-  "typeAcquisition": {
-    "include": [
-      "react",
-      "redux",
-      "react-router"
-    ]
-  }
-}

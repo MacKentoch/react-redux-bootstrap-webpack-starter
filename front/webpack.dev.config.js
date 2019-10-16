@@ -9,7 +9,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 // #region constants`
 const nodeModulesDir = path.join(__dirname, 'node_modules');
-const indexFile = path.join(__dirname, 'src/front/index.tsx');
+const indexFile = path.join(__dirname, 'src/index.tsx');
 // #endregion
 
 const config = {
@@ -20,7 +20,7 @@ const config = {
     app: ['react-hot-loader/patch', indexFile],
   },
   resolve: {
-    modules: ['src/front', 'node_modules'],
+    modules: ['src', 'node_modules'],
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
@@ -90,11 +90,10 @@ const config = {
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
-      tsconfig: path.join(__dirname, 'src/tsconfig.json'),
       checkSyntacticErrors: false,
     }),
     new HtmlWebpackPlugin({
-      template: 'src/front/index.html',
+      template: 'src/index.html',
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new ModernizrWebpackPlugin({
