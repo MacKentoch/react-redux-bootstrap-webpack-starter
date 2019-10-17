@@ -6,7 +6,6 @@
     "lib": ["dom", "es2015", "esnext"],
     "module": "commonjs",
     "moduleResolution": "node",
-    "allowJs": false,
     "checkJs": false,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
@@ -19,7 +18,7 @@
     "resolveJsonModule": true,
     "outDir": "../dist/assets"
   },
-  "include": ["./src"],
-  "exclude": ["node_modules", "webpack.*"]
+  "include": ["./src"]
+  // "exclude": ["node_modules", "webpack.*"]
   // "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
 }

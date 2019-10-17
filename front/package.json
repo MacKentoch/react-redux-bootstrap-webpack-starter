@@ -30,7 +30,7 @@
     "postprod": "react-snap",
     "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
     "prestart": "npm run clean-docs",
-    "start": "cross-env NODE_ENV=dev webpack-dev-server --hot --config ./webpack.hot.reload.config.js --mode development"
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --hot --config ./webpack.hot.reload.config.js"
   },
   "reactSnap": {
     "source": "docs"

@@ -1,8 +1,8 @@
 // import 'babel-polyfill';
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { hot } from 'react-hot-loader/root';
+// import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import { hydrate, render } from 'react-dom';
 import smoothScrollPolyfill from 'smoothscroll-polyfill';
@@ -19,15 +19,16 @@ smoothScrollPolyfill.polyfill();
 (window as any).__forceSmoothScrollPolyfill__ = true;
 (window as any).snapSaveState = () => getState();
 
-;(async () => {
-  console.log('You have async support if you read this instead of "ReferenceError: regeneratorRuntime is not defined" error.');
-})()
+(async () => {
+  console.log(
+    'You have async support if you read this instead of "ReferenceError: regeneratorRuntime is not defined" error.',
+  );
+})();
 // #endregion
 
 // render app (hydrate for react-snap):
 function renderApp(RootComponent: any) {
-  // @ts-ignore
-  const Application = hot(RootComponent);
+  const Application = RootComponent;
   // needed for react-snap:
   bootstrapedElement && bootstrapedElement.hasChildNodes()
     ? loadComponents().then(() => hydrate(<Application />, bootstrapedElement))

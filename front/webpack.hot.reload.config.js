@@ -149,10 +149,16 @@ const indexFile = path.join(__dirname, 'src/index.tsx');
 // };
 
 const config = {
-  entry: ['./src'],
+  mode: 'development',
+  target: 'web',
+  devtool: 'eval-source-map',
+  entry: {
+    app: [indexFile],
+  },
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, 'docs'),
+    filename: '[name].js',
+    chunkFilename: '[name].js',
   },
   resolve: {
     modules: ['node_modules'],
@@ -172,7 +178,6 @@ const config = {
         exclude: [nodeModulesDir],
         use: ['awesome-typescript-loader'],
       },
-
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
@@ -191,12 +196,45 @@ const config = {
       },
     ],
   },
-  devtool: 'eval-source-map',
+  optimization: {
+    runtimeChunk: false,
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    },
+  },
+  devServer: {
+    host: 'localhost',
+    port: 3001,
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, 'temp'),
+    headers: { 'Access-Control-Allow-Origin': '*' },
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
     new webpack.NamedModulesPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('dev'),
+      },
+    }),
+    new ProgressBarPlugin({
+      format: 'Build [:bar] :percent (:elapsed seconds)',
+      clear: false,
+    }),
   ],
 };
 
