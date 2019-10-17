@@ -30,7 +30,7 @@
     "postprod": "react-snap",
     "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
     "prestart": "npm run clean-docs",
-    "start": "cross-env NODE_ENV=dev webpack-dev-server --hot --config ./webpack.hot.reload.config.js"
+    "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js"
   },
   "reactSnap": {
     "source": "docs"
@@ -69,7 +69,6 @@
     "@types/jest": "^24.0.18",
     "@types/js-base64": "^2.3.1",
     "@types/jwt-decode": "^2.2.1",
-    "@types/styled-components": "^4.1.19",
     "@types/react": "^16.9.5",
     "@types/react-dom": "^16.9.1",
     "@types/react-helmet": "^5.0.11",
@@ -85,6 +84,7 @@
     "@types/redux-mock-store": "^1.0.1",
     "@types/rimraf": "^2.0.2",
     "@types/smoothscroll-polyfill": "^0.3.1",
+    "@types/styled-components": "^4.1.19",
     "@types/webpack": "^4.39.3",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "1.13.0",
@@ -132,13 +132,12 @@
     "typescript": "^3.6.2",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^2.1.0",
-    "webpack": "^4.39.3",
-    "webpack-bundle-analyzer": "^3.4.1",
-    "webpack-cli": "^3.3.8",
-    "webpack-dev-middleware": "^3.7.1",
-    "webpack-dev-server": "^3.8.0",
+    "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.8.2",
     "webpack-hot-middleware": "^2.25.0",
-    "webpack-node-externals": "^1.7.2",
     "webpack-require-from": "^1.8.0",
     "workbox-webpack-plugin": "^4.3.1"
   },

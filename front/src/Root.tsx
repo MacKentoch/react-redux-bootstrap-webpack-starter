@@ -4,7 +4,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { hot } from 'react-hot-loader';
+import { hot } from 'react-hot-loader/root';
 import configureStore from './redux/store/configureStore';
 import { history } from './redux/store/configureStore';
 import ScrollTop from './components/scrollToTop/ScrollToTop';
@@ -56,4 +56,4 @@ class Root extends Component<Props, State> {
   }
 }
 
-export default hot(module)(Root);
+export default hot(Root);

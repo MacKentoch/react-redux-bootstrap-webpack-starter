@@ -167,16 +167,12 @@ const config = {
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
-  node: {
-    fs: 'empty',
-    net: 'empty',
-  },
   module: {
     rules: [
       {
         test: /\.ts(x)?$/,
-        exclude: [nodeModulesDir],
         use: ['awesome-typescript-loader'],
+        exclude: [nodeModulesDir],
       },
       {
         test: /\.css$/,
@@ -222,6 +218,7 @@ const config = {
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),

@@ -1,11 +1,10 @@
 import { ThunkAction } from 'redux-thunk';
+import Axios from 'axios';
 import appConfig from '../../../config/appConfig';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
 import { State } from './type';
-import Axios from 'axios';
-import { response } from 'express';
 
 // #region CONSTANTS
 const REQUEST_USER_INFOS_DATA = 'REQUEST_USER_INFOS_DATA';
@@ -37,13 +36,13 @@ type PartialState = Partial<State>;
 type UserInfo = { user: User };
 
 export type Action = {
-  type: ActionType,
+  type: ActionType;
 
-  isFetching?: boolean,
-  actionTime?: string,
-  data?: Array<any> | any,
-  error?: any,
-  payload?: any,
+  isFetching?: boolean;
+  actionTime?: string;
+  data?: Array<any> | any;
+  error?: any;
+  payload?: any;
 } & PartialState &
   Partial<UserInfo>;
 
@@ -302,7 +301,7 @@ function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
         ...options,
       });
 
-      return response;
+      return reponse;
     } catch (error) {
       dispatch({ type: ERROR_USER_INFOS_DATA, error });
     }
