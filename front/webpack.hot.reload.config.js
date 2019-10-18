@@ -165,7 +165,7 @@ const config = {
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.css', '.json'],
   },
   module: {
     rules: [

@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
-// const nodeExternals = require('webpack-node-externals');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 // #region constants`
@@ -17,39 +16,26 @@ const config = {
   mode: 'development',
   devtool: 'source-map',
   entry: {
-    app: ['react-hot-loader/patch', indexFile],
+    app: [indexFile],
   },
-  resolve: {
-    modules: ['src', 'node_modules'],
-    extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
-  },
-  // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
-    path: path.join(__dirname, 'docs/assets'),
+    path: path.join(__dirname, '../docs/assets'),
     publicPath: '/assets/',
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
   },
+  resolve: {
+    modules: ['node_modules'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
+    extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: [nodeModulesDir],
-        use: ['react-hot-loader/webpack', 'babel-loader'],
-      },
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'react-hot-loader/webpack',
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-            },
-          },
-        ],
+        test: /\.ts(x)?$/,
+        use: ['awesome-typescript-loader'],
         exclude: [nodeModulesDir],
       },
       {
@@ -89,9 +75,9 @@ const config = {
     },
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      checkSyntacticErrors: false,
-    }),
+    // new ForkTsCheckerWebpackPlugin({
+    //   checkSyntacticErrors: false,
+    // }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
