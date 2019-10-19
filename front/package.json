@@ -21,7 +21,7 @@
     "flow": "node_modules/.bin/flow",
     "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "cross-env NODE_ENV=test jest --coverage",
-    "clean-docs": "rimraf docs/*",
+    "clean-docs": "rimraf ../docs/*",
     "predev": "npm run clean-docs",
     "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
     "postdev": "react-snap",
@@ -33,7 +33,7 @@
     "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js"
   },
   "reactSnap": {
-    "source": "docs"
+    "source": "../docs"
   },
   "keywords": [
     "react",

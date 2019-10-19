@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import { error404, error500 } from '../middleware/errors';
 
 // #region constants
-const DOCS_PATH = '../../docs/';
+const DOCS_PATH = '../../../docs/';
 const port = process.env.PORT || 8082;
 const host = process.env.SERVER_HOST || 'localhost';
 // #endregion

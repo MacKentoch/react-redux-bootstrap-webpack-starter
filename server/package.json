@@ -23,7 +23,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest",
     "build-server": "tsc src/index.ts --outDir out",
-    "run-server": "ts-node server/index.ts"
+    "run-server": "npm run build-server && ts-node src/index.ts"
   },
   "keywords": [
     "node",

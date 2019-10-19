@@ -5,7 +5,7 @@ var path = require("path");
 var chalk_1 = require("chalk");
 var errors_1 = require("../middleware/errors");
 // #region constants
-var DOCS_PATH = '../../docs/';
+var DOCS_PATH = '../../../docs/';
 var port = process.env.PORT || 8082;
 var host = process.env.SERVER_HOST || 'localhost';
 // #endregion

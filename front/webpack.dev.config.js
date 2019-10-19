@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 // #region constants`
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -19,7 +18,7 @@ const config = {
     app: [indexFile],
   },
   output: {
-    path: path.join(__dirname, '../docs/assets'),
+    path: path.join(__dirname, '/../docs/assets'),
     publicPath: '/assets/',
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
@@ -75,9 +74,6 @@ const config = {
     },
   },
   plugins: [
-    // new ForkTsCheckerWebpackPlugin({
-    //   checkSyntacticErrors: false,
-    // }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
