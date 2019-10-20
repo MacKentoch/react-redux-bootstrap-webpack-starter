@@ -7,8 +7,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
-// const nodeExternals = require('webpack-node-externals');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -16,41 +14,25 @@ const indexFile = path.join(__dirname, 'src/index.tsx');
 // #endregion
 
 const config = {
+  target: 'web',
   mode: 'production',
-  // target: 'web',
   entry: { app: indexFile },
-  resolve: {
-    modules: ['src', 'node_modules'],
-    extensions: ['.js', '.jsx', '.ts', '.tsx'],
-  },
-  // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder
   output: {
-    path: path.join(__dirname, 'docs/assets'),
+    path: path.join(__dirname, '/../docs/assets'),
     publicPath: '/assets/',
     filename: '[name].[hash].js',
     chunkFilename: '[name].[hash].js',
   },
+  resolve: {
+    modules: ['src', 'node_modules'],
+    extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.ts(x)?$/,
+        use: ['awesome-typescript-loader'],
         exclude: [nodeModulesDir],
-        use: ['react-hot-loader/webpack', 'babel-loader'],
-      },
-      {
-        test: /\.tsx?$/,
-        exclude: [nodeModulesDir],
-        use: [
-          {
-            loader: 'react-hot-loader/webpack',
-          },
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-            },
-          },
-        ],
       },
       {
         test: /\.css$/,
@@ -101,20 +83,17 @@ const config = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      checkSyntacticErrors: false,
-    }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
-    }),
-    new ModernizrWebpackPlugin({
-      htmlWebpackPlugin: true,
     }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
+    }),
+    new ModernizrWebpackPlugin({
+      htmlWebpackPlugin: true,
     }),
     new CompressionWebpackPlugin({
       filename: '[path].gz[query]',

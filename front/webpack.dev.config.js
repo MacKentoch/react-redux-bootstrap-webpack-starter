@@ -25,9 +25,6 @@ const config = {
   },
   resolve: {
     modules: ['node_modules'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
     extensions: ['.css', '.json', '.js', '.jsx', '.ts', '.tsx'],
   },
   module: {
@@ -78,17 +75,17 @@ const config = {
       template: 'src/index.html',
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('dev'),
+      },
+    }),
     new ModernizrWebpackPlugin({
       htmlWebpackPlugin: true,
     }),
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css',
       chunkFilename: '[id].[hash].css',
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('dev'),
-      },
     }),
     new workboxPlugin.GenerateSW({
       swDest: 'sw.js',
