@@ -10,5 +10,6 @@ cache:
 services:
   - xvfb
 before_script:
+  - cd front
   - yarn install
 after_success: yarn run test
