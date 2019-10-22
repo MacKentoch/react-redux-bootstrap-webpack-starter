@@ -19,6 +19,4 @@
     "outDir": "../dist/assets"
   },
   "include": ["./src"]
-  // "exclude": ["node_modules", "webpack.*"]
-  // "exclude": ["node_modules", "!node_modules/@types", "*.d.ts"]
 }
