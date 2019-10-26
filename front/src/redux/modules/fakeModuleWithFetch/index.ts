@@ -11,7 +11,7 @@ const RECEIVED_FAKE_FETCH = 'RECEIVED_FAKE_FETCH';
 const ERROR_FAKE_FETCH = 'ERROR_FAKE_FETCH';
 // #endregion
 
-// #region flow types
+// #region types
 type ActionType =
   | 'FETCH'
   | 'REQUEST_FAKE_FETCH'
@@ -21,12 +21,12 @@ type ActionType =
 type PartialState = Partial<State>;
 
 type Action = {
-  type: ActionType,
-  isFetching?: boolean,
-  actionTime?: string,
-  data?: Array<any> | any,
-  error?: any,
-  payload?: Array<any> | any,
+  type: ActionType;
+  isFetching?: boolean;
+  actionTime?: string;
+  data?: Array<any> | any;
+  error?: any;
+  payload?: Array<any> | any;
 } & PartialState;
 // #endregion
 

@@ -20,7 +20,7 @@ const CHECK_IF_USER_IS_AUTHENTICATED = 'CHECK_IF_USER_IS_AUTHENTICATED';
 const DISCONNECT_USER = 'DISCONNECT_USER';
 // #endregion
 
-// #region flow types
+// #region types
 type ActionType =
   | 'REQUEST_USER_INFOS_DATA'
   | 'RECEIVED_USER_INFOS_DATA'
