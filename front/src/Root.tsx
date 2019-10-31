@@ -20,7 +20,6 @@ type State = any;
 // #endregion
 
 // #region constants
-// @ts-ignores
 const { store } = configureStore({});
 // #endregion
 
