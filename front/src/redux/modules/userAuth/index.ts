@@ -4,6 +4,7 @@ import appConfig from '../../../config/appConfig';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
+import { FETCH_TYPE_ENUM } from '../../middleware/fetchMiddleware';
 import { State } from './type';
 
 // #region CONSTANTS
@@ -196,6 +197,11 @@ export function checkUserIsConnected(): Action {
   const isExpired = auth.isExpiredToken(token);
   const isAuthenticated = token && checkUserHasId(user) ? true : false;
 
+  console.log('checkUserIsConnected - : ', {
+    isAuthenticated,
+    isExpired,
+  });
+
   return {
     type: CHECK_IF_USER_IS_AUTHENTICATED,
     token,
@@ -209,7 +215,10 @@ export function checkUserIsConnected(): Action {
 type RLogUserAction = ThunkAction<Promise<any>, State, void, Action>;
 function logUser(login: string, password: string): RLogUserAction {
   return async dispatch => {
-    const FETCH_TYPE = appConfig.DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
+    const FETCH_TYPE = appConfig.DEV_MODE
+      ? FETCH_TYPE_ENUM.FETCH_MOCK
+      : FETCH_TYPE_ENUM.FETCH;
+
     const __SOME_LOGIN_API__ = 'login';
 
     const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
@@ -226,7 +235,7 @@ function logUser(login: string, password: string): RLogUserAction {
 
     // fetchMiddleware (does: fetch mock, real fetch, dispatch 3 actions... for a minimum code on action creator!)
     const type: ActionType = 'FETCH';
-    dispatch({
+    return dispatch({
       type,
       fetch: {
         // common props:
@@ -274,7 +283,9 @@ function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
       DEV_MODE,
       api: { users },
     } = appConfig;
-    const FETCH_TYPE = DEV_MODE ? 'FETCH_MOCK' : 'FETCH';
+    const FETCH_TYPE = DEV_MODE
+      ? FETCH_TYPE_ENUM.FETCH_MOCK
+      : FETCH_TYPE_ENUM.FETCH;
     const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
     const url = `${getLocationOrigin()}/${users}/${id}`;
     const method = 'get';
@@ -323,3 +334,4 @@ function shouldFetchUserInfoData(state: { userAuth: State } & any): boolean {
   const { isFetching } = state.userAuth;
   return !isFetching;
 }
+// #endregion

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { RouteComponentProps } from 'react-router';
 import Button from 'reactstrap/lib/Button';
 import Row from 'reactstrap/lib/Row';
@@ -15,6 +15,7 @@ export type Props = {} & RouteComponentProps &
 // #endregion
 
 function Login({
+  location,
   isLogging,
   isFetching,
   disconnectUser,
@@ -30,51 +31,62 @@ function Login({
   }, []);
 
   // #region form inputs change callbacks
-  const handlesOnEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event) {
-      event.preventDefault();
-      setEmail(event.target.value.trim());
-    }
-  };
+  const handlesOnEmailChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event) {
+        event.preventDefault();
+        setEmail(event.target.value.trim());
+      }
+    },
+    [],
+  );
 
-  const handlesOnPasswordChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    if (event) {
-      event.preventDefault();
-      setPassword(event.target.value.trim());
-    }
-  };
+  const handlesOnPasswordChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      if (event) {
+        event.preventDefault();
+        setPassword(event.target.value.trim());
+      }
+    },
+    [],
+  );
   // #endregion
 
   // #region on login button click callback
-  const handlesOnLogin = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event && event.preventDefault();
+  const handlesOnLogin = useCallback(
+    async (event: React.MouseEvent<HTMLButtonElement>) => {
+      event && event.preventDefault();
 
-    try {
-      const response = await logUserIfNeeded(email, password);
-      console.log('"response: ', response);
-      const {
-        data: { token, user },
-      } = response.payload;
+      try {
+        const response = await logUserIfNeeded(email, password);
+        const {
+          data: { token, user },
+        } = response.payload;
 
-      auth.setToken(token);
-      auth.setUserInfo(user);
+        auth.setToken(token);
+        auth.setUserInfo(user);
 
-      history.push({ pathname: '/' }); // back to Home
-    } catch (error) {
-      /* eslint-disable no-console */
-      console.log('login went wrong..., error: ', error);
-      /* eslint-enable no-console */
-    }
-  };
+        const { from } = location.state || { from: { pathname: '/' } };
+
+        history.replace(from); // back to Home
+      } catch (error) {
+        /* eslint-disable no-console */
+        console.log('login went wrong..., error: ', error);
+        /* eslint-enable no-console */
+      }
+    },
+    [history, location, email, password],
+  );
   // #endregion
 
   // #region on go back home button click callback
-  const goHome = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event && event.preventDefault();
-    history.push({ pathname: '/' });
-  };
+  const goHome = useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      event && event.preventDefault();
+      history.push({ pathname: '/' });
+    },
+    [history],
+  );
   // #endregion
 
   return (

@@ -41,24 +41,24 @@ export const FETCH = 'FETCH';
 
 export enum FETCH_TYPE_ENUM {
   FETCH = 'FETCH',
-  FETCH_MOCK = 'FETCH_MOCK'
+  FETCH_MOCK = 'FETCH_MOCK',
 }
 
 export type FetchMiddleWareAction = {
-   fetch: {
-     type: FETCH_TYPE_ENUM,
-     actionTypes?: {
-       request: string,
-       success: string,
-       fail: string,
-     },
-     url: string,
-     method: 'get' | 'put' | 'post' | 'delete',
-     headers?: any     // OPTIONAL CONTENT like: data: { someprop: 'value ...}
-     options?: any     // OPTIONAL CONTENT like: Authorization: 'Bearer _A_TOKEN_'
-   },
-   mockResult?: any
-}
+  fetch: {
+    type: FETCH_TYPE_ENUM;
+    actionTypes?: {
+      request: string;
+      success: string;
+      fail: string;
+    };
+    url: string;
+    method: 'get' | 'put' | 'post' | 'delete';
+    headers?: any; // OPTIONAL CONTENT like: data: { someprop: 'value ...}
+    options?: any; // OPTIONAL CONTENT like: Authorization: 'Bearer _A_TOKEN_'
+  };
+  mockResult?: any;
+};
 
 const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
   next: Function,
@@ -72,12 +72,12 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
     return next(action);
   }
 
-  if (
-    action.fetch.type !== 'FETCH_MOCK' ||
-    action.fetch.type !== 'FETCH'
-  ) {
-    return next(action);
-  }
+  // if (
+  //   action.fetch.type !== FETCH_TYPE_ENUM.FETCH ||
+  //   action.fetch.type !== FETCH_TYPE_ENUM.FETCH_MOCK
+  // ) {
+  //   return next(action);
+  // }
 
   if (!action.fetch.actionTypes) {
     return next(action);
@@ -85,7 +85,7 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
   // #endregion
 
   // #region fetch mock
-  if (action.fetch.type === "FETCH_MOCK") {
+  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK) {
     if (!action.fetch.mockResult) {
       throw new Error(
         'Fetch middleware require a mockResult payload when type is "FETCH_MOCK"',
@@ -114,7 +114,7 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
   // #endregion
 
   // #region real fetch
-  if (action.fetch.type === 'FETCH') {
+  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH) {
     const {
       actionTypes: { request, success, fail },
       url,
@@ -128,8 +128,7 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
 
     // fetch server (success or fail)
     try {
-      const data = await axios
-      .request({
+      const data = await axios.request({
         method,
         url,
         withCredentials: true,
@@ -140,17 +139,15 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
           ...headers,
         },
         ...options,
-      })
-      store.dispatch({ type: success, payload: data })
+      });
+      store.dispatch({ type: success, payload: data });
       return data;
-
     } catch (error) {
       store.dispatch({ type: fail, error: error.response });
       throw error;
     }
   }
   // #endregion
-
 
   return next(action);
 };

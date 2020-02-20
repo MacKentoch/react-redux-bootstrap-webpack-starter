@@ -16,6 +16,7 @@ function PrivateRoute(props: Props) {
 
   const { isAuthenticated = false } = !!window && checkUserIsConnected();
 
+  console.log('PrivateRoute- isAuthenticated: ', { isAuthenticated });
   return (
     <Route
       {...rest}
