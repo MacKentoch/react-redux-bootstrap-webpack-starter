@@ -190,12 +190,12 @@ export function disconnectUser(): Action {
 // #endregion
 
 // #region check if user is connected
-export function checkUserIsConnected(): Action {
+export async function checkUserIsConnected(): Action {
   const token = auth.getToken();
-  const user = auth.getUserInfo();
+  const user = await auth.getUserInfo();
   const checkUserHasId = (obj: any) => obj && (obj.id || false);
   const isExpired = auth.isExpiredToken(token);
-  const isAuthenticated = token && checkUserHasId(user) ? true : false;
+  const isAuthenticated = token && (await checkUserHasId(user)) ? true : false;
 
   console.log('checkUserIsConnected - : ', {
     isAuthenticated,

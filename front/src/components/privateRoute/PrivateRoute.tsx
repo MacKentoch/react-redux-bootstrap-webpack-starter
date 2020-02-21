@@ -14,14 +14,14 @@ function PrivateRoute(props: Props) {
   const { component: InnerComponent, ...rest } = props;
   const { location, checkUserIsConnected } = props;
 
-  const { isAuthenticated = false } = !!window && checkUserIsConnected();
+  const reponse = !!window && checkUserIsConnected();
 
-  console.log('PrivateRoute- isAuthenticated: ', { isAuthenticated });
+  console.log('PrivateRoute- isAuthenticated: ', { isAuthenticated: reponse });
   return (
     <Route
       {...rest}
       render={props =>
-        isAuthenticated ? (
+        reponse.isAuthenticated ? (
           <InnerComponent {...props} />
         ) : (
           <Redirect to={{ pathname: '/login', state: { from: location } }} />
