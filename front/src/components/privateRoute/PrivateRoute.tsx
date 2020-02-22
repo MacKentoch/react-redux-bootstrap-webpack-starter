@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
@@ -14,14 +14,21 @@ function PrivateRoute(props: Props) {
   const { component: InnerComponent, ...rest } = props;
   const { location, checkUserIsConnected } = props;
 
-  const reponse = !!window && checkUserIsConnected();
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  useEffect(() => {
+    async function checkAuth() {
+      const { isAuthenticated } = await checkUserIsConnected();
+      setIsAuthenticated(isAuthenticated);
+    }
 
-  console.log('PrivateRoute- isAuthenticated: ', { isAuthenticated: reponse });
+    !!window && checkAuth();
+  }, [location]);
+
   return (
     <Route
       {...rest}
       render={props =>
-        reponse.isAuthenticated ? (
+        isAuthenticated ? (
           <InnerComponent {...props} />
         ) : (
           <Redirect to={{ pathname: '/login', state: { from: location } }} />

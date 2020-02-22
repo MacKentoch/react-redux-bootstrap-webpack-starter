@@ -24,10 +24,6 @@ const { store } = configureStore({});
 // #endregion
 
 class Root extends Component<Props, State> {
-  componentDidMount() {
-    store.dispatch(userAuthActions.checkUserIsConnected());
-  }
-
   componentDidCatch(error: any, info: any) {
     console.log('error was catch by Root component: ', { error, info });
   }

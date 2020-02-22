@@ -8,7 +8,7 @@ import registerServiceWorker from '../../services/sw/registerServiceWorker';
 
 // #region types
 type Props = {
-  children: any,
+  children: any;
 } & RouteComponentProps;
 // #endregion
 
