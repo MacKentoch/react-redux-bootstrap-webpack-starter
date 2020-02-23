@@ -190,23 +190,33 @@ export function disconnectUser(): Action {
 // #endregion
 
 // #region check if user is connected
-export async function checkUserIsConnected(): Promise<Action> {
-  const token = await auth.getToken();
-  const user = await auth.getUserInfo();
-  const checkUserHasId = (obj: any) => obj && (obj.id || false);
-  const isExpired = await auth.isExpiredToken(token);
-  const isAuthenticated = token && (await checkUserHasId(user)) ? true : false;
+type RCheckUserIsConnectedAction = ThunkAction<
+  Promise<any>,
+  State,
+  void,
+  Action
+>;
+export function checkUserIsConnected(): RCheckUserIsConnectedAction {
+  return async dispatch => {
+    const token = auth.getToken();
+    const user = await auth.getUserInfo();
+    const checkUserHasId = (obj: any) => obj && (obj.id || false);
+    const isExpired = auth.isExpiredToken(token);
+    const isAuthenticated =
+      token && (await checkUserHasId(user)) ? true : false;
 
-  console.log('checkUserIsConnected - : ', {
-    isAuthenticated,
-    isExpired,
-  });
+    dispatch({
+      type: CHECK_IF_USER_IS_AUTHENTICATED,
+      token,
+      ...user,
+      isAuthenticated: isAuthenticated && !isExpired,
+    });
 
-  return {
-    type: CHECK_IF_USER_IS_AUTHENTICATED,
-    token,
-    ...user,
-    isAuthenticated: isAuthenticated && !isExpired,
+    return {
+      token,
+      ...user,
+      isAuthenticated: isAuthenticated && !isExpired,
+    };
   };
 }
 // #endregion

@@ -18,6 +18,9 @@ function PrivateRoute(props: Props) {
   useEffect(() => {
     async function checkAuth() {
       const { isAuthenticated } = await checkUserIsConnected();
+      console.log('Private Route: ', {
+        isAuthenticated,
+      });
       setIsAuthenticated(isAuthenticated);
     }
 
