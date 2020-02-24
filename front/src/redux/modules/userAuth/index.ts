@@ -197,13 +197,12 @@ type RCheckUserIsConnectedAction = ThunkAction<
   Action
 >;
 export function checkUserIsConnected(): RCheckUserIsConnectedAction {
-  return async dispatch => {
+  return dispatch => {
     const token = auth.getToken();
-    const user = await auth.getUserInfo();
+    const user = auth.getUserInfo();
     const checkUserHasId = (obj: any) => obj && (obj.id || false);
     const isExpired = auth.isExpiredToken(token);
-    const isAuthenticated =
-      token && (await checkUserHasId(user)) ? true : false;
+    const isAuthenticated = token && checkUserHasId(user) ? true : false;
 
     dispatch({
       type: CHECK_IF_USER_IS_AUTHENTICATED,
