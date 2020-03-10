@@ -12,9 +12,7 @@ type Props = {} & RouteComponentProps &
 
 function PrivateRoute(props: Props) {
   const { component: InnerComponent, ...rest } = props;
-  const { location, checkUserIsConnected } = props;
-
-  const { isAuthenticated } = checkUserIsConnected();
+  const { location, isAuthenticated } = props;
 
   return (
     <Route
