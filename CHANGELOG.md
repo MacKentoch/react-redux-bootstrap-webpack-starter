@@ -1,3 +1,7 @@
+# v7.0.2
+
+- upgrade react-router to v5
+
 # v7.0.1
 
 - test migration from enzyme to [react-testing-library](https://github.com/testing-library/react-testing-library) (_because of useEffect hook not being testable with enzyme_)

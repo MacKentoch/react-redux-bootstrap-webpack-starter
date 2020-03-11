@@ -1,6 +1,6 @@
 {
   "name": "react-redux-bootstrap-webpack-starter-front",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
   "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
@@ -167,8 +167,8 @@
     "react-motion": "^0.5.2",
     "react-overdrive": "^0.0.10",
     "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
+    "react-router": "^5.1.2",
+    "react-router-dom": "^5.1.2",
     "reactstrap": "^6.3.1",
     "redux": "^4.0.4",
     "redux-persist": "^5.10.0",
