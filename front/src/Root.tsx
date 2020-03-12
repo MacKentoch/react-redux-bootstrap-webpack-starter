@@ -8,11 +8,11 @@ import { hot } from 'react-hot-loader/root';
 import configureStore from './redux/store/configureStore';
 import { history } from './redux/store/configureStore';
 import ScrollTop from './components/scrollToTop/ScrollToTop';
-import MainLayout from './layout/MainLayout';
 import MainRoutes from './routes/MainRoutes';
-import { PageNotFound } from './routes/routes';
-import * as userAuthActions from './redux/modules/userAuth';
 import GlobalStyle from './style/GlobalStyles';
+import Login from './pages/login';
+import registerServiceWorker from './services/sw/registerServiceWorker';
+import LogoutRoute from './components/logoutRoute';
 
 // #region types
 type Props = any;
@@ -24,8 +24,15 @@ const { store } = configureStore({});
 // #endregion
 
 class Root extends Component<Props, State> {
+  componentDidMount() {
+    // register service worker (no worry about multiple attempts to register, browser will ignore when already registered)
+    registerServiceWorker();
+  }
+
   componentDidCatch(error: any, info: any) {
-    console.log('error was catch by Root component: ', { error, info });
+    console.log('App error: ', error);
+    console.log('App error info: ', info);
+    //
   }
 
   render() {
@@ -36,10 +43,14 @@ class Root extends Component<Props, State> {
             <ConnectedRouter history={history}>
               <ScrollTop>
                 <Switch>
-                  <MainLayout>
-                    <MainRoutes />
-                  </MainLayout>
-                  <Route path="*" component={PageNotFound} />
+                  <Route exact path="/login">
+                    <Login />
+                  </Route>
+
+                  {/* Application with main layout (could have multiple applications with different layouts) */}
+                  <MainRoutes />
+                  {/* logout: just redirects to login (App will take care of removing the token) */}
+                  <LogoutRoute path="/logout" />
                 </Switch>
               </ScrollTop>
             </ConnectedRouter>

@@ -15,7 +15,3 @@ export const Protected = loadable(() => import('../pages/protected'), {
 export const PageNotFound = loadable(() => import('../pages/pageNotFound'), {
   modules: ['pageNotFound'],
 });
-export const PrivateRoute = loadable(
-  () => import('../components/privateRoute/PrivateRoute'),
-  { modules: ['PrivateRoute'] },
-);
