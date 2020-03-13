@@ -1,18 +1,33 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
-import { Home, About, PageNotFound, Protected, Login } from './routes';
-import LogoutRoute from '../components/logoutRoute';
+import {
+  Home as AsyncHome,
+  About as AsyncAbout,
+  PageNotFound as AsyncPageNotFound,
+  Protected as AsyncProtected,
+} from './routes';
 import PrivateRoute from '../components/privateRoute';
 
 const MainRoutes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <PrivateRoute path="/protected" component={Protected} />
-      <Route exact path="/login" component={Login} />
-      <LogoutRoute path="/logout" />
-      <Route path="*" component={PageNotFound} />
+      {/* public views: */}
+      <Route exact path="/">
+        <AsyncHome />
+      </Route>
+
+      <Route path="/about">
+        <AsyncAbout />
+      </Route>
+
+      {/* private views: need user to be authenticated */}
+      <PrivateRoute path="/protected">
+        <AsyncProtected />
+      </PrivateRoute>
+
+      <Route path="*">
+        <AsyncPageNotFound />
+      </Route>
     </Switch>
   );
 };
