@@ -1,6 +1,7 @@
 # v7.0.2
 
-- upgrade react-router to v5
+- upgrade `react-router` to `v5`
+- get rid of `yarn` and move to `npm`
 
 # v7.0.1
 
