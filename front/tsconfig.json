@@ -13,7 +13,7 @@
     "sourceMap": true,
     "removeComments": true,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitThis": true,
     "resolveJsonModule": true,
     "outDir": "../dist/assets"

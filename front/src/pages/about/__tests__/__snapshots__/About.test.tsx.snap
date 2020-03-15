@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`About page renders as expected 1`] = `ShallowWrapper {}`;
+exports[`About page renders as expected 1`] = `
+<div
+  class="sc-bdVaJa jxVqOJ"
+>
+  <h1>
+    About
+  </h1>
+</div>
+`;

@@ -1,9 +1,9 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router';
 import FadeInEntrance from '../../components/fadeInEntrance';
+import { OwnProps, MappedStateToProps, MappedDispatchToProps } from './index';
 
 // #region types
-type Props = {} & RouteComponentProps<any>;
+type Props = OwnProps & MappedStateToProps & MappedDispatchToProps;
 // #endregion
 
 function About(props: Props) {

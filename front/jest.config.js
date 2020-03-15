@@ -11,7 +11,7 @@ module.exports = {
       babelConfig: false,
     },
   },
-  testEnvironment: 'node',
+  testEnvironment: 'jest-environment-jsdom-fifteen',
   verbose: true,
   roots: ['<rootDir>/src/', '<rootDir>/test'],
   setupFiles: [],
