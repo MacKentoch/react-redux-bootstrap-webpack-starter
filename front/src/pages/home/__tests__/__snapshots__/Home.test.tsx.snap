@@ -1,3 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Home page renders as expected 1`] = `ShallowWrapper {}`;
+exports[`Home page renders as expected 1`] = `
+<div
+  class="sc-bdVaJa jxVqOJ"
+>
+  <div
+    class="jumbotron"
+  >
+    <div
+      class="sc-bwzfXH uTxCW"
+    >
+      <h1
+        class="sc-htpNat hljmAh"
+      >
+        ReactJS 16.13+ Bootstrap 4
+      </h1>
+      <h2>
+        with Hot Reload (
+        <i>
+          react-hot-loader 4+
+        </i>
+        )!!!
+      </h2>
+      <h2>
+        and React Router v5
+      </h2>
+      <h2>
+        and webpack 4.x
+      </h2>
+      <h1>
+        Starter
+      </h1>
+      <p>
+        <a
+          class="btn btn-success btn-lg"
+          href="/about"
+        >
+          <i
+            class="fa fa-info"
+          />
+            go to about
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;

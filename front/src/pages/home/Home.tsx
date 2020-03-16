@@ -9,7 +9,7 @@ import LightNote from './styled/LightNote';
 import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
 
 // #region  types
-export type Props = {} & RouteComponentProps &
+export type Props = RouteComponentProps &
   MappedDispatchToProps &
   MappedStateToProps &
   OwnProps;

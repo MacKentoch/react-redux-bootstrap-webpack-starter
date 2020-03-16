@@ -1,16 +1,41 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
-import { Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import configureStore from 'redux-mock-store';
+import { render } from '@testing-library/react';
 import Home from '../index';
 
+const middlewares: Array<any> = [];
+const mockStore = configureStore(middlewares);
+
 describe('Home page', () => {
+  let rootElement: any = null;
+
+  beforeEach(() => {
+    rootElement = document.createElement('div');
+    document.body.appendChild(rootElement);
+  });
+
+  afterEach(() => {
+    rootElement && document.body.removeChild(rootElement);
+    rootElement = null;
+  });
+
   it('renders as expected', () => {
-    const component = shallow(
-      <MemoryRouter>
-        <Route path="/" component={Home} />
-      </MemoryRouter>,
+    const initialState = {};
+    const store = mockStore(initialState);
+
+    const { container } = render(
+      <Provider store={store}>
+        <ThemeProvider theme={{}}>
+          <MemoryRouter>
+            <Home />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
+      rootElement,
     );
-    expect(component).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

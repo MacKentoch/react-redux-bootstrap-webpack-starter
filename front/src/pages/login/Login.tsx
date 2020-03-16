@@ -8,7 +8,7 @@ import FadeInEntrance from '../../components/fadeInEntrance';
 import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
 
 // #region types
-export type Props = {} & RouteComponentProps &
+export type Props = RouteComponentProps &
   MappedStateToProps &
   MappedDispatchToProps &
   OwnProps;
@@ -66,6 +66,7 @@ function Login({
         auth.setToken(token);
         auth.setUserInfo(user);
 
+        // @ts-ignore
         const { from } = location.state || { from: { pathname: '/' } };
 
         history.replace(from); // back to Home
