@@ -1,15 +1,28 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router';
+import { ThemeProvider } from 'styled-components';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
+import { render } from '@testing-library/react';
 import Login from '../index';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
 describe('Login page', () => {
+  let rootElement: any = null;
+
+  beforeEach(() => {
+    rootElement = document.createElement('div');
+    document.body.appendChild(rootElement);
+  });
+
+  afterEach(() => {
+    rootElement && document.body.removeChild(rootElement);
+    rootElement = null;
+  });
+
   it('renders as expected', () => {
     const initialState = {
       userAuth: {
@@ -25,13 +38,16 @@ describe('Login page', () => {
     };
     const store = mockStore(initialState);
 
-    const component = shallow(
+    const { container } = render(
       <Provider store={store}>
-        <MemoryRouter>
-          <Login />
-        </MemoryRouter>
+        <ThemeProvider theme={{}}>
+          <MemoryRouter>
+            <Login />
+          </MemoryRouter>
+        </ThemeProvider>
       </Provider>,
+      rootElement,
     );
-    expect(component).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
