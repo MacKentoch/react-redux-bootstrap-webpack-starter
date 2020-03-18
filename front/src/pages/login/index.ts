@@ -1,5 +1,5 @@
 import { bindActionCreators, compose, Dispatch } from 'redux';
-import { connect } from 'react-redux';
+import { connect, ConnectedProps } from 'react-redux';
 import * as userAuthActions from '../../redux/modules/userAuth';
 import Login from './Login';
 import { RootState } from '../../redux/modules/types';
@@ -24,13 +24,8 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 // #endregion
 
 // #region types
-export type MappedStateToProps = {
-  isAuthenticated: boolean;
-  isFetching: boolean;
-  isLogging: boolean;
-};
+export type MappedStateToProps = ConnectedProps<typeof connector>;
 export type OwnProps = {};
-
 export type MappedDispatchToProps = UserAuthActions;
 // #endregion
 
