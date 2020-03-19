@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import configureStore from 'redux-mock-store';
 import { render } from '@testing-library/react';
-import About from '../About';
+import About from '../index';
 
 const middlewares: Array<any> = [];
 const mockStore = configureStore(middlewares);

@@ -5,7 +5,6 @@ import Jumbotron from 'reactstrap/lib/Jumbotron';
 import FadeInEntrance from '../../components/fadeInEntrance';
 import HomeInfo from './styled/HomeInfo';
 import MainTitle from './styled/MainTitle';
-import LightNote from './styled/LightNote';
 import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
 
 // #region  types
