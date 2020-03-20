@@ -1,15 +1,28 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import BackToTop from '../BackToTop';
 
 describe('BackToTop component', () => {
-  it('renders as expected', () => {
-    const props = {
-      minScrollY: 10,
-      onScrollDone: jest.fn(),
-    };
+  let rootElement: any = null;
 
-    const wrapper = shallow(<BackToTop {...props} />);
-    expect(wrapper).toMatchSnapshot();
+  const defaultProps = {
+    minScrollY: 10,
+    onScrollDone: jest.fn(),
+  };
+
+  beforeEach(() => {
+    rootElement = document.createElement('div');
+    document.body.appendChild(rootElement);
+  });
+
+  afterEach(() => {
+    rootElement && document.body.removeChild(rootElement);
+    rootElement = null;
+  });
+
+  it('renders as expected', () => {
+    const props = { ...defaultProps };
+    const { container } = render(<BackToTop {...props} />, rootElement);
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
