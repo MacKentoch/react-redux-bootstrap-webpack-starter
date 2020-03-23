@@ -1,14 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import FadeInEntrance from '../index';
+import { render } from '@testing-library/react';
+import FadeInEntrance from '../FadeInEntrance';
 
 describe('FadeInEntrance component', () => {
+  let rootElement: any = null;
+
+  beforeEach(() => {
+    rootElement = document.createElement('div');
+    document.body.appendChild(rootElement);
+  });
+
+  afterEach(() => {
+    rootElement && document.body.removeChild(rootElement);
+    rootElement = null;
+  });
+
   it('renders as expected', () => {
-    const wrapper = shallow(
-      <FadeInEntrance>
+    const props = {};
+
+    const { container } = render(
+      <FadeInEntrance {...props}>
         <p>a child</p>
       </FadeInEntrance>,
+      rootElement,
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
