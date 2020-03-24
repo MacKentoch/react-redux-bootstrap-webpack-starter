@@ -1,24 +1,40 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-// import configureStore from 'redux-mock-store';
-// import thunk from 'redux-thunk';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import configureStore from 'redux-mock-store';
 import LogoutRoute from '../index';
 
-// const middlewares = [thunk];
-// const mockStore = configureStore(middlewares);
+const middlewares: Array<any> = [];
+const mockStore = configureStore(middlewares);
 
 describe('LogoutRoute component', () => {
-  it('renders as expected', () => {
-    const props = {
-      disconnectUser: jest.fn(),
-    };
+  let rootElement: any = null;
 
-    const component = shallow(
-      <MemoryRouter initialEntries={['/']}>
-        <LogoutRoute {...props} />
-      </MemoryRouter>,
+  beforeEach(() => {
+    rootElement = document.createElement('div');
+    document.body.appendChild(rootElement);
+  });
+
+  afterEach(() => {
+    rootElement && document.body.removeChild(rootElement);
+    rootElement = null;
+  });
+
+  it('renders as expected', () => {
+    const initialState = {};
+    const store = mockStore(initialState);
+    const { container } = render(
+      <Provider store={store}>
+        <ThemeProvider theme={{}}>
+          <MemoryRouter>
+            <LogoutRoute />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
+      rootElement,
     );
-    expect(component).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
