@@ -1,28 +1,13 @@
-import React, { Fragment, useEffect, useRef } from 'react';
-import { withRouter, RouteComponentProps } from 'react-router';
+import React, { Fragment } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useScrollToTopOnLocationChange } from './hooks/useScrollToTopOnLocationChange';
+type OwnProps = {
+  children: any;
+};
+type Props = OwnProps;
 
-// #region types
-type Props = {
-  children: any,
-} & RouteComponentProps;
-// #endregion
-
-function useScrollToTopOnLocationChange(location: any) {
-  const prevLocation = useRef();
-
-  useEffect(() => {
-    prevLocation.current = location;
-  }, []);
-
-  useEffect(() => {
-    if (prevLocation.current !== location) {
-      window && window.scrollTo(0, 0);
-      prevLocation.current = location;
-    }
-  }, [location]);
-}
-
-function ScrollToTop({ children, location }: Props) {
+function ScrollToTop({ children }: Props) {
+  const location = useLocation();
   useScrollToTopOnLocationChange(location);
 
   return <Fragment>{children}</Fragment>;
@@ -30,4 +15,4 @@ function ScrollToTop({ children, location }: Props) {
 
 ScrollToTop.displayName = 'ScrollToTop';
 
-export default withRouter(ScrollToTop);
+export default ScrollToTop;
