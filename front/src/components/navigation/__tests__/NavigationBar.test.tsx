@@ -1,15 +1,30 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router';
-// import configureStore from 'redux-mock-store';
-// import thunk from 'redux-thunk';
-import NavigationBar from '../index'; // import connected component to avoid router props not defined errors
+import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+import configureStore from 'redux-mock-store';
+import { render } from '@testing-library/react';
+import NavigationBar from '../index';
 
-// const middlewares = [thunk];
-// const mockStore = configureStore(middlewares);
+const middlewares: Array<any> = [];
+const mockStore = configureStore(middlewares);
 
 describe('NavigationBar component', () => {
+  let rootElement: any = null;
+
+  beforeEach(() => {
+    rootElement = document.createElement('div');
+    document.body.appendChild(rootElement);
+  });
+
+  afterEach(() => {
+    rootElement && document.body.removeChild(rootElement);
+    rootElement = null;
+  });
+
   it('renders as expected', () => {
+    const initialState = {};
+    const store = mockStore(initialState);
     const props = {
       brand: 'test',
       navModel: {
@@ -36,12 +51,16 @@ describe('NavigationBar component', () => {
       logUserIfNeeded: jest.fn(),
     };
 
-    const component = shallow(
-      <MemoryRouter>
-        <NavigationBar {...props} />
-      </MemoryRouter>,
+    const { container } = render(
+      <Provider store={store}>
+        <ThemeProvider theme={{}}>
+          <MemoryRouter>
+            <NavigationBar {...props} />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
+      rootElement,
     );
-
-    expect(component).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
