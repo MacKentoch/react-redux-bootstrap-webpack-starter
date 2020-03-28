@@ -6,7 +6,7 @@ import { createHashHistory } from 'history';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import configureStore from 'redux-mock-store';
-import PrivateRoute from '../PrivateRoute';
+import PrivateRoute from '../index';
 
 // #region constants
 const history = createHashHistory();
@@ -55,18 +55,18 @@ describe('PrivateRoute component', () => {
 
     const wrapper = mount(
       <Provider store={store}>
-      <ThemeProvider theme={{}}>
-        <Router history={history}>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <PrivateRoute {...props} path="/protected">
-              <PrivatePage />
-            </PrivateRoute>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-          </Switch>
-        </Router>
+        <ThemeProvider theme={{}}>
+          <Router history={history}>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <PrivateRoute {...props} path="/protected">
+                <PrivatePage />
+              </PrivateRoute>
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
+            </Switch>
+          </Router>
         </ThemeProvider>
       </Provider>,
     );
