@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FadeInEntrance component renders as expected 1`] = `
+<div
+  class="sc-bdVaJa jxVqOJ"
+>
+  <p>
+    a child
+  </p>
+</div>
+`;

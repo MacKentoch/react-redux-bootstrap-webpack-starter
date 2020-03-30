@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackToTopButton component renders as expected 1`] = `
+<button
+  class="btn"
+  style="position: fixed; left: -10px; bottom: 40px; width: 100px; z-index: 10; opacity: 0.5; background-color: rgb(74, 74, 74);"
+>
+  <p>
+    a child
+  </p>
+</button>
+`;

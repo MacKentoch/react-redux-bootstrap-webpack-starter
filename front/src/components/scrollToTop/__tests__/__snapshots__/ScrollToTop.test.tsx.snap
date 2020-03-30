@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollToTop component renders as expected 1`] = `
+<p>
+  a child
+</p>
+`;
