@@ -1,5 +1,7 @@
+
 <!doctype html>
 <html lang="en">
+
 <head>
     <title>Code coverage report for layout/mainLayout/MainLayout.tsx</title>
     <meta charset="utf-8" />
@@ -12,40 +14,48 @@
         }
     </style>
 </head>
+    
 <body>
 <div class='wrapper'>
-  <div class='pad1'>
-    <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">layout/mainLayout</a> MainLayout.tsx
-    </h1>
-    <div class='clearfix'>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">41.18% </span>
-        <span class="quiet">Statements</span>
-        <span class='fraction'>7/17</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
-        <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
-        <span class="quiet">Functions</span>
-        <span class='fraction'>0/4</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">50% </span>
-        <span class="quiet">Lines</span>
-        <span class='fraction'>7/14</span>
-      </div>
+    <div class='pad1'>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">layout/mainLayout</a> MainLayout.tsx</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">88.24% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>15/17</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">0% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/2</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">25% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>1/4</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">85.71% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>12/14</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
     </div>
-    <p class="quiet">
-      Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
-    </p>
-  </div>
-  <div class='status-line low'></div>
-<pre><table class="coverage">
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
 <a name='L3'></a><a href='#L3'>3</a>
@@ -120,26 +130,26 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,7 +157,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,14 +184,14 @@ import registerServiceWorker from '../../services/sw/registerServiceWorker';
 &nbsp;
 // #region types
 type Props = {
-  children: any,
+  children: any;
 } &amp; RouteComponentProps;
 // #endregion
 &nbsp;
 // #region MainLayout HOC
-function <span class="fstat-no" title="function not covered" >MainLayout(</span>{ <span class="cstat-no" title="statement not covered" >history,</span> <span class="cstat-no" title="statement not covered" >location,</span> <span class="cstat-no" title="statement not covered" >match,</span> <span class="cstat-no" title="statement not covered" >children </span>}: Props) {
+function MainLayout({ history, location, match, children }: Props) {
   // #region on mount effect
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
+  useEffect(<span class="fstat-no" title="function not covered" >() =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    if (typeof window !== undefined) {</span>
       // register service worker (no worry about multiple attempts to register, browser will ignore when already registered)
 <span class="cstat-no" title="statement not covered" >      registerServiceWorker();</span>
@@ -191,14 +201,14 @@ function <span class="fstat-no" title="function not covered" >MainLayout(</span>
 &nbsp;
   // #region callbacks
   /* eslint-disable no-unused-vars*/
-  const handleLeftNavItemClick = <span class="cstat-no" title="statement not covered" >useCallback(</span>
+  const handleLeftNavItemClick = useCallback(
 <span class="fstat-no" title="function not covered" >    (e</span>vent: React.MouseEvent&lt;HTMLButtonElement&gt;, viewName?: string) =&gt; {
       // something to do here?
     },
     [],
   );
 &nbsp;
-  const handleRightNavItemClick = <span class="cstat-no" title="statement not covered" >useCallback(</span>
+  const handleRightNavItemClick = useCallback(
 <span class="fstat-no" title="function not covered" >    (e</span>vent: React.MouseEvent&lt;HTMLButtonElement&gt;, viewName?: string) =&gt; {
       // something to do here?
     },
@@ -206,7 +216,7 @@ function <span class="fstat-no" title="function not covered" >MainLayout(</span>
   );
   // #endregion
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;Fragment&gt;
       &lt;div id="appContainer"&gt;
         &lt;NavigationBar
@@ -223,24 +233,24 @@ function <span class="fstat-no" title="function not covered" >MainLayout(</span>
 }
 &nbsp;
 export default withRouter(MainLayout);
-&nbsp;</pre></td></tr>
-</table></pre>
-<div class='push'></div><!-- for sticky footer -->
-</div><!-- /wrapper -->
-<div class='footer quiet pad2 space-top1 center small'>
-  Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Sun Oct 20 2019 06:10:40 GMT+0200 (GMT+02:00)
-</div>
-</div>
-<script src="../../prettify.js"></script>
-<script>
-window.onload = function () {
-        if (typeof prettyPrint === 'function') {
-            prettyPrint();
-        }
-};
-</script>
-<script src="../../sorter.js"></script>
-<script src="../../block-navigation.js"></script>
-</body>
+&nbsp;</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
+                at Mon Mar 30 2020 08:33:24 GMT+0200 (GMT+02:00)
+            </div>
+        </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
 </html>
+    

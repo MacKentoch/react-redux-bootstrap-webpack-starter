@@ -3,8 +3,8 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import MainLayout from '../MainLayout';
 
-jest.mock('../../navigation');
-jest.mock('../../components/backToTop/BackToTop');
+jest.mock('../../../components/navigation');
+jest.mock('../../../components/backToTop/BackToTop');
 
 describe('MainLayout component', () => {
   let rootElement: any = null;
@@ -22,8 +22,8 @@ describe('MainLayout component', () => {
   });
 
   it('renders as expected', () => {
-    const NavigationBar = require('../../navigation');
-    const BackToTop = require('../../components/backToTop/BackToTop');
+    const NavigationBar = require('../../../components/navigation');
+    const BackToTop = require('../../../components/backToTop/BackToTop');
     // React component is default exported:
     NavigationBar.default.mockImplementationOnce(() => <span>navbar</span>);
     BackToTop.default.mockImplementationOnce(() => (
