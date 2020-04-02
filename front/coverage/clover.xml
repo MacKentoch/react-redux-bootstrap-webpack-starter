@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1585638018536" clover="3.2.0">
-  <project timestamp="1585638018536" name="All files">
-    <metrics statements="264" coveredstatements="59" conditionals="202" coveredconditionals="2" methods="42" coveredmethods="2" elements="508" coveredelements="63" complexity="0" loc="264" ncloc="264" packages="6" files="7" classes="7"/>
+<coverage generated="1585720196862" clover="3.2.0">
+  <project timestamp="1585720196862" name="All files">
+    <metrics statements="264" coveredstatements="73" conditionals="202" coveredconditionals="4" methods="42" coveredmethods="6" elements="508" coveredelements="83" complexity="0" loc="264" ncloc="264" packages="6" files="7" classes="7"/>
     <package name="components.navigation">
-      <metrics statements="34" coveredstatements="13" conditionals="10" coveredconditionals="0" methods="8" coveredmethods="1"/>
+      <metrics statements="34" coveredstatements="27" conditionals="10" coveredconditionals="2" methods="8" coveredmethods="5"/>
       <file name="NavigationBar.tsx" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/navigation/NavigationBar.tsx">
-        <metrics statements="24" coveredstatements="4" conditionals="10" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <metrics statements="24" coveredstatements="17" conditionals="10" coveredconditionals="2" methods="6" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="30" count="0" type="stmt"/>
-        <line num="33" count="0" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
         <line num="34" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="35" count="0" type="stmt"/>
-        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
         <line num="43" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="44" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
         <line num="50" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="51" count="0" type="stmt"/>
         <line num="52" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
         <line num="82" count="1" type="stmt"/>
         <line num="84" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/navigation/index.ts">
-        <metrics statements="10" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="36" count="1" type="stmt"/>
-        <line num="37" count="2" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
         <line num="43" count="1" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
         <line num="48" count="1" type="stmt"/>
       </file>
     </package>
