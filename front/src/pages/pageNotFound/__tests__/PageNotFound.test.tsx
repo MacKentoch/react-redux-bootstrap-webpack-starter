@@ -1,8 +1,13 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { ThemeProvider } from 'styled-components';
 import { render } from '@testing-library/react';
 import PageNotFound from '../index';
+
+const middlewares: Array<any> = [];
+const mockStore = configureStore(middlewares);
 
 describe('PageNotFound page', () => {
   let rootElement: any = null;
@@ -18,12 +23,17 @@ describe('PageNotFound page', () => {
   });
 
   it('renders as expected', () => {
+    const initialState = {};
+    const store = mockStore(initialState);
+
     const { container } = render(
-      <ThemeProvider theme={{}}>
-        <MemoryRouter>
-          <PageNotFound />
-        </MemoryRouter>
-      </ThemeProvider>,
+      <Provider store={store}>
+        <ThemeProvider theme={{}}>
+          <MemoryRouter>
+            <PageNotFound />
+          </MemoryRouter>
+        </ThemeProvider>
+      </Provider>,
       rootElement,
     );
     expect(container.firstChild).toMatchSnapshot();

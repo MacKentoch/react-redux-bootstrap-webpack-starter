@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PageNotFound page renders as expected 1`] = `
+<div
+  class="sc-bdVaJa jxVqOJ"
+>
+  <div
+    class="jumbotron"
+  >
+    <h1>
+      Sorry this page does not exists...
+    </h1>
+  </div>
+</div>
+`;
