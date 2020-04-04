@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
-import MainLayout from '../MainLayout';
+import MainLayout from '../index';
 
 jest.mock('../../../components/navigation');
 jest.mock('../../../components/backToTop/BackToTop');
