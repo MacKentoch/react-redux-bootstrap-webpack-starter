@@ -1,10 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { ThemeProvider } from 'styled-components';
 import { MemoryRouter } from 'react-router';
 import MainLayout from '../index';
 
 jest.mock('../../../components/navigation');
 jest.mock('../../../components/backToTop/BackToTop');
+jest.mock('../../../services/sw/registerServiceWorker');
 
 describe('MainLayout component', () => {
   let rootElement: any = null;
@@ -31,11 +33,13 @@ describe('MainLayout component', () => {
     ));
 
     const { container } = render(
-      <MemoryRouter>
-        <MainLayout>
-          <p>children here</p>
-        </MainLayout>
-      </MemoryRouter>,
+      <ThemeProvider theme={{}}>
+        <MemoryRouter>
+          <MainLayout>
+            <p>children here</p>
+          </MainLayout>
+        </MemoryRouter>
+      </ThemeProvider>,
       rootElement,
     );
     expect(container.firstChild).toMatchSnapshot();

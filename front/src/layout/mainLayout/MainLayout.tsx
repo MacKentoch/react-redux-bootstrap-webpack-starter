@@ -6,13 +6,10 @@ import BackToTop from '../../components/backToTop/BackToTop';
 import navigationModel from '../../config/navigation';
 import registerServiceWorker from '../../services/sw/registerServiceWorker';
 
-// #region types
 type Props = {
   children: any;
 } & RouteComponentProps;
-// #endregion
 
-// #region MainLayout HOC
 function MainLayout({ history, location, match, children }: Props) {
   // #region on mount effect
   useEffect(() => {
