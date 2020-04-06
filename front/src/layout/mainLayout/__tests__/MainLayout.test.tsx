@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { MemoryRouter } from 'react-router';
 import MainLayout from '../index';
 
+// NOTE: we mock Navigation component (we are not testing this one) so we won't need redux provider for MainLayout test anymore
 jest.mock('../../../components/navigation');
 jest.mock('../../../components/backToTop/BackToTop');
 jest.mock('../../../services/sw/registerServiceWorker');
@@ -23,11 +24,13 @@ describe('MainLayout component', () => {
     rootElement = null;
   });
 
-  it('renders as expected', () => {
+  it.only('renders as expected', () => {
     const NavigationBar = require('../../../components/navigation');
+    // Redux connect (shoudl return React component) is "default exported".
+    // IMPORTANT: here we mock the return value of connect to mock NavigationBar component:
+    NavigationBar.default.mockReturnValueOnce(() => <span>navbar</span>);
+
     const BackToTop = require('../../../components/backToTop/BackToTop');
-    // React component is default exported:
-    NavigationBar.default.mockImplementationOnce(() => <span>navbar</span>);
     BackToTop.default.mockImplementationOnce(() => (
       <span>backtotopbutton</span>
     ));

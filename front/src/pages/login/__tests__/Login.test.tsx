@@ -5,9 +5,10 @@ import { ThemeProvider } from 'styled-components';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import { render } from '@testing-library/react';
+import fetchMiddleware from '../../../redux/middleware/fetchMiddleware';
 import Login from '../index';
 
-const middlewares = [thunk];
+const middlewares = [thunk, fetchMiddleware];
 const mockStore = configureStore(middlewares);
 
 describe('Login page', () => {

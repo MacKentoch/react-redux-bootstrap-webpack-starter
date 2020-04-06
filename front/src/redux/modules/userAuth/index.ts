@@ -1,5 +1,5 @@
 import { ThunkAction } from 'redux-thunk';
-import Axios from 'axios';
+import axios from 'axios';
 import appConfig from '../../../config/appConfig';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
@@ -308,7 +308,7 @@ function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
     try {
       dispatch({ type: REQUEST_USER_INFOS_DATA });
 
-      const reponse = await Axios.request({
+      const reponse = await axios.request({
         url,
         method,
         withCredentials: true,

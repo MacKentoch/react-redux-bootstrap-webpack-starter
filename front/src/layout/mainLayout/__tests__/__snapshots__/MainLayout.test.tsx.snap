@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainLayout component renders as expected 1`] = `
+<div
+  id="appContainer"
+>
+  <div
+    class="container-fluid"
+  >
+    <p>
+      children here
+    </p>
+  </div>
+  <span>
+    backtotopbutton
+  </span>
+</div>
+`;
