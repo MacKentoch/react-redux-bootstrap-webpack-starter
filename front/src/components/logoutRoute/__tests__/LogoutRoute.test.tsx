@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router';
+import { MemoryRouter, Switch, Route } from 'react-router';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import configureStore from 'redux-mock-store';
@@ -29,7 +29,12 @@ describe('LogoutRoute component', () => {
       <Provider store={store}>
         <ThemeProvider theme={{}}>
           <MemoryRouter>
-            <LogoutRoute />
+            <Switch>
+              <Route path="login">
+                <span> login page</span>
+              </Route>
+              <LogoutRoute />
+            </Switch>
           </MemoryRouter>
         </ThemeProvider>
       </Provider>,
