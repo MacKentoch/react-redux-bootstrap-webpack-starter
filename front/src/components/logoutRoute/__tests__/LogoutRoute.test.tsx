@@ -30,7 +30,10 @@ describe('LogoutRoute component', () => {
         <ThemeProvider theme={{}}>
           <MemoryRouter>
             <Switch>
-              <Route path="login">
+              <Route path="*">
+                <span>anywhere</span>
+              </Route>
+              <Route path="/login">
                 <span> login page</span>
               </Route>
               <LogoutRoute />

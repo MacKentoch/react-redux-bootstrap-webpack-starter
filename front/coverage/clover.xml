@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1586150563648" clover="3.2.0">
-  <project timestamp="1586150563648" name="All files">
-    <metrics statements="533" coveredstatements="305" conditionals="289" coveredconditionals="45" methods="91" coveredmethods="48" elements="913" coveredelements="398" complexity="0" loc="533" ncloc="533" packages="23" files="35" classes="35"/>
+<coverage generated="1586239055288" clover="3.2.0">
+  <project timestamp="1586239055288" name="All files">
+    <metrics statements="533" coveredstatements="297" conditionals="289" coveredconditionals="44" methods="91" coveredmethods="43" elements="913" coveredelements="384" complexity="0" loc="533" ncloc="533" packages="23" files="35" classes="35"/>
     <package name="components.backToTop">
       <metrics statements="34" coveredstatements="19" conditionals="32" coveredconditionals="5" methods="8" coveredmethods="4"/>
       <file name="BackToTop.tsx" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/backToTop/BackToTop.tsx">
@@ -125,29 +125,29 @@
       </file>
     </package>
     <package name="components.logoutRoute">
-      <metrics statements="18" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <metrics statements="18" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="LogoutRoute.tsx" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/logoutRoute/LogoutRoute.tsx">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="8" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="15" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="18" count="2" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/logoutRoute/index.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="10" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
-        <line num="25" count="1" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
       </file>
     </package>
@@ -518,8 +518,8 @@
         <line num="169" count="0" type="stmt"/>
         <line num="176" count="0" type="stmt"/>
         <line num="186" count="5" type="stmt"/>
-        <line num="187" count="3" type="stmt"/>
-        <line num="188" count="3" type="stmt"/>
+        <line num="187" count="2" type="stmt"/>
+        <line num="188" count="2" type="stmt"/>
         <line num="199" count="5" type="stmt"/>
         <line num="200" count="1" type="stmt"/>
         <line num="201" count="1" type="stmt"/>
@@ -591,9 +591,9 @@
       </file>
     </package>
     <package name="services.auth">
-      <metrics statements="97" coveredstatements="12" conditionals="116" coveredconditionals="1" methods="10" coveredmethods="1"/>
+      <metrics statements="97" coveredstatements="9" conditionals="116" coveredconditionals="0" methods="10" coveredmethods="0"/>
       <file name="index.ts" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/services/auth/index.ts">
-        <metrics statements="97" coveredstatements="12" conditionals="116" coveredconditionals="1" methods="10" coveredmethods="1"/>
+        <metrics statements="97" coveredstatements="9" conditionals="116" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="1" count="4" type="stmt"/>
         <line num="2" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
@@ -684,9 +684,9 @@
         <line num="278" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="279" count="0" type="stmt"/>
         <line num="280" count="0" type="stmt"/>
-        <line num="293" count="1" type="cond" truecount="1" falsecount="1"/>
-        <line num="294" count="1" type="stmt"/>
-        <line num="295" count="1" type="stmt"/>
+        <line num="293" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="294" count="0" type="stmt"/>
+        <line num="295" count="0" type="stmt"/>
         <line num="298" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="299" count="0" type="stmt"/>
         <line num="300" count="0" type="stmt"/>
