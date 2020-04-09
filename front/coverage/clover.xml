@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1586239055288" clover="3.2.0">
-  <project timestamp="1586239055288" name="All files">
-    <metrics statements="533" coveredstatements="297" conditionals="289" coveredconditionals="44" methods="91" coveredmethods="43" elements="913" coveredelements="384" complexity="0" loc="533" ncloc="533" packages="23" files="35" classes="35"/>
+<coverage generated="1586323007026" clover="3.2.0">
+  <project timestamp="1586323007026" name="All files">
+    <metrics statements="533" coveredstatements="301" conditionals="289" coveredconditionals="44" methods="91" coveredmethods="45" elements="913" coveredelements="390" complexity="0" loc="533" ncloc="533" packages="23" files="35" classes="35"/>
     <package name="components.backToTop">
       <metrics statements="34" coveredstatements="19" conditionals="32" coveredconditionals="5" methods="8" coveredmethods="4"/>
       <file name="BackToTop.tsx" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/backToTop/BackToTop.tsx">
@@ -195,29 +195,29 @@
       </file>
     </package>
     <package name="components.privateRoute">
-      <metrics statements="18" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <metrics statements="18" coveredstatements="17" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="3"/>
       <file name="PrivateRoute.tsx" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/privateRoute/PrivateRoute.tsx">
-        <metrics statements="8" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
       </file>
       <file name="index.ts" path="/Users/mackentoch/GitProjects/react-redux-bootstrap-webpack-starter/front/src/components/privateRoute/index.ts">
-        <metrics statements="10" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
-        <line num="29" count="0" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
       </file>
     </package>

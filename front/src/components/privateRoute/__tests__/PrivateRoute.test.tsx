@@ -47,7 +47,18 @@ describe('PrivateRoute component', () => {
   });
 
   it('redirects to login when not authenticated', () => {
-    const initialState = {};
+    const initialState = {
+      userAuth: {
+        isFetching: false,
+        isLogging: false,
+        id: '',
+        login: '',
+        firstname: '',
+        lastname: '',
+        token: '',
+        isAuthenticated: false,
+      },
+    };
     const store = mockStore(initialState);
     const props = {};
     const PrivatePage = () => <p id="private">private</p>;
