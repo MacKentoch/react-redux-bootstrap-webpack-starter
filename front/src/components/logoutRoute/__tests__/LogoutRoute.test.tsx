@@ -22,10 +22,21 @@ describe('LogoutRoute component', () => {
     rootElement = null;
   });
 
-  it('renders as expected', () => {
-    const initialState = {};
+  it('renders as expected', async () => {
+    const initialState = {
+      userAuth: {
+        isFetching: false,
+        isLogging: false,
+        id: '',
+        login: '',
+        firstname: '',
+        lastname: '',
+        token: '',
+        isAuthenticated: false,
+      },
+    };
     const store = mockStore(initialState);
-    const { container } = render(
+    const { container } = await render(
       <Provider store={store}>
         <ThemeProvider theme={{}}>
           <MemoryRouter>

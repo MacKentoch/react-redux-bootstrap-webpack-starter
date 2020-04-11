@@ -1,6 +1,6 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import { Router, Switch } from 'react-router';
+import { render } from '@testing-library/react';
+import { Router, Switch, useHistory } from 'react-router';
 import { Route } from 'react-router';
 import { createHashHistory } from 'history';
 import { Provider } from 'react-redux';
@@ -12,21 +12,34 @@ import PrivateRoute from '../index';
 const history = createHashHistory();
 const middlewares: Array<any> = [];
 const mockStore = configureStore(middlewares);
-
-const Home = (p: any) => {
-  p.history.push('/protected');
-  return <p>home</p>;
-};
-// #enregion
+// #endregion
 
 describe('PrivateRoute component', () => {
-  it('renders as expected', () => {
+  let rootElement: any = null;
+
+  const Home = () => {
+    const history = useHistory();
+    history.push('/protected');
+    return <p>home</p>;
+  };
+
+  beforeEach(() => {
+    rootElement = document.createElement('div');
+    document.body.appendChild(rootElement);
+  });
+
+  afterEach(() => {
+    rootElement && document.body.removeChild(rootElement);
+    rootElement = null;
+  });
+
+  it('renders as expected', async () => {
     const initialState = {};
     const store = mockStore(initialState);
     const props = {};
-    const Child = () => <p>private</p>;
+    const Child = () => <p>private page</p>;
 
-    const component = shallow(
+    const { container } = await render(
       <Provider store={store}>
         <ThemeProvider theme={{}}>
           <Router history={history}>
@@ -42,11 +55,12 @@ describe('PrivateRoute component', () => {
           </Router>
         </ThemeProvider>
       </Provider>,
+      rootElement,
     );
-    expect(component).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
-  it('redirects to login when not authenticated', () => {
+  it('redirects to login when not authenticated', async () => {
     const initialState = {
       userAuth: {
         isFetching: false,
@@ -61,10 +75,10 @@ describe('PrivateRoute component', () => {
     };
     const store = mockStore(initialState);
     const props = {};
-    const PrivatePage = () => <p id="private">private</p>;
-    const LoginPage = () => <p id="login">login</p>;
+    const PrivatePage = () => <p data-testid="private">private page</p>;
+    const LoginPage = () => <p data-testid="login">login page</p>;
 
-    const wrapper = mount(
+    const { findByTestId } = await render(
       <Provider store={store}>
         <ThemeProvider theme={{}}>
           <Router history={history}>
@@ -80,8 +94,10 @@ describe('PrivateRoute component', () => {
           </Router>
         </ThemeProvider>
       </Provider>,
+      rootElement,
     );
 
-    expect(wrapper.find('#login')).toHaveLength(1);
+    const loginPageContainer = await findByTestId('private');
+    expect(loginPageContainer.textContent).toBe('private page');
   });
 });
