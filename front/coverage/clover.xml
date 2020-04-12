@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1586498490580" clover="3.2.0">
-  <project timestamp="1586498490580" name="All files">
+<coverage generated="1586591674088" clover="3.2.0">
+  <project timestamp="1586591674088" name="All files">
     <metrics statements="248" coveredstatements="63" conditionals="194" coveredconditionals="2" methods="38" coveredmethods="4" elements="480" coveredelements="69" complexity="0" loc="248" ncloc="248" packages="6" files="7" classes="7"/>
     <package name="components.privateRoute">
       <metrics statements="18" coveredstatements="17" conditionals="2" coveredconditionals="0" methods="4" coveredmethods="3"/>
@@ -8,9 +8,9 @@
         <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
-        <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="17" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
         <line num="31" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
@@ -23,9 +23,9 @@
         <line num="4" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
         <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
       </file>
     </package>

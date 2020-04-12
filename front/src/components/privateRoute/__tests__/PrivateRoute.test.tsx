@@ -17,10 +17,10 @@ const mockStore = configureStore(middlewares);
 describe('PrivateRoute component', () => {
   let rootElement: any = null;
 
-  const Home = () => {
+  const HomePage = () => {
     const history = useHistory();
     history.push('/protected');
-    return <p>home</p>;
+    return <p>Home page</p>;
   };
 
   beforeEach(() => {
@@ -34,23 +34,38 @@ describe('PrivateRoute component', () => {
   });
 
   it('renders as expected', async () => {
-    const initialState = {};
+    const initialState = {
+      userAuth: {
+        isFetching: false,
+        isLogging: false,
+        id: '',
+        login: '',
+        firstname: '',
+        lastname: '',
+        token: '',
+        isAuthenticated: false,
+      },
+    };
     const store = mockStore(initialState);
     const props = {};
-    const Child = () => <p>private page</p>;
 
-    const { container } = await render(
+    const LoginPage = () => <p>Login page</p>;
+    const ChildPage = () => <p>private page</p>;
+
+    const { container } = render(
       <Provider store={store}>
         <ThemeProvider theme={{}}>
           <Router history={history}>
             <Switch>
               <Route exact path="/">
-                <Home />
+                <HomePage />
               </Route>
               <PrivateRoute {...props} path="/protected">
-                <Child />
+                <ChildPage />
               </PrivateRoute>
-              <Route exact path="/login" component={() => <p>login</p>} />
+              <Route exact path="/login">
+                <LoginPage />
+              </Route>
             </Switch>
           </Router>
         </ThemeProvider>
@@ -78,12 +93,14 @@ describe('PrivateRoute component', () => {
     const PrivatePage = () => <p data-testid="private">private page</p>;
     const LoginPage = () => <p data-testid="login">login page</p>;
 
-    const { findByTestId } = await render(
+    const { findByTestId } = render(
       <Provider store={store}>
         <ThemeProvider theme={{}}>
           <Router history={history}>
             <Switch>
-              <Route exact path="/" component={Home} />
+              <Route exact path="/">
+                <HomePage />
+              </Route>
               <PrivateRoute {...props} path="/protected">
                 <PrivatePage />
               </PrivateRoute>

@@ -2,6 +2,6 @@
 
 exports[`PrivateRoute component renders as expected 1`] = `
 <p>
-  home
+  private page
 </p>
 `;
