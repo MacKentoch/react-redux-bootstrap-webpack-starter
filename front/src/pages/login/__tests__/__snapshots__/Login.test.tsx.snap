@@ -1,3 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Login page renders as expected 1`] = `ShallowWrapper {}`;
+exports[`Login page renders as expected 1`] = `
+<div
+  class="sc-bdVaJa jxVqOJ"
+>
+  <div
+    class="content"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="col-10 offset-1 col-md-4 offset-md-4"
+      >
+        <form
+          class="form-horizontal"
+          novalidate=""
+        >
+          <fieldset>
+            <legend>
+              Login
+            </legend>
+            <div
+              class="form-group"
+            >
+              <label
+                class="col-lg-2 control-label"
+                for="inputEmail"
+              >
+                Email
+              </label>
+              <div
+                class="col-lg-12"
+              >
+                <input
+                  autocomplete="username email"
+                  class="form-control"
+                  id="inputEmail"
+                  placeholder="Email"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="form-group"
+            >
+              <label
+                class="col-lg-2 control-label"
+                for="inputPassword"
+              >
+                Password
+              </label>
+              <div
+                class="col-lg-12"
+              >
+                <input
+                  autocomplete="current-password"
+                  class="form-control"
+                  id="inputPassword"
+                  placeholder="Password"
+                  type="password"
+                  value=""
+                />
+              </div>
+            </div>
+            <div
+              class="form-group"
+            >
+              <div
+                class="col-lg-12"
+              >
+                <button
+                  class="login-button btn-block btn btn-primary"
+                  type="button"
+                >
+                  <span>
+                    Login
+                  </span>
+                </button>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="col-10 offset-1 col-md-4 offset-md-4"
+      >
+        <div
+          class="pull-right"
+        >
+          <button
+            class="btn-block btn btn-secondary"
+            type="button"
+          >
+            back to home
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

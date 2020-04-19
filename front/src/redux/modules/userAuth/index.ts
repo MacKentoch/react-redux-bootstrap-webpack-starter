@@ -269,7 +269,7 @@ function logUser(login: string, password: string): RLogUserAction {
 export function logUserIfNeeded(
   email: string,
   password: string,
-): RLogUserAction {
+): RLogUserAction | Promise<Action | any> {
   return (dispatch, getState): Promise<any> => {
     if (shouldLogUser(getState())) {
       return dispatch(logUser(email, password));
