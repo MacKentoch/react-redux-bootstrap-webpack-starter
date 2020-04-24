@@ -38,7 +38,7 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
@@ -72,10 +72,6 @@ const config = {
       },
     },
     minimizer: [
-      new MiniCssExtractPlugin({
-        filename: '[name].[hash].css',
-        chunkFilename: '[id].[hash].css',
-      }),
       new TerserPlugin({
         cache: true,
         parallel: true,
