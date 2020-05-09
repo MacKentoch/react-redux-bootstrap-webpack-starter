@@ -11,6 +11,7 @@ exports[`NavigationBar component renders as expected 1`] = `
     test
   </a>
   <button
+    aria-label="Toggle navigation"
     class="navbar-toggler"
     type="button"
   >
