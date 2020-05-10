@@ -3,6 +3,7 @@
 - upgrade `react-router` to `v5`
 - get rid of `yarn` and move to `npm`
 - migration to `react-testing-library`
+- `reactstrap` upgrade
 
 # v7.0.1
 
