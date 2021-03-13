@@ -1,4 +1,11 @@
 import { Base64 } from 'js-base64';
+import { Method } from 'axios';
+
+export type GetMethod = {
+  method: Method;
+};
+
+export type PostMethod = GetMethod;
 
 // #region  window.location.origin polyfill
 export const getLocationOrigin = (): string => {
@@ -13,11 +20,11 @@ export const getLocationOrigin = (): string => {
 // #endregion
 
 // #region query options:
-export const getMethod = {
+export const getMethod: GetMethod = {
   method: 'get',
 };
 
-export const postMethod = {
+export const postMethod: PostMethod = {
   method: 'post',
 };
 
