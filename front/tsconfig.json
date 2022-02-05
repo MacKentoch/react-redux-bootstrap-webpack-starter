@@ -12,6 +12,7 @@
     "jsx": "react",
     "sourceMap": true,
     "removeComments": true,
+    "skipLibCheck": true,
     "strict": true,
     "noImplicitAny": false,
     "noImplicitThis": true,

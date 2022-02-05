@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory as createHistory } from 'history';
 import { persistReducer, persistStore } from 'redux-persist';
@@ -28,17 +27,10 @@ const enhancer = !isProd
       applyMiddleware(
         thunkMiddleware,
         fetchMiddleware,
-        routerMiddleware(history),
         loggerMiddleware, // logger at the end
       ),
     )
-  : composeWithDevTools(
-      applyMiddleware(
-        thunkMiddleware,
-        fetchMiddleware,
-        routerMiddleware(history),
-      ),
-    );
+  : composeWithDevTools(applyMiddleware(thunkMiddleware, fetchMiddleware));
 // #endregion
 
 // #region persisted reducer
@@ -49,10 +41,7 @@ const persistConfig = {
   // whitelist: ['userAuth'],
 };
 
-const persistedReducer = persistReducer(
-  persistConfig,
-  connectRouter(history)(reducer),
-);
+const persistedReducer = persistReducer(persistConfig, reducer);
 // #endregion
 
 export default function configureStore(initialState = {}) {

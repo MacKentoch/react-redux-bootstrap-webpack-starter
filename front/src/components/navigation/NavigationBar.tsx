@@ -30,7 +30,7 @@ function NavigationBar({
   const [isOpen, setIsOpen] = useState(false);
 
   // #region navigation bar toggle
-  const toggle = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const toggle = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     event && event.preventDefault();
     setIsOpen(!isOpen);
   };
@@ -38,7 +38,7 @@ function NavigationBar({
 
   // #region handlesNavItemClick event
   const handlesNavItemClick = (link: string = '/') => (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLAnchorElement>,
   ) => {
     event && event.preventDefault();
     history.push(link);
@@ -46,7 +46,7 @@ function NavigationBar({
   // #endregion
 
   // #region disconnect
-  const handlesDisconnect = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handlesDisconnect = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event && event.preventDefault();
     disconnectUser();
     history.push('/');

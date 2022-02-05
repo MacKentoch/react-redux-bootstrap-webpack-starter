@@ -1,7 +1,6 @@
 import React from 'react';
 import { Component } from 'react';
-import { ConnectedRouter } from 'connected-react-router';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { hot } from 'react-hot-loader/root';
@@ -37,10 +36,10 @@ class Root extends Component<Props, State> {
 
   render() {
     return (
-      <Provider store={store}>
-        <ThemeProvider theme={{}}>
-          <React.Fragment>
-            <ConnectedRouter history={history}>
+      <Router>
+        <Provider store={store}>
+          <ThemeProvider theme={{}}>
+            <React.Fragment>
               <ScrollTop>
                 <Switch>
                   <Route exact path="/login">
@@ -53,11 +52,12 @@ class Root extends Component<Props, State> {
                   <LogoutRoute path="/logout" />
                 </Switch>
               </ScrollTop>
-            </ConnectedRouter>
-            <GlobalStyle />
-          </React.Fragment>
-        </ThemeProvider>
-      </Provider>
+
+              <GlobalStyle />
+            </React.Fragment>
+          </ThemeProvider>
+        </Provider>
+      </Router>
     );
   }
 }

@@ -143,7 +143,10 @@ const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
       store.dispatch({ type: success, payload: data });
       return data;
     } catch (error) {
-      store.dispatch({ type: fail, error: error.response });
+      store.dispatch({
+        type: fail as string,
+        error: 'error in fetchMiddleware',
+      });
       throw error;
     }
   }
