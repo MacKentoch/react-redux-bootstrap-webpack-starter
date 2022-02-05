@@ -33,7 +33,7 @@ const config = {
     rules: [
       {
         test: /\.ts(x)?$/,
-        use: ['awesome-typescript-loader'],
+        use: ['ts-loader'],
         exclude: [nodeModulesDir],
       },
       {
