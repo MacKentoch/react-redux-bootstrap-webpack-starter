@@ -82,7 +82,6 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
-    new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('dev'),
