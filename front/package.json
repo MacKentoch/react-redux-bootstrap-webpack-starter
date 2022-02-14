@@ -4,7 +4,7 @@
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
   "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
-  "main": "src/index.ts",
+  "main": "src/index.tsx",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter.git"
