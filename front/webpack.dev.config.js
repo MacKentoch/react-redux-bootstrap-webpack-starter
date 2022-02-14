@@ -5,7 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 
-// #region constants`
+// #region constants`
 const nodeModulesDir = path.join(__dirname, 'node_modules');
 const indexFile = path.join(__dirname, 'src/index.tsx');
 // #endregion
