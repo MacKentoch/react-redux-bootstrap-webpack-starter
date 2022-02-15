@@ -3,7 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
-const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 
 // #region constants`
 const nodeModulesDir = path.join(__dirname, 'node_modules');
@@ -20,8 +19,9 @@ const config = {
   output: {
     path: path.join(__dirname, '/../docs/assets'),
     publicPath: '/assets/',
-    filename: '[name].[hash].js',
-    chunkFilename: '[name].[hash].js',
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    assetModuleFilename: 'assets/[contenthash][ext][query]',
   },
   resolve: {
     modules: ['node_modules'],
@@ -40,15 +40,7 @@ const config = {
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 100000,
-              name: '[name].[ext]',
-            },
-          },
-        ],
+        type: 'asset',
       },
     ],
   },
@@ -76,16 +68,11 @@ const config = {
       filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('dev'),
-      },
-    }),
-    new ModernizrWebpackPlugin({
-      htmlWebpackPlugin: true,
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[chunkhash].css',
     }),
     new workboxPlugin.GenerateSW({
       swDest: 'sw.js',

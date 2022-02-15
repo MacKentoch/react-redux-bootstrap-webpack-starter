@@ -1,4 +1,4 @@
-import axios, { Method } from 'axios';
+import axios from 'axios';
 import {
   getMethod,
   jsonHeader,
@@ -7,7 +7,7 @@ import {
 } from './fetchTools';
 
 export const getSomething = async (
-  endpoint: string = 'api/getSomethingByDefault',
+  endpoint = 'api/getSomethingByDefault',
 ): Promise<any> => {
   const method = getMethod.method;
   const headers = jsonHeader;

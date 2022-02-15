@@ -19,6 +19,7 @@ describe('BackToTopButton component', () => {
     const position: BackButtonPosition = 'bottom-left';
     const props = {
       position,
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       onClick: () => {},
       motionStyle: {},
     };

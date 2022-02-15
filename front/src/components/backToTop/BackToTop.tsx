@@ -5,13 +5,13 @@ import { Motion, spring, presets } from 'react-motion';
 
 // #region types
 type Props = {
-  minScrollY: number,
-  scrollTo?: string,
-  onScrollDone?: () => any,
+  minScrollY: number;
+  scrollTo?: string;
+  onScrollDone?: () => any;
 };
 // #endregion
 
-function BackToTop({ minScrollY = 120, onScrollDone = () => {} }: Props) {
+function BackToTop({ minScrollY = 120, onScrollDone }: Props) {
   const [showBackButton, setShowBackButton] = useState(false);
   const [windowScrollY, setWindowScrollY] = useState(0);
   const [tickingScollObserve, setTickingScollObserve] = useState(false);
@@ -79,7 +79,6 @@ function BackToTop({ minScrollY = 120, onScrollDone = () => {} }: Props) {
   // #endregion
 
   return (
-    // @ts-ignore
     <Motion style={{ x: spring(showBackButton ? 0 : 120, presets.stiff) }}>
       {({ x }) => (
         <BackToTopButton

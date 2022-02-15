@@ -42,7 +42,7 @@ const initialState: State = {
 // #endregion
 
 // #region reducer
-export default function(
+export default function (
   state: State = initialState,
   action: Partial<Action>,
 ): State {
@@ -90,9 +90,14 @@ export default function(
 // #region ACTIONS CREATORS
 
 // #region fetch example
-type FakeFetchAction = ThunkAction<Promise<any>, State, void, {} & Action>;
+type FakeFetchAction = ThunkAction<
+  Promise<any>,
+  State,
+  void,
+  Action & Partial<Action>
+>;
 function fakeFetch(): FakeFetchAction {
-  return dispatch => {
+  return (dispatch) => {
     const shouldFetchMock = appConfig.DEV_MODE;
     const fetchType = shouldFetchMock ? 'FETCH_MOCK' : 'FETCH';
     const mockResult = fakeData;

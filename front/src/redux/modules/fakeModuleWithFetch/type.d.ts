@@ -1,10 +1,10 @@
 export type State = {
-  isFetching?: boolean,
-  actionTime?: string,
-  data?: any | Array<any>,
-  error: any,
+  isFetching?: boolean;
+  actionTime?: string;
+  data?: any | Array<any>;
+  error: any;
 };
 
 export type FetchActions = {
-  fakeFetch: () => any,
+  fakeFetch: () => any;
 };

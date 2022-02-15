@@ -1,14 +1,14 @@
 export type Link = {
-  label: string,
-  link: string,
-  view?: string,
-  isRouteBtn?: boolean,
+  label: string;
+  link: string;
+  view?: string;
+  isRouteBtn?: boolean;
 };
 
 export type Navigation = {
-  brand: string,
-  leftLinks: Array<Link>,
-  rightLinks: Array<Link>,
+  brand: string;
+  leftLinks: Array<Link>;
+  rightLinks: Array<Link>;
 };
 // #endregion
 

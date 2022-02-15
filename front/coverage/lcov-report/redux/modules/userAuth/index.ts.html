@@ -7,7 +7,8 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../../sort-arrow-sprite.png);
@@ -22,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">32.29% </span>
+                <span class="strong">30.09% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>31/96</span>
+                <span class='fraction'>31/103</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.29% </span>
+                <span class="strong">16% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/56</span>
+                <span class='fraction'>8/50</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">23.53% </span>
+                <span class="strong">23.52% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>4/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">32.6% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>30/90</span>
+                <span class='fraction'>30/92</span>
             </div>
         
             
@@ -53,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line low'></div>
     <pre><table class="coverage">
@@ -480,7 +487,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -515,29 +522,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -558,6 +556,15 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -819,14 +826,14 @@ const initialState: State = {
 // #endregion
 &nbsp;
 // #region reducer
-<span class="fstat-no" title="function not covered" >export default function(<span class="cstat-no" title="statement not covered" >s</span>tate: State = initialState, a</span>ction: Action): State {
+<span class="fstat-no" title="function not covered" >export default function(<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="if path not taken" >I</span>s</span>tate: State = initialState, a</span>ction: Action): State {
 <span class="cstat-no" title="statement not covered" >  switch (action.type) {</span>
     case CHECK_IF_USER_IS_AUTHENTICATED: {
       const {
-<span class="cstat-no" title="statement not covered" >        isAuthenticated = false,</span>
-<span class="cstat-no" title="statement not covered" >        token = '',</span>
-<span class="cstat-no" title="statement not covered" >        user = { id: '', login: '', firstname: '', lastname: '' },</span>
-      } = action;
+        isAuthenticated<span class="cstat-no" title="statement not covered" > = false,</span>
+        token<span class="cstat-no" title="statement not covered" > = '',</span>
+        user<span class="cstat-no" title="statement not covered" > = { id: '', login: '', firstname: '', lastname: '' },</span>
+      } = <span class="cstat-no" title="statement not covered" >action;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return {</span>
         ...state,
@@ -861,14 +868,14 @@ const initialState: State = {
 &nbsp;
     case RECEIVED_LOG_USER: {
       const {
-<span class="cstat-no" title="statement not covered" >        data: {</span>
-<span class="cstat-no" title="statement not covered" >          token = '',</span>
-<span class="cstat-no" title="statement not covered" >          id = '',</span>
-<span class="cstat-no" title="statement not covered" >          login = '',</span>
-<span class="cstat-no" title="statement not covered" >          firstname = '',</span>
-<span class="cstat-no" title="statement not covered" >          lastname = '',</span>
+        data: {
+<span class="cstat-no" title="statement not covered" >          token<span class="cstat-no" title="statement not covered" > </span>= '',</span>
+<span class="cstat-no" title="statement not covered" >          id<span class="cstat-no" title="statement not covered" > </span>= '',</span>
+<span class="cstat-no" title="statement not covered" >          login<span class="cstat-no" title="statement not covered" > </span>= '',</span>
+<span class="cstat-no" title="statement not covered" >          firstname<span class="cstat-no" title="statement not covered" > </span>= '',</span>
+<span class="cstat-no" title="statement not covered" >          lastname<span class="cstat-no" title="statement not covered" > </span>= '',</span>
         },
-      } = action.payload;
+      } = <span class="cstat-no" title="statement not covered" >action.payload;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return {</span>
         ...state,
@@ -901,9 +908,9 @@ const initialState: State = {
     case RECEIVED_USER_INFOS_DATA: {
       const {
         data: {
-<span class="cstat-no" title="statement not covered" >          userInfos = { id: '', login: '', firstname: '', lastname: '' },</span>
+          userInfos<span class="cstat-no" title="statement not covered" > = { id: '', login: '', firstname: '', lastname: '' },</span>
         },
-      } = action.payload;
+      } = <span class="cstat-no" title="statement not covered" >action.payload;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return {</span>
         ...state,
@@ -1021,21 +1028,21 @@ export function <span class="fstat-no" title="function not covered" >logUserIfNe
   password: string,
 ): RLogUserAction | Promise&lt;Action | any&gt; {
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch, getState): Promise&lt;any&gt; =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (shouldLogUser(getState())) {</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (shouldLogUser(getState())) {</span>
 <span class="cstat-no" title="statement not covered" >      return dispatch(logUser(email, password));</span>
     }
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve();</span>
   };
 }
 function <span class="fstat-no" title="function not covered" >shouldLogUser(</span>state: { userAuth: State } &amp; any): boolean {
-  const { <span class="cstat-no" title="statement not covered" >isLogging </span>} = state.userAuth;
+  const { isLogging } = <span class="cstat-no" title="statement not covered" >state.userAuth;</span>
 <span class="cstat-no" title="statement not covered" >  return !isLogging;</span>
 }
 // #endregion
 &nbsp;
 // #region fetch user data
 type RFetchUserDataAction = ThunkAction&lt;Promise&lt;any&gt;, State, void, Action&gt;;
-<span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >f</span>etchUserInfosData(<span class="cstat-no" title="statement not covered" ></span>id: string = ''): RFetchUserDataAction {</span>
+<span class="cstat-no" title="statement not covered" >function <span class="fstat-no" title="function not covered" >f</span>etchUserInfosData(<span class="cstat-no" title="statement not covered" ><span class="missing-if-branch" title="if path not taken" >I</span></span>id: string = ''): RFetchUserDataAction {</span>
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >async d</span>ispatch<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" > =&gt; {</span></span></span>
     const <span class="cstat-no" title="statement not covered" >token = auth.getToken();</span>
     const {
@@ -1051,7 +1058,7 @@ type RFetchUserDataAction = ThunkAction&lt;Promise&lt;any&gt;, State, void, Acti
     const <span class="cstat-no" title="statement not covered" >headers = { authorization: `Bearer ${token || ''}` };</span>
     const <span class="cstat-no" title="statement not covered" >options = { credentials: 'same-origin' }; </span>// put options here (see axios options)
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (DEV_MODE) {</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (DEV_MODE) {</span>
 <span class="cstat-no" title="statement not covered" >      return Promise.resolve({ data: mockResult });</span>
     }
 &nbsp;
@@ -1079,10 +1086,10 @@ type RFetchUserDataAction = ThunkAction&lt;Promise&lt;any&gt;, State, void, Acti
 }
 &nbsp;
 export function <span class="fstat-no" title="function not covered" >fetchUserInfoDataIfNeeded(</span>
-<span class="cstat-no" title="statement not covered" >  id: string = '',</span>
+<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>id: string = '',</span>
 ): RFetchUserDataAction {
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(d</span>ispatch, getState) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (shouldFetchUserInfoData(getState())) {</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (shouldFetchUserInfoData(getState())) {</span>
 <span class="cstat-no" title="statement not covered" >      return dispatch(fetchUserInfosData(id));</span>
     }
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve();</span>
@@ -1090,7 +1097,7 @@ export function <span class="fstat-no" title="function not covered" >fetchUserIn
 }
 &nbsp;
 function <span class="fstat-no" title="function not covered" >shouldFetchUserInfoData(</span>state: { userAuth: State } &amp; any): boolean {
-  const { <span class="cstat-no" title="statement not covered" >isFetching </span>} = state.userAuth;
+  const { isFetching } = <span class="cstat-no" title="statement not covered" >state.userAuth;</span>
 <span class="cstat-no" title="statement not covered" >  return !isFetching;</span>
 }
 // #endregion
@@ -1100,10 +1107,9 @@ function <span class="fstat-no" title="function not covered" >shouldFetchUserInf
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri May 08 2020 07:46:55 GMT+0200 (GMT+02:00)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Mon Feb 14 2022 15:31:58 GMT+0100 (heure normale d’Europe centrale)
             </div>
-        </div>
         <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {

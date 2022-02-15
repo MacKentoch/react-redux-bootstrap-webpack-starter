@@ -10,7 +10,7 @@ export type Props = RouteComponentProps &
   OwnProps;
 // #endregion
 
-function About(props: Props) {
+function About() {
   return (
     <FadeInEntrance>
       <h1>About</h1>

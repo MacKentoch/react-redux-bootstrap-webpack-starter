@@ -6,7 +6,7 @@ import { RootState } from '../../redux/modules/types';
 import { UserAuthActions } from '../../redux/modules/userAuth/type';
 
 // #region redux map state and dispatch to props
-const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
+const mapStateToProps = (state: RootState /* , ownProps: OwnProps */) => {
   return {
     isAuthenticated: state.userAuth.isAuthenticated,
     isFetching: state.userAuth.isFetching,
@@ -25,7 +25,7 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 // #region types
 export type MappedStateToProps = ConnectedProps<typeof connector>;
-export type OwnProps = {};
+export type OwnProps = any;
 export type MappedDispatchToProps = UserAuthActions;
 // #endregion
 

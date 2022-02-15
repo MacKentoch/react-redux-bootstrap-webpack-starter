@@ -1,9 +1,10 @@
 export const getLocationOrigin = (): string => {
   if (!window.location.origin) {
-    // @ts-ignore
-    window.location.origin = `${window.location.protocol}//${
+    const windowLocationOrigin = `${window.location.protocol}//${
       window.location.hostname
     }${window.location.port ? ':' + window.location.port : ''}`;
+
+    return windowLocationOrigin;
   }
 
   return window.location.origin;

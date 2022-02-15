@@ -6,10 +6,10 @@ import WithRightMargin from './styled/WithRightMargin';
 // #region types
 export type BackButtonPosition = 'bottom-left' | 'bottom-right';
 type Props = {
-  position: BackButtonPosition,
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => any,
-  children?: any,
-  motionStyle: any,
+  position: BackButtonPosition;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => any;
+  children?: any;
+  motionStyle: any;
 };
 // #endregion
 

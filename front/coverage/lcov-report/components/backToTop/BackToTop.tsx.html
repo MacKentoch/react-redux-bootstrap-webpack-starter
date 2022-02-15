@@ -7,7 +7,8 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../sort-arrow-sprite.png);
@@ -22,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.29% </span>
+                <span class="strong">65.9% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>27/42</span>
+                <span class='fraction'>29/44</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">15.63% </span>
+                <span class="strong">19.23% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/32</span>
+                <span class='fraction'>5/26</span>
             </div>
         
             
@@ -53,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line medium'></div>
     <pre><table class="coverage">
@@ -169,7 +176,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -269,14 +276,14 @@ type Props = {
 };
 // #endregion
 &nbsp;
-function BackToTop({ <span class="branch-0 cbranch-no" title="branch not covered" >minScrollY = 120,</span> <span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >onScrollDone = () =&gt; {} </span></span>}: Props) {
+function BackToTop({ minScrollY = <span class="branch-0 cbranch-no" title="branch not covered" >120,</span> onScrollDone = <span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >() =&gt; {}</span> </span>}: Props) {
   const [showBackButton, setShowBackButton] = useState(false);
   const [windowScrollY, setWindowScrollY] = useState(0);
   const [tickingScollObserve, setTickingScollObserve] = useState(false);
 &nbsp;
   // #region on windows scroll callback
   const handleWindowScroll = <span class="fstat-no" title="function not covered" >() =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (!window) {</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!window) {</span>
 <span class="cstat-no" title="statement not covered" >      return;</span>
     }
 &nbsp;
@@ -292,9 +299,9 @@ function BackToTop({ <span class="branch-0 cbranch-no" title="branch not covered
     /* eslint-enable no-undefined */
 &nbsp;
     // scroll event fires to often, using window.requestAnimationFrame to limit computations
-<span class="cstat-no" title="statement not covered" >    if (!tickingScollObserve) {</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (!tickingScollObserve) {</span>
 <span class="cstat-no" title="statement not covered" >      window.requestAnimationFrame(<span class="fstat-no" title="function not covered" >() =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >        if (windowScrollY !== currentWindowScrollY) {</span>
+<span class="cstat-no" title="statement not covered" >        <span class="missing-if-branch" title="if path not taken" >I</span>if (windowScrollY !== currentWindowScrollY) {</span>
           const shouldShowBackButton =
 <span class="cstat-no" title="statement not covered" >            currentWindowScrollY &gt;= minScrollY ? true : false;</span>
 &nbsp;
@@ -314,7 +321,7 @@ function BackToTop({ <span class="branch-0 cbranch-no" title="branch not covered
     event: React.MouseEvent&lt;HTMLButtonElement&gt;,
   ) =&gt; {
 <span class="cstat-no" title="statement not covered" >    event &amp;&amp; event.preventDefault();</span>
-<span class="cstat-no" title="statement not covered" >    if (window &amp;&amp; windowScrollY &amp;&amp; windowScrollY &gt; minScrollY) {</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (window &amp;&amp; windowScrollY &amp;&amp; windowScrollY &gt; minScrollY) {</span>
       // using here smoothscroll-polyfill
 <span class="cstat-no" title="statement not covered" >      window.scroll({ top: 0, left: 0, behavior: 'smooth' });</span>
 <span class="cstat-no" title="statement not covered" >      typeof onScrollDone === 'function' &amp;&amp; onScrollDone();</span>
@@ -324,12 +331,12 @@ function BackToTop({ <span class="branch-0 cbranch-no" title="branch not covered
 &nbsp;
   // #region mount and unmount subscrubstions
   useEffect(() =&gt; {
-    <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined') {
       window.addEventListener('scroll', handleWindowScroll);
     }
 &nbsp;
     return function unsubscribeEvents() {
-      <span class="missing-if-branch" title="else path not taken" >E</span>if (typeof window !== 'undefined') {
+      if (typeof window !== 'undefined') {
         window.removeEventListener('scroll', handleWindowScroll);
       }
     };
@@ -362,10 +369,9 @@ export default BackToTop;
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri May 08 2020 07:46:55 GMT+0200 (GMT+02:00)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Mon Feb 14 2022 15:31:58 GMT+0100 (heure normale d’Europe centrale)
             </div>
-        </div>
         <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {

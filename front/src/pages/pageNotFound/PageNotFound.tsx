@@ -11,7 +11,7 @@ export type Props = RouteComponentProps &
   OwnProps;
 // #endregion
 
-function PageNotFound(props: Props) {
+function PageNotFound() {
   return (
     <FadeInEntrance>
       <Jumbotron>

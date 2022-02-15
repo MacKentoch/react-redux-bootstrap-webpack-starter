@@ -39,9 +39,12 @@ export const FETCH = 'FETCH';
 //  }
 // }
 
+// eslint-disable-next-line no-shadow
 export enum FETCH_TYPE_ENUM {
-  FETCH = 'FETCH',
-  FETCH_MOCK = 'FETCH_MOCK',
+  // eslint-disable-next-line no-unused-vars
+  FETCH_TYPE = 'FETCH',
+  // eslint-disable-next-line no-unused-vars
+  FETCH_MOCK_TYPE = 'FETCH_MOCK',
 }
 
 export type FetchMiddleWareAction = {
@@ -60,99 +63,100 @@ export type FetchMiddleWareAction = {
   mockResult?: any;
 };
 
-const fetchMiddleware: Middleware<Dispatch> = (store: MiddlewareAPI) => (
-  next: Function,
-) => async (action: AnyAction | FetchMiddleWareAction) => {
-  // #region validation
-  if (!action.fetch) {
-    return next(action);
-  }
+const fetchMiddleware: Middleware<Dispatch> =
+  (store: MiddlewareAPI) =>
+  (next: (action: any) => any) =>
+  async (action: AnyAction | FetchMiddleWareAction) => {
+    // #region validation
+    if (!action.fetch) {
+      return next(action);
+    }
 
-  if (!action.fetch.type) {
-    return next(action);
-  }
+    if (!action.fetch.type) {
+      return next(action);
+    }
 
-  // if (
-  //   action.fetch.type !== FETCH_TYPE_ENUM.FETCH ||
-  //   action.fetch.type !== FETCH_TYPE_ENUM.FETCH_MOCK
-  // ) {
-  //   return next(action);
-  // }
+    // if (
+    //   action.fetch.type !== FETCH_TYPE_ENUM.FETCH ||
+    //   action.fetch.type !== FETCH_TYPE_ENUM.FETCH_MOCK
+    // ) {
+    //   return next(action);
+    // }
 
-  if (!action.fetch.actionTypes) {
-    return next(action);
-  }
-  // #endregion
+    if (!action.fetch.actionTypes) {
+      return next(action);
+    }
+    // #endregion
 
-  // #region fetch mock
-  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK) {
-    if (!action.fetch.mockResult) {
-      throw new Error(
-        'Fetch middleware require a mockResult payload when type is "FETCH_MOCK"',
+    // #region fetch mock
+    if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_MOCK_TYPE) {
+      if (!action.fetch.mockResult) {
+        throw new Error(
+          'Fetch middleware require a mockResult payload when type is "FETCH_MOCK"',
+        );
+      }
+
+      const {
+        actionTypes: { request, success },
+        mockResult,
+      } = action.fetch;
+
+      // request
+      store.dispatch({ type: request });
+
+      // received successful for mock
+      return Promise.resolve(
+        store.dispatch({
+          type: success,
+          payload: {
+            status: 200,
+            data: mockResult,
+          },
+        }),
       );
     }
+    // #endregion
 
-    const {
-      actionTypes: { request, success },
-      mockResult,
-    } = action.fetch;
-
-    // request
-    store.dispatch({ type: request });
-
-    // received successful for mock
-    return Promise.resolve(
-      store.dispatch({
-        type: success,
-        payload: {
-          status: 200,
-          data: mockResult,
-        },
-      }),
-    );
-  }
-  // #endregion
-
-  // #region real fetch
-  if (action.fetch.type === FETCH_TYPE_ENUM.FETCH) {
-    const {
-      actionTypes: { request, success, fail },
-      url,
-      method,
-      headers,
-      options,
-    } = action.fetch;
-
-    // request
-    store.dispatch({ type: request });
-
-    // fetch server (success or fail)
-    try {
-      const data = await axios.request({
-        method,
+    // #region real fetch
+    if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_TYPE) {
+      const {
+        actionTypes: { request, success, fail },
         url,
-        withCredentials: true,
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-          'Acces-Control-Allow-Origin': '*',
-          ...headers,
-        },
-        ...options,
-      });
-      store.dispatch({ type: success, payload: data });
-      return data;
-    } catch (error) {
-      store.dispatch({
-        type: fail as string,
-        error: 'error in fetchMiddleware',
-      });
-      throw error;
-    }
-  }
-  // #endregion
+        method,
+        headers,
+        options,
+      } = action.fetch;
 
-  return next(action);
-};
+      // request
+      store.dispatch({ type: request });
+
+      // fetch server (success or fail)
+      try {
+        const data = await axios.request({
+          method,
+          url,
+          withCredentials: true,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            'Acces-Control-Allow-Origin': '*',
+            ...headers,
+          },
+          ...options,
+        });
+        store.dispatch({ type: success, payload: data });
+        return data;
+      } catch (error) {
+        store.dispatch({
+          type: fail as string,
+          error: 'error in fetchMiddleware',
+        });
+        throw error;
+      }
+    }
+    // #endregion
+
+    return next(action);
+  };
 
 export default fetchMiddleware;

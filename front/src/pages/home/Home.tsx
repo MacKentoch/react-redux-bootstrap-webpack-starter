@@ -14,7 +14,7 @@ export type Props = RouteComponentProps &
   OwnProps;
 // #endregion
 
-function Home(props: Props) {
+function Home() {
   return (
     <FadeInEntrance>
       <Jumbotron>

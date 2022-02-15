@@ -10,7 +10,7 @@ type Props = {
   children: any;
 } & RouteComponentProps;
 
-function MainLayout({ history, location, match, children }: Props) {
+function MainLayout({ children }: Props) {
   // #region on mount effect
   useEffect(() => {
     if (typeof window !== undefined) {

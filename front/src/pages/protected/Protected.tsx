@@ -10,7 +10,7 @@ export type Props = RouteComponentProps &
   OwnProps;
 // #endregion
 
-function Protected(props: Props) {
+function Protected() {
   return (
     <FadeInEntrance>
       <h1>Protected view</h1>

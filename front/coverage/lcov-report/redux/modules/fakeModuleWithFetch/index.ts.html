@@ -7,7 +7,8 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../../sort-arrow-sprite.png);
@@ -22,21 +23,21 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">32.35% </span>
+                <span class="strong">30.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>11/34</span>
+                <span class='fraction'>11/36</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>0/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.67% </span>
+                <span class="strong">16.66% </span>
                 <span class="quiet">Functions</span>
                 <span class='fraction'>1/6</span>
             </div>
@@ -53,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line low'></div>
     <pre><table class="coverage">
@@ -395,7 +402,7 @@ const initialState: State = {
 &nbsp;
 // #region reducer
 <span class="fstat-no" title="function not covered" >export default function(</span>
-<span class="cstat-no" title="statement not covered" >  state: State = initialState,</span>
+<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>state: State = initialState,</span>
   action: Partial&lt;Action&gt;,
 ): State {
   const currentTime = <span class="cstat-no" title="statement not covered" >format(new Date());</span>
@@ -411,7 +418,7 @@ const initialState: State = {
     }
 &nbsp;
     case RECEIVED_FAKE_FETCH: {
-      const { <span class="cstat-no" title="statement not covered" >payload = [] </span>} = action;
+      const { payload<span class="cstat-no" title="statement not covered" > = [] } = <span class="cstat-no" title="statement not covered" >a</span>ction;</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         ...state,
         actionTime: currentTime,
@@ -421,7 +428,7 @@ const initialState: State = {
     }
 &nbsp;
     case ERROR_FAKE_FETCH: {
-      const { <span class="cstat-no" title="statement not covered" >error = {} </span>} = action;
+      const { error<span class="cstat-no" title="statement not covered" > = {} } = <span class="cstat-no" title="statement not covered" >a</span>ction;</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         ...state,
         actionTime: currentTime,
@@ -449,7 +456,7 @@ function <span class="fstat-no" title="function not covered" >fakeFetch(</span>)
     const fetchType = <span class="cstat-no" title="statement not covered" >shouldFetchMock ? 'FETCH_MOCK' : 'FETCH';</span>
     const mockResult = <span class="cstat-no" title="statement not covered" >fakeData;</span>
 &nbsp;
-    const url = `${<span class="cstat-no" title="statement not covered" >getLocationOrigin()}/${appConfig.api.fakeEndPoint}`;</span>
+    const url = <span class="cstat-no" title="statement not covered" >`${getLocationOrigin()}/${appConfig.api.fakeEndPoint}`;</span>
     const method = <span class="cstat-no" title="statement not covered" >'get';</span>
     const options = <span class="cstat-no" title="statement not covered" >{};</span>
 &nbsp;
@@ -483,7 +490,7 @@ function <span class="fstat-no" title="function not covered" >fakeFetch(</span>)
 &nbsp;
 export function fakeFetchIfNeeded(): FakeFetchAction {
   return <span class="fstat-no" title="function not covered" >(d</span>ispatch, getState): Promise&lt;any&gt; =&gt; {
-<span class="cstat-no" title="statement not covered" >    if (shouldFakeFetch(getState())) {</span>
+<span class="cstat-no" title="statement not covered" >    <span class="missing-if-branch" title="if path not taken" >I</span>if (shouldFakeFetch(getState())) {</span>
 <span class="cstat-no" title="statement not covered" >      return dispatch(fakeFetch());</span>
     }
 <span class="cstat-no" title="statement not covered" >    return Promise.resolve();</span>
@@ -491,7 +498,7 @@ export function fakeFetchIfNeeded(): FakeFetchAction {
 }
 &nbsp;
 function <span class="fstat-no" title="function not covered" >shouldFakeFetch(</span>state: { fakeModuleWithFetch: State } &amp; any): boolean {
-  const { <span class="cstat-no" title="statement not covered" >isFetching </span>} = state.fakeModuleWithFetch;
+  const { isFetching } = <span class="cstat-no" title="statement not covered" >state.fakeModuleWithFetch;</span>
 <span class="cstat-no" title="statement not covered" >  return !isFetching;</span>
 }
 // #endregion
@@ -503,10 +510,9 @@ function <span class="fstat-no" title="function not covered" >shouldFakeFetch(</
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri May 08 2020 07:46:55 GMT+0200 (GMT+02:00)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Mon Feb 14 2022 15:31:58 GMT+0100 (heure normale d’Europe centrale)
             </div>
-        </div>
         <script src="../../../prettify.js"></script>
         <script>
             window.onload = function () {

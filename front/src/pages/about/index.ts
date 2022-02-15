@@ -1,10 +1,10 @@
 import { bindActionCreators, compose, Dispatch } from 'redux';
 import { connect, ConnectedProps } from 'react-redux';
-import { RootState } from '../../redux/modules/types';
+// import { RootState } from '../../redux/modules/types';
 import About from './About';
 
 // #region redux map state and dispatch to props
-const mapStateToProps = (state: RootState) => {
+const mapStateToProps = (/* state: RootState */) => {
   return {};
 };
 
@@ -19,8 +19,8 @@ const connector = connect(mapStateToProps, mapDispatchToProps);
 
 // #region types (deduce by connector type to infer mapStateToProps)
 export type MappedStateToProps = ConnectedProps<typeof connector>;
-export type OwnProps = {};
-export type MappedDispatchToProps = {};
+export type OwnProps = any;
+export type MappedDispatchToProps = any;
 // #endregion
 
 export default compose<any>(connector)(About);

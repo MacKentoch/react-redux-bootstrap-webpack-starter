@@ -10,10 +10,10 @@ export type PostMethod = GetMethod;
 // #region  window.location.origin polyfill
 export const getLocationOrigin = (): string => {
   if (!window.location.origin) {
-    // @ts-ignore
-    window.location.origin = `${window.location.protocol}//${
+    const windowLocationOrigin = `${window.location.protocol}//${
       window.location.hostname
     }${window.location.port ? ':' + window.location.port : ''}`;
+    return windowLocationOrigin;
   }
   return window.location.origin;
 };
@@ -42,7 +42,7 @@ export const jsonHeader = {
 // #endregion
 
 // #region general helpers
-export const encodeBase64 = (stringToEncode: string = ''): string => {
+export const encodeBase64 = (stringToEncode = ''): string => {
   return Base64.encode(stringToEncode);
 };
 // #endregion

@@ -69,7 +69,7 @@ const initialState: State = {
 // #endregion
 
 // #region reducer
-export default function(state: State = initialState, action: Action): State {
+export default function (state: State = initialState, action: Action): State {
   switch (action.type) {
     case CHECK_IF_USER_IS_AUTHENTICATED: {
       const {
@@ -197,7 +197,7 @@ type RCheckUserIsConnectedAction = ThunkAction<
   Action
 >;
 export function checkUserIsConnected(): RCheckUserIsConnectedAction {
-  return dispatch => {
+  return (dispatch) => {
     const token = auth.getToken();
     const user = auth.getUserInfo();
     const checkUserHasId = (obj: any) => obj && (obj.id || false);
@@ -223,10 +223,10 @@ export function checkUserIsConnected(): RCheckUserIsConnectedAction {
 // #region loguser
 type RLogUserAction = ThunkAction<Promise<any>, State, void, Action>;
 function logUser(login: string, password: string): RLogUserAction {
-  return async dispatch => {
+  return async (dispatch) => {
     const FETCH_TYPE = appConfig.DEV_MODE
-      ? FETCH_TYPE_ENUM.FETCH_MOCK
-      : FETCH_TYPE_ENUM.FETCH;
+      ? FETCH_TYPE_ENUM.FETCH_MOCK_TYPE
+      : FETCH_TYPE_ENUM.FETCH_TYPE;
 
     const __SOME_LOGIN_API__ = 'login';
 
@@ -285,16 +285,16 @@ function shouldLogUser(state: { userAuth: State } & any): boolean {
 
 // #region fetch user data
 type RFetchUserDataAction = ThunkAction<Promise<any>, State, void, Action>;
-function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
-  return async dispatch => {
+function fetchUserInfosData(id = ''): RFetchUserDataAction {
+  return async (dispatch) => {
     const token = auth.getToken();
     const {
       DEV_MODE,
       api: { users },
     } = appConfig;
-    const FETCH_TYPE = DEV_MODE
-      ? FETCH_TYPE_ENUM.FETCH_MOCK
-      : FETCH_TYPE_ENUM.FETCH;
+    // const FETCH_TYPE = DEV_MODE
+    //   ? FETCH_TYPE_ENUM.FETCH_MOCK_TYPE
+    //   : FETCH_TYPE_ENUM.FETCH_TYPE;
     const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
     const url = `${getLocationOrigin()}/${users}/${id}`;
     const method = 'get';
@@ -328,9 +328,7 @@ function fetchUserInfosData(id: string = ''): RFetchUserDataAction {
   };
 }
 
-export function fetchUserInfoDataIfNeeded(
-  id: string = '',
-): RFetchUserDataAction {
+export function fetchUserInfoDataIfNeeded(id = ''): RFetchUserDataAction {
   return (dispatch, getState) => {
     if (shouldFetchUserInfoData(getState())) {
       return dispatch(fetchUserInfosData(id));

@@ -17,7 +17,7 @@ export type Props = RouteComponentProps &
 function Login({
   location,
   isLogging,
-  isFetching,
+  // isFetching = false,
   disconnectUser,
   logUserIfNeeded,
   history,
@@ -28,7 +28,7 @@ function Login({
   useEffect(() => {
     // on mount disconnect (clear previous user auth and info):
     disconnectUser();
-  }, []);
+  }, [disconnectUser]);
 
   // #region form inputs change callbacks
   const handlesOnEmailChange = useCallback(
@@ -66,7 +66,6 @@ function Login({
         auth.setToken(token);
         auth.setUserInfo(user);
 
-        // @ts-ignore
         const { from } = location.state || { from: { pathname: '/' } };
 
         history.replace(from); // back to Home
@@ -76,7 +75,7 @@ function Login({
         /* eslint-enable no-console */
       }
     },
-    [history, location, email, password],
+    [history, location, email, password, logUserIfNeeded],
   );
   // #endregion
 

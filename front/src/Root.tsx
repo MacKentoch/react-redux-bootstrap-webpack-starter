@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import { hot } from 'react-hot-loader/root';
 import configureStore from './redux/store/configureStore';
-import { history } from './redux/store/configureStore';
 import ScrollTop from './components/scrollToTop';
 import MainRoutes from './routes/MainRoutes';
 import GlobalStyle from './style/GlobalStyles';

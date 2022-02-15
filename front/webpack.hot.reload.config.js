@@ -20,8 +20,9 @@ const config = {
   },
   output: {
     path: path.join(__dirname, 'docs'),
-    filename: '[name].js',
-    chunkFilename: '[name].js',
+    filename: '[name].[contenthash].js',
+    chunkFilename: '[name].[chunkhash].js',
+    assetModuleFilename: 'assets/[contenthash][ext][query]',
   },
   resolve: {
     modules: ['node_modules'],
@@ -40,15 +41,7 @@ const config = {
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpe?g|gif)(\?\S*)?$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 100000,
-              name: '[name].[ext]',
-            },
-          },
-        ],
+        type: 'asset',
       },
     ],
   },
@@ -73,19 +66,16 @@ const config = {
   devServer: {
     host: 'localhost',
     port: 3001,
-    historyApiFallback: true,
-    contentBase: path.join(__dirname, 'temp'),
+    hot: true,
+    static: path.join(__dirname, '/../docs/assets'),
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('dev'),
-      },
+      'process.env.NODE_ENV': JSON.stringify('development'),
     }),
     new ProgressBarPlugin({
       format: 'Build [:bar] :percent (:elapsed seconds)',
