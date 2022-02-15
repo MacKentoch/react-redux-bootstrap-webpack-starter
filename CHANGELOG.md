@@ -1,3 +1,10 @@
+# 8.0.0
+
+- upgrade front NodeJS minimum requirement to v16
+- upgrade front webpack from 4 to 5
+- upgrade front dependencies (a bit of cleaning)
+- fix eslint and prettier
+
 # v7.0.2
 
 - upgrade `react-router` to `v5`

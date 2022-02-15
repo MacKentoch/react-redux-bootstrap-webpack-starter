@@ -1,4 +1,4 @@
-# React 16.9+ (Typescript) React-Router 4 + Redux + Bootstrap + Webpack 4 with Hot Reload and redux-devtools-extension STARTER
+# React 16.14 (Typescript) React-Router 5 + Redux + Bootstrap + Webpack 5 with Hot Reload and redux-devtools-extension STARTER
 
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg?maxAge=2592000)](https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter)
 [![Build Status](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter.svg?branch=master)](https://travis-ci.org/MacKentoch/react-redux-bootstrap-webpack-starter)
@@ -21,7 +21,8 @@ _Concept behind:_ same as [react-bootstrap-webpack-starter](https://github.com/M
 **Front:**
 
 - Typescript
-- React JS (16.9+ - [github :link:](https://github.com/facebook/react))
+- React JS (16.14 - [github :link:](https://github.com/facebook/react))
+  - NOTE: React 17+ is not really developer friendly "yet" considering `react-refresh` (= _hot reload replacement: RIP my friend_) to be not fully stable
 - Redux (_as you application grows managing state will be a serious concern, save pain with Redux_)
 - React-Redux (_Redux is not specific to ReactJS, you could easily use it with Angular2 for instance_)
 - redux-devtools-extension ([github :link:](https://github.com/zalmoxisus/redux-devtools-extension#redux-devtools-extension))
@@ -41,7 +42,7 @@ _Concept behind:_ same as [react-bootstrap-webpack-starter](https://github.com/M
 
 - Typescript
 - eslint
-- webpack 4
+- webpack 5
 - hot reload
 - loaders
   - `ts` / `tsx`
@@ -53,7 +54,7 @@ _Concept behind:_ same as [react-bootstrap-webpack-starter](https://github.com/M
 **tests:**
 
 - Jest
-- enzyme
+- @testing-library/react
 
 ## Changelog
 
@@ -65,35 +66,35 @@ _Concept behind:_ same as [react-bootstrap-webpack-starter](https://github.com/M
 
 ```bash
 # from root directory:
-cd front && yarn install
+cd front && npm install
 ```
 
 ### bundle dev mode (_+ redux-devtools_)
 
 ```bash
 # from root directory:
-cd front && yarn run dev
+cd front && npm run dev
 ```
 
 ### dev : hot reload mode (_+ redux-devtools_)
 
 ```bash
 # from root directory:
-cd front && yarn run start
+cd front && npm run start
 ```
 
 ### tests
 
 ```bash
 # from root directory:
-cd front && yarn run test
+cd front && npm run test
 ```
 
 ### bundle production mode
 
 ```bash
 # from root directory:
-cd front && yarn run prod
+cd front && npm run prod
 ```
 
 ### mini node-express server

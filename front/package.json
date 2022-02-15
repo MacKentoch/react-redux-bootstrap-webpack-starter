@@ -1,6 +1,6 @@
 {
   "name": "react-redux-bootstrap-webpack-starter-front",
-  "version": "7.0.2",
+  "version": "8.0.0",
   "author": "Erwan DATIN (MacKentoch)",
   "license": "MIT",
   "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
