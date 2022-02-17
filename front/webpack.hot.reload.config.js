@@ -1,13 +1,10 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const webpack = require('webpack');
 const path = require('path');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // #region constants
 const nodeModulesDir = path.join(__dirname, 'node_modules');
-const srcInclude = path.join(__dirname, 'src');
-const srcExclude = path.join(__dirname, 'test');
 const indexFile = path.join(__dirname, 'src/index.tsx');
 // #endregion
 
@@ -76,10 +73,6 @@ const config = {
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
-    }),
-    new ProgressBarPlugin({
-      format: 'Build [:bar] :percent (:elapsed seconds)',
-      clear: false,
     }),
   ],
 };

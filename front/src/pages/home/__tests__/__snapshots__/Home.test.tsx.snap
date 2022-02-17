@@ -13,7 +13,7 @@ exports[`Home page renders as expected 1`] = `
       <h1
         class="sc-htpNat hljmAh"
       >
-        ReactJS 16.13+ Bootstrap 4
+        ReactJS 16.14 Bootstrap 4
       </h1>
       <h2>
         with Hot Reload (
@@ -26,7 +26,7 @@ exports[`Home page renders as expected 1`] = `
         and React Router v5
       </h2>
       <h2>
-        and webpack 4.x
+        and webpack 5.x
       </h2>
       <h1>
         Starter

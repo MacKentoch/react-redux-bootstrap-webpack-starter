@@ -1,5 +1,5 @@
 import decode from 'jwt-decode';
-import isAfter from 'date-fns/is_after';
+import { isAfter } from 'date-fns';
 
 // #region constants
 const TOKEN_KEY = 'token';
@@ -57,7 +57,7 @@ export const auth = {
    * @returns {boolean} success/failure flag
    */
   setToken(
-    value: string = '',
+    value = '',
     toStorage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     tokenKey: TokenKey = TOKEN_KEY,
   ): void {
@@ -236,7 +236,7 @@ export const auth = {
    * @returns {boolean} success/failure flag
    */
   setUserInfo(
-    value: string = '',
+    value = '',
     toStorage: STORES_TYPES = APP_PERSIST_STORES_TYPES[0],
     userInfoKey: UserInfoKey = USER_INFO,
   ): any {

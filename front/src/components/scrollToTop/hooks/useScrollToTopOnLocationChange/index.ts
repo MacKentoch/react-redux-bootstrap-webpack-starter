@@ -6,7 +6,7 @@ export function useScrollToTopOnLocationChange(location: any) {
 
   useEffect(() => {
     prevLocation.current = location;
-  }, []);
+  }, [location]);
 
   useEffect(() => {
     if (prevLocation.current !== location) {

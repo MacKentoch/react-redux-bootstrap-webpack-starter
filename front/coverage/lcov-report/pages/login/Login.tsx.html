@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">61.7% </span>
+                <span class="strong">60.86% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/47</span>
+                <span class='fraction'>28/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">10% </span>
+                <span class="strong">7.14% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/10</span>
+                <span class='fraction'>1/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">59.52% </span>
+                <span class="strong">58.53% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>25/42</span>
+                <span class='fraction'>24/41</span>
             </div>
         
             
@@ -245,10 +245,7 @@
 <a name='L180'></a><a href='#L180'>180</a>
 <a name='L181'></a><a href='#L181'>181</a>
 <a name='L182'></a><a href='#L182'>182</a>
-<a name='L183'></a><a href='#L183'>183</a>
-<a name='L184'></a><a href='#L184'>184</a>
-<a name='L185'></a><a href='#L185'>185</a>
-<a name='L186'></a><a href='#L186'>186</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L183'></a><a href='#L183'>183</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -261,13 +258,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -310,12 +304,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -440,19 +434,16 @@ import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
 import FadeInEntrance from '../../components/fadeInEntrance';
-import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
+import { ReduxConnectedProps, OwnProps } from './index';
 &nbsp;
 // #region types
-export type Props = RouteComponentProps &amp;
-  MappedStateToProps &amp;
-  MappedDispatchToProps &amp;
-  OwnProps;
+export type Props = RouteComponentProps &amp; ReduxConnectedProps &amp; OwnProps;
 // #endregion
 &nbsp;
 function Login({
   location,
   isLogging,
-  isFetching,
+  // isFetching = false,
   disconnectUser,
   logUserIfNeeded,
   history,
@@ -463,7 +454,7 @@ function Login({
   useEffect(() =&gt; {
     // on mount disconnect (clear previous user auth and info):
     disconnectUser();
-  }, []);
+  }, [disconnectUser]);
 &nbsp;
   // #region form inputs change callbacks
   const handlesOnEmailChange = useCallback(
@@ -490,19 +481,19 @@ function Login({
   // #region on login button click callback
   const handlesOnLogin = useCallback(
 <span class="fstat-no" title="function not covered" >    async (e</span>vent: React.MouseEvent&lt;HTMLButtonElement&gt;<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >) =&gt; {</span></span>
-<span class="cstat-no" title="statement not covered" >      event &amp;&amp; event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >      event?.preventDefault();</span>
 &nbsp;
       try {
-        const <span class="cstat-no" title="statement not covered" >response = <span class="cstat-no" title="statement not covered" >await logUserIfNeeded(email, password);</span></span>
-        const {
-<span class="cstat-no" title="statement not covered" >          data: { token, user },</span>
-        } = response.payload;
+        const <span class="cstat-no" title="statement not covered" >{ token, ...otherUserProperties } </span>= <span class="cstat-no" title="statement not covered" >await logUserIfNeeded(</span>
+          email,
+          password,
+        );
+        const <span class="cstat-no" title="statement not covered" >stringifiedUserInfo = JSON.stringify({ ...otherUserProperties });</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        auth.setToken(token);</span>
-<span class="cstat-no" title="statement not covered" >        auth.setUserInfo(user);</span>
+<span class="cstat-no" title="statement not covered" >        auth.setUserInfo(stringifiedUserInfo);</span>
 &nbsp;
-        // @ts-ignore
-        const { <span class="cstat-no" title="statement not covered" >from } = l</span>ocation.state || { from: { pathname: '/' } };
+        const { <span class="cstat-no" title="statement not covered" >from } = (</span>location.state as any) || { from: { pathname: '/' } };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        history.replace(from); </span>// back to Home
       } catch (error) {
@@ -511,14 +502,14 @@ function Login({
         /* eslint-enable no-console */
       }
     },
-    [history, location, email, password],
+    [history, location, email, password, logUserIfNeeded],
   );
   // #endregion
 &nbsp;
   // #region on go back home button click callback
   const goHome = useCallback(
 <span class="fstat-no" title="function not covered" >    (e</span>vent: React.MouseEvent&lt;HTMLButtonElement&gt;) =&gt; {
-<span class="cstat-no" title="statement not covered" >      event &amp;&amp; event.preventDefault();</span>
+<span class="cstat-no" title="statement not covered" >      event?.preventDefault();</span>
 <span class="cstat-no" title="statement not covered" >      history.push({ pathname: '/' });</span>
     },
     [history],
@@ -625,7 +616,7 @@ export default Login;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Feb 14 2022 15:31:58 GMT+0100 (heure normale d’Europe centrale)
+                at Thu Feb 17 2022 08:21:33 GMT+0100 (heure normale d’Europe centrale)
             </div>
         <script src="../../prettify.js"></script>
         <script>

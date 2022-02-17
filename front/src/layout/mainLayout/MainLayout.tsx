@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useCallback } from 'react';
+import React, { Fragment, useEffect, useCallback, ReactNode } from 'react';
 import { withRouter } from 'react-router';
 import { RouteComponentProps } from 'react-router';
 import NavigationBar from '../../components/navigation';
@@ -7,7 +7,7 @@ import navigationModel from '../../config/navigation';
 import registerServiceWorker from '../../services/sw/registerServiceWorker';
 
 type Props = {
-  children: any;
+  children: ReactNode;
 } & RouteComponentProps;
 
 function MainLayout({ children }: Props) {
@@ -23,14 +23,14 @@ function MainLayout({ children }: Props) {
   // #region callbacks
   /* eslint-disable no-unused-vars*/
   const handleLeftNavItemClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>, viewName?: string) => {
+    (/* event: React.MouseEvent<HTMLButtonElement>, viewName?: string */) => {
       // something to do here?
     },
     [],
   );
 
   const handleRightNavItemClick = useCallback(
-    (event: React.MouseEvent<HTMLButtonElement>, viewName?: string) => {
+    (/* event: React.MouseEvent<HTMLButtonElement>, viewName?: string */) => {
       // something to do here?
     },
     [],

@@ -1,11 +1,11 @@
-import { ThunkAction } from 'redux-thunk';
 import axios from 'axios';
+import { format } from 'date-fns';
+import { ThunkAction } from 'redux-thunk';
+import { AnyAction } from 'redux';
 import appConfig from '../../../config/appConfig';
 import userInfosMockData from '../../../mock/userInfosMock.json';
 import { getLocationOrigin } from '../../../services/API/fetchTools';
 import auth from '../../../services/auth';
-import { FETCH_TYPE_ENUM } from '../../middleware/fetchMiddleware';
-import { State } from './type';
 
 // #region CONSTANTS
 const REQUEST_USER_INFOS_DATA = 'REQUEST_USER_INFOS_DATA';
@@ -21,40 +21,13 @@ const CHECK_IF_USER_IS_AUTHENTICATED = 'CHECK_IF_USER_IS_AUTHENTICATED';
 const DISCONNECT_USER = 'DISCONNECT_USER';
 // #endregion
 
-// #region types
-type ActionType =
-  | 'REQUEST_USER_INFOS_DATA'
-  | 'RECEIVED_USER_INFOS_DATA'
-  | 'ERROR_USER_INFOS_DATA'
-  | 'REQUEST_LOG_USER'
-  | 'RECEIVED_LOG_USER'
-  | 'ERROR_LOG_USER'
-  | 'CHECK_IF_USER_IS_AUTHENTICATED'
-  | 'DISCONNECT_USER'
-  | 'FETCH';
-
-type PartialState = Partial<State>;
-type UserInfo = { user: User };
-
-export type Action = {
-  type: ActionType;
-
-  isFetching?: boolean;
-  actionTime?: string;
-  data?: Array<any> | any;
-  error?: any;
-  payload?: any;
-} & PartialState &
-  Partial<UserInfo>;
-
-// #endregion
-
 // #region REDUCER
 
 // #region initial State
-const initialState: State = {
+const initialState: UserAuthState = {
   // actions details
   isFetching: false,
+  actionTime: '',
   isLogging: false,
 
   // userInfos
@@ -69,23 +42,22 @@ const initialState: State = {
 // #endregion
 
 // #region reducer
-export default function (state: State = initialState, action: Action): State {
+export default function (
+  state: UserAuthState = initialState,
+  action: UserAuthAction,
+): UserAuthState {
   switch (action.type) {
     case CHECK_IF_USER_IS_AUTHENTICATED: {
-      const {
-        isAuthenticated = false,
-        token = '',
-        user = { id: '', login: '', firstname: '', lastname: '' },
-      } = action;
+      const { isAuthenticated = false, token = '', user = {} } = action;
 
       return {
         ...state,
         isAuthenticated,
         token,
-        id: user.id,
-        login: user.login,
-        firstname: user.firstname,
-        lastname: user.lastname,
+        id: user?.id ?? '',
+        login: user?.login ?? '',
+        firstname: user?.firstname ?? '',
+        lastname: user?.lastname ?? '',
       };
     }
 
@@ -183,162 +155,213 @@ export default function (state: State = initialState, action: Action): State {
 // #region ACTIONS CREATORS
 
 // #region disconnect user
-export function disconnectUser(): Action {
+export function disconnectUser(): UserAuthAction {
   auth.clearAllAppStorage();
   return { type: 'DISCONNECT_USER' };
 }
 // #endregion
 
 // #region check if user is connected
-type RCheckUserIsConnectedAction = ThunkAction<
-  Promise<any>,
-  State,
-  void,
-  Action
->;
-export function checkUserIsConnected(): RCheckUserIsConnectedAction {
+export function checkUserIsConnected(): ThunkAction<
+  Promise<UserAuthAction>,
+  RootState,
+  unknown,
+  AnyAction
+> {
   return (dispatch) => {
     const token = auth.getToken();
     const user = auth.getUserInfo();
-    const checkUserHasId = (obj: any) => obj && (obj.id || false);
+    const checkUserHasId = (obj: any) => !!obj?.id;
     const isExpired = auth.isExpiredToken(token);
     const isAuthenticated = token && checkUserHasId(user) ? true : false;
+    const isStillAuthenticated = isAuthenticated && !isExpired;
+    const actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
 
     dispatch({
       type: CHECK_IF_USER_IS_AUTHENTICATED,
+      actionTime,
       token,
       ...user,
-      isAuthenticated: isAuthenticated && !isExpired,
+      isAuthenticated: isStillAuthenticated,
     });
 
     return {
       token,
       ...user,
-      isAuthenticated: isAuthenticated && !isExpired,
+      isAuthenticated: isStillAuthenticated,
     };
   };
 }
 // #endregion
 
 // #region loguser
-type RLogUserAction = ThunkAction<Promise<any>, State, void, Action>;
-function logUser(login: string, password: string): RLogUserAction {
-  return async (dispatch) => {
-    const FETCH_TYPE = appConfig.DEV_MODE
-      ? FETCH_TYPE_ENUM.FETCH_MOCK_TYPE
-      : FETCH_TYPE_ENUM.FETCH_TYPE;
 
-    const __SOME_LOGIN_API__ = 'login';
-
-    const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
-    const url = `${getLocationOrigin()}/${__SOME_LOGIN_API__}`;
-    const method = 'post';
-    const headers = {};
-    const options = {
-      credentials: 'same-origin',
-      data: {
-        login,
-        password,
-      },
-    };
-
-    // fetchMiddleware (does: fetch mock, real fetch, dispatch 3 actions... for a minimum code on action creator!)
-    const type: ActionType = 'FETCH';
-    return dispatch({
-      type,
-      fetch: {
-        // common props:
-        type: FETCH_TYPE,
-        actionTypes: {
-          request: REQUEST_LOG_USER,
-          success: RECEIVED_LOG_USER,
-          fail: ERROR_LOG_USER,
-        },
-        // mock fetch props:
-        mockResult,
-        // real fetch props:
-        url,
-        method,
-        headers,
-        options,
-      },
-    });
-  };
-}
-
-export function logUserIfNeeded(
-  email: string,
+function logUser(
+  login: string,
   password: string,
-): RLogUserAction | Promise<Action | any> {
-  return (dispatch, getState): Promise<any> => {
-    if (shouldLogUser(getState())) {
-      return dispatch(logUser(email, password));
-    }
-    return Promise.resolve();
-  };
-}
-function shouldLogUser(state: { userAuth: State } & any): boolean {
-  const { isLogging } = state.userAuth;
-  return !isLogging;
-}
-// #endregion
-
-// #region fetch user data
-type RFetchUserDataAction = ThunkAction<Promise<any>, State, void, Action>;
-function fetchUserInfosData(id = ''): RFetchUserDataAction {
+): ThunkAction<Promise<User>, RootState, unknown, AnyAction> {
   return async (dispatch) => {
-    const token = auth.getToken();
-    const {
-      DEV_MODE,
-      api: { users },
-    } = appConfig;
-    // const FETCH_TYPE = DEV_MODE
-    //   ? FETCH_TYPE_ENUM.FETCH_MOCK_TYPE
-    //   : FETCH_TYPE_ENUM.FETCH_TYPE;
-    const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
-    const url = `${getLocationOrigin()}/${users}/${id}`;
-    const method = 'get';
-    const headers = { authorization: `Bearer ${token || ''}` };
-    const options = { credentials: 'same-origin' }; // put options here (see axios options)
-
-    if (DEV_MODE) {
-      return Promise.resolve({ data: mockResult });
-    }
-
     try {
-      dispatch({ type: REQUEST_USER_INFOS_DATA });
+      let actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      dispatch({ type: REQUEST_LOG_USER, actionTime });
 
-      const reponse = await axios.request({
-        url,
-        method,
+      // #region mocked request case:
+      actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      if (appConfig.DEV_MODE) {
+        const { user } = await getMockedUser();
+        dispatch({
+          type: RECEIVED_LOG_USER,
+          actionTime,
+          payload: user,
+        });
+
+        return user;
+      }
+      // #endregion
+
+      // #region real request case:
+      const { data } = await axios.request({
+        method: 'post',
+        url: `${getLocationOrigin()}/${login}`,
         withCredentials: true,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
           'Acces-Control-Allow-Origin': '*',
-          ...headers,
         },
-        ...options,
+        data: {
+          login,
+          password,
+        },
       });
 
-      return reponse;
+      actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      dispatch({
+        type: RECEIVED_LOG_USER,
+        actionTime,
+        payload: data,
+      });
+      return data;
+      // #endregion
     } catch (error) {
-      dispatch({ type: ERROR_USER_INFOS_DATA, error });
+      const actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      dispatch({ type: ERROR_LOG_USER, actionTime });
+    }
+  };
+}
+function getMockedUser(): Promise<typeof userInfosMockData> {
+  const mockResult = userInfosMockData; // will be fetch_mock data returned (in case FETCH_TYPE = 'FETCH_MOCK', otherwise cata come from server)
+  return Promise.resolve(mockResult);
+}
+export function logUserIfNeeded(
+  email: string,
+  password: string,
+): ThunkAction<Promise<User>, RootState, unknown, AnyAction> {
+  return (dispatch, getState): Promise<any> => {
+    const currentState = getState();
+
+    // NOTE: check if it is worth requesting
+    if (shouldLogUser(currentState, email)) {
+      return dispatch(logUser(email, password));
+    }
+
+    // NOTE: user is already in state, just return current user
+    const currentUser = getCurrentUser(currentState);
+    return Promise.resolve({ ...currentUser });
+  };
+}
+function shouldLogUser(state: RootState, userEmail: string): boolean {
+  const { isLogging, login: currentUserEmail } = state.userAuth;
+
+  if (currentUserEmail !== userEmail) {
+    return true;
+  }
+
+  return !isLogging;
+}
+// #endregion
+
+// #region fetch user data
+function fetchUserInfosData(
+  id = '',
+): ThunkAction<Promise<User>, RootState, unknown, AnyAction> {
+  return async (dispatch) => {
+    try {
+      let actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      dispatch({ type: REQUEST_USER_INFOS_DATA, actionTime });
+
+      // #region mocked request case:
+      actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      if (appConfig.DEV_MODE) {
+        const { user } = await getMockedUser();
+        dispatch({
+          type: RECEIVED_USER_INFOS_DATA,
+          actionTime,
+          data: user,
+        });
+
+        return user;
+      }
+      // #endregion
+
+      // #region real request case:
+      const { data } = await axios.request({
+        method: 'get',
+        url: `${getLocationOrigin()}/users/${id}`,
+        withCredentials: true,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          'Acces-Control-Allow-Origin': '*',
+          authorization: `Bearer ${auth.getToken() || ''}`,
+        },
+      });
+
+      actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      dispatch({
+        type: RECEIVED_USER_INFOS_DATA,
+        actionTime,
+        data,
+      });
+
+      return data;
+      // #endregion
+    } catch (error) {
+      const actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+      dispatch({ type: ERROR_USER_INFOS_DATA, actionTime, error });
     }
   };
 }
 
-export function fetchUserInfoDataIfNeeded(id = ''): RFetchUserDataAction {
+export function fetchUserInfoDataIfNeeded(
+  id = '',
+): ThunkAction<Promise<User | null>, RootState, unknown, AnyAction> {
   return (dispatch, getState) => {
-    if (shouldFetchUserInfoData(getState())) {
+    const currentState = getState();
+    if (shouldFetchUserInfoData(currentState)) {
       return dispatch(fetchUserInfosData(id));
     }
-    return Promise.resolve();
+
+    return Promise.resolve(null);
   };
 }
 
-function shouldFetchUserInfoData(state: { userAuth: State } & any): boolean {
+function shouldFetchUserInfoData(state: RootState): boolean {
   const { isFetching } = state.userAuth;
   return !isFetching;
 }
 // #endregion
+
+function getCurrentUser(state: RootState): User {
+  const { id, login, firstname, lastname, token, isAuthenticated } =
+    state.userAuth;
+
+  return {
+    id,
+    login,
+    firstname,
+    lastname,
+    token,
+    isAuthenticated,
+  };
+}

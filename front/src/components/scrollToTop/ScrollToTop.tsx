@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useScrollToTopOnLocationChange } from './hooks/useScrollToTopOnLocationChange';
 type OwnProps = {
-  children: any;
+  children: ReactNode;
 };
 type Props = OwnProps;
 

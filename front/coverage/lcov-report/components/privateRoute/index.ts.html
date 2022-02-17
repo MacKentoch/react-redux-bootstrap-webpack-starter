@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>12/12</span>
             </div>
         
             
@@ -96,30 +96,15 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -134,37 +119,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { connect } from 'react-redux';
-import { bindActionCreators, compose, Dispatch } from 'redux';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { bindActionCreators, compose, Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as userAuthActions from '../../redux/modules/userAuth';
-import { UserAuthActions } from '../../redux/modules/userAuth/type';
-import { RootState } from '../../redux/modules/types';
 import PrivateRoute from './PrivateRoute';
+import { makeGetIsAuthenticatedSelector } from '../../redux/modules/userAuth/selectors';
 &nbsp;
-// #region redux map state and dispatch to props
-// #region types
-export type MappedStateToProps = {
-  isAuthenticated: boolean,
-};
-export type OwnProps = {
-  component: any,
-  path: string,
-};
-&nbsp;
-export type MappedDispatchToProps = {} &amp; UserAuthActions;
+// #region create selectors instances
+const getIsAuthenticated = makeGetIsAuthenticatedSelector();
 // #endregion
 &nbsp;
+// #region redux map state and dispatch to props
 const mapStateToProps = (state: RootState) =&gt; {
   return {
-    isAuthenticated: state.userAuth.isAuthenticated,
+    isAuthenticated: getIsAuthenticated(state),
   };
 };
 &nbsp;
@@ -173,11 +152,14 @@ const mapDispatchToProps = (dispatch: Dispatch) =&gt; {
 };
 // #endregion
 &nbsp;
+// #region types
+export type ReduxConnectedProps = Pick&lt;UserAuthState, 'isAuthenticated'&gt; &amp;
+  UserAuthActions;
+export type OwnProps = Record&lt;string, any&gt;;
+// #endregion
+&nbsp;
 export default compose&lt;any&gt;(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   withRouter,
 )(PrivateRoute);
 &nbsp;</pre></td></tr></table></pre>
@@ -187,7 +169,7 @@ export default compose&lt;any&gt;(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Feb 14 2022 15:31:58 GMT+0100 (heure normale d’Europe centrale)
+                at Thu Feb 17 2022 08:21:33 GMT+0100 (heure normale d’Europe centrale)
             </div>
         <script src="../../prettify.js"></script>
         <script>

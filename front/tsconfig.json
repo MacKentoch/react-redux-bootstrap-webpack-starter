@@ -1,24 +1,26 @@
 {
   "compilerOptions": {
-    "importHelpers": true,
     "target": "es5",
-    "types": ["react", "jest"],
-    "lib": ["dom", "es2015", "esnext"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "checkJs": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "sourceMap": true,
-    "removeComments": true,
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
     "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "noImplicitAny": false,
-    "noImplicitThis": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
-    "outDir": "../dist/assets"
+    "isolatedModules": true,
+    "noEmit": false,
+    "jsx": "react-jsx"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src"
+  ]
 }

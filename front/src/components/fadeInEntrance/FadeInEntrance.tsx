@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import FadeInDiv from './styled/FadeInDiv';
 
 // #region types
 type Props = {
-  children: any,
+  children: ReactNode;
 };
 // #endregion
 

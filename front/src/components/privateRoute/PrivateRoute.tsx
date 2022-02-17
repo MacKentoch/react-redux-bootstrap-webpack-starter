@@ -1,13 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
-import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
+import { ReduxConnectedProps, OwnProps } from './index';
 
 // #region types
-type Props = {} & RouteComponentProps &
-  OwnProps &
-  MappedStateToProps &
-  MappedDispatchToProps;
+type Props = RouteComponentProps & OwnProps & ReduxConnectedProps;
 // #endregion
 
 function PrivateRoute(props: Props) {
@@ -17,9 +14,9 @@ function PrivateRoute(props: Props) {
   return (
     <Route
       {...rest}
-      render={props =>
+      render={(innerComponentProps) =>
         isAuthenticated ? (
-          <InnerComponent {...props} />
+          <InnerComponent {...innerComponentProps} />
         ) : (
           <Redirect to={{ pathname: '/login', state: { from: location } }} />
         )

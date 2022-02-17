@@ -18,7 +18,7 @@ describe('PrivateRoute component', () => {
   let rootElement: any = null;
 
   const HomePage = () => {
-    const history = useHistory();
+    // const history = useHistory();
     history.push('/protected');
     return <p>Home page</p>;
   };

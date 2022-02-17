@@ -1,27 +1,18 @@
-import { connect } from 'react-redux';
 import { bindActionCreators, compose, Dispatch } from 'redux';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import * as userAuthActions from '../../redux/modules/userAuth';
-import { UserAuthActions } from '../../redux/modules/userAuth/type';
-import { RootState } from '../../redux/modules/types';
 import PrivateRoute from './PrivateRoute';
+import { makeGetIsAuthenticatedSelector } from '../../redux/modules/userAuth/selectors';
 
-// #region redux map state and dispatch to props
-// #region types
-export type MappedStateToProps = {
-  isAuthenticated: boolean,
-};
-export type OwnProps = {
-  component: any,
-  path: string,
-};
-
-export type MappedDispatchToProps = {} & UserAuthActions;
+// #region create selectors instances
+const getIsAuthenticated = makeGetIsAuthenticatedSelector();
 // #endregion
 
+// #region redux map state and dispatch to props
 const mapStateToProps = (state: RootState) => {
   return {
-    isAuthenticated: state.userAuth.isAuthenticated,
+    isAuthenticated: getIsAuthenticated(state),
   };
 };
 
@@ -30,10 +21,13 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 // #endregion
 
+// #region types
+export type ReduxConnectedProps = Pick<UserAuthState, 'isAuthenticated'> &
+  UserAuthActions;
+export type OwnProps = Record<string, any>;
+// #endregion
+
 export default compose<any>(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   withRouter,
 )(PrivateRoute);

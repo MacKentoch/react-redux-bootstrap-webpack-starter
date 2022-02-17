@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -11,6 +11,7 @@ import GlobalStyle from './style/GlobalStyles';
 import Login from './pages/login';
 import registerServiceWorker from './services/sw/registerServiceWorker';
 import LogoutRoute from './components/logoutRoute';
+import MainLayout from './layout/mainLayout';
 
 // #region types
 type Props = any;
@@ -38,7 +39,7 @@ class Root extends Component<Props, State> {
       <Router>
         <Provider store={store}>
           <ThemeProvider theme={{}}>
-            <React.Fragment>
+            <Fragment>
               <ScrollTop>
                 <Switch>
                   <Route exact path="/login">
@@ -46,14 +47,16 @@ class Root extends Component<Props, State> {
                   </Route>
 
                   {/* Application with main layout (could have multiple applications with different layouts) */}
-                  <MainRoutes />
+                  <MainLayout>
+                    <MainRoutes />
+                  </MainLayout>
                   {/* logout: just redirects to login (App will take care of removing the token) */}
                   <LogoutRoute path="/logout" />
                 </Switch>
               </ScrollTop>
 
               <GlobalStyle />
-            </React.Fragment>
+            </Fragment>
           </ThemeProvider>
         </Provider>
       </Router>

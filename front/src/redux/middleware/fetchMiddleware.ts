@@ -1,5 +1,6 @@
-import { MiddlewareAPI, Dispatch, Middleware, AnyAction } from 'redux';
 import axios from 'axios';
+import { format } from 'date-fns';
+import { MiddlewareAPI, Dispatch, Middleware, AnyAction } from 'redux';
 
 // #region constants
 export const FETCH_MOCK = 'FETCH_MOCK';
@@ -95,14 +96,14 @@ const fetchMiddleware: Middleware<Dispatch> =
           'Fetch middleware require a mockResult payload when type is "FETCH_MOCK"',
         );
       }
-
+      const actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
       const {
         actionTypes: { request, success },
         mockResult,
       } = action.fetch;
 
       // request
-      store.dispatch({ type: request });
+      store.dispatch({ type: request, actionTime });
 
       // received successful for mock
       return Promise.resolve(
@@ -112,6 +113,7 @@ const fetchMiddleware: Middleware<Dispatch> =
             status: 200,
             data: mockResult,
           },
+          actionTime,
         }),
       );
     }
@@ -119,6 +121,7 @@ const fetchMiddleware: Middleware<Dispatch> =
 
     // #region real fetch
     if (action.fetch.type === FETCH_TYPE_ENUM.FETCH_TYPE) {
+      let actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
       const {
         actionTypes: { request, success, fail },
         url,
@@ -128,7 +131,7 @@ const fetchMiddleware: Middleware<Dispatch> =
       } = action.fetch;
 
       // request
-      store.dispatch({ type: request });
+      store.dispatch({ type: request, actionTime });
 
       // fetch server (success or fail)
       try {
@@ -144,11 +147,14 @@ const fetchMiddleware: Middleware<Dispatch> =
           },
           ...options,
         });
-        store.dispatch({ type: success, payload: data });
+        actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+        store.dispatch({ type: success, payload: data, actionTime });
         return data;
       } catch (error) {
+        actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
         store.dispatch({
           type: fail as string,
+          actionTime,
           error: 'error in fetchMiddleware',
         });
         throw error;

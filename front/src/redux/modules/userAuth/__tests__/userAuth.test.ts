@@ -1,30 +1,14 @@
 import configureMockStore from 'redux-mock-store';
+import { format } from 'date-fns';
 import thunk from 'redux-thunk';
-import { ThunkAction } from 'redux-thunk';
 import fetchMiddleware from '../../../middleware/fetchMiddleware';
-import { disconnectUser, checkUserIsConnected, Action } from '../index';
-import { State } from '../type';
-
-// #region types
-type Actions = ThunkAction<Promise<any>, State, void, Action>;
-// #endregion
+import { disconnectUser, checkUserIsConnected } from '../index';
 
 // #region constants
 const middlewares = [thunk, fetchMiddleware];
-const mockStore = configureMockStore<State, Actions>(middlewares);
-const initialState: State = {
-  // actions details
-  isFetching: false,
-  isLogging: false,
-
-  // userInfos
-  id: 'some_fake_id',
-  login: '',
-  firstname: '',
-  lastname: '',
-  token: 'fake_token_for_test',
-  isAuthenticated: true, // authentication status (token based auth)
-};
+const mockStore = configureMockStore<UserAuthState, UserAuthActions>(
+  middlewares,
+);
 // #endregion
 
 // #region jest mocks (JSON files)
@@ -55,6 +39,21 @@ jest.mock('../../../../services/auth', () => ({
 
 describe('userAuth action creators', () => {
   let store: any = null;
+  const newActionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
+  const initialState: UserAuthState = {
+    // actions details
+    isFetching: false,
+    isLogging: false,
+    actionTime: '',
+
+    // userInfos
+    id: 'some_fake_id',
+    login: '',
+    firstname: '',
+    lastname: '',
+    token: 'fake_token_for_test',
+    isAuthenticated: true, // authentication status (token based auth)
+  };
 
   beforeEach(() => {
     store = mockStore(initialState);
@@ -74,6 +73,7 @@ describe('userAuth action creators', () => {
   it('checkUserIsConnected should return valid action', async () => {
     const expectedAction = {
       type: 'CHECK_IF_USER_IS_AUTHENTICATED',
+      actionTime: newActionTime,
       _id: 'some_fake_id',
       token: 'fake_token_for_test',
       isAuthenticated: false,

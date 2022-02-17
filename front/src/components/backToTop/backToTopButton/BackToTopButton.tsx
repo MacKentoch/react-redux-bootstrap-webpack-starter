@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import cx from 'classnames';
 import UpIcon from './UpIcon';
 import WithRightMargin from './styled/WithRightMargin';
@@ -8,7 +8,7 @@ export type BackButtonPosition = 'bottom-left' | 'bottom-right';
 type Props = {
   position: BackButtonPosition;
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => any;
-  children?: any;
+  children?: ReactNode;
   motionStyle: any;
 };
 // #endregion

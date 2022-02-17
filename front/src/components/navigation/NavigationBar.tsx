@@ -9,20 +9,17 @@ import {
   NavLink,
 } from 'reactstrap';
 import { RouteComponentProps } from 'react-router';
-import { OwnProps, MappedDispatchToProps, MappedStateToProps } from './index';
+import { OwnProps, ReduxConnectedProps } from './index';
 
 // #region types
-type Props = {} & RouteComponentProps &
-  OwnProps &
-  MappedStateToProps &
-  MappedDispatchToProps;
+type Props = RouteComponentProps & OwnProps & ReduxConnectedProps;
 // #endregion
 
 function NavigationBar({
   brand,
   navModel: { rightLinks },
-  leftNavItemClick,
-  rightNavItemClick,
+  // leftNavItemClick,
+  // rightNavItemClick,
   isAuthenticated,
   history,
   disconnectUser,
@@ -31,23 +28,23 @@ function NavigationBar({
 
   // #region navigation bar toggle
   const toggle = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event && event.preventDefault();
+    event?.preventDefault();
     setIsOpen(!isOpen);
   };
   // #endregion
 
   // #region handlesNavItemClick event
-  const handlesNavItemClick = (link: string = '/') => (
-    event: React.MouseEvent<HTMLAnchorElement>,
-  ) => {
-    event && event.preventDefault();
-    history.push(link);
-  };
+  const handlesNavItemClick =
+    (link = '/') =>
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      event?.preventDefault();
+      history.push(link);
+    };
   // #endregion
 
   // #region disconnect
   const handlesDisconnect = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event && event.preventDefault();
+    event?.preventDefault();
     disconnectUser();
     history.push('/');
   };

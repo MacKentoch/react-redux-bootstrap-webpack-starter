@@ -25,7 +25,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -117,38 +117,22 @@
 <a name='L52'></a><a href='#L52'>52</a>
 <a name='L53'></a><a href='#L53'>53</a>
 <a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -164,52 +148,54 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import { connect } from 'react-redux';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch, compose } from 'redux';
 import { withRouter } from 'react-router-dom';
 import * as userAuthActions from '../../redux/modules/userAuth';
 import NavigationBar from './NavigationBar';
-import { RootState } from '../../redux/modules/types';
-import { UserAuthActions } from '../../redux/modules/userAuth/type';
 import { Link } from '../../config/navigation';
+import {
+  makeGetIsAuthenticatedSelector,
+  makeGetTokenSelector,
+} from '../../redux/modules/userAuth/selectors';
 &nbsp;
-// #region redux map state and dispatch to props
-&nbsp;
-// #region types
-export type MappedStateToProps = {
-  token: string,
-  isAuthenticated: boolean,
-};
-export type OwnProps = {
-  brand: string,
-  leftNavItemClick: (
-    event: React.MouseEvent&lt;HTMLButtonElement&gt;,
-    viewName?: string,
-  ) =&gt; any,
-  rightNavItemClick: (
-    event: React.MouseEvent&lt;HTMLButtonElement&gt;,
-    viewName?: string,
-  ) =&gt; any,
-  navModel: {
-    leftLinks: Array&lt;Link&gt;,
-    rightLinks: Array&lt;Link&gt;,
-  },
-};
-export type MappedDispatchToProps = {} &amp; UserAuthActions;
+// #region create selectors instances
+const getIsAuthenticated = makeGetIsAuthenticatedSelector();
+const getToken = makeGetTokenSelector();
 // #endregion
 &nbsp;
+// #region redux map state and dispatch to props
 const mapStateToProps = (state: RootState) =&gt; {
   return {
-    token: state.userAuth.token,
-    isAuthenticated: state.userAuth.isAuthenticated,
+    token: getToken(state),
+    isAuthenticated: getIsAuthenticated(state),
   };
 };
 &nbsp;
@@ -218,11 +204,31 @@ const mapDispatchToProps = (dispatch: Dispatch) =&gt; {
 };
 // #endregion
 &nbsp;
+// #region types
+export type OwnProps = {
+  brand: string;
+  leftNavItemClick: (
+    event: React.MouseEvent&lt;HTMLButtonElement&gt;,
+    viewName?: string,
+  ) =&gt; any;
+  rightNavItemClick: (
+    event: React.MouseEvent&lt;HTMLButtonElement&gt;,
+    viewName?: string,
+  ) =&gt; any;
+  navModel: {
+    leftLinks: Array&lt;Link&gt;;
+    rightLinks: Array&lt;Link&gt;;
+  };
+};
+export type ReduxConnectedProps = Pick&lt;
+  UserAuthState,
+  'isAuthenticated' | 'token'
+&gt; &amp;
+  UserAuthActions;
+// #endregion
+&nbsp;
 export default compose&lt;any&gt;(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps,
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   withRouter,
 )(NavigationBar);
 &nbsp;</pre></td></tr></table></pre>
@@ -232,7 +238,7 @@ export default compose&lt;any&gt;(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Feb 14 2022 15:31:58 GMT+0100 (heure normale d’Europe centrale)
+                at Thu Feb 17 2022 08:21:33 GMT+0100 (heure normale d’Europe centrale)
             </div>
         <script src="../../prettify.js"></script>
         <script>

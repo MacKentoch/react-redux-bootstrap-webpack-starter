@@ -5,13 +5,10 @@ import Jumbotron from 'reactstrap/lib/Jumbotron';
 import FadeInEntrance from '../../components/fadeInEntrance';
 import HomeInfo from './styled/HomeInfo';
 import MainTitle from './styled/MainTitle';
-import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
+import { ReduxConnectedProps, OwnProps } from './index';
 
 // #region  types
-export type Props = RouteComponentProps &
-  MappedDispatchToProps &
-  MappedStateToProps &
-  OwnProps;
+export type Props = RouteComponentProps & ReduxConnectedProps & OwnProps;
 // #endregion
 
 function Home() {

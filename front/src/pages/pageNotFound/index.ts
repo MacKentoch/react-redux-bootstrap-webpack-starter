@@ -1,6 +1,5 @@
 import { bindActionCreators, compose, Dispatch } from 'redux';
-import { connect, ConnectedProps } from 'react-redux';
-// import { RootState } from '../../redux/modules/types';
+import { connect } from 'react-redux';
 import PageNotFound from './PageNotFound';
 
 // #region redux map state and dispatch to props
@@ -13,14 +12,10 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
 };
 // #endregion
 
-// #region connector
+// #region types
+export type ReduxConnectedProps = Record<string, any>;
+export type OwnProps = Record<string, any>;
+// #endregion
+
 const connector = connect(mapStateToProps, mapDispatchToProps);
-// #endregion
-
-// #region types (deduce by connector type to infer mapStateToProps)
-export type MappedStateToProps = ConnectedProps<typeof connector>;
-export type OwnProps = any;
-export type MappedDispatchToProps = any;
-// #endregion
-
 export default compose<any>(connector)(PageNotFound);

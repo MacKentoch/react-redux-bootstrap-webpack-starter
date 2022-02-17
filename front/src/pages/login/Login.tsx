@@ -5,13 +5,10 @@ import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
 import FadeInEntrance from '../../components/fadeInEntrance';
-import { MappedDispatchToProps, MappedStateToProps, OwnProps } from './index';
+import { ReduxConnectedProps, OwnProps } from './index';
 
 // #region types
-export type Props = RouteComponentProps &
-  MappedStateToProps &
-  MappedDispatchToProps &
-  OwnProps;
+export type Props = RouteComponentProps & ReduxConnectedProps & OwnProps;
 // #endregion
 
 function Login({
@@ -55,18 +52,19 @@ function Login({
   // #region on login button click callback
   const handlesOnLogin = useCallback(
     async (event: React.MouseEvent<HTMLButtonElement>) => {
-      event && event.preventDefault();
+      event?.preventDefault();
 
       try {
-        const response = await logUserIfNeeded(email, password);
-        const {
-          data: { token, user },
-        } = response.payload;
+        const { token, ...otherUserProperties } = await logUserIfNeeded(
+          email,
+          password,
+        );
+        const stringifiedUserInfo = JSON.stringify({ ...otherUserProperties });
 
         auth.setToken(token);
-        auth.setUserInfo(user);
+        auth.setUserInfo(stringifiedUserInfo);
 
-        const { from } = location.state || { from: { pathname: '/' } };
+        const { from } = (location.state as any) || { from: { pathname: '/' } };
 
         history.replace(from); // back to Home
       } catch (error) {
@@ -82,7 +80,7 @@ function Login({
   // #region on go back home button click callback
   const goHome = useCallback(
     (event: React.MouseEvent<HTMLButtonElement>) => {
-      event && event.preventDefault();
+      event?.preventDefault();
       history.push({ pathname: '/' });
     },
     [history],

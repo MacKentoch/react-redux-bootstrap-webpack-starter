@@ -25,11 +25,13 @@ describe('MainLayout component', () => {
   });
 
   it.only('renders as expected', () => {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const NavigationBar = require('../../../components/navigation');
     // Redux connect (shoudl return React component) is "default exported".
     // IMPORTANT: here we mock the return value of connect to mock NavigationBar component:
     NavigationBar.default.mockReturnValueOnce(() => <span>navbar</span>);
 
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const BackToTop = require('../../../components/backToTop/BackToTop');
     BackToTop.default.mockImplementationOnce(() => (
       <span>backtotopbutton</span>
