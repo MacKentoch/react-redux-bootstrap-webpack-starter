@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var express = require("express");
 var path = require("path");
-var chalk_1 = require("chalk");
+var chalk = require("chalk");
 var errors_1 = require("../middleware/errors");
 // #region constants
 var DOCS_PATH = '../../../docs/';
@@ -26,7 +26,7 @@ var expressServer = function (app, isDev) {
     /* eslint-disable no-console */
     // @ts-ignore
     app.listen(port, host, function () {
-        return console.log("\n        =====================================================\n        -> Server (" + chalk_1["default"].bgBlue('SPA') + ") \uD83C\uDFC3 (running) on " + chalk_1["default"].green(host) + ":" + chalk_1["default"].green("" + port) + "\n        =====================================================\n      ");
+        return console.log("\n        =====================================================\n        -> Server (".concat(chalk.bgBlue('SPA'), ") \uD83C\uDFC3 (running) on ").concat(chalk.green(host), ":").concat(chalk.green("".concat(port)), "\n        =====================================================\n      "));
     });
     /* eslint-enable no-console */
     return app;

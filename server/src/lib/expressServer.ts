@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as path from 'path';
-import chalk from 'chalk';
+import * as chalk from 'chalk';
 import { error404, error500 } from '../middleware/errors';
 
 // #region constants

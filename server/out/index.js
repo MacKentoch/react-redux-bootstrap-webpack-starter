@@ -11,7 +11,7 @@ var pe = new PrettyError();
     try {
         pe.start();
         var app = express();
-        expressServer_1["default"](app, dev);
+        (0, expressServer_1["default"])(app, dev);
     }
     catch (error) {
         console.log('server error: ', error);
