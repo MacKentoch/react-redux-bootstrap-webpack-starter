@@ -8,7 +8,7 @@ type Props = RouteComponentProps & OwnProps & ReduxConnectedProps;
 // #endregion
 
 function PrivateRoute(props: Props) {
-  const { component: InnerComponent, ...rest } = props;
+  const { children: InnerComponent, ...rest } = props;
   const { location, isAuthenticated } = props;
 
   return (

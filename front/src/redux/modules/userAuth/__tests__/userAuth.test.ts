@@ -1,11 +1,10 @@
 import configureMockStore from 'redux-mock-store';
 import { format } from 'date-fns';
 import thunk from 'redux-thunk';
-import fetchMiddleware from '../../../middleware/fetchMiddleware';
 import { disconnectUser, checkUserIsConnected } from '../index';
 
 // #region constants
-const middlewares = [thunk, fetchMiddleware];
+const middlewares = [thunk];
 const mockStore = configureMockStore<UserAuthState, UserAuthActions>(
   middlewares,
 );

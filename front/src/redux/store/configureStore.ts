@@ -6,7 +6,6 @@ import storage from 'redux-persist/lib/storage';
 import thunkMiddleware from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import reducer from '../modules/reducers';
-import fetchMiddleware from '../middleware/fetchMiddleware';
 
 // #region constants
 const isProd = process.env.NODE_ENV === 'production';
@@ -26,11 +25,10 @@ const enhancer = !isProd
   ? composeWithDevTools(
       applyMiddleware(
         thunkMiddleware,
-        fetchMiddleware,
         loggerMiddleware, // logger at the end
       ),
     )
-  : composeWithDevTools(applyMiddleware(thunkMiddleware, fetchMiddleware));
+  : composeWithDevTools(applyMiddleware(thunkMiddleware));
 // #endregion
 
 // #region persisted reducer
