@@ -36,30 +36,32 @@ class Root extends Component<Props, State> {
 
   render() {
     return (
-      <Router>
-        <Provider store={store}>
-          <ThemeProvider theme={{}}>
-            <Fragment>
-              <ScrollTop>
+      <Provider store={store}>
+        <ThemeProvider theme={{}}>
+          <Router>
+            <ScrollTop>
+              <Fragment>
                 <Switch>
                   <Route exact path="/login">
                     <Login />
                   </Route>
 
-                  {/* Application with main layout (could have multiple applications with different layouts) */}
-                  <MainLayout>
-                    <MainRoutes />
-                  </MainLayout>
                   {/* logout: just redirects to login (App will take care of removing the token) */}
                   <LogoutRoute path="/logout" />
-                </Switch>
-              </ScrollTop>
 
-              <GlobalStyle />
-            </Fragment>
-          </ThemeProvider>
-        </Provider>
-      </Router>
+                  {/* Application with main layout (could have multiple applications with different layouts) */}
+                  <Route path="*">
+                    <MainLayout>
+                      <MainRoutes />
+                    </MainLayout>
+                  </Route>
+                </Switch>
+              </Fragment>
+            </ScrollTop>
+            <GlobalStyle />
+          </Router>
+        </ThemeProvider>
+      </Provider>
     );
   }
 }

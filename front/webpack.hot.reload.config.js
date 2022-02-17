@@ -19,7 +19,7 @@ const config = {
     path: path.join(__dirname, 'docs'),
     filename: '[name].[contenthash].js',
     chunkFilename: '[name].[chunkhash].js',
-    assetModuleFilename: 'assets/[contenthash][ext][query]',
+    // assetModuleFilename: 'assets/[contenthash][ext][query]',
   },
   resolve: {
     modules: ['node_modules'],
@@ -64,12 +64,13 @@ const config = {
     host: 'localhost',
     port: 3001,
     hot: true,
-    static: path.join(__dirname, '/../docs/assets'),
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    static: path.join(__dirname, 'docs'),
+    historyApiFallback: true, // browser refresh will fail otherwise
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
+      // filename: '../index.html', // hack since outPut path would place in '/dist/assets/' in place of '/dist/'
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),

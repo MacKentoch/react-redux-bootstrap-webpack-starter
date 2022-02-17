@@ -5,7 +5,7 @@
     "noUnusedLocals": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es2017",
+    "target": "esnext",
     "resolveJsonModule": true,
     "moduleResolution": "node",
     "baseUrl": ".",

@@ -90,7 +90,7 @@ export default function (
           firstname = '',
           lastname = '',
         },
-      } = action.payload;
+      } = action;
 
       return {
         ...state,
@@ -203,7 +203,7 @@ function logUser(
   return async (dispatch) => {
     try {
       let actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
-      dispatch({ type: REQUEST_LOG_USER, actionTime });
+      dispatch({ type: REQUEST_LOG_USER, actionTime, login, password });
 
       // #region mocked request case:
       actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
@@ -212,7 +212,7 @@ function logUser(
         dispatch({
           type: RECEIVED_LOG_USER,
           actionTime,
-          payload: user,
+          data: user,
         });
 
         return user;
@@ -239,13 +239,17 @@ function logUser(
       dispatch({
         type: RECEIVED_LOG_USER,
         actionTime,
-        payload: data,
+        data,
       });
       return data;
       // #endregion
-    } catch (error) {
+    } catch (error: any) {
       const actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');
-      dispatch({ type: ERROR_LOG_USER, actionTime });
+      dispatch({
+        type: ERROR_LOG_USER,
+        actionTime,
+        error: error?.message ?? 'undefined error, no luck bro',
+      });
     }
   };
 }
@@ -273,7 +277,7 @@ export function logUserIfNeeded(
 function shouldLogUser(state: RootState, userEmail: string): boolean {
   const { isLogging, login: currentUserEmail } = state.userAuth;
 
-  if (currentUserEmail !== userEmail) {
+  if (!currentUserEmail || currentUserEmail !== userEmail) {
     return true;
   }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router';
 import Jumbotron from 'reactstrap/lib/Jumbotron';
 import FadeInEntrance from '../../components/fadeInEntrance';
 import { OwnProps, ReduxConnectedProps } from './index';
@@ -20,4 +20,4 @@ function PageNotFound() {
 
 PageNotFound.displayName = 'PageNotFound';
 
-export default PageNotFound;
+export default withRouter(PageNotFound);

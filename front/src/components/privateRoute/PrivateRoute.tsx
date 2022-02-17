@@ -14,9 +14,9 @@ function PrivateRoute(props: Props) {
   return (
     <Route
       {...rest}
-      render={(innerComponentProps) =>
+      render={() =>
         isAuthenticated ? (
-          <InnerComponent {...innerComponentProps} />
+          InnerComponent
         ) : (
           <Redirect to={{ pathname: '/login', state: { from: location } }} />
         )

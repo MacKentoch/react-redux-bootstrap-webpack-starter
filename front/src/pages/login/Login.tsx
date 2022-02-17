@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router';
 import Button from 'reactstrap/lib/Button';
 import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
@@ -64,7 +64,9 @@ function Login({
         auth.setToken(token);
         auth.setUserInfo(stringifiedUserInfo);
 
-        const { from } = (location.state as any) || { from: { pathname: '/' } };
+        const { from } = (location?.state as any) || {
+          from: { pathname: '/' },
+        };
 
         history.replace(from); // back to Home
       } catch (error) {
@@ -179,4 +181,4 @@ Login.defaultProps = {
 
 Login.displayName = 'Login';
 
-export default Login;
+export default withRouter(Login);

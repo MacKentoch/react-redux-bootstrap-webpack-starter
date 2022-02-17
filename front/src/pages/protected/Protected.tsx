@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router';
 import FadeInEntrance from '../../components/fadeInEntrance';
 import { OwnProps, ReduxConnectedProps } from './index';
 
@@ -18,4 +18,4 @@ function Protected() {
 
 Protected.displayName = 'Protected';
 
-export default Protected;
+export default withRouter(Protected);

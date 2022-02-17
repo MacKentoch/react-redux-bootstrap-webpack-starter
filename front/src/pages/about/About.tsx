@@ -1,5 +1,5 @@
 import React from 'react';
-import { RouteComponentProps } from 'react-router';
+import { RouteComponentProps, withRouter } from 'react-router';
 import FadeInEntrance from '../../components/fadeInEntrance';
 import { OwnProps, ReduxConnectedProps } from './index';
 
@@ -17,4 +17,4 @@ function About() {
 
 About.displayName = 'About';
 
-export default About;
+export default withRouter(About);
