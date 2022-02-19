@@ -61,58 +61,43 @@ _Concept behind:_ same as [react-bootstrap-webpack-starter](https://github.com/M
 
 ## Usage
 
-### Install
+You can run development React SPA application with hot reload or run the production bundles served through NodeJS server.
+
+_NOTE: You don't need to worry about installing anything, just sit down keep cool and type any of these needed command._
+
+### Front developement (with hot reload)
 
 ```bash
 # from root directory:
-cd front && npm install
+npm run front-dev
 ```
 
-### bundle dev mode (_+ redux-devtools_)
+> Application will be served at [**http://localhost:3001/ (just click me!)**](http://localhost:3001/)
+
+### Front unit tests
 
 ```bash
 # from root directory:
-cd front && npm run dev
+npm run front-test
 ```
 
-### dev : hot reload mode (_+ redux-devtools_)
+### Front production bundle analyze
 
 ```bash
 # from root directory:
-cd front && npm run start
+npm run front-bundle-analyze
 ```
 
-### tests
+> Bundle analyzer will launch on its own in your default browser
+
+### Serve production bundled application (front and NodeJS server)
 
 ```bash
 # from root directory:
-cd front && npm run test
+npm run start
 ```
 
-### bundle production mode
-
-```bash
-# from root directory:
-cd front && npm run prod
-```
-
-### mini node-express server
-
-⚠️Ensure having bundled the application before (result is in `_ROOT_DIR_/docs` directory), then:
-
-```bash
-# from root directory:
-
-# install dependencies the first time only:
-cd server && npm install
-# run the server:
-npm run start-server # this will serve ROOT/docs content!
-```
-
-## Donate
-
-Do you use & like react-redux-bootstrap-webpack-starter but you don’t find a way to show some love?
-If yes, please consider donating to support this project. Otherwise, no worries, regardless of whether there is support or not, I will keep maintaining this project. Still, if you buy me a cup of coffee I would be more than happy though 😄
+> Application will be served at [**http://localhost:8082/ (just click me!)**](http://localhost:8082/)
 
 ## License
 
@@ -127,3 +112,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FMacKentoch%2Freact-redux-bootstrap-webpack-starter.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FMacKentoch%2Freact-redux-bootstrap-webpack-starter?ref=badge_large)
+
+```
+
+```

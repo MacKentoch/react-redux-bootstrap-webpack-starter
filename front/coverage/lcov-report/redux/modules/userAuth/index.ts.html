@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">8.64% </span>
+                <span class="strong">7.69% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/81</span>
+                <span class='fraction'>7/91</span>
             </div>
         
             
@@ -430,7 +430,11 @@
 <a name='L365'></a><a href='#L365'>365</a>
 <a name='L366'></a><a href='#L366'>366</a>
 <a name='L367'></a><a href='#L367'>367</a>
-<a name='L368'></a><a href='#L368'>368</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<a name='L368'></a><a href='#L368'>368</a>
+<a name='L369'></a><a href='#L369'>369</a>
+<a name='L370'></a><a href='#L370'>370</a>
+<a name='L371'></a><a href='#L371'>371</a>
+<a name='L372'></a><a href='#L372'>372</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -678,6 +682,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -889,7 +897,7 @@ const initialState: UserAuthState = {
 <span class="cstat-no" title="statement not covered" >          firstname<span class="cstat-no" title="statement not covered" > </span>= '',</span>
 <span class="cstat-no" title="statement not covered" >          lastname<span class="cstat-no" title="statement not covered" > </span>= '',</span>
         },
-      } = <span class="cstat-no" title="statement not covered" >action.payload;</span>
+      } = <span class="cstat-no" title="statement not covered" >action;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return {</span>
         ...state,
@@ -1002,7 +1010,7 @@ export function checkUserIsConnected(): ThunkAction&lt;
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >async (d</span>ispatch<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >) =&gt; {</span></span></span>
     try {
       let <span class="cstat-no" title="statement not covered" >actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');</span>
-<span class="cstat-no" title="statement not covered" >      dispatch({ type: REQUEST_LOG_USER, actionTime });</span>
+<span class="cstat-no" title="statement not covered" >      dispatch({ type: REQUEST_LOG_USER, actionTime, login, password });</span>
 &nbsp;
       // #region mocked request case:
 <span class="cstat-no" title="statement not covered" >      actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');</span>
@@ -1011,7 +1019,7 @@ export function checkUserIsConnected(): ThunkAction&lt;
 <span class="cstat-no" title="statement not covered" >        dispatch({</span>
           type: RECEIVED_LOG_USER,
           actionTime,
-          payload: user,
+          data: user,
         });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        return user;</span>
@@ -1038,13 +1046,17 @@ export function checkUserIsConnected(): ThunkAction&lt;
 <span class="cstat-no" title="statement not covered" >      dispatch({</span>
         type: RECEIVED_LOG_USER,
         actionTime,
-        payload: data,
+        data,
       });
 <span class="cstat-no" title="statement not covered" >      return data;</span>
       // #endregion
-    } catch (error) {
+    } catch (error: any) {
       const <span class="cstat-no" title="statement not covered" >actionTime = format(new Date(), 'dd/MM/yyyy HH:MM');</span>
-<span class="cstat-no" title="statement not covered" >      dispatch({ type: ERROR_LOG_USER, actionTime });</span>
+<span class="cstat-no" title="statement not covered" >      dispatch({</span>
+        type: ERROR_LOG_USER,
+        actionTime,
+        error: error?.message ?? 'undefined error, no luck bro',
+      });
     }
   };
 }
@@ -1072,7 +1084,7 @@ export function <span class="fstat-no" title="function not covered" >logUserIfNe
 function <span class="fstat-no" title="function not covered" >shouldLogUser(</span>state: RootState, userEmail: string): boolean {
   const { isLogging<span class="cstat-no" title="statement not covered" >, login: c</span>urrentUserEmail<span class="cstat-no" title="statement not covered" > } = <span class="cstat-no" title="statement not covered" >s</span>tate.userAuth;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (currentUserEmail !== userEmail) {</span>
+<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (!currentUserEmail || currentUserEmail !== userEmail) {</span>
 <span class="cstat-no" title="statement not covered" >    return true;</span>
   }
 &nbsp;
@@ -1171,7 +1183,7 @@ function <span class="fstat-no" title="function not covered" >getCurrentUser(</s
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Feb 17 2022 08:21:33 GMT+0100 (heure normale d’Europe centrale)
+                at Sat Feb 19 2022 10:22:06 GMT+0100 (heure normale d’Europe centrale)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

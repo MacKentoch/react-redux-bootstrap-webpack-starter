@@ -1,0 +1,35 @@
+{
+  "name": "react-redux-bootstrap-webpack-starter",
+  "version": "8.0.0",
+  "description": "react js + redux + react router + hot reload + devTools + bootstrap + webpack starter",
+  "author": "Erwan DATIN <erwan.datin@gmail.com> (MacKentoch)",
+  "license": "ISC",
+  "homepage": "https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter#readme",
+  "main": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MacKentoch/react-redux-bootstrap-webpack-starter/issues"
+  },
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8.0.0"
+  },
+  "scripts": {
+    "install-front": "echo '#####  installing front dependencies  #####' && cd ./front && npm install && cd ..",
+    "install-server": "echo '#####  installing server dependencies  #####' && cd ./server && npm install && cd ..",
+    "init": "npm run install-front && npm run install-server",
+    "prefront-dev": "npm run init",
+    "front-dev": "cd ./front && npm run start && cd ..",
+    "prefront-test": "npm run init",
+    "front-test": "cd ./front && npm run test && cd ..",
+    "prefront-bundle-analyze": "npm run init",
+    "front-bundle-analyze": "cd ./front && npm run analyze && cd ..",
+    "prefront-prod": "npm run init",
+    "front-prod": "cd ./front && npm run prod && cd ..",
+    "prestart": "npm run init",
+    "start": "cd ./server && npm run start-server && cd .."
+  }
+}

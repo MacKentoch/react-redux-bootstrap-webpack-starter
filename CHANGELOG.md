@@ -1,5 +1,9 @@
 # 8.0.0
 
+- update README
+- upgrade server dependencies
+- upgrade server NodeJS minimum requirement to v16
+- upgrade front dependencies
 - upgrade front NodeJS minimum requirement to v16
 - upgrade front webpack from 4 to 5
 - upgrade front dependencies (a bit of cleaning)
