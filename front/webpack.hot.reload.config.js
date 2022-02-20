@@ -19,7 +19,6 @@ const config = {
     path: path.join(__dirname, 'docs'),
     filename: '[name].[contenthash].js',
     chunkFilename: '[name].[chunkhash].js',
-    // assetModuleFilename: 'assets/[contenthash][ext][query]',
   },
   resolve: {
     modules: ['node_modules'],
@@ -66,6 +65,12 @@ const config = {
     hot: true,
     static: path.join(__dirname, 'docs'),
     historyApiFallback: true, // browser refresh will fail otherwise
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers':
+        'X-Requested-With, content-type, Authorization',
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

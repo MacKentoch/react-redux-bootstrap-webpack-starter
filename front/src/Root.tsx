@@ -3,7 +3,6 @@ import { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { hot } from 'react-hot-loader/root';
 import configureStore from './redux/store/configureStore';
 import ScrollTop from './components/scrollToTop';
 import MainRoutes from './routes/MainRoutes';
@@ -36,34 +35,36 @@ class Root extends Component<Props, State> {
 
   render() {
     return (
-      <Provider store={store}>
-        <ThemeProvider theme={{}}>
-          <Router>
-            <ScrollTop>
-              <Fragment>
-                <Switch>
-                  <Route exact path="/login">
-                    <Login />
-                  </Route>
+      <React.StrictMode>
+        <Provider store={store}>
+          <ThemeProvider theme={{}}>
+            <Router>
+              <ScrollTop>
+                <Fragment>
+                  <Switch>
+                    <Route exact path="/login">
+                      <Login />
+                    </Route>
 
-                  {/* logout: just redirects to login (App will take care of removing the token) */}
-                  <LogoutRoute path="/logout" />
+                    {/* logout: just redirects to login (App will take care of removing the token) */}
+                    <LogoutRoute path="/logout" />
 
-                  {/* Application with main layout (could have multiple applications with different layouts) */}
-                  <Route path="*">
-                    <MainLayout>
-                      <MainRoutes />
-                    </MainLayout>
-                  </Route>
-                </Switch>
-              </Fragment>
-            </ScrollTop>
-            <GlobalStyle />
-          </Router>
-        </ThemeProvider>
-      </Provider>
+                    {/* Application with main layout (could have multiple applications with different layouts) */}
+                    <Route path="*">
+                      <MainLayout>
+                        <MainRoutes />
+                      </MainLayout>
+                    </Route>
+                  </Switch>
+                </Fragment>
+              </ScrollTop>
+              <GlobalStyle />
+            </Router>
+          </ThemeProvider>
+        </Provider>
+      </React.StrictMode>
     );
   }
 }
 
-export default hot(Root);
+export default Root;

@@ -17,11 +17,8 @@ function Home() {
       <Jumbotron>
         <HomeInfo>
           <MainTitle>ReactJS 16.14 Bootstrap 4</MainTitle>
-          <h2>
-            with Hot Reload (<i>react-hot-loader 4+</i>
-            )!!!
-          </h2>
-          <h2>and React Router v5</h2>
+          <h2>with Hot Reload</h2>
+          <h2>and React Router v5.x</h2>
           <h2>and webpack 5.x</h2>
           <h1>Starter</h1>
           <p>

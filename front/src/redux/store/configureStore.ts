@@ -45,5 +45,14 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 export default function configureStore(initialState = {}) {
   const store = createStore(persistedReducer, initialState, enhancer);
   const persistor = persistStore(store);
+
+  if ((module as any).hot) {
+    (module as any).hot?.accept('../modules/reducers', () => {
+      // @ts-ignore
+      const nextAppReducer = require('../modules/reducers').default;
+      store.replaceReducer(persistReducer(persistConfig, nextAppReducer));
+    });
+  }
+
   return { store, persistor };
 }
